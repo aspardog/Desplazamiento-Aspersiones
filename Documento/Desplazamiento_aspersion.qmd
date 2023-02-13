@@ -1,0 +1,106 @@
+---
+title: "Programas que afectan a la población desplazada: el caso de las aspersiones aéreas con glifosato y el desplazamiento forzado en Colombia"
+author: "Santiago Pardo"
+bibliography: references.bib
+format: pdf
+editor: visual
+biblio-style: "apalike"
+csl: apa.csl
+lang: es    
+biblatexoptions:
+  - style = apa
+---
+
+# Abstract
+
+\newpage
+
+# 1. Introducción
+
+El desplazamiento forzado interno es el hecho victimizante de mayor magnitud en las guerras civiles actuales. De acuerdo con @IDMC2022, para finales del 2021 la cifra de personas forzadas a migrar al interior de sus países ascendía a 59 millones. Esto ha puesto en el centro de las políticas públicas la necesidad de prevenir los efectos de la guerra, promoviendo investigaciones dirigidas hacia la evaluación de los programas que buscan mitigar el conflicto armado. Paradójicamente, existen casos en los que estos terminan produciendo más de lo que quieren evitar. En Colombia, para el año 2000 se implementó el Plan Colombia, un acuerdo de cooperación bilateral con Estados Unidos para luchar contra el narcotráfico y acabar con el conflicto armado colombiano, cuyo programa principal consistia en la erradicación aerea de cultivos de Coca. En este contexto, el objetivo de este trabajo es determinar el efecto del Programa de Aspersiones Aéreas con Glifosato (PECIG) sobre el desplazamiento forzado en el marco del Plan Colombia.
+
+El conflicto armado colombiano ha dejado 8.391.662 víctimas de desplazamiento forzado interno registradas [@RUV2022] [^1]. Si bien son múltiples las razones por las que una víctima decide desplazarse de su territorio, probablemente la causa más evidente es la violencia que generan las disputas territoriales de los actores armados, donde la incertidumbre y el miedo llevan a las familias a movilizarse masivamente [@deacon2019; @arjona2016; @lozano2010; @czaika2009; @kalyvas2006]. Las masacres perpetradas por los actores armados, los secuestros, las desapariciones forzadas, las minas, entre otras violaciones a derechos humanos son un canal directo para que las víctimas decidan irse [@cnmh2015]. Sin embargo, se ha demostrado que los desplazamiento forzados también obedecen a patrones en los que el conflicto armado puede incidir sobre el bienestar de las poblaciones [@ibanez2008; @steele2007].
+
+[^1]: El Registro Único de Víctimas empezó su registro en 1985 hasta la actualidad
+
+Frente a esto, en la literatura se ha cuantificado poco el efecto de los programas gubernamentales para combatir la migración forzada, principalmente, por la dificultad de identificar con precisión las causas de este hecho a la hora de registrarse. Para las víctimas el proceso de registro resultada más engorroso cuando no esta asociado a la violencia en el marco del conflicto. En el caso del PECIG, el Registro Único de Víctimas asocia 9155 victimas de conflicto armado con fumigaciones de cultivos como su causa (Apendice 1). Sin embargo, desde la ley 387 de 1997, las aspersiones con glifosato dejaron de ser una causa directa dentro del registro de las víctimas. Por lo tanto, existe un claro subregistro en esta cifra.
+
+En este sentido, han sido múltiples las quejas de la población campesina que se vio obligada a migrar por los efectos del uso del glifosato y no ha encontrado atención estatal, pues como lo afirma una lideresa social de Argelia, Cauca:
+
+"El desplazamiento que se tuvo, que se vio en ese tiempo, fue bastante masivo. La gente salió y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, no había un plan de contingencia para atender a las personas desplazadas por las fumigaciones; no lo hubo, ni lo hay" [@colombia_informa2021]
+
+Cabe resaltar que las fumigaciones masivas con glifosato fueron prohibidas en Colombia por los problemas de salud que le causaban a la población, pero en los últimos años ha resurgido el debate de la legalización de este mecanismo para combatir el narcotráfico. Esta investigación proporciona un elemento adicional a ese debate, pues de acuerdo con las estimaciones de este trabajo, cada hectárea de coca adicional asperjada genera un aumento del % de desplazamientos. Por lo tanto, este trabajo agrega variables a tener en cuenta a la hora de formular políticas públicas para combatir el narcotráfico y el conflicto armado.
+
+La metodología de este documento comienza con la construcción de una base de datos tipo panel con la información sobre las aspersiones con glifosato [^2] y los desplazamientos forzados internos [^3] a nivel mensual por cada municipio. Es importante tener en cuenta que por el diseño del Plan Colombia, los municipios en los que se asperjó tienen una relación directa con el conflicto armado, por lo tanto, estos son sistemáticamente diferentes a los que no sufrieron ningún tipo de fumigación con glifosato. Para corregir la endogeneidad, se instrumentalizó la intensidad de aspersión por medio de la fuerza de los vientos en los municipios en los que el programa fue aplicado. Además, se clusterizaron los errores estándar a nivel municipal, pues la aspersión solo ocurría hasta tres veces en el año, lo que significa que las observaciones a este nivel no son independientes.
+
+[^2]: Esta base de datos fue proporcinada por la Dirección Antinarcoticos de la Policia (DIRAN).
+
+[^3]: Esta base de datos fue proporcionada por el Registro Único de Víctimas (RUV).
+
+PARRAFO DE RESULTADOS
+
+PARRAFO DE MECANISMOS
+
+El resto de este articulo se encuentra estructurado de la siguiente manera: en la sección dos se exponen cuales son las causas y consecuencias del desplazamiento forzado en Colombia desde lo que se ha trabajo en la literatura. La sección tres contiene un marco del Plan Colombia, especificamente del Programa de Aspersiones Aereas con Glifosato (PECIG), para entender mejor el contexto de este trabajo. La sección cuatro expone los datos y las estadisticas descriptivas que se tomaron como base para la investigación. La sección cinco determina la estrategia empirica, los problemas de identificación y la construcción de la variable instrumental. La sección seis muestra los principales resultados. La sección siete profundiza sobre los mecanismos que ayudan a entender mejor los resultados. Finalmente, la última sección trata las conclusiones de esta investigación.
+
+# 2. Efectos y causas del desplazamiento forzado interno en Colombia
+
+El desplazamiento forzado interno ha representado una crisis humanitaria en Colombia, no solo por su magnitud sino por las consecuencias de este hecho. Dentro de la literatura se ha encontrado que la migración forzada reduce el bienestar económico de las vícimas, tanto por el detrimento de su patrimonio como por la poca capacidad de reacción ante los choques futuros que trae abandonar su hogar [@ibanez2006]. En otras palabras, la acumulación de nuevos bienes y activos después de un desplazamiento es un proceso que tarda mucho tiempo y no suele ser muy efectivo.
+
+Las dificulates económicas del desplazamiento no solo afectan a los desplazados, sino a las finanzas de los municipios en lo que ocurrió el hecho y de los muncipios receptores. Por el lado de los municipios de origen, estos ven sus ingresos fiscales y su actividad económica afectados [@cnmh2015]. En el caso de los municipios de recepción, la dificultad de los desplazados de intergrarse a su vida económica impacta la forma en la que estos crecen [@ibanez2008book]. Según la @comisionverdad2022, las ciudades fueron creciendo hacia las periferias como resultado de la llegada de desplazados. Ejemplo de este crecimiento son las localidades de Ciudad Bolivar, Suba y Bosa en Bogotá, así como la Comuna 13 en Medellín.
+
+Más allá de lo económico, la población desplazada no solo tiene que afrontar el impacto de dejar su vida y su hogar atrás, sino también asimilar las dificultades que vienen con llegar a una ciudad nueva, muchas veces sin una red de apoyo. En el prólogo de San Carlos: memorias del éxodo en la guerra, Gonzálo Sánchez (2011) define bien lo que es la situación de una víctima de desplazamiento:
+
+"El desplazado es un forastero que llega a una comunidad y a un entorno que no es el suyo, y a menudo durante una temporalidad indeterminada. Como es de suponer, la conciencia de esta circunstancia actúa de manera agobiante sobre su capacidad proyectiva. Pudiera decirse que la identidad social del desplazado en el nuevo escenario es construida a partir de la pérdida. Él es de alguna manera un actor desposeído de su historia y carece por lo tanto de un campo de orientación para su acción"
+
+En cuanto a las causas del desplazamiento forzado, además de la violencia directa, la literatura ha abordado principalmente razones ecónomicas, sanitarias y políticas [@comisionverdad2022; @deacon2019; @bandiera2021; @grajales2017; @cnmh2015; @ibanez2008book; @steele2007]. En primer lugar, la usurpación ilegal de la tierra tiene un componente de estrategia economica de guerra: al despoblar un territorio determinado, los grupos armados pueden explotar sus recursos naturales y el resto de sus activos [@grajales2017; @ibanez2008book]. Frente a esto, estudios como el de @bandiera2021 han mostrado que ante un aumento en los precios de los stocks en territorios vulnerables, como el banano en Urabá, los desplazamientos forzados también se incrementan. En esa misma línea, los cultivos ilícitos y los territorios que pertenecen a corredores de comercio de droga, también motivan desplazamientos masivos para integrar la cadena de producción del narcotráfico [@cnmh2015].
+
+En segundo lugar, las causas sanitarias se pueden dividir en dos: las afectaciones medioambientales que afectan el bienestar de la población; y las afectaciones a la seguridad alimentaria de los campesiones. En este sentido, la @comisionverdad2022 muestra que las voladuras a oleoductos producian daños ambientales a la población que los forzaba a irse de sus tierras. Además, @deacon2019 expone un estudio donde la combinación del extractivismo y las aspersiones con glifosato en territorios altamente vulnerables intensificaron el desplazamiento forzado masivo en la región de Putumayo.
+
+Finalmente, también se encuentran factores políticos que explican el desplazamiento masivo. Un estudio sobre las elecciones en Urabá, en especial en Apartadó, @steele2011 muestra que, en periodos electorales, la violencia aumenta y los actores armados expulsan en mayor medida a personas pertenecientes a movimientos sociales. Por otro lado, las relaciones entre actores armados y políticos locales, produjeron dinámicas de poder social y político, donde el desplazamiento más que una consecuencia, era un mecanismo de control e intimidación [@comisionverdad2022; @cnmh2015].
+
+De acuerdo a lo anterior, desde la literatura se han tratado múltiples causas y canales que se relacionan con el desplazamiento forzado interno. Sin embargo, a nivel cuantitativo, no hay análisis de los efectos no deseados que puede tener un programa para combatir grupos armados sobre el desplazamiento forzado. Esto es especialmente relevante en los países con conflicto armado interno, en los que son múltiples las políticas que se desarrollan alrededor de la guerra. Por esta razón este trabajo cuantifica el efecto que tuvo el Programa de Erradicación Aérea con Glifosato (PECIG) sobre el desplazamiento forzado desde el 2004, año donde se reglamentaron los parametros de aspersión, hasta el 2012 el año en el que empezó a disminuir su aplicación previo a su prohibición.
+
+# 3. Programa de Erradicación Aérea con Glifosato (PECIG)
+
+Durante el año 1999 se firmó un acuerdo bilateral entre Colombia y Estados Unidos para combatir el narcotráfico y el crimen organizado y así contribuir a la consecución de la paz y el desarrollo económico en Colombia [@dnp2005]. Para esto, se dividió el plan en cuatro etapas (apéndice 2). La base de la primera era reducir en 50% los cultivos de narcóticos en el territorio colombiano. Bajo este contexto, a cargo de la Policía Nacional se crea el Programa de Erradicación Aérea con Glifosato (PECIG), un programa de aspersión aérea con glifosato de manera masiva en los municipios donde más se registraban cultivos de coca y presencia de actores al margen de la ley [@dnp2005]. 
+
+Si bien las aspersiones aéreas con glifosato ya eran una herramienta desde la década de los 70s, con el Plan Colombia estas adquirieron un carácter masivo. Como consecuencia, se requirió un Plan de Manejo Ambiental (PMA) que regulara las actividades del PECIG. Allí se establecían los lineamientos para aplicar el programa de manera que se minimizaran los efectos ambientales que las aspersiones conllevaban. Estos fueron aplicados a partir de finales del 2003 [^4], año en el que se definieron unos parámetros fijos que determinaban la cantidad de glifosato que se podía utilizar y el momento para aplicarlo de acuerdo a las condiciones ambientales (apéndice 3). Dentro de estos se destacan la velocidad del viento, la iminisencia de lluvias, la húmedad del terreno, la temperatura y la altura de no más de 30 metros de las avionetas y los helicópteros [@diran2020].
+
+[^4]: Resolución 1054 del 30 de septiembre del 2003.
+
+A pesar de la existencia del Plan de Manejo Ambiental, con la aplicación del PECIG empezaron a surgir demandas nacionales e internacionales en contra del Estado colombiano por los efectos que el glifosato tenía sobre la población. Para 2005, el colectivo de abogados José Alvear Restrepo presentó una demanda colectiva de más de 1.400 personas afectadas por el herbicida en 58 veredas de Putumayo [@cajar2005]. Además, para 2008, Ecuador presentó una demanda internacional ante la Haya por afectaciones a la población en la frontera, demanda que Colombia perdió en 2013 [@cardenas2020]. Esto generó que para ese mismo año se abriera el debate sobre el uso de este herbicida de forma masiva, produciendo una disminución de su aplicación a menos de la mitad. En 2014, este debate fue tomado por la Corte Constitucional, la cual prohibió su uso a partir del año 2015 por los efectos en salud que sufría la población.
+
+```{r chart1, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Aspersiones Aéreas municipales en Colombia (2004 - 2013)", fig.pos="H"}
+knitr::include_graphics("../Visualizations/output/aspersiones.png")
+```
+
+
+Desde los años 2004 hasta el 2012, el período de interés donde se intensificó el PECIG, se asperjaron cada año un poco más de 120.000 hectáreas. Como lo muestra la figura 1, las zonas donde se concentró el programa fueron el sur del país, el Pacífico, Magdalena Medio y alrededor de la frontera con Venezuela. Gracias a esto, en los balances del Plan Colombia, se determinó que los cultivos de coca habían sido reducidos significativamente. Sin embargo, los resultados de la lucha contra el narcotráfico y el efecto positivo sobre el desarrollo económico en las regiones sigue siendo cuestionado [@mejia2016; @gaviria2011; @comisionverdad20201]. Por esta razón, esta investigación busca determinar si el programa tuvo relación con el desplazamiento forzado interno, el cual se propagó durante los comienzos de la década. Bajo este contexto, los años de estudio de este trabajo empiezan desde el 2004 -donde se aplicaron los lineamientos y parámetros claros de aspersión que más adelante se utilizarán para construir el instrumento- y el 2012, que fue el año previo a la disminución radical del programa por las denuncias de la población y sus efectos negativos.
+
+\newpage
+
+# Referencias
+
+::: {#refs}
+:::
+\newpage
+
+# Apendices
+
+## Apendice 1: Derecho de petición para establecer el número de desplazados registrados con fumigación aérea con glifosato como causa.
+```{r apendice1, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
+knitr::include_graphics("../Apendix/apendice1.png")
+```
+\newpage
+## Apendice 2: Componentes del Plan Colombia.
+```{r apendice2, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
+
+knitr::include_graphics("../Apendix/apendice2.png")
+```
+\newpage
+## Apendice 3: Condiciones para aplicar el PECIG
+```{r apendice3, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
+
+knitr::include_graphics("../Apendix/apendice3.png")
+```
