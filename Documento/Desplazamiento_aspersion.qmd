@@ -19,7 +19,7 @@ biblatexoptions:
 
 El desplazamiento forzado interno es el hecho victimizante de mayor magnitud en las guerras civiles actuales. De acuerdo con @IDMC2022, para finales del 2021 la cifra de personas forzadas a migrar al interior de sus países ascendía a 59 millones. Esto ha puesto en el centro de las políticas públicas la necesidad de prevenir los efectos de la guerra, promoviendo investigaciones dirigidas hacia la evaluación de los programas que buscan mitigar el conflicto armado. Paradójicamente, existen casos en los que estos terminan produciendo más de lo que quieren evitar. En Colombia, para el año 2000 se implementó el Plan Colombia, un acuerdo de cooperación bilateral con Estados Unidos para luchar contra el narcotráfico y acabar con el conflicto armado colombiano, cuyo programa principal consistia en la erradicación aerea de cultivos de Coca. En este contexto, el objetivo de este trabajo es determinar el efecto del Programa de Aspersiones Aéreas con Glifosato (PECIG) sobre el desplazamiento forzado en el marco del Plan Colombia.
 
-El conflicto armado colombiano ha dejado 8.391.662 víctimas de desplazamiento forzado interno registradas [@RUV2022] [^1]. Si bien son múltiples las razones por las que una víctima decide desplazarse de su territorio, probablemente la causa más evidente es la violencia que generan las disputas territoriales de los actores armados, donde la incertidumbre y el miedo llevan a las familias a movilizarse masivamente [@deacon2019; @arjona2016; @lozano2010; @czaika2009; @kalyvas2006]. Las masacres perpetradas por los actores armados, los secuestros, las desapariciones forzadas, las minas, entre otras violaciones a derechos humanos son un canal directo para que las víctimas decidan irse [@cnmh2015]. Sin embargo, se ha demostrado que los desplazamiento forzados también obedecen a patrones en los que el conflicto armado puede incidir sobre el bienestar de las poblaciones [@ibanez2008; @steele2007].
+El conflicto armado colombiano ha dejado 8.391.662 víctimas de desplazamiento forzado interno registradas [@RUV2022] [^1]. Si bien son múltiples las razones por las que una víctima decide desplazarse de su territorio, probablemente la causa más evidente es la violencia que generan las disputas territoriales de los actores armados, donde la incertidumbre y el miedo llevan a las familias a movilizarse masivamente [@deacon2019; @arjona2016; @lozano2010; @czaika2009; @kalyvas2006]. Las masacres perpetradas por los actores armados, los secuestros, las desapariciones forzadas, las minas, entre otras violaciones a derechos humanos son un canal directo para que las víctimas decidan irse [@cnmh2015]. Sin embargo, se ha demostrado que los desplazamientos forzados también obedecen a patrones en los que el conflicto armado puede incidir sobre el bienestar de las poblaciones [@ibanez2008; @steele2007].
 
 [^1]: El Registro Único de Víctimas empezó su registro en 1985 hasta la actualidad
 
@@ -31,7 +31,7 @@ En este sentido, han sido múltiples las quejas de la población campesina que
 
 Cabe resaltar que las fumigaciones masivas con glifosato fueron prohibidas en Colombia por los problemas de salud que le causaban a la población, pero en los últimos años ha resurgido el debate de la legalización de este mecanismo para combatir el narcotráfico. Esta investigación proporciona un elemento adicional a ese debate, pues de acuerdo con las estimaciones de este trabajo, cada hectárea de coca adicional asperjada genera un aumento del % de desplazamientos. Por lo tanto, este trabajo agrega variables a tener en cuenta a la hora de formular políticas públicas para combatir el narcotráfico y el conflicto armado.
 
-La metodología de este documento comienza con la construcción de una base de datos tipo panel con la información sobre las aspersiones con glifosato [^2] y los desplazamientos forzados internos [^3] a nivel mensual por cada municipio. Es importante tener en cuenta que por el diseño del Plan Colombia, los municipios en los que se asperjó tienen una relación directa con el conflicto armado, por lo tanto, estos son sistemáticamente diferentes a los que no sufrieron ningún tipo de fumigación con glifosato. Para corregir la endogeneidad, se instrumentalizó la intensidad de aspersión por medio de la fuerza de los vientos en los municipios en los que el programa fue aplicado. Además, se clusterizaron los errores estándar a nivel municipal, pues la aspersión solo ocurría hasta tres veces en el año, lo que significa que las observaciones a este nivel no son independientes.
+La metodología de este documento comienza con la construcción de una base de datos tipo panel con la información sobre las aspersiones con glifosato [^2] y los desplazamientos forzados internos [^3] a nivel mensual por cada municipio. Es importante tener en cuenta que por el diseño del Plan Colombia, los municipios en los que se asperjó tienen una relación directa con el conflicto armado, por lo tanto, estos son sistemáticamente diferentes a los que no sufrieron ningún tipo de fumigación con glifosato. Para corregir la endogeneidad, se instrumentalizó la intensidad de aspersión por medio de la fuerza de los vientos en los municipios en los que el programa fue aplicado. Además, se clusterizaron los errores estándar a nivel municipal, pues la aspersión solo podía ocurrir hasta tres veces en el año, lo que significa que las observaciones a este nivel no son independientes.
 
 [^2]: Esta base de datos fue proporcinada por la Dirección Antinarcoticos de la Policia (DIRAN).
 
@@ -63,7 +63,7 @@ De acuerdo a lo anterior, desde la literatura se han tratado múltiples causas y
 
 # 3. Programa de Erradicación Aérea con Glifosato (PECIG)
 
-Durante el año 1999 se firmó un acuerdo bilateral entre Colombia y Estados Unidos para combatir el narcotráfico y el crimen organizado y así contribuir a la consecución de la paz y el desarrollo económico en Colombia [@dnp2005]. Para esto, se dividió el plan en cuatro etapas (apéndice 2). La base de la primera era reducir en 50% los cultivos de narcóticos en el territorio colombiano. Bajo este contexto, a cargo de la Policía Nacional se crea el Programa de Erradicación Aérea con Glifosato (PECIG), un programa de aspersión aérea con glifosato de manera masiva en los municipios donde más se registraban cultivos de coca y presencia de actores al margen de la ley [@dnp2005]. 
+Durante el año 1999 se firmó un acuerdo bilateral entre Colombia y Estados Unidos para combatir el narcotráfico y el crimen organizado y así contribuir a la consecución de la paz y el desarrollo económico en Colombia [@dnp2005]. Para esto, se dividió el plan en cuatro etapas (apéndice 2). La base de la primera era reducir en 50% los cultivos de narcóticos en el territorio colombiano. Bajo este contexto, a cargo de la Policía Nacional se crea el Programa de Erradicación Aérea con Glifosato (PECIG), un programa de aspersión aérea con glifosato de manera masiva en los municipios donde más se registraban cultivos de coca y presencia de actores al margen de la ley [@dnp2005].
 
 Si bien las aspersiones aéreas con glifosato ya eran una herramienta desde la década de los 70s, con el Plan Colombia estas adquirieron un carácter masivo. Como consecuencia, se requirió un Plan de Manejo Ambiental (PMA) que regulara las actividades del PECIG. Allí se establecían los lineamientos para aplicar el programa de manera que se minimizaran los efectos ambientales que las aspersiones conllevaban. Estos fueron aplicados a partir de finales del 2003 [^4], año en el que se definieron unos parámetros fijos que determinaban la cantidad de glifosato que se podía utilizar y el momento para aplicarlo de acuerdo a las condiciones ambientales (apéndice 3). Dentro de estos se destacan la velocidad del viento, la iminisencia de lluvias, la húmedad del terreno, la temperatura y la altura de no más de 30 metros de las avionetas y los helicópteros [@diran2020].
 
@@ -75,8 +75,23 @@ A pesar de la existencia del Plan de Manejo Ambiental, con la aplicación del PE
 knitr::include_graphics("../Visualizations/output/aspersiones.png")
 ```
 
+Desde los años 2004 hasta el 2012, el período de interés donde se intensificó el PECIG, se asperjaron cada año un poco más de 120.000 hectáreas. Como lo muestra la figura 1, las zonas donde se concentró el programa fueron el sur del país, el Pacífico, Magdalena Medio y alrededor de la frontera con Venezuela. Gracias a esto, en los balances del Plan Colombia, se determinó que los cultivos de coca habían sido reducidos significativamente. Sin embargo, los resultados de la lucha contra el narcotráfico y el efecto positivo sobre el desarrollo económico en las regiones sigue siendo cuestionado [@mejia2016; @gaviria2011; @comisionverdad20201].
 
-Desde los años 2004 hasta el 2012, el período de interés donde se intensificó el PECIG, se asperjaron cada año un poco más de 120.000 hectáreas. Como lo muestra la figura 1, las zonas donde se concentró el programa fueron el sur del país, el Pacífico, Magdalena Medio y alrededor de la frontera con Venezuela. Gracias a esto, en los balances del Plan Colombia, se determinó que los cultivos de coca habían sido reducidos significativamente. Sin embargo, los resultados de la lucha contra el narcotráfico y el efecto positivo sobre el desarrollo económico en las regiones sigue siendo cuestionado [@mejia2016; @gaviria2011; @comisionverdad20201]. Por esta razón, esta investigación busca determinar si el programa tuvo relación con el desplazamiento forzado interno, el cual se propagó durante los comienzos de la década. Bajo este contexto, los años de estudio de este trabajo empiezan desde el 2004 -donde se aplicaron los lineamientos y parámetros claros de aspersión que más adelante se utilizarán para construir el instrumento- y el 2012, que fue el año previo a la disminución radical del programa por las denuncias de la población y sus efectos negativos.
+Por esta razón, esta investigación busca determinar si el programa tuvo relación con el desplazamiento forzado interno, el cual se propagó durante los comienzos de la década. Bajo este contexto, los años de estudio de este trabajo empiezan desde el 2004 -donde se aplicaron los lineamientos y parámetros claros de aspersión que más adelante se utilizarán para construir el instrumento- y el 2012, que fue el año previo a la disminución radical del programa por las denuncias de la población y sus efectos negativos.
+
+# 4. Estrategia Empirica
+
+## 4.1. Aspersiones con glifosato y desplazamiento forzado
+
+La intuición detrás del marco conceptual parte de la terminología propia del desplazamiento forzado. Al ser forzado significa que esta movilización se dio obligada por un contexto de conflicto armado. La decisión detrás de un desplazamiento forzado no se debe a una sola razón, sino a la suma de eventos que pueden ocurrir en un territorio que sufre de multiples eventos relacionados con la guerra. En este sentido, @ibanez2008book modela esta decisión como la situación en la que la utilidad esperada del desplazamiento es mayor que la utilidad esperada de permanecer en el sitio de origen.
+
+Las víctimas tienen que ponderar la disyuntiva entre irse y dejar de lado su vida y enfrentarse a un nuevo contexto o quedarse y afrontar las consecuencias de hacerlo. Ambos bajo situacones de plena incertidumbre. Como se mostró en la sección 2, las causas del desplazamiento forzado estan asociadas principalmente a razones economicas ($CE_{j}$), políticas ($CP_{j}$), de salubridad ($CS_{j}$) y a las relacionadas con violencia ($CV_{j}$). Además, este trabajo busca entender si las aspersiones con glifosato ($CA_{j}$) puede ser una variable adicional para tener en cuenta en la decisión de movilizarse. Por esta razón, el desplazamiento forzado, en los municipios donde se aplico el programa del PECIG, puede ser visto como la sumatoria de personas que deciden abandonar su territorio en un periodo $j$ ante un contexto relacionado con conflicto armado interno como se muestra en la siguiente ecuación:
+
+$$ D_{j} = \sum_{j=1}^{n}\alpha(\theta_{k}) + (1 - \alpha) (\theta_{k}) \ donde \ \alpha = 1$$
+
+donde $\theta_{k} = f(CE_{j}, CP_{j}, CS_{j}, CV_{j}, CA_{j})$ y $\alpha$ representa la relación entre la utilidad esperada de migrar forzadamente y la de quedarse. Por tanto $\alpha = 1$ siempre que la primera utilidad mencionada sea mayor que la segunda.
+
+Frente a esto,
 
 \newpage
 
@@ -84,22 +99,30 @@ Desde los años 2004 hasta el 2012, el período de interés donde se intensific�
 
 ::: {#refs}
 :::
+
 \newpage
 
 # Apendices
 
 ## Apendice 1: Derecho de petición para establecer el número de desplazados registrados con fumigación aérea con glifosato como causa.
+
 ```{r apendice1, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 knitr::include_graphics("../Apendix/apendice1.png")
 ```
+
 \newpage
+
 ## Apendice 2: Componentes del Plan Colombia.
+
 ```{r apendice2, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 
 knitr::include_graphics("../Apendix/apendice2.png")
 ```
+
 \newpage
+
 ## Apendice 3: Condiciones para aplicar el PECIG
+
 ```{r apendice3, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 
 knitr::include_graphics("../Apendix/apendice3.png")
