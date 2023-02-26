@@ -71,7 +71,7 @@ Si bien las aspersiones aéreas con glifosato ya eran una herramienta desde la d
 
 A pesar de la existencia del Plan de Manejo Ambiental, con la aplicación del PECIG empezaron a surgir demandas nacionales e internacionales en contra del Estado colombiano por los efectos que el glifosato tenía sobre la población. Para 2005, el colectivo de abogados José Alvear Restrepo presentó una demanda colectiva de más de 1.400 personas afectadas por el herbicida en 58 veredas de Putumayo [@cajar2005]. Además, para 2008, Ecuador presentó una demanda internacional ante la Haya por afectaciones a la población en la frontera, demanda que Colombia perdió en 2013 [@cardenas2020]. Esto generó que para ese mismo año se abriera el debate sobre el uso de este herbicida de forma masiva, produciendo una disminución de su aplicación a menos de la mitad. En 2014, este debate fue tomado por la Corte Constitucional, la cual prohibió su uso a partir del año 2015 por los efectos en salud que sufría la población.
 
-```{r chart1, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Aspersiones Aéreas municipales en Colombia (2004 - 2013)", fig.pos="H"}
+```{r chart1, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Aspersiones Aéreas municipales en Colombia (2004 - 2012)", fig.pos="H"}
 knitr::include_graphics("../Visualizations/output/aspersiones.png")
 ```
 
@@ -103,7 +103,43 @@ Para medir el desplazamiento forzado interno se utilizo como fuente el Registro 
 
 Cabe resaltar que, en los datos sobre violaciones a derechos humanos los problemas de subregistro son más notorios, debido a que existen multiples causas por las que una víctima no se registra como tal, desde razones de seguridad hasta la dificultad burocratica que puede existir para hacerlo. Frente, la @comisionverdad2022 recogió más de 120 bases sobre conflicto armado en Colombia, generando estimaciones del rango de víctimas que podían existir por cada violación a derechos humanos. En este sentido, se estableció la única fuente representativa sobre el desplazamiento forzado interno es la del Registro Único de Víctimas. Por lo tanto, esta es una fuente rigurosa para medir el número de hechos de desplazamiento ocurridos.
 
-El mapa 2 ilustra el desplazamiento frozado a nivel municipal por quintiles en todo el país durante los años de este estudio. En ese tiempo, de los 1122 municipios de Colombia 1121 registraron el desplazamiento. Sin embargo, como se puede notar, las intensidades han sido distintas y las mayores magnitudes se concentran regionalmente. Los territorios más afectados son
+El mapa 2 ilustra el desplazamiento frozado a nivel municipal por quintiles en todo el país durante los años de este estudio. En ese tiempo, de los 1122 municipios de Colombia 1116 registraron el desplazamiento. Sin embargo, como se puede notar, las intensidades han sido distintas y las mayores magnitudes se concentran regionalmente. Los territorios más afectas se identifican en la franja del sur del país (Nariño, Guaviare, Putumayo, Caquetá, Metá); la región del litoral pacifico (Cauca, Valle del Cauca, Chocó); el magdalena medio (Santander, Antioquía, Cesar) y la frontera con Venezuela (La Guajira, Norte de Santander y Vichada).
+
+```{r chart2, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Hechos de desplazamiento forzado a nivel municipal en Colombia (2004 - 2012)", fig.pos="H"}
+knitr::include_graphics("../Visualizations/output/desplazamientos.png")
+```
+
+## 5.2. Causas del desplazamiento forzado interno
+
+Para operacionalizar a nivel mensual las variables asociadas a las causas del desplazamiento mostradas en el marco conceptual se buscaron diferentes fuentes que se pudieran aproximar a cada una de las categorias. Para el caso del contexto de violencia, se utilizaron otras violaciones a derechos humanos encontradas en el Registro Único de Víctimas que se encontraran asociadas al desplazamiento. Además, se complemento con variables del Centro Nacional de Memoría Historica que documentaban de manera más amplia otros hechos como las masacres y la violencia sexual. El apendice 4 muestra la lista de estas variables. Frente a esto, es importante resaltar que estas variables contienen problemas de subregistro, por lo que no se puede asumir que representen completamente la violencia de cada municipio.
+
+En el caso de las condiciones economicas, no es posible medir la actividad economica mensual de cada municipio en Colombia. Sin embargo, se ha demostrado que la luminosidad de los municipios y ciudades es una buena variable proxy de desarrollo economico (citas). En este sentido, se tomaron los datos de BLA BLA que proporcionan información satelital diaria sobre la luminosidad a nivel de pixeles. Para este trabajo se promedió la intensidad de luz de todos los pixeles que moldeaban cada municipio. Partiendo de esta se calculo la media mensual para cada uno.
+
+En cuanto a las variables políticas, multiples estudios han demostrado que en Colombia la violencia aumenta durante las elecciones regionales [@steele2011; @comisionverdad2022]. Esto se debe a que, en los municipios más vulnerables los grupos armados buscan debilitar movimientos sociales para controlar a la población. También, en multiples casos se han demostrado alianzas entre élites políticas regionales y los grupos armados para controlar las elecciones. Por está razón, se incluyo como variable binaria los meses de los periodos electorales regionales en cada uno de los municipios.
+
+Por último para abarcar las condiciones ambientales se incluyó como control el índice de cambios en la vegetación. Este es desarrollado por la NASA el cual mide el cambio en los usos del suelo de acuerdo a imagenes tomadas satelitalmente cada día. Al igual que con las variables de luminosidad se tomo la media mensual del promedio de todos los pixeles que conforman cada municipio en Colombia.
+
+Finalmente, no se incluyeron variables asociadas a las condiciones de salud, ni a la presencia de grupos armados. En cuanto a la primera categoría se intentaron tomar los datos de citas a las EPS por cada municipio a nivel mensual, sin embargo, estos datos son restringidos y no fue permitido su uso. Por otro lado, en cuanto a la presencia de grupos armados, aún no existe un consenso en la literatura sobre cómo medirlo, debido a que se ha demostrado que la violencia no tiene en cuenta los municipios donde hay plento control de un grupo armado, solo los que poseen disputas (citas).
+
+## 5.3. Aspersiones Aéreas con Glifosato
+
+Los datos del PECIG, a nivel mensual, fueron proporcionados por la Dirección de Antinárcoticos de la Policia (DIRAN). La medición de las aspersiones aéreas con Glifosato se hacia por hectareas a nivel municipal cada mes. Sin embargo, la decisión del momento de aspersión no era municipal, sino que se encontraba condicionada a lo que en el programa llamaban nucleos que eran puntos habilitados, en su mayoría aeropuertos, para preparar el herbicida y distribuirlo (apendice 6). Por esta razón, en el mapa 1, se puede notar que los territorios de mayor aspersión se encontraban aglomerados a nivel regional.
+
+Otro elemento adicional para tener en cuenta del mapa 1 es que los territorios donde se concentraban las aspersiones aereas son parecidos a los que sufrian de mayor desplazamiento. Para comprobar si existia una correlación espacial entre ambos, el mapa 3, muestra la asociación espacial LISA entre ambas variables. El color rojo representa los puntos en los que se aglomeró esta correlación de manera fuerte, es decir donde el desplazamiento fue alto y las aspersiones también. El color azul muestra los puntos donde ambas variables tuvieron un bajo comportamiento. El color azul claro refleja las regiones donde hubo altos niveles de desplazamiento y baja intensidad de aspersión; y el color amarillo claro representa el caso contrario. Además, los municipios blancos es donde no hubo relación entre ambas variables.
+
+```{r chart3, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Correlación espacial entre desplazamiento y aspersiones (2004 - 2012)", fig.pos="H"}
+knitr::include_graphics("../Visualizations/output/moran_bivariado.png")
+```
+
+En este caso, se puede notar que la mayoría de territorios las variables de desplazamiento y aspersión tienen una correlación estadisticamente signficativa. Además, la figura 4, muestra que esta correlación es positiva tanto para el desplazamiento en ese mismo mes como para el acumulado en los tres meses siguientes. Esto se debe a que por diseño del PECIG los municipios en los que se asperjó tienen una relación directa con el conflicto armado, y por lo tanto, con el glifosato. En este sentido, se evidencia que los municipios donde se asperjó son sistematicamente distintos a los que no, lo que implica que esta relación tiene problemas de endogeneidad.
+
+```{r chart4, out.width = "100%", warning=F, fig.show=F, echo=F, fig.align=' center', fig.cap="Correlación Desplazamiento y Aspersión Aérea con Glifosato", fig.pos="H"}
+knitr::include_graphics(c("../Visualizations/output/scatter_month.png"))
+
+
+```
+
+\newpage
 
 # Referencias
 

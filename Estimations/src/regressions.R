@@ -46,11 +46,11 @@ merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") %>%
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 controles <- c("ruv_amenaza", "ruv_desaparicion_forzada", "ruv_combates", "ruv_secuestro",
                "ruv_minas", "ruv_tortura", "ruv_homicidio", "ruv_reclutamiento_menores", "cnmh_violencia_sexual",
-               "ruv_abandono_despojo", "ruv_perdida_bienes", "cnmh_masacres", 
+               "ruv_abandono_despojo", "cnmh_masacres", 
                "night_lights")
 controles_fe <- c("ruv_amenaza", "ruv_desaparicion_forzada", "ruv_combates", "ruv_secuestro",
                "ruv_minas", "ruv_tortura", "ruv_reclutamiento_menores", "cnmh_violencia_sexual",
-               "ruv_abandono_despojo", "ruv_perdida_bienes", "cnmh_masacres", 
+               "ruv_abandono_despojo", "cnmh_masacres", 
                "night_lights", "codmpio", "year")
 
 correlaciones.df <- merge_data.df %>%

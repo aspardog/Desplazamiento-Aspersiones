@@ -8,7 +8,7 @@
 ##
 ## Creation date:     February 3rd, 2023
 ##
-## This version:      February 6th, 2023
+## This version:      February 25th, 2023
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -76,7 +76,8 @@ simula_moran <- function(x, y = NULL, W, nsims = 5000){
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # Load data
-merge_data.df <- readRDS("Data/Merge/output/merge_data.rds")
+merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") %>% 
+  filter(year != 2003)
 
 colombia.sf <- st_read("Data/Download/input/ShapeFiles/Municipio_ctm12.shp") %>%
   mutate(codmpio = as.numeric(mpio_ccnct)) %>%
@@ -126,7 +127,7 @@ m <- moran_I(x, y, W)
 
 # Global Moral
 global_moran <- m[[1]][1]
-#> 1.743479
+#> 1.983673
 
 # Local values
 m_i <- m[[2]] 
@@ -138,7 +139,7 @@ local_sims <- simula_moran(x, y, W)$local_sims
 global_sims <- simula_moran(x, y, W)$global_sims
 
 # Identifying the significant values 
-alpha <- .11  # for a 90% confidence interval
+alpha <- .2  # for a 80% confidence interval
 probs <- c(alpha/2, 1-alpha/2)
 intervals <- t( apply(local_sims, 1, function(x) quantile(x, probs=probs)))
 sig       <- ( m_i < intervals[,1] )  | ( m_i > intervals[,2] )

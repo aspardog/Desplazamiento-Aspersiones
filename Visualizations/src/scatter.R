@@ -8,7 +8,7 @@
 ##
 ## Creation date:     February 3rd, 2023
 ##
-## This version:      February 6th, 2023
+## This version:      February 25th, 2023
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -22,7 +22,7 @@
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 library(pacman)
-p_load(ggplot2, tidyverse, ggthemes, ggpubr)
+p_load(ggplot2, tidyverse, ggthemes, ggpubr, showtext, patchwork)
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -35,10 +35,11 @@ merge_data.df <- readRDS("Data/Merge/output/merge_data.rds")
 # ================================== Scatter month to month ======================================================
 
 scatter_month <- merge_data.df %>%
+  filter(year != 2003) %>%
   dplyr::select(codmpio, dpto, date, ruv_desplazamiento_forzado, spraying) %>%
   filter(spraying > 0) %>%
-  mutate(desplazamiento_forzado_log = log(ruv_desplazamiento_forzado),
-         aspersiones_log = log(spraying)) %>%
+  mutate(desplazamiento_forzado_log = log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)),
+         aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
   ggplot(data = ., aes(x = aspersiones_log, y = desplazamiento_forzado_log)) +
   geom_point(mapping=aes(x = aspersiones_log, y = desplazamiento_forzado_log)) +
   stat_smooth(method = "lm",
@@ -50,9 +51,7 @@ scatter_month <- merge_data.df %>%
   theme(panel.background   = element_blank(),
         panel.grid.major   = element_blank(),
         axis.ticks  = element_blank(),
-        plot.background = element_rect(fill = "white", colour = "white"));scatter_month
-
-ggsave(scatter_month, filename = "Visualizations/output/scatter_month.png", dpi = 320, width = 10, height = 10)
+        plot.background = element_rect(fill = "white", colour = "white"))
 
 # ================================== Scatter aggregation 3 months to month =========================================
 
@@ -62,8 +61,8 @@ merge_data.df$ruv_desplazamiento_forzado_2 <- sapply(1:nrow(merge_data.df), func
 scatter_3month <- merge_data.df[-c(1,2,3),] %>% # Removing the observations with lag
   filter(spraying > 0) %>%
   mutate(sum_des = ruv_desplazamiento_forzado + as.numeric(ruv_desplazamiento_forzado_1) + as.numeric(ruv_desplazamiento_forzado_2),
-         sum_des_log = log(sum_des),
-         aspersiones_log = log(spraying)) %>%
+         sum_des_log = log(sum_des + quantile(sum_des, .25)^2/quantile(sum_des, .75)),
+         aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
   ggplot(data = ., aes(x = aspersiones_log, y = sum_des_log)) +
   geom_point(mapping=aes(x = aspersiones_log, y = sum_des_log)) +
   stat_smooth(method = "lm",
@@ -75,8 +74,15 @@ scatter_3month <- merge_data.df[-c(1,2,3),] %>% # Removing the observations with
   theme(panel.background   = element_blank(),
         panel.grid.major   = element_blank(),
         axis.ticks  = element_blank(),
-        plot.background = element_rect(fill = "white", colour = "white"));scatter_3month
+        plot.background = element_rect(fill = "white", colour = "white"))
 
-ggsave(scatter_3month, filename = "Visualizations/output/scatter_3month.png", dpi = 320, width = 10, height = 10)
+figures <- list()
+figures[["Panel A"]] <- scatter_month
+figures[["Panel B"]] <- scatter_3month
+
+figureScatter <- figures[["Panel A"]] + figures[["Panel B"]]  + 
+  plot_layout(ncol = 2, nrow = 1)
+
+ggsave(figureScatter, filename = "Visualizations/output/scatter_3month.png", dpi = 320, width = 10, height = 10)
 
 
