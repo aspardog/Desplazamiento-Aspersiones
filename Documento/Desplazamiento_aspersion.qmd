@@ -85,7 +85,7 @@ Por esta razón, esta investigación busca determinar si el programa tuvo relaci
 
 La intuición detrás del marco conceptual parte de la terminología propia del desplazamiento forzado. Al ser forzado significa que esta movilización se dio obligada por un contexto de conflicto armado. La decisión detrás de un desplazamiento forzado no se debe a una sola razón, sino a la suma de eventos que pueden ocurrir en un territorio que sufre de multiples eventos relacionados con la guerra. En este sentido, @ibanez2008book modela esta decisión como la situación en la que la utilidad esperada del desplazamiento es mayor que la utilidad esperada de permanecer en el sitio de origen.
 
-Las víctimas tienen que ponderar la disyuntiva entre irse y dejar de lado su vida y enfrentarse a un nuevo contexto o quedarse y afrontar las consecuencias de hacerlo. Ambos bajo situacones de plena incertidumbre. Como se mostró en la sección 2, las causas del desplazamiento forzado estan asociadas principalmente a razones economicas ($CE_{j}$), políticas ($CP_{j}$), de salubridad ($CS_{j}$) y a las relacionadas con violencia ($CV_{j}$). Además, este trabajo busca entender si las aspersiones con glifosato ($CA_{j}$) puede ser una variable adicional para tener en cuenta en la decisión de movilizarse. Por esta razón, el desplazamiento forzado, en los municipios donde se aplico el programa del PECIG, puede ser visto como la sumatoria de personas que deciden abandonar su territorio en un periodo $j$ ante un contexto relacionado con conflicto armado interno como se muestra en la siguiente ecuación:
+Las víctimas tienen que ponderar la disyuntiva entre irse y dejar de lado su vida y enfrentarse a un nuevo contexto o quedarse y afrontar las consecuencias de hacerlo. Ambos bajo situacones de plena incertidumbre. Como se mostró en la sección 2, las causas del desplazamiento forzado estan asociadas principalmente a razones economicas ($CE_{j}$), políticas ($CP_{j}$), de salubridad ($CS_{j}$) y a las relacionadas con violencia ($CV_{j}$). Además, este trabajo busca entender si las aspersiones con glifosato ($CA_{j}$) puede ser una variable adicional para tener en cuenta en la decisión de movilizarse. Por esta razón, el desplazamiento forzado, en los municipios donde se aplicó el programa del PECIG, puede ser visto como la sumatoria de personas que deciden abandonar su territorio en un periodo $j$ ante un contexto relacionado con conflicto armado interno como se muestra en la siguiente ecuación:
 
 $$ D_{j} = \sum_{j=1}^{n}\alpha(\theta_{k}) + (1 - \alpha) (\theta_{k}) \ donde \ \alpha = 1$$
 
@@ -93,7 +93,17 @@ donde $\theta_{k} = f(CE_{j}, CP_{j}, CS_{j}, CV_{j}, CA_{j})$ y $\alpha$ repres
 
 Frente a esto,
 
-\newpage
+## 5. Datos y estadisticas descriptivas
+
+Para cuantificar la relación existente del desplazamiento forzado y las aspersiones aereas con glifosato en el marco del PECIG es necesario tener una documentación que permita medir la variación a nivel mensual, debido a que el programa estaba diseñado para asperjar en ciertos meses en especial las regiones al rededor de cada aeropuerto habilitado para hacerlo. A continuación se presenta una breve descripción de los datos y sus respectivas fuentes utilizadas para esta investigación.
+
+## 5.1. Desplazamiento forzado interno.
+
+Para medir el desplazamiento forzado interno se utilizo como fuente el Registro Único de Víctimas (RUV). Esta institución se creó con la ley 1448 del 2011 con el fin de brindar medidas de atención, asistencia y reparación a las víctimas del conflicto armado. Esta ley acoge a las personas que hayan sufrido de algún hecho victimizante desde 1985 hasta la actualidad, entre ellas el desplazamiento forzado. No obstante, para ser acogido por esta ley la víctima tenía que brindar un testimonio detallado de los hechos. Por esta razón, la información de esta base de datos se encuentra especificada a nivel diario, mensual y anual.
+
+Cabe resaltar que, en los datos sobre violaciones a derechos humanos los problemas de subregistro son más notorios, debido a que existen multiples causas por las que una víctima no se registra como tal, desde razones de seguridad hasta la dificultad burocratica que puede existir para hacerlo. Frente, la @comisionverdad2022 recogió más de 120 bases sobre conflicto armado en Colombia, generando estimaciones del rango de víctimas que podían existir por cada violación a derechos humanos. En este sentido, se estableció la única fuente representativa sobre el desplazamiento forzado interno es la del Registro Único de Víctimas. Por lo tanto, esta es una fuente rigurosa para medir el número de hechos de desplazamiento ocurridos.
+
+El mapa 2 ilustra el desplazamiento frozado a nivel municipal por quintiles en todo el país durante los años de este estudio. En ese tiempo, de los 1122 municipios de Colombia 1121 registraron el desplazamiento. Sin embargo, como se puede notar, las intensidades han sido distintas y las mayores magnitudes se concentran regionalmente. Los territorios más afectados son
 
 # Referencias
 
