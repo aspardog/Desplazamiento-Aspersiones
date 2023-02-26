@@ -83,6 +83,6 @@ figures[["Panel B"]] <- scatter_3month
 figureScatter <- figures[["Panel A"]] + figures[["Panel B"]]  + 
   plot_layout(ncol = 2, nrow = 1)
 
-ggsave(figureScatter, filename = "Visualizations/output/scatter_3month.png", dpi = 320, width = 10, height = 10)
+ggsave(figureScatter, filename = "Visualizations/output/Scatter.png", dpi = 320, width = 10, height = 10)
 
 

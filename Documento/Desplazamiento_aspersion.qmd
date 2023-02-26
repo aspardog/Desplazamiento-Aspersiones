@@ -133,8 +133,8 @@ knitr::include_graphics("../Visualizations/output/moran_bivariado.png")
 
 En este caso, se puede notar que la mayoría de territorios las variables de desplazamiento y aspersión tienen una correlación estadisticamente signficativa. Además, la figura 4, muestra que esta correlación es positiva tanto para el desplazamiento en ese mismo mes como para el acumulado en los tres meses siguientes. Esto se debe a que por diseño del PECIG los municipios en los que se asperjó tienen una relación directa con el conflicto armado, y por lo tanto, con el glifosato. En este sentido, se evidencia que los municipios donde se asperjó son sistematicamente distintos a los que no, lo que implica que esta relación tiene problemas de endogeneidad.
 
-```{r chart4, out.width = "100%", warning=F, fig.show=F, echo=F, fig.align=' center', fig.cap="Correlación Desplazamiento y Aspersión Aérea con Glifosato", fig.pos="H"}
-knitr::include_graphics(c("../Visualizations/output/scatter_month.png"))
+```{r chart4, out.width = "100%", warning=F, fig.show=F, echo=F, fig.align='left', fig.cap="Correlación Desplazamiento y Aspersión Aérea con Glifosato", fig.pos="H"}
+knitr::include_graphics(c("../Visualizations/output/Scatter.png"))
 
 
 ```
