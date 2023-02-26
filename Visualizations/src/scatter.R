@@ -48,6 +48,9 @@ scatter_month <- merge_data.df %>%
               size = 1, 
               fill="#69b3a2") +
   stat_cor(method = "pearson") +
+  labs(title="Relación desplazamiento forzado mensual y aspersiones aéreas con glifosato",
+       x ="Logaritmo de aspersiones con glifosato", 
+       y = "Logaritmo de desplazamientos forzados") +
   theme(panel.background   = element_blank(),
         panel.grid.major   = element_blank(),
         axis.ticks  = element_blank(),
@@ -71,6 +74,10 @@ scatter_3month <- merge_data.df[-c(1,2,3),] %>% # Removing the observations with
               size = 1,
               fill="#69b3a2") +
   stat_cor(method = "pearson") +
+  labs(title="Relación desplazamiento forzado acumulado de tres meses y aspersiones aéreas con glifosato", 
+       caption = "El primer mes de desplazamiento forzado se cuenta a partir del mes en el que asperjó",
+       x ="Logaritmo de aspersiones con glifosato", 
+       y = "Logaritmo de desplazamientos forzados") +
   theme(panel.background   = element_blank(),
         panel.grid.major   = element_blank(),
         axis.ticks  = element_blank(),
