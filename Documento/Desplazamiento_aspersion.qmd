@@ -81,27 +81,27 @@ Por esta razón, esta investigación busca determinar si el programa tuvo relaci
 
 # 4. Marco Conceptual
 
-La intuición detrás del marco conceptual parte de la terminología propia del desplazamiento forzado. Al ser forzado significa que esta movilización se dio obligada por un contexto de conflicto armado. La decisión detrás de un desplazamiento forzado no se debe a una sola razón, sino a la suma de eventos que pueden ocurrir en un territorio que sufre de múltiples eventos relacionados con la guerra. En este sentido, @ibanez2008book modela esta decisión como la situación en la que la utilidad esperada del desplazamiento es mayor que la utilidad esperada de permanecer en el sitio de origen.
+El marco conceptual parte de la terminología propia del desplazamiento forzado. Al ser forzado significa que esta movilización se dio obligada por un contexto de conflicto armado. La decisión detrás de un desplazamiento forzado no se debe a una sola razón, sino a la suma de eventos que pueden ocurrir en un territorio que sufre de la guerra. En este sentido, @ibanez2008book modela esta decisión como la situación en la que la utilidad esperada del desplazamiento es mayor que la utilidad esperada de permanecer en el sitio de origen.
 
 Las víctimas tienen que ponderar la disyuntiva entre irse, dejar de lado su vida y enfrentarse a un nuevo contexto; o quedarse y afrontar las consecuencias de hacerlo. Ambos bajo situaciones de plena incertidumbre. Como se mostró en la sección 2, las causas del desplazamiento forzado están asociadas principalmente a razones economicas ($CE_{j}$), políticas ($CP_{j}$), de salubridad ($CS_{j}$) y a las relacionadas con violencia ($CV_{j}$). Además, este trabajo busca entender si las aspersiones con glifosato ($CA_{j}$) puede ser una variable adicional para tener en cuenta en la decisión de movilizarse. Por esta razón, el desplazamiento forzado, en los municipios donde se aplicó el programa del PECIG, puede ser visto como la sumatoria de personas que deciden abandonar su territorio en un periodo $j$ ante un contexto relacionado con conflicto armado interno como se muestra en la siguiente ecuación:
 
-$$ D = \sum_{j=1}^{n}\alpha(\theta_{j}) + (1 - \alpha) (\theta_{j}) \ donde \ \alpha = 1 \ \ \ (1)$$
+$$ D_{m} = \sum_{j=1}^{n}\alpha(\theta_{j}) + (1 - \alpha) (\theta_{j}) \ donde \ \alpha = 1 \ \ \ (1)$$
 
 donde $\theta_{j} = f(CE_{j}, CP_{j}, CS_{j}, CV_{j}, CA_{j})$ ; y $\alpha$ representa la relación entre la utilidad esperada de migrar forzadamente y la de quedarse. Por tanto $\alpha = 1$ siempre que la primera utilidad mencionada sea mayor que la segunda.
 
-De esta manera, $\alpha(\theta_{j})$ representa la función que recoge las causas contextuales del desplazamiento. Construir esta función permite entender cómo los cambios de cada componente inciden sobre el desplazamiento municipal. En especial, el objetivo de esta investigación se centra en estimar la derivada parcial de $CA_{j}$ sobre $\alpha(\theta_{j})$. Con esto se pretende estimar si los cambios de $CA$ tienen alguna incidencia sobre $\alpha(\theta)$ y en qué dirección.
+De esta manera, $\alpha(\theta_{j})$ representa la función que recoge las causas contextuales del desplazamiento. Construir esta función permite entender cómo los cambios de cada componente inciden sobre el desplazamiento municipal. En especial, el objetivo de esta investigación se centra en estimar la derivada parcial de $CA_{j}$ sobre $\alpha(\theta_{j})$ para todo $D_{i}$. Con esto se pretende estimar, de manera agregada, si los cambios de $CA$ tienen alguna incidencia sobre $\alpha(\theta)$ y en qué dirección.
 
 $$ \frac{\partial \ CA}{\partial \ \alpha(\theta)} \ \ \ (2)$$ En este sentido, el estimador contribuye a conocer la magnitud en el cambio de personas desplazadas forzadas frente a un aumento de hectáreas asperjadas en los municipios donde se aplicó el PECIG. Es decir, refleja una medida de relación de cambio de acuerdo a la intensidad de aspersión, más no una medida respecto a la aplicación o no del programa.
 
 # 5. Datos y estadisticas descriptivas
 
-Para cuantificar el modelo anterior es necesario tener una documentación que permita medir la variación a nivel mensual, debido a que el programa estaba diseñado para aplicarse en ciertos meses predeterminadamente. La decisión del momento de aspersión no era municipal, sino que se encontraba condicionada a lo que en el PECIG llamaban núcleos. Estos eran puntos habilitados, en su mayoría aeropuertos, para preparar el herbicida y distribuirlo (apéndice 6). A continuación se presenta una breve descripción de los datos y sus respectivas fuentes utilizadas para esta investigación.
+La decisión del momento de aspersión no era municipal únicamente, sino que se encontraba condicionada a lo que en el PECIG llamaban núcleos. Estos eran puntos habilitados, en su mayoría aeropuertos, para preparar el herbicida y distribuirlo (apéndice 4). Por lo tanto, para cuantificar el modelo presentado en el marco teórico es necesaria una documentación que permita medir la variación a nivel mensual, debido a que el programa estaba diseñado para aplicarse en diferentes meses durante el año de manera predeterminada. A continuación se presenta una breve descripción de los datos y sus respectivas fuentes utilizadas para esta investigación.
 
 ## 5.1. Desplazamiento forzado interno.
 
 Para medir el desplazamiento forzado interno se utilizó como fuente el Registro Único de Víctimas (RUV). Esta institución se creó con la ley 1448 del 2011 con el fin de brindar medidas de atención, asistencia y reparación a las víctimas del conflicto armado. Dicha ley acoge a las personas que hayan sufrido de algún hecho victimizante desde 1985 hasta la actualidad, entre ellas el desplazamiento forzado. Para ser acogidas, las víctimas deben brindar un testimonio detallado de los hechos. Por esta razón, en la base de datos la información puede encontrarse a nivel diario, mensual y anual.
 
-Cabe resaltar que, en los datos sobre violaciones a derechos humanos los problemas de subregistro son más notorios, debido a que existen múltiples causas por las que una víctima no se registra, desde razones de seguridad hasta la dificultad burocrática que puede existir para hacerlo. Frente a eso, la @comisionverdad2022 recogió más de 112 bases de datos, y publicó estimaciones estadísticas del rango en el que puede encontrarse el número real de víctimas por cada violación a derechos humanos[^5]. Como resultado, se estableció que el Registro Único de Víctimas es la única base representativa de datos sobre desplazamiento forzado en Colombia. Por lo tanto, esta es la mejor fuente disponible para medir el número de hechos de desplazamiento ocurridos.
+Cabe resaltar que, en los datos sobre violaciones a derechos humanos los problemas de subregistro son más notorios, debido a que existen múltiples causas por las que una víctima no se registra, desde razones de seguridad hasta la dificultad burocrática que puede existir para hacerlo. Frente a eso, la @comisionverdad2022 recogió más de 112 bases de datos, y publicó estimaciones estadísticas del rango en el que puede encontrarse el número real de víctimas por cada violación a derechos humanos[^5]. Como resultado, se estableció que el Registro Único de Víctimas es la única base representativa de datos sobre desplazamiento forzado en Colombia. Por lo tanto, esta es la mejor fuente disponible para medir el número de hechos ocurridos.
 
 [^5]: Este trabajo se concentró en 5 violaciones: homicidio, desaparición, reclutamiento, secuestro y desplazamiento.
 
@@ -113,17 +113,17 @@ knitr::include_graphics("../Visualizations/output/desplazamientos.png")
 
 ## 5.2. Causas del desplazamiento forzado interno
 
-El marco conceptual describió las variables asociadas al desplazamiento para efectos de este trabajo. Para incluir estas variables a nivel mensual, se recurrió a diferentes fuentes que se aproximaran a cada una de las categorías. Para el caso del contexto de violencia, se utilizaron otras violaciones a derechos humanos dentro del Registro Único de Víctimas. Además, se complementó con variables del Centro Nacional de Memoria Histórica que documentaban de manera más amplia otros hechos como las masacres y la violencia sexual. El apéndice 4 muestra la lista de estas variables. Frente a esto, es importante resaltar que estas variables presentan problemas de subregistro, por lo que no se puede asumir que representan completamente la violencia de cada municipio.
+El marco conceptual describió los componentes asociados al desplazamiento para efectos de este trabajo. Para incluirlos, se recurrió a diferentes fuentes que se aproximaran a cada una de las categorías. Para el caso del contexto de violencia, se utilizaron otras violaciones a derechos humanos dentro del Registro Único de Víctimas. Además, se complementó con información del Centro Nacional de Memoria Histórica que documentaban de manera más amplia otros hechos como las masacres y la violencia sexual (apéndice 5). Frente a esto, es importante resaltar que estas variables presentan problemas de subregistro, por lo que no se puede asumir que representan completamente la violencia de cada municipio.
 
-En el caso de las condiciones económicas, no es posible medir la actividad económica mensual de cada municipio en Colombia. Sin embargo, se ha demostrado que la luminosidad de los municipios es una buena variable proxy de desarrollo económico [@elvidge1997; @baugh2010]. En este sentido, se tomaron los datos del Earth Observation Group del Instituto de Política Pública de Payne que proporcionan esta información satelital diariamente. Para complementar este componente, se tuvo en cuenta el uso del suelo de cada territorio, tomando como variable el índice de cambios en la vegetación [@indexvegetation2002]. Este es desarrollado por el portal de datos GES DISC de la NASA el cual mide el cambio en los usos del suelo, también, de acuerdo a imágenes tomadas satelitalmente cada día. Ambas fuentes mencionadas se encuentran a nivel píxel, por lo tanto para ambas, se promediaron los pixeles que moldeaban cada municipio y luego se calculó la media mensual para cada uno.
+En el caso de las condiciones económicas, no se contaba con información oficial para medir la actividad económica mensual de cada municipio en Colombia. Sin embargo, se ha demostrado que la luminosidad de los municipios es una buena variable proxy de desarrollo económico [@elvidge1997; @baugh2010]. Por ende, se tomaron los datos del Earth Observation Group del Instituto de Política Pública de Payne que proporcionan esta información satelital diariamente. Para complementar este componente, se tuvo en cuenta el uso del suelo de cada territorio, tomando como variable el índice de cambios en la vegetación [@indexvegetation2002]. Este es desarrollado por el portal de datos GES DISC de la NASA el cual mide el cambio en los usos del suelo, también, de acuerdo a imágenes tomadas satelitalmente cada día. Ambas fuentes mencionadas se encuentran a nivel píxel, para ambas, se promediaron los pixeles que moldeaban cada municipio y luego se calculó la media mensual para cada uno.
 
-En cuanto a las variables políticas, múltiples estudios han demostrado que en Colombia la violencia aumenta durante las elecciones regionales [@steele2011; @alonso1997 ; @comisionverdad2022]. Esto se debe a que, en los municipios más vulnerables, los grupos armados buscan debilitar movimientos sociales para controlar a la población. También, en varios casos se ha demostrado alianzas entre élites políticas regionales y grupos armados para controlar las elecciones. Por está razón, se incluyó una variable binaria que refleja los meses de los períodos electorales regionales en cada uno de los municipios.
+En cuanto a las variables políticas, múltiples estudios han demostrado que en Colombia la violencia aumenta durante las elecciones regionales [@steele2011; @alonso1997; @comisionverdad2022]. Esto se debe a que, en los municipios más vulnerables, los grupos armados buscan debilitar movimientos sociales para controlar a la población. También, en varios casos se ha demostrado alianzas entre élites políticas regionales y grupos armados para controlar las elecciones. Por está razón, se incluyó una variable binaria que refleja los meses de los períodos electorales regionales en cada uno de los municipios.
 
-Finalmente, no se incluyeron variables asociadas a las condiciones de salud, ni a la presencia de grupos armados. En cuanto a la primera categoría, se intentó tomar los datos de citas a las EPS por cada municipio a nivel mensual, sin embargo, estos datos son restringidos y su uso no fue permitido. Por otro lado, en cuanto a la presencia de grupos armados, aún no existe un consenso en la literatura sobre cómo medirlo, debido a que se ha demostrado que la violencia no tiene en cuenta los municipios donde hay pleno control de un grupo armado, solo los que poseen disputas (citas).
+Finalmente, no se incluyeron variables asociadas a las condiciones de salud, ni a la presencia de grupos armados. En cuanto a la primera categoría, se intentó tomar los datos de citas a las EPS por cada municipio a nivel mensual, sin embargo, estos datos son restringidos y su uso no fue permitido. Por otro lado, en cuanto a la presencia de grupos armados, aún no existe un consenso en la literatura sobre cómo medirlo, debido a que se ha demostrado que la violencia representa mejor las disputas territoriales, más no el pleno control de un grupo armado en un municipio [@arjona2011; @kalyvas2008].
 
 ## 5.3. Aspersiones Aéreas con Glifosato
 
-Los datos del PECIG, a nivel mensual, fueron proporcionados por la Dirección de Antinarcóticos de la Policia (DIRAN). La medición de las aspersiones aéreas con Glifosato se hacia por hectáreas a nível municipal cada mes. La distribución territorial de la aplicación del programa se puede ver en el mapa 1. Frente a esto, los territorios donde se concentraban las aspersiones aéreas son parecidos a los que sufrían de mayor desplazamiento.
+Los datos del PECIG, a nivel mensual, fueron proporcionados por la Dirección de Antinarcóticos de la Policia (DIRAN). La medición de las aspersiones aéreas con glifosato se hacia por hectáreas a nível municipal cada mes. La distribución territorial de la aplicación del programa se puede ver en el mapa 1. Frente a esto, los territorios donde se concentraban las aspersiones aéreas son parecidos a los que sufrían de mayor desplazamiento.
 
 Para comprobar si existe una correlación espacial entre ambos, el mapa 3 muestra la asociación espacial LISA entre ambas variables. El color rojo representa los puntos en los que se aglomeró esta correlación de manera fuerte, es decir donde el desplazamiento fue alto y las aspersiones también. El color azul muestra los puntos donde ambas variables tuvieron un bajo comportamiento. El color azul claro refleja las regiones donde hubo altos niveles de desplazamiento y baja intensidad de aspersión; y el color amarillo claro representa el caso contrario. Además, los municipios grises son aquellos donde no hubo relación entre ambas variables.
 
@@ -131,15 +131,29 @@ Para comprobar si existe una correlación espacial entre ambos, el mapa 3 muestr
 knitr::include_graphics("../Visualizations/output/moran_bivariado.png")
 ```
 
-En este caso, se puede notar que en la mayoría de territorios las variables de desplazamiento y aspersión tienen una correlación estadísticamente significativa. Además, la figura 4, muestra que esta correlación es positiva tanto para el desplazamiento en ese mismo mes como para el acumulado en los tres meses siguientes. Esto se debe a que por diseño del PECIG los municipios en los que se asperjó tienen una relación directa con el conflicto armado, y por lo tanto, con el desplazamiento forzado. En este sentido, se evidencia que los municipios donde se asperjó son sistemáticamente distintos a los que no, lo que implica que esta relación tiene problemas de endogeneidad.
+En este caso, se puede notar que en la mayoría de territorios las variables de desplazamiento y aspersión tienen una correlación estadísticamente significativa. Además, la figura 4, muestra que esta correlación es positiva tanto para el desplazamiento en ese mismo mes como para el acumulado en los tres meses siguientes. Sin embargo, por diseño del PECIG los municipios en los que se asperjó tienen una relación directa con el conflicto armado, y por lo tanto, con el desplazamiento forzado. Esto quiere decir que los municipios donde se asperjó son sistemáticamente distintos a los que no, lo que implica que esta relación tiene problemas de endogeneidad. 
 
 ```{r chart4, out.width = "100%", warning=F, fig.show=F, echo=F, fig.align='left', fig.cap="Correlación Desplazamiento y Aspersión Aérea con Glifosato", fig.pos="H"}
 knitr::include_graphics(c("../Visualizations/output/Scatter.png"))
-
-
 ```
 
-# Estrategia Empirica
+# 6. Estrategia Empírica
+
+Para entender la intuición detrás de la estrategia empírica es importante retomar dos puntos ya mencionados: los problemas de endogeneidad y el marco teórico.
+
+Respecto al primero, los municipios en los que se aplicó el PECIG son sistemáticamente distintos a los que no. Esto debido a que el programa fue parte del Plan Colombia, un acuerdo con Estados Unidos para combatir la guerra interna colombiana. Por lo tanto, al ser el desplazamiento forzado interno una violación de derechos humanos en el marco de conflicto armado, existe un sesgo de selección que puede sobreestimar la relación existente entre ambas variables. En relación al segundo punto, en el marco teórico se estableció que el estimador de interés está asociado a la magnitud del cambio del desplazamiento municipal ante aumentos en las hectáreas asperjadas. Es decir, es una medida de relación de cambio ante la intensidad del programa, no de la aplicación.
+
+De este modo, en esta investigación se utilizó el método de variables instrumentales, dado que permite buscar un instrumento que corrija los problemas de endogeneidad y encuentre variación aleatoria respecto a la intensidad de aplicación del programa para que fuera coherente con el marco teorico.
+
+## 6.1. Instrumento: velocidad del viento.
+
+Para encontrar un instrumento que fuera consistente con los dos puntos anteriores, se utilizó el promedio mensual de la velocidad del viento en cada municipio. 
+
+## 6.2. Ecuaciones de estimación
+
+## 6.3. Supuestos de identificación y verificación de validez.
+
+### 6.3.1. Resultados primera etapa
 
 \newpage
 
@@ -150,9 +164,9 @@ knitr::include_graphics(c("../Visualizations/output/Scatter.png"))
 
 \newpage
 
-# Apendices
+# Apéndices
 
-## Apendice 1: Derecho de petición para establecer el número de desplazados registrados con fumigación aérea con glifosato como causa.
+## Apéndice 1: Derecho de petición para establecer el número de desplazados registrados con fumigación aérea con glifosato como causa.
 
 ```{r apendice1, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 knitr::include_graphics("../Apendix/apendice1.png")
@@ -160,7 +174,7 @@ knitr::include_graphics("../Apendix/apendice1.png")
 
 \newpage
 
-## Apendice 2: Componentes del Plan Colombia.
+## Apéndice 2: Componentes del Plan Colombia.
 
 ```{r apendice2, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 
@@ -169,9 +183,27 @@ knitr::include_graphics("../Apendix/apendice2.png")
 
 \newpage
 
-## Apendice 3: Condiciones para aplicar el PECIG
+## Apéndice 3: Condiciones para aplicar el PECIG
 
 ```{r apendice3, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 
 knitr::include_graphics("../Apendix/apendice3.png")
+```
+
+\newpage
+
+## Apéndice 4: Nucleos de aplicación del PECIG
+
+```{r apendice4, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
+
+knitr::include_graphics("../Apendix/apendice4.png")
+```
+
+\newpage
+
+## Apéndice 5: Fuentes y variables de control asociadas con violaciones a derechos humanos
+
+```{r apendice5, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
+
+knitr::include_graphics("../Apendix/apendice5.png")
 ```
