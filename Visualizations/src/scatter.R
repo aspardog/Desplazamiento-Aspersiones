@@ -48,12 +48,15 @@ scatter_month <- merge_data.df %>%
               size = 1, 
               fill="#69b3a2") +
   stat_cor(method = "pearson") +
-  labs(title="Relación desplazamiento forzado mensual y aspersiones aéreas con glifosato",
+  labs(subtitle = "Correlación mensual entre el desplazamiento forzado \ny aspersión aérea",
        x ="Logaritmo de aspersiones con glifosato", 
        y = "Logaritmo de desplazamientos forzados") +
   theme(panel.background   = element_blank(),
         panel.grid.major   = element_blank(),
         axis.ticks  = element_blank(),
+        plot.subtitle = element_text(size = 12, hjust = 0.5, face = "bold"),
+        axis.text = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
+        axis.title = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
         plot.background = element_rect(fill = "white", colour = "white"))
 
 # ================================== Scatter aggregation 3 months to month =========================================
@@ -74,22 +77,26 @@ scatter_3month <- merge_data.df[-c(1,2,3),] %>% # Removing the observations with
               size = 1,
               fill="#69b3a2") +
   stat_cor(method = "pearson") +
-  labs(title="Relación desplazamiento forzado acumulado de tres meses y aspersiones aéreas con glifosato", 
-       caption = "El primer mes de desplazamiento forzado se cuenta a partir del mes en el que asperjó",
+  labs(subtitle = "Correlación entre el desplazamiento trimestral \nacumulado y aspersión aérea con glifosato*", 
        x ="Logaritmo de aspersiones con glifosato", 
-       y = "Logaritmo de desplazamientos forzados") +
+       y = "Logaritmo de desplazamientos forzados acumulados") +
   theme(panel.background   = element_blank(),
         panel.grid.major   = element_blank(),
         axis.ticks  = element_blank(),
+        plot.subtitle = element_text(size = 12, hjust = 0.5, face = "bold"),
+        axis.text = element_text(size = 8, margin   = margin(10, 20, 0, 0)),
+        axis.title = element_text(size = 8, margin   = margin(10, 20, 0, 0)),
         plot.background = element_rect(fill = "white", colour = "white"))
 
 figures <- list()
 figures[["Panel A"]] <- scatter_month
 figures[["Panel B"]] <- scatter_3month
 
-figureScatter <- figures[["Panel A"]] + figures[["Panel B"]]  + 
-  plot_layout(ncol = 2, nrow = 1)
+figureScatter <- figures[["Panel A"]] + plot_spacer() + figures[["Panel B"]]  + 
+  plot_layout(ncol = 3, nrow = 1,
+              widths = unit(c(10,2,10), "cm"),
+              heights = unit(15, "cm"))+ 
+  plot_annotation(caption = "*El primer mes de desplazamiento forzado acumulado se cuenta a partir del mes en el que asperjó",
+                  theme = theme(plot.caption = element_text(hjust = 0, size = 8, margin = margin(20, 0, 0, 0))));figureScatter
 
-ggsave(figureScatter, filename = "Visualizations/output/Scatter.png", dpi = 320, width = 10, height = 10)
-
-
+ggsave(figureScatter, filename = "Visualizations/output/Scatter.png", dpi = 320, width = 10, height = 7.5)
