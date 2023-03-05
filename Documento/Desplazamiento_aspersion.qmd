@@ -131,7 +131,7 @@ Para comprobar si existe una correlación espacial entre ambos, el mapa 3 muestr
 knitr::include_graphics("../Visualizations/output/moran_bivariado.png")
 ```
 
-En este caso, se puede notar que en la mayoría de territorios las variables de desplazamiento y aspersión tienen una correlación estadísticamente significativa. Además, la figura 4, muestra que esta correlación es positiva tanto para el desplazamiento en ese mismo mes como para el acumulado en los tres meses siguientes. Sin embargo, por diseño del PECIG los municipios en los que se asperjó tienen una relación directa con el conflicto armado, y por lo tanto, con el desplazamiento forzado. Esto quiere decir que los municipios donde se asperjó son sistemáticamente distintos a los que no, lo que implica que esta relación tiene problemas de endogeneidad. 
+En este caso, se puede notar que en la mayoría de territorios las variables de desplazamiento y aspersión tienen una correlación estadísticamente significativa. Además, la figura 4, muestra que esta correlación es positiva tanto para el desplazamiento en ese mismo mes como para el acumulado en los tres meses siguientes. Sin embargo, por diseño del PECIG los municipios en los que se asperjó tienen una relación directa con el conflicto armado, y por lo tanto, con el desplazamiento forzado. Esto quiere decir que los municipios donde se asperjó son sistemáticamente distintos a los que no, lo que implica que esta relación tiene problemas de endogeneidad.
 
 ```{r chart4, out.width = "100%", warning=F, fig.show=F, echo=F, fig.align='left', fig.cap="Correlación Desplazamiento y Aspersión Aérea con Glifosato", fig.pos="H"}
 knitr::include_graphics(c("../Visualizations/output/Scatter.png"))
@@ -147,7 +147,20 @@ De este modo, en esta investigación se utilizó el método de variables instrum
 
 ## 6.1. Instrumento: velocidad del viento.
 
-Para encontrar un instrumento que fuera consistente con los dos puntos anteriores, se utilizó el promedio mensual de la velocidad del viento en cada municipio. 
+Para encontrar un instrumento que fuera consistente con los dos puntos anteriores, se utilizó el promedio mensual de la velocidad del viento en cada municipio. Para cumplir con el Plan de Manejo Ambiental (PMA), la policia antinarcoticos contaba con un sistema de información que proporcionaba información en tiempo real de las condiciones climaticas y la densidad de cultivos de coca en una grilla de 10 km [@rodriguez2020]. De esta manera, el día y la intensidad de las aspersiones se encontraba condicionado a variables contextuales que garantizaran el complimiento de los parametros establecidos en el PMA (apédince 3). La figura 5, muestra los promedios anuales de la velocidad del viento de cada mes a nivel municipal, en esta se puede ver que existe una relación negativa entre ambas variables. Esto significa que, entre más velocidad del viento hubiese en cada grilla, menor era la intensidad de aspersión en cada territorio [^6]. 
+
+[^6]: Si bien la velocidad del viento también determinaba el día en el que se asperjaba, no influía sobre el mes en el que se aplicaba el programa, pues este dependía del nucleo al que pertenecia cada municipio. 
+
+```{r chart6, out.width = "50%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Velociedad del viento y Aspersiones Aéreas municipales en el tiempo", fig.pos="H"}
+knitr::include_graphics(c("../Visualizations/output/viento_aspersion.png"))
+```
+
+
+Para construir el instrumento, se utilizó la base de datos FLDAS del portal de datos GES DISC de la NASA. La base cuenta con la información diaria de la velocidad del viento por pixeles de 0.1x0.1 grados. Esta información se agregó a nivel municipal, de manera que tomara la media mensual de la velocidad del viento de cada municipio. Por lo tanto, la variable para cada municipio se refleja en la siguiente ecuación:
+
+$$I_{j} = \frac{\sum_{j=1}^{n}\ windSpeed_{j}}{n} $$ 
+
+Donde $j$ cada día y $n$ los números de día de cada mes. 
 
 ## 6.2. Ecuaciones de estimación
 
