@@ -46,11 +46,11 @@ merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") %>%
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 controles <- c("ruv_amenaza", "ruv_desaparicion_forzada", "ruv_combates", "ruv_secuestro",
                "ruv_minas", "ruv_tortura", "ruv_homicidio", "ruv_reclutamiento_menores", "cnmh_violencia_sexual",
-               "ruv_abandono_despojo", "cnmh_masacres", 
+               "ruv_abandono_despojo", "cnmh_masacres", "elecciones", "vegetation",
                "night_lights")
 controles_fe <- c("ruv_amenaza", "ruv_desaparicion_forzada", "ruv_combates", "ruv_secuestro",
                "ruv_minas", "ruv_tortura", "ruv_reclutamiento_menores", "cnmh_violencia_sexual",
-               "ruv_abandono_despojo", "cnmh_masacres", 
+               "ruv_abandono_despojo", "cnmh_masacres", "elecciones", "vegetation",
                "night_lights", "codmpio", "year")
 
 correlaciones.df <- merge_data.df %>%
@@ -94,7 +94,7 @@ m1coeffs_cl[coi_indices,]
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 windIV.reg <- ivreg(data = merge_data.df,
-                    formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~ spraying | windSpeedFLDAS + windIV05RMBOS +", paste(controles_fe, collapse = "+")))
+                    formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~ spraying | windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
 summary(windIV.reg)
 
 m1coeffs_std <- data.frame(summary(windIV.reg)$coefficients)
@@ -111,7 +111,7 @@ m1coeffs_cl[coi_indices,]
 # First Stage
 
 firstStage.reg <- lm (data = merge_data.df,
-                      formula = paste0("spraying ~ windIV05RMBOS +", paste(controles_fe, collapse = "+")))
+                      formula = paste0("spraying ~ windSpeedFLDAS +", paste(controles_fe, collapse = "+")))
 summary(firstStage.reg)
 
 # Añadir acumulado
