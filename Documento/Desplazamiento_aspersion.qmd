@@ -14,7 +14,6 @@ header-includes:
       - \floatplacement{table}{H}
       - \usepackage{booktabs}
       - \usepackage{siunitx}
-
 ---
 
 # Abstract
@@ -183,7 +182,7 @@ La ecuación 4 corresponde a un modelo de Mínimos Cuadrados Ordinarios (MCO) co
 
 [^10]: Se aplicó el método de cuartiles [@stahel2013] al logaritmo de los desplazamientos para corregir los casos en donde estos tomen valores iguales a cero. En este link, se encuentra una explicación más detallada: https://aosmith.rbind.io/2018/09/19/the-log-0-problem/#thinking-about-0-values.
 
-Finalmente, $X_{it}$ representa el vector de controles que contiene las variables expuestas en la sección 5.2. Esta matriz puede presentar un problema de sobre-control en la medida que existen multiples variables relacionadas con la violencia que pueden estar correlacionados entre si. Por lo tanto, se aplicó un modelo de clasificación Lasso que seleccionara los controles que más aportaran variación al modelo y corrigiera los posibles problemas de multicolinealidad [^11]. El anexo 5, muestra las lista de variables seleccionadas.
+Finalmente, $X_{it}$ representa el vector de controles que contiene las variables expuestas en la sección 5.2. Esta matriz puede presentar un problema de sobre-control en la medida que existen multiples variables relacionadas con la violencia que pueden estar correlacionados entre si. Por lo tanto, se aplicó un modelo de clasificación Lasso que selecciona los controles que más aportaran variación al modelo y corrige los posibles problemas de multicolinealidad [^11]. El anexo 5, muestra las lista de variables seleccionadas.
 
 [^11]: El modelo primero se aplicó por las categorias que se exponen en la sección 5.2. Después, se tomaron todas las variables resultantes y se volvió a correr el modelo para corroborar que no hubiese un sobre-control entre cada grupo.
 
@@ -197,7 +196,7 @@ La segunda etapa representada en la ecuación 6 muestra la relación entre la va
 
 $$\bar{y_{it}} = \tilde\alpha + \tilde\beta \widehat{AG_{it}} + \tilde\theta X_{it} + \delta_{i} + \delta_{t} +  \tilde\varepsilon_{it} \ \ \ (6)$$
 
-Finalmente, en la figura 1 se mostró que la intensidad de las aspersiones aéreas con glifosato eran distintas entre regiones. Por lo tanto, pueden existir efectos heterogeneos por departamento. La ecuación para estimar estos efectos diferenciados es:
+Finalmente, en la figura 1 se mostró que la intensidad de las aspersiones aéreas con glifosato era distinta entre regiones. Por lo tanto, pueden existir efectos heterogéneos por departamento. La ecuación para estimar estos efectos diferenciados es:
 
 $$\bar{y_{it}} =  \delta_{d} +\tilde\beta \widehat{AG_{it}} + \tilde\beta \widehat{AG_{it}} * D_{jt} +\tilde\theta X_{it} + \delta_{i} + \delta_{t} +  \tilde\varepsilon_{it} \ \ \ (7)$$
 
@@ -207,69 +206,61 @@ Donde $\delta_{d}$ son los efectos fijos de cada departamento y $D_{jt}$ es una 
 
 Para corroborar que el instrumento puede ser utilizado dentro del modelo es necesario que se cumplan dos supuestos: la relevancia del instrumento y la restricción de exclusión.
 
-La relevancia del instrumento significa que la variable de interes, en este caso las aspersiones aéreas con glifosato, deben estar fuertemente correlacionada con el instrumento, la velocidad del viento. En la subsección anterior ya se ha mostrado la importancia de las condiciones favorables climaticas para determinar el número de hectáreas asperjadas por municipio.
+La relevancia del instrumento significa que la variable de interés, en este caso las aspersiones aéreas con glifosato, debe estar fuertemente correlacionada con el instrumento, la velocidad del viento. En la subsección anterior ya se mostró la importancia de las condiciones climáticas favorables para determinar el número de hectáreas asperjadas por municipio.
 
 La tabla 1, muestra el resultado de la primera etapa de la regresión. Es decir, un modelo MCO con efectos fijos por municipio y año con errores clusterizados. Allí se puede notar que la relación entre la velocidad del viento y las aspersiones aéreas es negativa y estadisticamente signficativa. Por lo tanto, el instrumento es relevante y la dirección de su relación con las aspersiones es consistente con las condiciones requeridas para la ejecucicón del programa.
 
 ::: {#tbl-panel layout-ncol="1"}
+|                      | \(1\)  |  \(2\)   |   \(3\)   |
+|:---------------------|:------:|:--------:|:---------:|
+| **Velocidad viento** | 39.1\* | 38.1\*\* | -47.2\*\* |
+|                      | (20.4) |  (18.7)  |  (21.5)   |
+|                      |        |          |           |
+| N                    | 11554  |  11554   |   11554   |
+| R<sup>2</sup>        |  0.01  |   0.04   |   0.15    |
+| Controles            |   No   |    Sí    |    Sí     |
+| Efectos Fijos        |   No   |    No    |    Sí     |
 
-Table: Variable dependiente: *Aspersiones aéreas*
+: Variable dependiente: *Aspersiones aéreas*
 
-|                 |  (1)   |  (2)   |   (3)   |
-|:----------------|:------:|:------:|:-------:|
-|**Velocidad viento** | 39.1*  | 38.1** | -47.2** |
-|                 | (20.4) | (18.7) | (21.5)  |
-|                 |        |        |         |
-|N                | 11554  | 11554  |  11554  |
-|R<sup>2</sup>    |  0.01  |  0.04  |  0.15   |
-|Controles        |   No   |   Sí   |   Sí    |
-|Efectos Fijos    |   No   |   No   |   Sí    |
+\*\*\* p\<0.01, \*\* p\<0.05, \* p\<0.1.
 
-
-*** p<0.01, ** p<0.05, * p<0.1. 
-
-Los errores estándar son robustos y están corregidos por clusters a nivel municipal.  
-
+Los errores estándar son robustos y están corregidos por clusters a nivel municipal.
 
 Resultados primera etapa
 :::
 
+La restricción de exclusión implica que el instrumento no puede estar relacionado con las características no incluidas en el modelo que afecten el desplazamiento. Es decir, la variable instrumental no se puede correlacionar con el término error. Implicitamente, esto también deriva en que el único canal por el que el la velocidad del viento afecta al desplazamiento forzado es por medio de las aspersiones aéreas. Este supuesto se puede enunciar formalmente del siguiente modo:
 
-La restricción de exclusión implica que el instrumento no este puede estar relacionado con las caracteristicas no incluida en el modelo que afecten en el desplazamiento. Es decir, la variable instrumental no se puede correlacionar con el término error. Implicitamente, esto también deriva en que el único canal por el que el la velocidad del viento afecta al desplazamiento forzado es por medio de las aspersiones aéreas. Este supuesto se puede enunciar formalmente del siguiente modo:
+$$E[V_{it} \ \times \ \tilde\varepsilon_{it}| \ X_{it}] = 0 \ \ \ (8)$$
 
-$$E[V_{it} \ \times \ \tilde\varepsilon_{it}| \ X_{it}] = 0 \ \ \ (8)$$ 
+A pesar de que este supuesto no puede ser testeado directamente, resulta intuitivo que el único canal por medio del cual el viento afecte el desplazamiento forzado sea la aspersión aérea. Cuando el desplazamiento es forzado, es por un motivo propio del conflicto armado, por lo tanto, la velocidad del viento no podría ser una razón valida para registrarse como víctima.
 
-A pesar de que este supuesto no puede ser testeado directamente, resulta intuitivo que el único canal por el cual el viento afecte el desplazamiento forzado sea la aspersión aérea. Cuando el desplazamiento es forzado, es por un motivo propio del conflicto armado, por lo tanto, la velocidad del viento no podría ser una razón valida para registrarse como víctima. 
-
-Para corroborar lo anterior, la tabla 2 muestra los resultados de un modelo de MCO entre desplazamiento forzado y velocidad del viento en los municipios en los que se aplicó el programa y los que no [^12]. Si bien estos resultados no pueden determinar una relación causal entre ambas variables, si determina que para los municipios donde se asperjó la correlación es estadisticamente significativa, en cambio en los que no se asperjó no es concluyente. Por lo tanto, desde los datos, existen señales de que la restricción de exclusión si se cumple en el instrumento.
+Para corroborar lo anterior, la tabla 2 muestra los resultados de un modelo de MCO entre desplazamiento forzado y velocidad del viento en los municipios en los que se aplicó el programa y los que no [^12]. Si bien estos resultados no determinan una relación causal entre ambas variables, sí determinan que para los municipios donde se asperjó la correlación con ka velocidad del viento es estadisticamente significativa, mientras que en los que no se asperjó, no es concluyente. Por lo tanto, desde los datos, existen indicios de que el instrumento sí cumple con la restricción de exclusión.
 
 [^12]: El modelo se calculó con la misma matriz de controles aplicadas en ambas etapas de los Minimos Cuadrados en Dos Etapas (2SLS) de la sección anterior.
 
-::: {#tbl-panel layout-ncol="1"}
+::: {layout-ncol="1"}
+|                  | Municipios con Aspersión Aérea | Municipios sin Aspersión Aéreas |
+|:----------------|:-------------------------:|:-------------------------:|
+| Velocidad viento |          0.040\*\*\*           |              0.007              |
+|                  |            (0.014)             |             (0.008)             |
+|                  |                                |                                 |
+| N                |             11554              |              65962              |
+| R<sup>2</sup>    |              0.73              |              0.58               |
+| Controles        |               Sí               |               Sí                |
+| Efectos Fijos    |               Sí               |               Sí                |
 
-Table: Variable dependiente: *Desplazamiento forzado*
+: Variable dependiente: *Desplazamiento forzado*
 
-|                 | Municipios con Aspersión Aérea  | Municipios sin Aspersión Aéreas |
-|:----------------|:-------------------------------:|:-------------------------------:|
-|Velocidad viento |            0.040***             |              0.007              |
-|                 |             (0.014)             |             (0.008)             |
-|                 |                                 |                                 |
-|N                |              11554              |              65962              |
-|R<sup>2</sup>    |              0.73               |              0.58               |
-|Controles        |               Sí                |               Sí                |
-|Efectos Fijos    |               Sí                |               Sí                |
+\*\*\* p\<0.01, \*\* p\<0.05, \* p\<0.1.
 
-
-*** p<0.01, ** p<0.05, * p<0.1. 
-
-Los errores estándar son robustos y están corregidos por clusters a nivel municipal.  
-
+Los errores estándar son robustos y están corregidos por clusters a nivel municipal.
 
 Restricción de exclusión
 :::
 
 \newpage
-
 
 # Referencias
 
