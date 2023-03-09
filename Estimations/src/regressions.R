@@ -61,7 +61,8 @@ antimerge_data.df <- readRDS("Data/Merge/output/antimerge_data.rds") %>%
   filter(year < 2013 & year > 2003) %>%
   mutate(codmpio = as.factor(codmpio),
          year = as.factor(year),
-         month = as.factor(month))
+         month = as.factor(month)) %>%
+  drop_na()
 
 lassoVariables <- readRDS("Data/Merge/output/lasso_variables.rds")[[1]]
 lassoVariables  # Variables to select the controls
@@ -156,7 +157,7 @@ cluster_errors.fn(windIV.dpto.reg)
 
 # First Stage
 
-models <- list(
+modelsFS <- list(
   "(1)"     = lm (data = merge_data.df,
                   formula = paste0("spraying ~ windSpeedFLDAS")),
   "(2)" = lm (data = merge_data.df,
@@ -176,7 +177,7 @@ new_rows <- tibble::tribble(
   "Controles","No","Sí","Sí",
   "Efectos Fijos", "No","No","Sí",)
 
-modelsummary(models, vcov = ~codmpio, estimate = "{estimate}{stars}", ,
+modelsummary(modelsFS, vcov = ~codmpio, estimate = "{estimate}{stars}", ,
              coef_omit = c(-2), stars = c('*' = .1, '**' = .05, '***' = 0.01), 
              output = "markdown", fmt = 1, coef_rename = coef_rename_ws, 
              gof_map = gm, add_rows = new_rows, title = "Aspersiones aéreas", 
@@ -184,13 +185,29 @@ modelsummary(models, vcov = ~codmpio, estimate = "{estimate}{stars}", ,
 
 # Restricción de exclusión
 
-models <- list(
-  "Municipios con Aspérsion Aéreas"     = lm (data = merge_data.df, 
-                                              formula = paste0("spraying ~ windSpeedFLDAS")),
-  "Municipios sin Aspérsion Aéreas" = lm (data = merge_data.df,
-              formula = paste0("spraying ~ windSpeedFLDAS +", paste(controles, collapse = "+"))),
-)
+modelsRE <- list(
+  "Municipios con Aspérsion Aéreas" = lm(merge_data.df,
+                                         formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  windSpeedFLDAS +", paste(controles_fe, collapse = "+"))),
+  "Municipios sin Aspérsion Aéreas" = lm(antimerge_data.df,
+                                         formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  windSpeedFLDAS +", paste(controles_fe, collapse = "+"))))
 
+coef_rename_ws <- "Velocidad viento"
+
+gm <- tibble::tribble(
+  ~raw,        ~clean,          ~fmt,
+  "nobs",      "N",             0,
+  "r.squared", "R<sup>2</sup>", 2,)
+new_rows <- tibble::tribble(
+  ~term,~"Municipios con Aspérsion Aéreas",~"Municipios sin Aspérsion Aéreas",
+  "Controles","Sí","Sí",
+  "Efectos Fijos", "Sí","Sí")
+
+modelsummary(modelsRE, vcov = ~codmpio, estimate = "{estimate}{stars}", ,
+             coef_omit = c(-2), stars = c('*' = .1, '**' = .05, '***' = 0.01), 
+             output = "markdown", fmt = 3, coef_rename = coef_rename_ws, 
+             gof_map = gm, add_rows = new_rows, title = "Variable dependiente: *Desplazamiento forzado*", 
+             notes = "*** p<0.01, ** p<0.05, * p<0.1.
+             Los errores estándar son robustos y están corregidos por clusters de hogar.")
 
 # linear model
 firstStage.reg <- lm (data = merge_data.df,
@@ -234,8 +251,8 @@ firstStageFinal <- cluster_errors.fn(firstStage.reg.final) %>%
 
 # Restricción de exclusión
 
-secondCheck <- lm(merge_data.df, 
-   formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  windSpeedFLDAS +", paste(controles_fe, collapse = "+")))
+secondCheck <- lm(merge_data.df,
+                  formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  windSpeedFLDAS +", paste(controles_fe, collapse = "+")))
 summary(secondCheck)
 secondCheck <- cluster_errors.fn(secondCheck)
 
