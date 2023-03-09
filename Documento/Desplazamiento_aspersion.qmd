@@ -9,6 +9,12 @@ csl: apa.csl
 lang: es    
 biblatexoptions:
   - style = apa
+header-includes:
+      - \usepackage{float}
+      - \floatplacement{table}{H}
+      - \usepackage{booktabs}
+      - \usepackage{siunitx}
+
 ---
 
 # Abstract
@@ -165,7 +171,7 @@ Para construir el instrumento, se utilizó la base de datos FLDAS[^8] del portal
 
 $$V_{it} = \frac{\sum_{j=1}^{n}\ WS_{ij}}{n} \ \ \ (3)$$
 
-Donde $V_{ij}$ es la velocidad del viento diaría de cada municipio $i$ y $n$ los números de día de cada mes.
+Donde $WS_{ij}$ es la velocidad del viento diaría de cada municipio $i$ y $n$ los números de día de cada mes.
 
 ## 6.2. Ecuaciones de estimación
 
@@ -195,9 +201,39 @@ Donde $\delta_{d}$ son los efectos fijos de cada departamento y $D_{jt}$ es una 
 
 ## 6.3. Supuestos de identificación y verificación de validez.
 
-### 6.3.1. Resultados primera etapa
+Para corroborar que el instrumento puede ser utilizado dentro del modelo es necesario que se cumplan dos supuestos: la relevancia del instrumento y la restricción de exclusión.
 
-\newpage
+La relevancia del instrumento significa que la variable de interes, en este caso las aspersiones aéreas con glifosato, deben estar fuertemente correlacionada con el instrumento, la velocidad del viento. En la subsección anterior ya se ha mostrado la importancia de las condiciones favorables climaticas para determinar el número de hectáreas asperjadas por municipio.
+
+La tabla 1, muestra el resultado de la primera etapa de la regresión. Es decir, un modelo MCO con efectos fijos por municipio y año con errores clusterizados. Allí se puede notar que la relación entre la velocidad del viento y las aspersiones aéreas es negativa y estadisticamente signficativa. Por lo tanto, el instrumento es relevante y la dirección de su relación con las aspersiones es consistente con las condiciones requeridas para la ejecucicón del programa.
+
+::: {#tbl-panel layout-ncol="1"}
+
+Table: Variable dependiente: *Aspersiones aéreas*
+
+|                 |  (1)   |  (2)   |   (3)   |
+|:----------------|:------:|:------:|:-------:|
+|**Velocidad viento** | 39.1*  | 38.1** | -47.2** |
+|                 | (20.4) | (18.7) | (21.5)  |
+|                 |        |        |         |
+|N                | 11554  | 11554  |  11554  |
+|R<sup>2</sup>    |  0.01  |  0.04  |  0.15   |
+|Controles        |   No   |   Sí   |   Sí    |
+|Efectos Fijos    |   No   |   No   |   Sí    |
+
+
+*** p<0.01, ** p<0.05, * p<0.1. 
+
+Los errores estándar son robustos y están corregidos por clusters a nivel municipal.  
+
+
+Resultados primera etapa
+:::
+
+
+La restricción de exclusión implica que el instrumento no este puede estar relacionado con las caracteristicas no incluida en el modelo que afecten en el desplazamiento. Es decir, la variable instrumental no se puede correlacionar con el término error. Implicitamente, esto también deriva en que el único canal por el que el la velocidad del viento afecta al desplazamiento forzado es por medio de las aspersiones aéreas. Este supuesto se puede enunciar formalmente del siguiente modo:
+
+$$E[V_{it} \ \times \ \tilde\varepsilon_{it}| \ X_{it}] = 0$$ A pesar de que este supuesto no puede ser directamente testeado, \newpage
 
 # Referencias
 
