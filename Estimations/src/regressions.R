@@ -43,6 +43,47 @@ cluster_errors.fn <- function(reg) {
   return(estimation)
 }
 
+EH_panel <- function(mainData = data2plot,
+                     line_color = "#003b8a",
+                     line_size  = 2,
+                     point_color = "#003b8a",
+                     point_size   = 4) {
+  
+  plot <- ggplot(mainData, aes(x = term, y = estimate)) +
+    geom_hline(yintercept = 0, lty = 1, color = "#fa4d57", lwd = 1)  +
+    geom_linerange(aes(x = term,  ymin = lower, ymax = upper),
+                   lwd = line_size, position = position_dodge(width = .7), 
+                   stat = "identity", color = line_color)+
+    geom_point(aes(x = term, y = estimate), 
+               size = point_size, position = position_dodge(width = .7), color = point_color) +
+    geom_point(aes(x = term, y = estimate), 
+               size = 2, position = position_dodge(width = .7), color = "white") +
+    scale_y_continuous(limits = c(-0.02, 0.02),
+                       breaks = seq(-0.02, 0.02, by = 0.01),
+                       expand = expansion(mult = 0.025), position = "right",
+                       labels = c("-0.02", "- 0.01", "0", "0.01","0.02"))+
+    theme(panel.background   = element_blank(),
+          plot.background    = element_blank(),
+          panel.grid.major   = element_line(size     = 0.25,
+                                            colour   = "#5e5c5a",
+                                            linetype = "dashed"),
+          panel.grid.minor   = element_blank(),
+          axis.ticks  = element_blank(),
+          plot.margin  = unit(c(0, 0, 0, 0), "points")) +
+    coord_flip() +
+    theme(legend.position = "none",
+          panel.background   = element_blank(),
+          panel.grid.major.x = element_line(colour = "#d1cfd1", 
+                                            size = 0.5, linetype = "dashed"),
+          legend.title = element_blank(),
+          axis.title       = element_blank(),
+          panel.grid.major.y = element_blank(),
+          panel.grid.minor.x  = element_blank(),
+          panel.grid.minor.y = element_blank())
+  
+  return(plot)
+}
+
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
 ##   1. Download                                                                                            ----
@@ -142,16 +183,99 @@ windIV.reg <- ivreg(data = merge_data.df,
 summary(windIV.reg)
 cluster_errors.fn(windIV.reg)
 
-# Efectos heterogeneos 
+models <- list(
+  "(MCO)"               = lm (data = merge_data.df,
+                              formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying")),
+  "(MCO controles)"               = lm (data = merge_data.df,
+                              formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying +", paste(controles, collapse = "+"))),
+  "(Efectos fijos)"     = lm (data = merge_data.df,
+                              formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying +", paste(controles_fe, collapse = "+"))),
+  "(IV)"                =  ivreg(data = merge_data.df,
+                                 formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~ spraying | windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))     
+)
 
-windIV.dpto.reg <- ivreg(data = merge_data.df,
-                    formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~ spraying*dpto | windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
-summary(windIV.dpto.reg)
-cluster_errors.fn(windIV.dpto.reg)
+coef_rename_ws <- "Aspersiones Aéreas \ncon Glifosato"
+
+gm <- tibble::tribble(
+  ~raw,        ~clean,          ~fmt,
+  "nobs",      "N",             0,
+  "r.squared", "R<sup>2</sup>", 2,)
+new_rows <- tibble::tribble(
+  ~term,~"(MCO)",~"(MCO controles)",~"(Efectos fijos)",~"(IV)",
+  "Controles","No","Sí","Sí","Sí",
+  "Efectos Fijos", "No","No","Sí","Sí")
+
+modelsummary(models, vcov = ~codmpio, estimate = "{estimate}{stars}", ,
+             coef_omit = c(-2), stars = c('*' = .1, '**' = .05, '***' = 0.01), 
+             output = "markdown", fmt = 5, coef_rename = coef_rename_ws, 
+             gof_map = gm, add_rows = new_rows, title = "Aspersiones aéreas", 
+             notes = "*** p<0.01, ** p<0.05, * p<0.1.Los errores estándar son robustos y están corregidos por clusters de hogar.")
+
+
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
-##   5.  Robustness Checks                                                                   ----
+##   5. Efectos heterogeneos                                                                   ----
+##
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+merge_data.df <- merge_data.df %>%
+  mutate(regiones = case_when(
+    dpto == "AMAZONAS" ~"Amazonia",
+    dpto == "CAQUETÁ" ~ "Amazonia",
+    dpto == "GUAVIARE" ~ "Amazonia",
+    dpto == "PUTUMAYO" ~ "Amazonia",
+    dpto == "VAUPÉS" ~ "Amazonia",
+    dpto == "ARAUCA" ~ "Orinoquía", 
+    dpto == "CASANARE" ~ "Orinoquía", 
+    dpto == "META" ~ "Orinoquía", 
+    dpto == "NORTE DE SANTANDER SANTANDER" ~ "Orinoquía", 
+    dpto == "VICHADA" ~ "Amazonia",
+    dpto == "CHOCÓ" ~ "Pacífico", 
+    dpto == "NARIÑO" ~ "Pacífico",
+    dpto == "VALLE DEL CAUCA" ~ "Pacífico", 
+    dpto == "CAUCA" ~ "Pacífico",
+    dpto == "ATLÁNTICO" ~ "Caribe",
+    dpto == "BOLÍVAR" ~ "Caribe",
+    dpto == "CESAR" ~ "Caribe", 
+    dpto == "CÓRDOBA" ~ "Caribe", 
+    dpto == "LA GUAJIRA" ~ "Caribe", 
+    dpto == "MAGDALENA" ~ "Caribe",
+    dpto == "SUCRE" ~ "Caribe",
+    dpto == "ANTIOQUIA" ~ "Pacífico", 
+    dpto == "CALDAS" ~ "Andina", 
+    dpto == "CUNDINAMARCA" ~ "Andina", 
+    dpto == "HUILA" ~ "Andina",
+    dpto == "QUINDIO" ~ "Andina", 
+    dpto == "RISARALDA" ~ "Andina", 
+    dpto == "SANTANDER" ~ "Andina",
+    dpto == "TOLIMA" ~ "Andina",
+  )) %>%
+  mutate(regiones = if_else(regiones %in% "Pacífico", "AAPacífico", regiones))
+
+windIV.dpto.reg <- ivreg(data = merge_data.df,
+                    formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying*as.factor(regiones) |  windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
+summary(windIV.dpto.reg)
+
+IVEH <- cluster_errors.fn(windIV.dpto.reg) 
+alpha <- 0.05
+
+data2plot <- IVEH %>%
+  #filter(p.value < 0.05) %>%
+  mutate(filtro = if_else(str_detect(pattern = "spraying:", term), 1, 0)) %>%
+  filter(filtro == 1) %>%
+  mutate(term = str_replace(pattern = "spraying:as.factor\\(regiones\\)", replacement = "", term)) %>%
+  mutate( lower = estimate - qt(1- alpha/2, (n() - 1))*std.error/sqrt(n()),
+          upper = estimate + qt(1- alpha/2, (n() - 1))*std.error/sqrt(n()))
+
+regiones_estimation <- EH_panel()
+
+ggsave(regiones_estimation, filename = "Visualizations/output/EH_model.png", dpi = 320, width = 5, height = 5)
+
+
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+##
+##   6.  Robustness Checks                                                                   ----
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -208,85 +332,6 @@ modelsummary(modelsRE, vcov = ~codmpio, estimate = "{estimate}{stars}", ,
              gof_map = gm, add_rows = new_rows, title = "Variable dependiente: *Desplazamiento forzado*", 
              notes = "*** p<0.01, ** p<0.05, * p<0.1.
              Los errores estándar son robustos y están corregidos por clusters de hogar.")
-
-# linear model
-firstStage.reg <- lm (data = merge_data.df,
-                            formula = paste0("spraying ~ windSpeedFLDAS"))
-
-statisticsFS <- summary(firstStage.reg)
-glFS <- data.frame(N.obs = c(nrow(merge_data.df)), 
-                 "Adjusted R-squared" = c(round(statisticsFS$adj.r.squared,2)))
-
-firstStage <- cluster_errors.fn(firstStage.reg) %>%
-  filter(term %in% "windSpeedFLDAS") %>%
-  mutate(term = if_else(term %in% "windSpeedFLDAS", "Velocidad del viento", term)) %>%
-  cbind(glFS)
-
-# model with controls
-
-firstStageControl.reg <- lm (data = merge_data.df,
-                      formula = paste0("spraying ~ windSpeedFLDAS +", paste(controles, collapse = "+")))
-
-statisticsFSC <- summary(firstStageControl.reg)
-glFSC <- data.frame(N.obs = c(nrow(merge_data.df)), 
-                   "R.squared-adjusted" = c(round(statisticsFSC$adj.r.squared,2)))
-
-firstStageControl <- cluster_errors.fn(firstStageControl.reg) %>%
-  filter(term %in% "windSpeedFLDAS") %>%
-  mutate(term = if_else(term %in% "windSpeedFLDAS", "Velocidad del viento", term)) %>%
-  cbind(glFSC)
-
-# model with controls and FE
-
-firstStage.reg.final <- lm (data = merge_data.df,
-                      formula = paste0("spraying ~ windSpeedFLDAS +", paste(controles_fe, collapse = "+")))
-
-statisticsFSCF <- summary(firstStage.reg.final)
-glFSCF <- data.frame(N.obs = c(nrow(merge_data.df)), 
-                   "R.squared-adjusted" = c(round(statisticsFSCF$adj.r.squared,2)))
-
-firstStageFinal <- cluster_errors.fn(firstStage.reg.final) %>%
-  filter(term %in% "windSpeedFLDAS") %>%
-  mutate(term = if_else(term %in% "windSpeedFLDAS", "Velocidad del viento", term))
-
-# Restricción de exclusión
-
-secondCheck <- lm(merge_data.df,
-                  formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  windSpeedFLDAS +", paste(controles_fe, collapse = "+")))
-summary(secondCheck)
-secondCheck <- cluster_errors.fn(secondCheck)
-
-secondCheck_anti <- lm(antimerge_data.df, 
-                  formula = paste0("log(ruv_desplazamiento_forzado + min(ruv_desplazamiento_forzado[ruv_desplazamiento_forzado>0])/2) ~  windSpeedFLDAS +", paste(controles_fe, collapse = "+")))
-summary(secondCheck_anti)
-secondCheck_anti <- cluster_errors.fn(secondCheck_anti)
-
-# Añadir acumulado
-
-## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-##
-##   6.  Tables                                                                  ----
-##
-## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# First Stage
-
-class(firstStage) <- "lm"
-class(firstStageControl) <- "lm"
-
-mod <- list(firstStage,firstStageControl)
-
-a <- modelsummary(models = mod)
-
-mod1 <- list(
-  tidy = firstStageControl,
-  glance = glFSC
-)
-
-class(mod1) <- "modelsummary_list"
-
-a <- modelsummary(models = c(mod,mod1), estimate = c("{estimate}{stars}"), fmt = 1, output = "markdown")
-
 
 
 ### Valores atipicos, por encima de dos desviaciones estandar

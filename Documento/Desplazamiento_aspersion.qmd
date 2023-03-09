@@ -241,9 +241,9 @@ Para corroborar lo anterior, la tabla 2 muestra los resultados de un modelo de M
 [^12]: El modelo se calculó con la misma matriz de controles aplicadas en ambas etapas de los Minimos Cuadrados en Dos Etapas (2SLS) de la sección anterior.
 
 ::: {layout-ncol="1"}
-|                  | Municipios con Aspersión Aérea | Municipios sin Aspersión Aéreas |
-|:----------------|:-------------------------:|:-------------------------:|
-| Velocidad viento |          0.040\*\*\*           |              0.007              |
+|                  | Municipios con Aspersión Aérea | Municipios sin Aspersión Aérea |
+|:-----------------|:-------------------------:|:-------------------------:|
+| **Velocidad viento** |          0.040\*\*\*           |              0.007              |
 |                  |            (0.014)             |             (0.008)             |
 |                  |                                |                                 |
 | N                |             11554              |              65962              |
@@ -254,11 +254,40 @@ Para corroborar lo anterior, la tabla 2 muestra los resultados de un modelo de M
 : Variable dependiente: *Desplazamiento forzado*
 
 \*\*\* p\<0.01, \*\* p\<0.05, \* p\<0.1.
-
 Los errores estándar son robustos y están corregidos por clusters a nivel municipal.
 
 Restricción de exclusión
 :::
+
+# 7. Resultados
+
+::: {layout-ncol="1"}
+
+Table: Resultados del modelo
+
+:Variable dependiente: *Desplazamiento forzado*
+
+|                                 |   (MCO)    | (MCO controles) | (Efectos fijos) |    (IV)    |
+|:--------------------------------|:----------:|:---------------:|:---------------:|:----------:|
+|**Aspersiones Aéreas 
+con Glifosato** | 0.00041*** |    0.00015**    |     0.00003     | 0.00249*** |
+|                                 | (0.00007)  |    (0.00006)    |    (0.00003)    | (0.00045)  |
+|N                                |   11554    |      11554      |      11554      |   11554    |
+|R<sup>2</sup>                    |    0.02    |      0.35       |      0.73       |   -0.52    |
+|Controles                        |     No     |       Sí        |       Sí        |     Sí     |
+|Efectos Fijos                    |     No     |       No        |       Sí        |     Sí     |
+
+
+__Note:__
+*** p<0.01, ** p<0.05, * p<0.1.Los errores estándar son robustos y están corregidos por clusters de hogar.
+
+:::
+
+## 7.1. Efectos heterogeneos
+
+```{r chart7, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Efectos heterogeneos respecto a la región pacifíco", fig.pos="H"}
+knitr::include_graphics(c("../Visualizations/output/EH_model.png"))
+```
 
 \newpage
 
