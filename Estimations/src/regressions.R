@@ -8,7 +8,7 @@
 ##
 ## Creation date:     February 2nd, 2023
 ##
-## This version:      March 7th, 2023
+## This version:      March 9th, 2023
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -127,6 +127,9 @@ controles_fe <- c('ruv_amenaza', 'cnmh_desaparicion', 'ruv_combates',
                   'cnmh_reclutamiento', 'cnmh_atentado', 'cnmh_ataque_poblacion',
                   'night_lights', 'elecciones','codmpio','year')
 
+ef <- c('codmpio', 'year')
+
+controles_wo_mecanismos <- c('rainFall', 'elecciones','codmpio','year')
 
 correlaciones.df <- merge_data.df %>%
   dplyr::select(starts_with(controles), spraying, night_lights, windIV20MERRA, windSpeedFLDAS, ruv_desplazamiento_forzado)
@@ -147,6 +150,14 @@ lm.reg <- lm(data = merge_data.df,
 summary(lm.reg)
 cluster_errors.fn(lm.reg)
 
+# Regresion desplazamiento - aspersiones con EF
+
+efectos_fijos.reg <- lm(data = merge_data.df, 
+             formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying +", paste(ef, collapse = "+")))
+summary(efectos_fijos.reg)
+cluster_errors.fn(efectos_fijos.reg)
+
+
 # Regresion desplazamiento ~ aspersion con controles
 
 fe.reg <- lm(data = merge_data.df, 
@@ -162,6 +173,12 @@ final.reg <- lm(data = merge_data.df,
 summary(final.reg)
 cluster_errors.fn(final.reg)
 
+# Regresion WO mecanismos 
+
+mecanismos.reg <- lm(data = merge_data.df, 
+                     formula = log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying + rainFall + elecciones + codmpio + year)
+summary(mecanismos.reg)
+cluster_errors.fn(mecanismos.reg)
 # m1coeffs_std <- data.frame(summary(final.reg)$coefficients)
 # coi_indices <- which(!startsWith(row.names(m1coeffs_std), 'codmpio'))
 # m1coeffs_std[coi_indices,]
@@ -182,6 +199,12 @@ windIV.reg <- ivreg(data = merge_data.df,
                     formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~ spraying | windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
 summary(windIV.reg)
 cluster_errors.fn(windIV.reg)
+
+
+mecanismos.reg <- ivreg(data = merge_data.df,
+                     formula = log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying| windSpeedFLDAS  + rainFall + elecciones + codmpio + year)
+summary(mecanismos.reg)
+cluster_errors.fn(mecanismos.reg)
 
 models <- list(
   "(MCO)"               = lm (data = merge_data.df,
@@ -219,6 +242,8 @@ modelsummary(models, vcov = ~codmpio, estimate = "{estimate}{stars}", ,
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+# Option 1
+
 merge_data.df <- merge_data.df %>%
   mutate(regiones = case_when(
     dpto == "AMAZONAS" ~"Amazonia",
@@ -253,11 +278,11 @@ merge_data.df <- merge_data.df %>%
   )) %>%
   mutate(regiones = if_else(regiones %in% "Pacífico", "AAPacífico", regiones))
 
-windIV.dpto.reg <- ivreg(data = merge_data.df,
+windIV.regional.reg <- ivreg(data = merge_data.df,
                     formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying*as.factor(regiones) |  windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
-summary(windIV.dpto.reg)
+summary(windIV.regional.reg)
 
-IVEH <- cluster_errors.fn(windIV.dpto.reg) 
+IVEH <- cluster_errors.fn(windIV.regional.reg) 
 alpha <- 0.05
 
 data2plot <- IVEH %>%
@@ -270,7 +295,30 @@ data2plot <- IVEH %>%
 
 regiones_estimation <- EH_panel()
 
-ggsave(regiones_estimation, filename = "Visualizations/output/EH_model.png", dpi = 320, width = 5, height = 5)
+ggsave(regiones_estimation, filename = "Visualizations/output/EH_model.png", dpi = 320, width = 3.5, height = 3.5)
+
+# Option 2
+
+dpto_estimations <- ivreg(data = merge_data.df,
+                          formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying*dpto |  windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
+summary(dpto_estimations)
+DPTO <- cluster_errors.fn(dpto_estimations) 
+
+data2plot <- DPTO %>%
+  filter(p.value < 0.05) %>%
+  mutate(filtro = if_else(str_detect(pattern = "spraying:", term), 1, 0)) %>%
+  filter(filtro == 1) %>%
+  mutate(term = str_replace(pattern = "spraying:dpto", replacement = "", term)) %>%
+  mutate( lower = estimate - qt(1- alpha/2, (n() - 1))*std.error/sqrt(n()),
+          upper = estimate + qt(1- alpha/2, (n() - 1))*std.error/sqrt(n()))
+
+dpto_estimation <- EH_panel() +
+  scale_y_continuous(limits = c(-0.2, 0.2),
+                     breaks = seq(-0.2, 0.2, by = 0.1),
+                     expand = expansion(mult = 0.025), position = "right",
+                     labels = c("-0.2", "- 0.1", "0", "0.1","0.2"))
+
+ggsave(dpto_estimation, filename = "Visualizations/output/EH_DPTO_model.png", dpi = 320, width = 3.5, height = 3.5)
 
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
