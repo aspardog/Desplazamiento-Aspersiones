@@ -95,7 +95,14 @@ merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") %>%
   mutate(codmpio = as.factor(codmpio),
          year = as.factor(year),
          dpto = as.factor(dpto),
-         month = as.factor(month))
+         month = as.factor(month),
+         counter = 1) %>%
+  group_by(counter) %>%
+  mutate(meanDF = mean(ruv_desplazamiento_forzado, na.rm = T), 
+         stdDF = sd(ruv_desplazamiento_forzado, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(outliers = if_else(ruv_desplazamiento_forzado > meanDF+2*stdDF, 1, 0)) %>%
+  filter(outliers == 0)
 
 
 antimerge_data.df <- readRDS("Data/Merge/output/antimerge_data.rds") %>%
@@ -121,13 +128,14 @@ controles <- c('ruv_amenaza', 'cnmh_desaparicion', 'ruv_combates',
                'ruv_violencia_sexual', 'ruv_abandono_despojo',
                'cnmh_reclutamiento', 'cnmh_atentado', 'cnmh_ataque_poblacion',
                'night_lights', "vegetation", 'elecciones')
+
 controles_fe <- c('ruv_amenaza', 'cnmh_desaparicion', 'ruv_combates',
                   'cnmh_d_bienes', 'cnmh_minas', 'ruv_homicidio', 
                   'ruv_violencia_sexual', 'ruv_abandono_despojo', "rainFall",
                   'cnmh_reclutamiento', 'cnmh_atentado', 'cnmh_ataque_poblacion',
                   'night_lights', 'elecciones','codmpio','year')
 
-ef <- c('codmpio', 'year')
+ef <- c('year', 'codmpio')
 
 controles_wo_mecanismos <- c('rainFall', 'elecciones','codmpio','year')
 
@@ -173,12 +181,7 @@ final.reg <- lm(data = merge_data.df,
 summary(final.reg)
 cluster_errors.fn(final.reg)
 
-# Regresion WO mecanismos 
 
-mecanismos.reg <- lm(data = merge_data.df, 
-                     formula = log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying + rainFall + elecciones + codmpio + year)
-summary(mecanismos.reg)
-cluster_errors.fn(mecanismos.reg)
 # m1coeffs_std <- data.frame(summary(final.reg)$coefficients)
 # coi_indices <- which(!startsWith(row.names(m1coeffs_std), 'codmpio'))
 # m1coeffs_std[coi_indices,]
@@ -278,6 +281,13 @@ merge_data.df <- merge_data.df %>%
   )) %>%
   mutate(regiones = if_else(regiones %in% "Pacífico", "AAPacífico", regiones))
 
+# Quintiles
+windIV.regional.reg <- ivreg(data = merge_data.df,
+                             formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~ spraying*intensidad |  windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
+summary(windIV.regional.reg)
+cluster_errors.fn(windIV.regional.reg) 
+
+# Regiones
 windIV.regional.reg <- ivreg(data = merge_data.df,
                     formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying*as.factor(regiones) |  windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
 summary(windIV.regional.reg)
