@@ -22,6 +22,8 @@ header-includes:
 
 # 1. Introducción
 
+
+
 El desplazamiento forzado interno es el hecho victimizante de mayor magnitud en las guerras civiles actuales. De acuerdo con el Centro Global de Monitoreo de Desplazamiento Interno - @IDMC2022, para finales del 2021 la cifra de personas forzadas a migrar al interior de sus países ascendía a 59 millones. Esto ha puesto en el centro de las políticas públicas la necesidad de prevenir los efectos de la guerra, promoviendo investigaciones dirigidas hacia la evaluación de los programas que buscan mitigar el conflicto armado. Paradójicamente, existen casos en los que estos terminan produciendo más de lo que quieren evitar.
 
 En Colombia, para el año 2000 se implementó el Plan Colombia, un acuerdo de cooperación bilateral con Estados Unidos para luchar contra el narcotráfico y acabar con el conflicto armado colombiano, cuyo programa principal consistía en la erradicación aérea de cultivos de coca. No obstante, los resultados y efectos de este programa han sido controversiales y debatidos en la literatura. En este contexto, el objetivo de este trabajo es determinar el efecto del Programa de Aspersiones Aéreas con Glifosato (PECIG) sobre el desplazamiento forzado en el marco del Plan Colombia.
