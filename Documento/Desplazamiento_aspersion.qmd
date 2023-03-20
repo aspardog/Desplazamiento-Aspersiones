@@ -33,7 +33,7 @@ En este contexto, el objetivo de este trabajo es determinar cuál fue la magnitu
 
 Esta investigación busca solventar ese problema estableciendo la relación existente entre las aspersiones aéreas y los desplazamientos forzados registrados. No obstante, por el diseño del Plan Colombia, los municipios en los que se asperjó están asociados directamente con el conflicto armado, por lo tanto, estos son sistemáticamente diferentes a los que no sufrieron ningún tipo de fumigación con glifosato. Esto implica que existen problemas de endogeneidad en la relación entre ambas variables. Para corregirlos, diferentes estudios han utilizado modelos de variables instrumentales que introducen aleatoriedad por medio de variables que afecten la probabilidad de aspersión [@rodriguez2020; @reyes2014; @campos2020; @godoy2018]. En este documento se aplica la misma metodología, utilizando como instrumento la fuerza de los vientos en los municipios en los que se asperjó entre 2004 y 2012. Esto permite encontrar variación exógena, no en la aplicación del programa, sino en la intensidad de las aspersiones, lo cual permite exponer los resultados en términos de relaciones de cambio.
 
-Los cálculos de este trabajo estiman que por cada 10 hectáreas adicionales de coca asperjada existió un aumento del 2.5% de desplazamientos forzados en los municipios y meses donde se aplicó el programa. Además, la decisión de desplazarse no es inmediata en todos los casos: los resultados indican que también existe una relación entre las aspersiones y la migración forzada acumulada tres meses después de la aplicación del programa. En este caso, por cada 10 hectáreas asperjadas adicionales, los desplazamientos aumentaban en un %. Más aún, se encontró que existen efectos diferenciados de acuerdo a la intensidad de aspersión. Es decir, el efecto es mayor en los municipios donde se intensificó el PECIG. Esto ocurre especialmente en los municipios que se encuentran en el quintil de intensidad 
+Los cálculos de este trabajo estiman que por cada 10 hectáreas adicionales de coca asperjada existió un aumento del % de desplazamientos forzados en los municipios y meses donde se aplicó el programa. Además, la decisión de desplazarse no es inmediata en todos los casos: los resultados indican que también existe una relación entre las aspersiones y la migración forzada acumulada tres meses después de la aplicación del programa. En este caso, por cada 10 hectáreas asperjadas adicionales, los desplazamientos aumentaban en un %. Más aún, se encontró que existen efectos diferenciados de acuerdo a la intensidad de aspersión. Es decir, el efecto es mayor en los municipios donde se intensificó el PECIG. Esto ocurre especialmente en los municipios que se encuentran en el quintil de intensidad 
 
 En este documento se identifican cuatro posibles canales directos por los cuales existe esta relación: las afectaciones en salud, los daños ambientales, la intensificación de la violencia y los efectos económicos adversos. Estos obedecen a consecuencias del conflicto armado que han sido ampliamente estudiadas pero pocos estudios las han relacionado con la política antidroga, además del conflicto armado. La mayoría de estudios se centran en la relación del narcotráfico como financiador y prolongador de diferentes conflictos armados en el mundo [@cornell2005; @monteleone2016; @gutierrez2020; @mercille2011; @angrist2008; @ballve2012], más que en la evaluación de los programas de política antidroga frente a las guerras civiles. Es decir, son menos los estudios que exponen estos programas como un agravante de la violencia en los territorios [@reyes2014; @abadie2014; @zuleta2017; @turkoglu2022]. En consecuencia, esta investigación contribuye a esa literatura cuantificando el efecto que tuvo el programa principal de política antidroga como un intensificador del conflicto armado y explicando los posibles canales por los que se da esta relación.
 
@@ -115,7 +115,7 @@ Donde $log(y_{it})$ es el logaritmo de los desplazamientos mensuales en el munic
 
 Los efectos fijos permiten que el estimador de interés se centre exclusivamente en la variación dentro de la unidad de análisis [@imai2019; @quintana2021]. Por lo tanto, los efectos fijos por municipio están representados por $\delta_{i}$ para que el efecto encontrado capte verdaderamente las variaciones intramunicipales. Además, los efectos fijos por mes, representados por $\delta_{m}$ se utilizan para controlar la estacionalidad que el efecto pueda tener sobre la variable dependiente. También, se añadieron efectos fijos por año $\delta_{t}$ para tener en cuenta controles invariables en el tiempo, como las condiciones geográficas del municipio que son fundamentales para determinar la intensidad de la aspersión.
 
-De acuerdo con @angrist2009 los controles adecuados son variables que han sido fijadas en el momento en que se determinó el regresor de interés. Por lo tanto, la matriz de controles $X_{it}$ contiene variables que influían en la asignación y la aplicación del programa. En cuanto a las variables que afectaban la asignación del programa, se incluyeron variables asociadas a la presencia de grupos armados, principalmente enfocadas en violencia contra la población civil y enfrentamientos contra el ejército. Además, se introdujó el uso del suelo como proxy de la presencia no violenta de los grupos armados, pues se ha demostrado que los lugares donde habitaban transforman las decisiones de uso de la tierra [@fajardo2004; @arias2012].  
+De acuerdo con @angrist2009 los controles adecuados son variables que han sido fijadas en el momento en que se determinó el regresor de interés. Por lo tanto, la matriz de controles $X_{it}$ contiene variables que influían en la asignación y la aplicación del programa. En cuanto a las variables que afectaban la asignación del programa, se incluyeron variables asociadas a la presencia de grupos armados, principalmente enfocadas en violencia contra la población civil y enfrentamientos contra el ejército. Además, se introdujó el uso del suelo como proxy de la presencia no violenta de los grupos armados, pues se ha demostrado que los lugares donde habitaban transforman las decisiones de uso de la tierra [@fajardo2004; @arias2012]. Por último, dado que uno de los objetivos fijados del plan era promover el desarrollo económico en los municipios desprotegidos, se utilizó la variable de luminosidad municipal para aproximarse al desarrollo económico, o la falta de este, en cada región.
 
 Por otro lado, existen variables que afectaban directamente la aplicación del programa determinadas por el PMA, por esto se añadió la intensidad de las lluvias como una variable que controla la probabilidad de aspersión. Sin embargo, no se añadieron los cultivos de coca por los problemas de multicolinealidad perfecta que esto podría generar, dado que es la variable central para determinar el lugar y la intensidad de aspersión eran las hectáreas de estos cultivos ilícitos.
 
@@ -188,7 +188,7 @@ Primero, la relevancia del instrumento significa que la variable de interés, en
 
 La tabla 1, muestra el resultado de la primera etapa de la regresión. Es decir, un modelo MCO con efectos fijos por municipio y año con errores robustos y clusterizados. Allí se puede notar que la corrrelación entre la velocidad del viento y las aspersiones aéreas son estadísticamente signficativas y con dirección negativa. Esto signfica que, a mayor velocidad del viento, menores niveles de aspersión aérea, lo cual es consistente con las condiciones del PMA. 
 
-Además, en la tabla 1, el F estadístico es mayor a 10, lo que indicaría que el instrumento es fuerte [@stock2002]. Sin embargo, cuando se tiene en cuenta los problemas de hetroscedasticidad y autocorrelación de los errores del modelo el instrumento pierde relevancia como se muestra en el F estadístico efectivo [@olea2013]. Esto significa que, no se puede afirmar que el instrumento sea lo suficientemente fuerte, lo cual puede afectar los resultados de la estimación.
+Además, en la tabla 1, el F estadístico es mayor a 10, lo que indicaría que el instrumento es fuerte [@stock2002]. Sin embargo, cuando se tiene en cuenta los problemas de hetroscedasticidad y autocorrelación de los errores del modelo, el instrumento pierde relevancia como se muestra en el F estadístico efectivo [@olea2013]. Esto significa que, no se puede afirmar que el instrumento sea lo suficientemente fuerte, lo cual puede afectar los resultados de la estimación.
 
 ::: {#tbl-panel layout-ncol="1"}
 
@@ -224,9 +224,9 @@ Para corroborar lo anterior, la tabla 2 muestra los resultados de un modelo de M
 
 [^11]: El modelo se calculó con la misma matriz de controles aplicadas en ambas etapas de los Minimos Cuadrados en Dos Etapas (2SLS) de la sección anterior.
 
-::: {layout-ncol="1"}
+::: {#tbl-panel layout-ncol="1"}
 
-|                 | Municipios con Aspérsion Aéreas | Municipios sin Aspérsion Aéreas |
+|                 | Municipios con Aspérsion Aérea  | Municipios sin Aspérsion Aérea |
 |:----------------|:-------------------------------:|:-------------------------------:|
 |Velocidad viento |             0.024*              |              0.011              |
 |                 |             (0.015)             |             (0.007)             |
@@ -244,20 +244,21 @@ Los errores estándar son robustos y están corregidos por clusters a nivel muni
 Restricción de exclusión
 :::
 
-\newpage
-
-
 # 6. Datos y Estadisticas Descriptivas
 
-En esta sección se presentan los datos que se utilizaron para estimar lo presentado en la estrategía empírica.
+En esta sección se presentan los datos que se utilizaron para estimar los modelos presentados en la estrategía empírica.
 
 ## 6.1. Desplazamiento Forzado Interno.
 
-Para medir el desplazamiento forzado interno se utilizó como fuente el Registro Único de Víctimas (RUV), ya que es la base de datos que mejor documenta el desplazamiento en Colombia[^7]. La Unidad de Víctimas, institución responsable del RUV, se creó con la ley 1448 del 2011 con el fin de brindar medidas de atención, asistencia y reparación a las víctimas del conflicto armado. Dicha ley acoge a las personas que hayan sufrido de algún hecho victimizante desde 1985 hasta la actualidad, entre ellas el desplazamiento forzado. Para ser acogidas, las víctimas deben brindar un testimonio detallado de los hechos. Por esta razón, en la base de datos la información puede encontrarse a nivel diario, mensual y anual.
+Para medir el desplazamiento forzado interno se utilizó como fuente el Registro Único de Víctimas (RUV), ya que es la base de datos que mejor documenta el desplazamiento en Colombia[^12]. La Unidad de Víctimas, institución responsable del RUV, se creó con la ley 1448 del 2011 con el fin de brindar medidas de atención, asistencia y reparación a las víctimas del conflicto armado. Dicha ley acoge a las personas que hayan sufrido de algún hecho victimizante desde 1985 hasta la actualidad, entre ellas el desplazamiento forzado. Para ser acogidas, las víctimas deben brindar un testimonio detallado de los hechos. Por esta razón, en la base de datos la información puede encontrarse a nivel diario, mensual y anual.
 
-[^7]: En los datos sobre violaciones a derechos humanos son notorios los problemas de subregistro, debido a que existen múltiples causas por las que una víctima no se documenta, desde razones de seguridad hasta dificultades burocráticas. Para mitigar eso, la @comisionverdad2022 recogió más de 112 bases de datos, y publicó estimaciones estadísticas del rango en el que puede encontrarse el número real de víctimas para 5 violaciones a derechos humanos, incluyendo desplazamiento. Como resultado, se estableció que el Registro Único de Víctimas es la única base representativa de datos sobre desplazamiento forzado en Colombia. Por lo tanto, esta es la mejor fuente disponible para medir el número de hechos ocurridos.
+[^12]: En los datos sobre violaciones a derechos humanos son notorios los problemas de subregistro, debido a que existen múltiples causas por las que una víctima no se documenta, desde razones de seguridad hasta dificultades burocráticas. Para mitigar eso, la @comisionverdad2022 recogió más de 112 bases de datos, y publicó estimaciones estadísticas del rango en el que puede encontrarse el número real de víctimas para cinco violaciones a derechos humanos, incluyendo desplazamiento. Como resultado, se estableció que el Registro Único de Víctimas es la única base representativa de datos sobre desplazamiento forzado en Colombia. Por lo tanto, esta es la mejor fuente disponible para medir el número de hechos ocurridos.
 
 La figura 4 ilustra el desplazamiento forzado a nivel municipal en todo el país durante los años de este estudio. De los 1122 municipios de Colombia 1116 registraron al menos un desplazamiento. Sin embargo, como se puede notar, las intensidades han sido distintas y las mayores magnitudes se concentran regionalmente. Los territorios más afectados se identifican en la franja del sur del país (Nariño, Guaviare, Putumayo, Caquetá, Meta); la región del litoral pacifico (Cauca, Valle del Cauca, Chocó); el magdalena medio (Santander, Antioquía, Cesar) y la frontera con Venezuela (La Guajira, Norte de Santander y Vichada).
+
+De la misma manera, la figura 4 muestra que el rango del último quintil se encuentra entre 4.157 hasta 107.137 desplazamientos. Esto significa que existen municipios donde la magnitud de este hecho victimizante fue diferencialmente masiva respecto a todo el país. El municipio más afectado es Buenaventura; seguido de Tumaco con 87.943 desplazamientos registrados; Medellín con 74.098; Santa Marta con 43516; y Tame con 40312. Todos estos municipios, junto con los que estuvieron tres desviaciones estandar por encima del promedio, fueron tomados como outliers dentro del modelo[^13].
+
+[^13]: Los outliers en el modelo fueron excluídos porque afectaban las estimaciones. En el apéndice 5, se muestra un análisis al respecto.
 
 ```{r chart4, out.width = "60%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Hechos de desplazamiento forzado a nivel municipal en Colombia (2004 - 2012)", fig.pos="H"}
 knitr::include_graphics("../Visualizations/output/desplazamientos.png")
@@ -267,11 +268,12 @@ knitr::include_graphics("../Visualizations/output/desplazamientos.png")
 
 Los datos del PECIG, a nivel mensual, fueron proporcionados por la Dirección de Antinarcóticos de la Policia (DIRAN). La medición de las aspersiones aéreas con glifosato se hacía por hectáreas a nível municipal cada mes. Desde los años 2004 hasta el 2012, el período de interés donde se intensificó el PECIG, se asperjaron cada año un poco más de 120.000 hectáreas. Como lo muestra la figura 5, las zonas donde se concentró el programa fueron el sur del país, el Pacífico, Magdalena Medio y alrededor de la frontera con Venezuela. En este sentido, se puede notar que la distribución territorial de la aplicación del programa coincide con en su mayoría con los que sufrían mayor desplazamiento.
 
+Al igual que con el desplazamiento, hubo municipios donde la aspersión fue desproporcionalmente mayor respecto al promedio de la aplicación del programa. La mayoría de estos municipios se encuentran entre Nariño y Guaviare. Por ejemplo, municipios como Tumaco se alcanzaron a asperjar hasta 100.182 entre 2004 y 2012; en Magüi 65.798; en San José del Guaviare 59.358; en Nariño 54767; y el Charco 50.852. Esto es muestra que la aplicación del programa fue bastante heterogénea de acuerdo a cada región.
+
 
 ```{r chart5, out.width = "60%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Aspersiones Aéreas municipales en Colombia (2004 - 2012)", fig.pos="H"}
 knitr::include_graphics("../Visualizations/output/aspersiones.png")
 ```
-
 
 
 ## 6.3. Controles
