@@ -172,11 +172,11 @@ Donde $V_{it}$ es la velocidad del viento en el municipio $i$ en el mes $t$. Ade
 
 La segunda etapa representada en la ecuación 6 expone la relación entre la variable dependiente y la variable instrumenda estimada ($\widehat{AG_{it}}$) en la primera etapa. Esto quiere decir que el nuevo estimador $\tilde\beta$ presenta relación del desplazamiento forzado con las aspersiones aéreas con glifosato corregidas por la variación aleatoria que le impone la velocidad del viento.
 
-$$\tilde{y_{it}} = \tilde\alpha + \tilde\beta \widehat{AG_{it}} + \tilde\theta X_{it} + \delta_{i} + \delta_{t} +  \tilde\varepsilon_{it} \ \ \ (6)$$
+$$log(\tilde{y_{it}}) = \tilde\alpha + \tilde\beta \widehat{AG_{it}} + \tilde\theta X_{it} + \delta_{i} + \delta_{t} +  \tilde\varepsilon_{it} \ \ \ (6)$$
 
 Finalmente, la figura 5 muestra que la intensidad de las aspersiones aéreas con glifosato era distinta entre regiones. Por lo tanto, pueden existir efectos heterogéneos por departamento. La ecuación para estimar estos efectos diferenciados es:
 
-$$\tilde{y_{it}} =  \delta_{d} +\tilde\beta \widehat{AG_{it}} + \tilde\beta \widehat{AG_{it}} * D_{jt} +\tilde\theta X_{it} + \delta_{i} + \delta_{t} + \delta_{m} + \delta_{d} + \tilde\varepsilon_{it} \ \ \ (7)$$
+$$log(\tilde{y_{it}}) =  \delta_{d} +\tilde\beta \widehat{AG_{it}} + \tilde\beta \widehat{AG_{it}} * D_{jt} +\tilde\theta X_{it} + \delta_{i} + \delta_{t} + \delta_{m} + \delta_{d} + \tilde\varepsilon_{it} \ \ \ (7)$$
 
 Donde $\delta_{d}$ son los efectos fijos de cada departamento y $D_{jt}$ es una variable binaria que toma valores de 1 por cada departamento. En este caso, el modelo toma como punto de comparación Antioquia, debido a que historicamente este ha sido el departamento más afectado por el conflicto armado.
 
@@ -268,7 +268,7 @@ knitr::include_graphics("../Visualizations/output/desplazamientos.png")
 
 Los datos del PECIG, a nivel mensual, fueron proporcionados por la Dirección de Antinarcóticos de la Policia (DIRAN). La medición de las aspersiones aéreas con glifosato se hacía por hectáreas a nível municipal cada mes. Desde los años 2004 hasta el 2012, el período de interés donde se intensificó el PECIG, se asperjaron cada año un poco más de 120.000 hectáreas. Como lo muestra la figura 5, las zonas donde se concentró el programa fueron el sur del país, el Pacífico, Magdalena Medio y alrededor de la frontera con Venezuela. En este sentido, se puede notar que la distribución territorial de la aplicación del programa coincide con en su mayoría con los que sufrían mayor desplazamiento.
 
-Al igual que con el desplazamiento, hubo municipios donde la aspersión fue desproporcionalmente mayor respecto al promedio de la aplicación del programa. La mayoría de estos municipios se encuentran entre Nariño y Guaviare. Por ejemplo, municipios como Tumaco se alcanzaron a asperjar hasta 100.182 entre 2004 y 2012; en Magüi 65.798; en San José del Guaviare 59.358; en Nariño 54767; y el Charco 50.852. Esto es muestra que la aplicación del programa fue bastante heterogénea de acuerdo a cada región.
+Al igual que con el desplazamiento, hubo municipios donde la aspersión fue desproporcionalmente mayor respecto al promedio de la aplicación del programa. La mayoría de estos municipios se encuentran entre Nariño y Guaviare. Por ejemplo, municipios como Tumaco se alcanzaron a asperjar hasta 100.182 entre 2004 y 2012; en Magüi 65.798; en San José del Guaviare 59.358; en Nariño 54.767; y el Charco 50.852. Esto es muestra que la aplicación del programa fue bastante heterogénea de acuerdo a cada región.
 
 
 ```{r chart5, out.width = "60%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Aspersiones Aéreas municipales en Colombia (2004 - 2012)", fig.pos="H"}
