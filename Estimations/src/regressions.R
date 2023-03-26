@@ -8,7 +8,7 @@
 ##
 ## Creation date:     February 2nd, 2023
 ##
-## This version:      March 9th, 2023
+## This version:      March 26th, 2023
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -24,24 +24,8 @@
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 library(pacman)
-p_load(tidyverse, sandwich, lmtest, ivreg, corrr, modelsummary, kableExtra, gt, tibble, stargazer, plm)
-
-cluster_errors.fn <- function(reg) {
-  m1coeffs_std <- data.frame(summary(reg)$coefficients)
-  coi_indices <- which(!startsWith(row.names(m1coeffs_std), 'codmpio'))
-  m1coeffs_std[coi_indices,]
-  
-  m1coeffs_cl <- coeftest(reg, vcov = vcovCL, cluster = ~codmpio)
-  a <- m1coeffs_cl[coi_indices,]
-  estimation <- data.frame(a)
-  
-  estimation <- rownames_to_column(estimation, "term")
-  
-  estimation <- estimation %>%
-    rename(estimate = Estimate, std.error = Std..Error, p.value = Pr...t..)
-  
-  return(estimation)
-}
+p_load(tidyverse, sandwich, lmtest, ivreg, corrr, modelsummary, kableExtra, gt, 
+       tibble, stargazer, plm,  ggpubr, showtext, patchwork)
 
 EH_panel <- function(mainData = data2plot,
                      line_color = "#003b8a",
@@ -90,37 +74,8 @@ EH_panel <- function(mainData = data2plot,
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") %>%
-  dplyr::filter(year < 2013 & year > 2003) %>%
-  mutate(codmpio = as.factor(codmpio),
-         year = as.factor(year),
-         dpto = as.factor(dpto),
-         month = as.factor(month),
-         counter = 1) %>%
-  group_by(counter) %>%
-  mutate(meanDF = mean(ruv_desplazamiento_forzado, na.rm = T), 
-         stdDF = sd(ruv_desplazamiento_forzado, na.rm = T)) %>%
-  ungroup() %>%
-  mutate(outliers = if_else(ruv_desplazamiento_forzado > meanDF+2*stdDF, 1, 0)) %>%
-  filter(outliers == 0)
-
-antimerge_data.df <- readRDS("Data/Merge/output/antimerge_data.rds") %>%
-  filter(year < 2013 & year > 2003) %>%
-  mutate(codmpio = as.factor(codmpio),
-         year = as.factor(year),
-         month = as.factor(month),
-         counter = 1) %>%
-  group_by(counter) %>%
-  mutate(meanDF = mean(ruv_desplazamiento_forzado, na.rm = T), 
-         stdDF = sd(ruv_desplazamiento_forzado, na.rm = T)) %>%
-  ungroup() %>%
-  mutate(outliers = if_else(ruv_desplazamiento_forzado > meanDF+2*stdDF, 1, 0)) %>%
-  filter(outliers == 0)
-
-lassoVariables <- readRDS("Data/Merge/output/lasso_variables.rds")[[1]]
-lassoVariables  # Variables to select the controls
-
-
+merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") 
+antimerge_data.df <- readRDS("Data/Merge/output/antimerge_data.rds") 
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -128,24 +83,15 @@ lassoVariables  # Variables to select the controls
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-controles <- c('ruv_amenaza', 'ruv_combates', 
-               'ruv_abandono_despojo', "rainFall", "ruv_homicidio",
-               'cnmh_minas', 'cnmh_reclutamiento',
-               'cnmh_ataque_poblacion')
+controles_fe <- c('vegetation', 'cultivos', 'night_lights', "rainFall",
+                  'lag1_ruv_combates', 'lag1_ruv_abandono_despojo', 'lag1_cnmh_minas', 'lag1_cnmh_reclutamiento', 'lag1_ruv_homicidio')
 
-controles_fe <- c('ruv_amenaza', 'ruv_combates', 'vegetation',
-                  'ruv_abandono_despojo', "rainFall", "ruv_homicidio",
-                  'cnmh_minas', 'cnmh_reclutamiento',
-                  'cnmh_ataque_poblacion','codmpio','year', 'month')
+controles_fe_3month <- c('vegetation', 'cultivos', 'night_lights', "rainFall",
+                         'sum_combates', 'sum_despojo', 'sum_minas', 'sum_reclutamiento', 'sum_homicidio')
 
 ef <- c('year', 'codmpio', 'month')
 
-controles_fe_3month <- c('sum_amenaza', 'sum_combates', 
-                         'sum_despojo', "rainFall", "sum_homicidio",
-                         'sum_minas', 'sum_reclutamiento',
-                         'sum_ataque','codmpio','year', 'month')
-
-
+#'night_lights'
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
 ##   3. Fixed Effects Regression with controls                                                                           ----
@@ -156,29 +102,31 @@ controles_fe_3month <- c('sum_amenaza', 'sum_combates',
 
 # One month
 
-finalMonth.reg <- lm(data = merge_data.df, 
-          formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying +", paste(controles_fe, collapse = "+")))
+finalMonth.reg <- plm(formula =  desplazamiento_log ~
+                        spraying + vegetation + cultivos + rainFall + night_lights + lag1_ruv_combates + lag1_ruv_abandono_despojo + lag1_cnmh_minas + lag1_cnmh_reclutamiento + lag1_ruv_homicidio, 
+                      data= merge_data.df, effect = "twoways", model = "within", index=c("codmpio", "date"))
 summary(finalMonth.reg)
-a <- cluster_errors.fn(finalMonth.reg)
-merge_data.df$fittedMonth = predict(finalMonth.reg)
+coeftest(finalMonth.reg, vcov=vcovHC(finalMonth.reg, type="sss", cluster="group"))  
 
-prueba <- plm(data = merge_data.df,
-              formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~ spraying | windSpeedFLDAS | + ruv_amenaza"), 
-              effect = "twoways", model = "within", random.method = "ht", inst.method = "baltagi")
-summary(prueba)
-punbalancedness(merge_data.df)
+finalRegData <- as.data.frame(finalMonth.reg[["model"]]) %>%
+  mutate(desplazamiento_log = as.double(desplazamiento_log),
+         vegetation = as.double(vegetation),
+         night_lights = as.double(night_lights))
 
-prueba2 <- plm(data = merge_data.df,
-               formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying +", paste(controles, collapse = "+")), 
-               effect = "twoways", model = "within")
+codmpioData <- merge_data.df %>%
+  select(codmpio, date, year, month, desplazamiento_log, vegetation, night_lights, windSpeedRMBOS, windSpeedFLDAS,
+         windIV05RMBOS, windIV10RMBOS, windIV15RMBOS, windIV20RMBOS)
 
+finalRegData.df <- finalRegData %>%
+  left_join(codmpioData, by = c("desplazamiento_log", "vegetation", "night_lights"))
 
-scatter_month <- merge_data.df %>%
+finalRegData$fittedMonth = predict(finalMonth.reg)
+
+scatter_month <- finalRegData %>%
   filter(spraying > 0) %>%
-  mutate(desplazamiento_forzado_log = log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)),
-         aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
-  ggplot(data = ., aes(x = aspersiones_log, y = fitted)) +
-  geom_point(mapping=aes(x = aspersiones_log, y = desplazamiento_forzado_log)) +
+  mutate(aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
+  ggplot(data = ., aes(x = aspersiones_log, y = fittedMonth)) +
+  geom_point(mapping=aes(x = aspersiones_log, y = desplazamiento_log)) +
   geom_smooth(method=lm, aes(y = fittedMonth), color="#C42126", se= T, size = 1) +
   stat_cor(method = "pearson") +
   labs(subtitle = "Correlación mensual entre el desplazamiento forzado \ny aspersión aérea",
@@ -192,24 +140,26 @@ scatter_month <- merge_data.df %>%
         axis.title = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
         plot.background = element_rect(fill = "white", colour = "white"))
 
-
+haven::write_dta(finalRegData.df, path = "Data/Merge/output/merge_data.dta")
 
 # 3 month
 
-final3Month.reg <- lm(data = merge_data.df, 
-                     formula = paste0("log(sum_desplazamiento + quantile(sum_desplazamiento, .25)^2/quantile(sum_desplazamiento, .75)) ~   spraying +", paste(controles_fe_3month, collapse = "+")))
+final3Month.reg <- plm(formula =  sum_desplazamiento_log ~ 
+                         spraying + vegetation + cultivos + night_lights + sum_combates + sum_despojo + sum_minas + sum_reclutamiento + sum_homicidio,
+                       data= merge_data.df, effect = "twoways", model = "within", index=c("codmpio", "date"))
 summary(final3Month.reg)
-a3 <- cluster_errors.fn(final3Month.reg)
+coeftest(final3Month.reg, vcov=vcovHC(final3Month.reg, type="sss", cluster="group"))  
 
-merge_data.df$fitted3Month = predict(final3Month.reg)
+finalRegData <- as.data.frame(final3Month.reg[["model"]])
 
-scatter_3month <- merge_data.df %>%
+finalRegData$fitted3Month = predict(final3Month.reg)
+
+scatter_3month <- finalRegData %>%
   filter(spraying > 0) %>%
-  mutate(desplazamiento_forzado_log = log(sum_desplazamiento + quantile(sum_desplazamiento, .25)^2/quantile(sum_desplazamiento, .75)),
-         aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
-  ggplot(data = ., aes(x = aspersiones_log, y = fitted)) +
-  geom_point(mapping=aes(x = aspersiones_log, y = desplazamiento_forzado_log)) +
-  geom_smooth(method=lm, aes(y = fitted3Month), color="#C42126", se= T, size = 1) +
+  mutate(aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
+  ggplot(data = ., aes(x = aspersiones_log, y = fitted3Month)) +
+  geom_point(mapping=aes(x = aspersiones_log, y = sum_desplazamiento_log)) +
+  stat_smooth(method=lm, aes(y = fitted3Month, x = aspersiones_log), color="#C42126", se= T, size = 1) +
   stat_cor(method = "pearson") +
   labs(subtitle = "Correlación entre el desplazamiento trimestral \nacumulado y aspersión aérea con glifosato*",
        x ="Logaritmo de aspersiones con glifosato", 
@@ -220,7 +170,7 @@ scatter_3month <- merge_data.df %>%
         plot.subtitle = element_text(size = 12, hjust = 0.5, face = "bold"),
         axis.text = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
         axis.title = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
-        plot.background = element_rect(fill = "white", colour = "white"))
+        plot.background = element_rect(fill = "white", colour = "white"));scatter_3month
 
 figures <- list()
 figures[["Panel A"]] <- scatter_month
@@ -235,6 +185,7 @@ figureScatter <- figures[["Panel A"]] + plot_spacer() + figures[["Panel B"]]  +
 
 ggsave(figureScatter, filename = "Visualizations/output/Scatter.png", dpi = 320, width = 10, height = 7.5)
 
+
 # m1coeffs_std <- data.frame(summary(final.reg)$coefficients)
 # coi_indices <- which(!startsWith(row.names(m1coeffs_std), 'codmpio'))
 # m1coeffs_std[coi_indices,]
@@ -247,34 +198,69 @@ ggsave(figureScatter, filename = "Visualizations/output/Scatter.png", dpi = 320,
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
-##   4. Instrumental Variables Regression                                                                   ----
+##   4. First Stage                                                               ----
+##
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+firstStage <- plm(data = finalRegData.df,
+                  formula = paste0("spraying ~  windSpeedRMBOS + ", paste(controles_fe, collapse = "+")),
+                  effect = "twoways", model = "within", index=c("codmpio", "date"))
+summary(firstStage)
+
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+##
+##   5. Restricción de exclusión                                                             ----
+##
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+restExcl1 <- plm(data = antimerge_data.df,
+                formula = paste0("desplazamiento_log ~  windSpeedRMBOS + ", paste(controles_fe, collapse = "+")),
+                effect = "twoways", model = "within", index=c("codmpio", "date"))
+summary(restExcl1)
+
+restExcl2 <- plm(data = finalRegData.df,
+                formula = paste0("desplazamiento_log ~  windSpeedRMBOS +", paste(controles_fe, collapse = "+")),
+                effect = "twoways", model = "within", index=c("codmpio", "date"))
+summary(restExcl2)
+
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+##
+##   5. Instrumental Variables Regression                                                                   ----
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # One month
 
+IV1Month <- plm(data= merge_data.df,
+                formula =  
+                  paste0("desplazamiento_log ~ spraying +",
+                  paste(controles_fe, collapse = "+"),"|",
+                  paste("windSpeedFLDAS + "),
+                  paste(controles_fe, collapse = "+")),
+                effect = "twoways", 
+                model = "within", 
+                index=c("codmpio", "date"))
+summary(IV1Month)
+coeftest(IV1Month, vcov=vcovHC(IV1Month, type="sss", cluster="group"))  
+
+IV3Month <- plm(data= merge_data.df,
+                  formula =  
+                    paste0("desplazamiento_log ~ spraying +",
+                           paste(controles_fe_3month, collapse = "+"),"|",
+                           paste("windSpeedFLDAS +"),
+                           paste(controles_fe_3month, collapse = "+")),
+                  effect = "twoways", 
+                  model = "within", 
+                  index=c("codmpio", "date"))
+summary(IV3Month)
+coeftest(IV3Month, vcov=vcovHC(IV3Month, type="sss", cluster="group"))  
+
+
 windIV.reg <- ivreg(data = merge_data.df,
-                    formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying | windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
+                    formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~",  paste(controles_fe, collapse = "+"), paste(" | spraying | windSpeedFLDAS + rainFall")))
 summary(windIV.reg)
 cluster_errors.fn(windIV.reg)
-library(fixest)
 
-controles_fe <- c('ruv_amenaza', 'ruv_combates', 'vegetation',
-                  'ruv_abandono_despojo', "rainFall", "ruv_homicidio",
-                  'cnmh_minas', 'cnmh_reclutamiento',
-                  'cnmh_ataque_poblacion','codmpio','year', 'month')
-
-windIV.reg <- ivreg(data = merge_data.df,
-                    formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~",  paste(controles_fe, collapse = "+"), paste(" | spraying | windSpeedFLDAS")))
-summary(windIV.reg)
-cluster_errors.fn(windIV.reg)
-
-feols(data = merge_data.df,
-      fml = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~",  paste(controles_fe, collapse = "+"), paste("+ 0 | spraying | windSpeedFLDAS")), panel.id = ~ codmpio + year)
-
-windIV.reg <- ivreg(data = merge_data.df,
-                    formula = paste0("ruv_desplazamiento_forzado ~",  paste(controles_fe, collapse = "+"), paste("| spraying | windSpeedFLDAS")))
-summary(windIV.reg)
 
 models <- list(
   "(MCO)"    = lm(data = merge_data.df, 
@@ -343,54 +329,41 @@ modelsummary(models, vcov = ~codmpio, estimate = "{estimate}{stars}", ,
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# Option 1
+IVEF <- merge_data.df %>%
+  group_by(codmpio) %>%
+  summarise(aspersion = sum(spraying, na.rm = T)) %>%
+  mutate(quintilesAspersion = ntile(aspersion, 5))
 
-merge_data.df <- merge_data.df %>%
-  mutate(regiones = case_when(
-    dpto == "AMAZONAS" ~"Amazonia",
-    dpto == "CAQUETÁ" ~ "Amazonia",
-    dpto == "GUAVIARE" ~ "Amazonia",
-    dpto == "PUTUMAYO" ~ "Amazonia",
-    dpto == "VAUPÉS" ~ "Amazonia",
-    dpto == "ARAUCA" ~ "Orinoquía", 
-    dpto == "CASANARE" ~ "Orinoquía", 
-    dpto == "META" ~ "Orinoquía", 
-    dpto == "NORTE DE SANTANDER SANTANDER" ~ "Orinoquía", 
-    dpto == "VICHADA" ~ "Amazonia",
-    dpto == "CHOCÓ" ~ "Pacífico", 
-    dpto == "NARIÑO" ~ "Pacífico",
-    dpto == "VALLE DEL CAUCA" ~ "Pacífico", 
-    dpto == "CAUCA" ~ "Pacífico",
-    dpto == "ATLÁNTICO" ~ "Caribe",
-    dpto == "BOLÍVAR" ~ "Caribe",
-    dpto == "CESAR" ~ "Caribe", 
-    dpto == "CÓRDOBA" ~ "Caribe", 
-    dpto == "LA GUAJIRA" ~ "Caribe", 
-    dpto == "MAGDALENA" ~ "Caribe",
-    dpto == "SUCRE" ~ "Caribe",
-    dpto == "ANTIOQUIA" ~ "Pacífico", 
-    dpto == "CALDAS" ~ "Andina", 
-    dpto == "CUNDINAMARCA" ~ "Andina", 
-    dpto == "HUILA" ~ "Andina",
-    dpto == "QUINDIO" ~ "Andina", 
-    dpto == "RISARALDA" ~ "Andina", 
-    dpto == "SANTANDER" ~ "Andina",
-    dpto == "TOLIMA" ~ "Andina",
-  )) %>%
-  mutate(regiones = if_else(regiones %in% "Pacífico", "AAPacífico", regiones))
+IVRegData.df <- merge_data.df %>%
+  left_join(IVEF, by = "codmpio") %>%
+  mutate(quintilesAspersion = as.factor(quintilesAspersion)) 
+  
 
 # Quintiles
-windIV.regional.reg <- ivreg(data = merge_data.df,
-                             formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~ spraying*intensidad |  windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
-summary(windIV.regional.reg)
-cluster_errors.fn(windIV.regional.reg) 
+IV1Month <- plm(data= IVRegData.df,
+                formula =  
+                  paste0("desplazamiento_log ~ spraying*quintilesAspersion + quintilesAspersion +",
+                         paste(controles_fe, collapse = "+"),"|",
+                         paste("windSpeedFLDAS*quintilesAspersion + quintilesAspersion +"),
+                         paste(controles_fe, collapse = "+")),
+                effect = "individual", 
+                model = "within", 
+                index=c("codmpio", "date"))
+summary(IV1Month)
+coeftest(IV1Month, vcov=vcovHC(IV1Month, type="sss", cluster="group"))  
 
-# Regiones
-windIV.regional.reg <- ivreg(data = merge_data.df,
-                    formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~  spraying*as.factor(regiones) |  windSpeedFLDAS + ", paste(controles_fe, collapse = "+")))
-summary(windIV.regional.reg)
+IV3Month <- plm(data= IVRegData.df,
+                formula =  
+                  paste0("sum_desplazamiento_log ~ spraying*quintilesAspersion + quintilesAspersion +",
+                         paste(controles_fe_3month, collapse = "+"),"|",
+                         paste("windSpeedFLDAS*quintilesAspersion + quintilesAspersion +"),
+                         paste(controles_fe_3month, collapse = "+")),
+                effect = "individual", 
+                model = "within", 
+                index=c("codmpio", "date"))
+summary(IV3Month)
 
-IVEH <- cluster_errors.fn(windIV.regional.reg) 
+
 alpha <- 0.05
 
 data2plot <- IVEH %>%
