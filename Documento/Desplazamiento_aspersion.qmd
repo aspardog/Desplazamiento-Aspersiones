@@ -25,35 +25,34 @@ header-includes:
 En Colombia el conflicto armado ha dejado al menos 8.391.662 víctimas de desplazamiento forzado interno registradas [@RUV2022] [^1]. Esto equivale aproximadamente al 16% de la población colombiana actual. Son múltiples las razones por las que una víctima decide desplazarse de su territorio, probablemente la más evidente es la violencia que generan las disputas territoriales [@deacon2019; @arjona2016; @lozano2010; @czaika2009; @kalyvas2006; @ballve2012]. Sin embargo, también existen eventos asociados a la guerra que van más allá de la violencia e inciden sobre el bienestar de las poblaciones obligándolas a movilizarse masivamente [@ibanez2008; @steele2007]. Dentro de estos eventos, se ha estudiado poco la incidencia que la lucha contra las drogas, en el marco del Plan Colombia [^2], puede tener sobre el desplazamiento forzado, en especial el Programa de Aspersiones Aéreas con Glifosato (PECIG).
 
 [^1]: El Registro Único de Víctimas empezó su registro en 1985 y continua hasta la actualidad
+
 [^2]: El Plan Colombia fue un acuerdo de cooperación bilateral con Estados Unidos para luchar contra el narcotráfico y acabar con el conflicto armado colombiano, cuyo programa principal consistía en la erradicación aérea de cultivos de coca.
 
 En este contexto, el objetivo de este trabajo es determinar cuál fue la magnitud del efecto del PECIG sobre el desplazamiento forzado durante el Plan Colombia. Responder a esta pregunta implica una complejidad importante: Aunque el desplazamiento está ampliamente documentado en Colombia, no sucede lo mismo con sus motivos. La dificultad de identificar a cabalidad las causas del desplazamiento tiene que ver, entre otras cosas, con que para las víctimas el proceso de registro resulta más complicado cuando no está asociado a la violencia derivada del conflicto. En el caso del PECIG, el Registro Único de Víctimas (RUV) asocia 9155 víctimas de conflicto armado con fumigaciones de cultivos como su causa (anexo 1). Sin embargo, desde la ley 387 de 1997, las aspersiones con glifosato dejaron de ser una razón directa considerada dentro del registro de las víctimas [^3]. Esto quiere decir que la cifra mencionada es producto de un claro subregistro.
 
 [^3]: Decreto 2562 de 2001. Donde se establece una atención especial a las víctimas de desplazamiento forzado por violencia.
 
-Esta investigación busca solucionar ese problema estableciendo la relación existente entre las aspersiones aéreas y los desplazamientos forzados registrados. No obstante, por el diseño del Plan Colombia, los municipios en los que se asperjó están asociados directamente con el conflicto armado, que a su vez se encuentran relacionados con el desplazamiento forzado. Esto implica que no se puede determinar un efecto causal de ambas variables dado que presenta problemas de endogeneidad. Para corregirlos, se utiliza el método de Variables Instrumentales (IV) que permite encontrar el efecto causal de ambas variables través de un instrumento exógeno. En este documento se emplea como instrumento la fuerza de los vientos. Dentro de los líneamientos en el momento de fumigar, el viento era una variable decisión que afectaba directamente la intensidad de aspersión. Por lo tanto, el instrumento permite encontrar variación exógena, no en la aplicación del programa, sino en la intensidad de las aspersiones, lo cual permite exponer los resultados en términos de relaciones de cambio.
+Esta investigación busca solucionar ese problema estableciendo la relación existente entre las aspersiones aéreas y los desplazamientos forzados registrados. No obstante, por el diseño del Plan Colombia, los municipios en los que se asperjó están asociados directamente con el conflicto armado, que a su vez se encuentran relacionados con el desplazamiento forzado. Esto implica que no se puede determinar un efecto causal de ambas variables dado que presentan problemas de endogeneidad. Para corregirlos, se utiliza el método de Variables Instrumentales (IV) que permite identificar el efecto causal de ambas variables través de un instrumento exógeno. En este documento se emplea como instrumento la fuerza de los vientos. Dentro de los líneamientos en el momento de fumigar, el viento era una variable decisión que afectaba directamente la intensidad de aspersión. Por lo tanto, el instrumento permite encontrar variación exógena, no en la aplicación del programa, sino en la intensidad de las aspersiones, lo cual permite exponer los resultados en términos de relaciones de cambio.
 
-Los resultados de este trabajo estiman que por cada 10 hectáreas adicionales de coca asperjada existió un aumento del % de desplazamientos forzados en los municipios y meses donde se aplicó el programa. Además, la decisión de desplazarse no es inmediata en todos los casos: los resultados indican que también existe una relación entre las aspersiones y la migración forzada acumulada tres meses después de la aplicación del programa. En este caso, por cada 10 hectáreas asperjadas adicionales, los desplazamientos aumentaban en un %. Más aún, se encontró que existen efectos diferenciados de acuerdo a la intensidad de aspersión. Es decir, el efecto es mayor en los municipios donde se intensificó el PECIG. Esto ocurre especialmente en los municipios que se encuentran en el quintil de intensidad 
+Los resultados de este trabajo estiman que por cada 10 hectáreas adicionales de coca asperjada existió un aumento del % de desplazamientos forzados en los municipios y meses donde se aplicó el programa. Además, la decisión de desplazarse no es inmediata en todos los casos: los resultados indican que también existe una relación entre las aspersiones y la migración forzada acumulada tres meses después de la aplicación del programa. En este caso, por cada 10 hectáreas asperjadas adicionales, los desplazamientos aumentaban en un %. Más aún, se encontró que existen efectos diferenciados de acuerdo a la intensidad de aspersión. Es decir, el efecto es mayor en los municipios donde se intensificó el PECIG. Esto ocurre especialmente en los municipios que se encuentran en el quintil de intensidad
 
 Son cuatro los posibles canales directos por los cuales existe esta relación: las afectaciones en salud, los daños ambientales, la intensificación de la violencia y los efectos económicos adversos. Estos obedecen a consecuencias del conflicto armado que han sido ampliamente estudiadas pero pocos estudios las han relacionado con la política antidroga, además del conflicto armado. La mayoría de estudios se centran en la relación del narcotráfico como financiador y prolongador de diferentes conflictos armados en el mundo [@cornell2005; @monteleone2016; @gutierrez2020; @mercille2011; @angrist2008; @ballve2012], más que en la evaluación de los programas de política antidroga frente a las guerras civiles. Es decir, son menos los estudios que exponen estos programas como un agravante de la violencia en los territorios [@reyes2014; @abadie2014; @zuleta2017; @turkoglu2022]. En consecuencia, esta investigación contribuye a esa literatura cuantificando el efecto que tuvo el programa principal de política antidroga como un intensificador del conflicto armado y explicando los posibles canales por los que se da esta relación.
 
-Paralelamente, esta investigación ofrece elementos de política pública en dos líneas: la política antidroga y los programas para mitigar el conflicto armado. Respecto a la primera, recientemente se ha debatido la posibilidad de legalizar las aspersiones aéreas y retomarlas como principal política para combatir el narcotráfico [^4]. Han sido múltiples los estudios que cuestionan su efectividad [@mejia2016; @gaviria2011] y muestran sus consecuencias negativas sobre la población [@rodriguez2020; @camacho2014; @reyes2014]. Estos resultados contribuyen al debate de los costos y beneficios de este programa, en particular, aporta una nueva variable a tener en cuenta en la evaluación de las consecuencias no deseadas que las aspersiones con glifosato pueden generar sobre la población.
+Paralelamente, esta investigación ofrece elementos de política pública en dos líneas: la política antidroga y los programas para mitigar el conflicto armado. Respecto a la primera, recientemente se ha debatido la posibilidad de legalizar las aspersiones aéreas y retomarlas como principal política para combatir el narcotráfico [^4]. Han sido múltiples los estudios que cuestionan su efectividad [@mejia2016; @gaviria2011] y muestran sus consecuencias negativas sobre la población [@rodriguez2020; @camacho2014; @reyes2014]. Estos resultados contribuyen al debate de los costos y beneficios de este programa, en particular, aportan una nueva variable a tener en cuenta en la evaluación de las consecuencias no deseadas que las aspersiones con glifosato pueden generar sobre la población.
 
 [^4]: Para el 2022 se debatió en el congreso sobre la posibilidad de eliminar la prohibicón de las aspersiones con glifosato en Colombia. Para más información ver: https://www.portafolio.co/internacional/estados-unidos-estaria-de-acuerdo-con-posibles-fumigaciones-aereas-en-colombia-575312.
 
-La segunda línea está relacionada con los programas de seguridad. Las dinámicas del conflicto armado en los territorios son complejas y tienen múltiples elementos que considerar a la hora de formular políticas públicas. Varios estudios han demostrado que la prestación de bienes públicos y las políticas de seguridad en regiones con baja capacidad estatal y conflicto terminan convirtiéndose en incentivos perversos a favor del clientelismo armado y la violencia en contra de la población civil [@fergusson2017; @acemoglu2020; @ballentine2003; @gutierrez2017]. Este estudio proporciona elementos que ponen en el centro de la discusión las consecuencias negativas que estos programas antidrogas tuvieron en los territorios asperjados con glifosato que en la mayoría de casos eran desprotegidos. Frente a esto, han sido múltiples las quejas de campesinos que se vieron obligados a migrar por los efectos del uso del glifosato y no han encontrado atención estatal, pues como lo afirma una lideresa social de Argelia, Cauca:
+La segunda línea está relacionada con los programas de seguridad. Las dinámicas del conflicto armado en los territorios son complejas y tienen múltiples elementos que considerar a la hora de formular políticas públicas. Varios estudios han demostrado que la prestación de bienes públicos y las políticas de seguridad en regiones con baja capacidad estatal y conflicto terminan convirtiéndose en incentivos perversos a favor del clientelismo armado y la violencia en contra de la población civil [@fergusson2017; @acemoglu2020; @ballentine2003; @gutierrez2017]. Este trabajo proporciona elementos que ponen en el centro de la discusión las consecuencias negativas que estos programas antidrogas tuvieron en los territorios asperjados con glifosato que en la mayoría de casos eran desprotegidos. Frente a esto, han sido múltiples las quejas de campesinos que se vieron obligados a migrar por los efectos del uso del glifosato y no han encontrado atención estatal, pues como lo afirma una lideresa social de Argelia, Cauca:
 
-*"El desplazamiento que se tuvo, que se vio en ese tiempo, fue bastante masivo. La gente salió y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, no había un plan de contingencia para atender a las personas desplazadas por las fumigaciones; no lo hubo, ni lo hay"* [@colombia_informa2021] 
-
+*"El desplazamiento que se tuvo, que se vio en ese tiempo, fue bastante masivo. La gente salió y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, no había un plan de contingencia para atender a las personas desplazadas por las fumigaciones; no lo hubo, ni lo hay"* [@colombia_informa2021]
 
 El resto de este artículo se encuentra estructurado de la siguiente manera: en la sección dos se exponen cuáles son las causas del desplazamiento forzado desde lo que se ha trabajado en la literatura. La sección tres contiene un contexto del Plan Colombia, específicamente del Programa de Aspersiones Aéreas con Glifosato (PECIG). La sección cuatro presenta el marco conceptual de este trabajo. La sección cinco determina la estrategia empírica, los problemas de identificación y la construcción de la variable instrumental. La sección seis expone los datos y las estadísticas descriptivas que se tomaron como base en este trabajo. La sección siete muestra los principales resultados. La sección ocho profundiza sobre los mecanismos que ayudan a entender mejor los resultados. Finalmente, la última sección cierra con las conclusiones de esta investigación.
 
-
 # 2. Causas del Desplazamiento Forzado Interno
 
-El desplazamiento forzado interno es el hecho victimizante de mayor magnitud en las guerras civiles actuales. De acuerdo con el Centro Global de Monitoreo de Desplazamiento Interno - @IDMC2022, para finales del 2021 la cifra de personas forzadas a migrar al interior de sus países ascendía a 59 millones. Esto ha enfocado los esfuerzos de política pública y los estudios sobre migración forzada a entender las causas que lo producen alrededor de los diferentes conflictos armados en el mundo [@arjona2016; @kalyvas2006; @steele2019; @turkoglu2022]. 
+El desplazamiento forzado interno es el hecho victimizante de mayor magnitud en las guerras civiles actuales. De acuerdo con el Centro Global de Monitoreo de Desplazamiento Interno - @IDMC2022, para finales del 2021 la cifra de personas forzadas a migrar al interior de sus países ascendía a 59 millones. Esto ha enfocado los esfuerzos de política pública y los estudios sobre migración forzada a entender las causas que lo producen alrededor de los diferentes conflictos armados en el mundo [@arjona2016; @kalyvas2006; @steele2019; @turkoglu2022].
 
-El canal más directo es la violencia, la cual usualmente no es aleatoria. En las guerras internas la población civil es un actor clave para la supervivencia de los grupos armados, por lo tanto, en los procesos de disputa por el control territorial surgen la mayoría de violaciones a derechos humanos que llevan a poblaciones a movilizarse masivamente [@crisp2010; @steele2019; @ibanez2008; @arjona2016; @kalyvas2006]. Además, los procesos de recuperación de la presencia estatal en estas regiones, en muchas ocasiones, también viene acompañada de combates y enfrentamientos que deja a los civiles en el medio. Estas políticas de seguridad basadas en violencia en territorios con poca presencia estatal, genera efectos adversos sobre la población que usualmente termina en desplazamientos forzados [@turkoglu2022;@comisionverdad2022; @moore2006; @fergusson2017; @acemoglu2020]. 
+El canal más directo es la violencia, la cual usualmente no es aleatoria. En las guerras internas la población civil es un actor clave para la supervivencia de los grupos armados, por lo tanto, en los procesos de disputa por el control territorial surgen la mayoría de violaciones a derechos humanos que llevan a poblaciones a movilizarse masivamente [@crisp2010; @steele2019; @ibanez2008; @arjona2016; @kalyvas2006]. Además, los procesos de recuperación de la presencia estatal en estas regiones, en muchas ocasiones, también viene acompañada de combates y enfrentamientos que deja a los civiles en el medio. Estas políticas de seguridad basadas en violencia en territorios con poca presencia estatal, genera efectos adversos sobre la población que usualmente termina en desplazamientos forzados [@turkoglu2022; @comisionverdad2022; @moore2006; @fergusson2017; @acemoglu2020].
 
 Por otra parte, los conflictos armados internos obedecen a patrones que van más allá de la violencia. Estos pueden generan un sin número de razones por las cuales las personas deciden abandonar su hogar. Por ejemplo, el miedo que produce estar en medio de un territorio desprotegido estatalmente en medio de un conflicto es una causa para que las personas decidan movilizarse [@Hammar2020; @Griffiths2020]. También, las redes de apoyo que pueda tener las comunidades en otros territorios, incluso conformada por otras personas que se desplazaron antes, aumenta la probabilidad de migrar para las personas que se encuentran en regiones vulnerables [@chavez2011; @watcher2018; @redlich2021]. En este sentido, estudiar las causas del desplazamiento forzado está precedido de entender las dinámicas del conflicto en cada país [@steele2019].
 
@@ -77,7 +76,6 @@ A pesar de la existencia del Plan de Manejo Ambiental, con la aplicación del PE
 
 Por esta razón, esta investigación busca determinar si el programa tuvo relación con el desplazamiento forzado interno, que se propagó durante los comienzos de la década. Bajo este contexto, los años de estudio de este trabajo empiezan desde el 2004 -año en el que se aplicaron los lineamientos y parámetros claros de aspersión que más adelante se utilizarán para construir el instrumento- hasta 2012, que fue el año previo a la disminución radical del programa por las denuncias de la población y sus efectos negativos.
 
-
 # 4. Marco Conceptual
 
 La decisión detrás de un desplazamiento forzado no se debe a una sola razón, sino a la suma de eventos que pueden ocurrir en un territorio que sufre la guerra. Las víctimas tienen que ponderar la disyuntiva entre irse, y enfrentarse a un nuevo contexto; o quedarse y afrontar las consecuencias de hacerlo, ambas opciones bajo situaciones de plena incertidumbre. En este sentido, @ibanez2008book modela esta decisión como la situación en la que la utilidad esperada del desplazamiento ($u^{D}$) es mayor que la utilidad esperada de permanecer en el sitio de origen ($u^{P}$).
@@ -90,7 +88,7 @@ Este trabajo busca entender si las aspersiones con glifosato son una variable qu
 
 $$ \frac{\partial \ u^{P}}{\partial \ g} \ \ \ (2)$$
 
-No obstante, la forma en la que las aspersiones aéreas pueden afectar esta utlidad no es directa, sino que se puede dar por medio de distintos canales. Primero, se ha demostrado que el glifosato en grandes cantidades concentradas genera problemas de salud como: enfermedades dermatológicas, abortos, daños en la salud reproductiva e incluso aumenta la probabilidad de cáncer Linfoma Non-Hodgkins [@camacho2014; @univalle_2020; @zhang2019]. Segundo, a nivel económico, además de destruir cultivos lícitos a su paso, produce daños en la fertilidad del suelo y dificulta la germinación de semillas [@bromilow1996; @andrea2003; @ruiz2014]. Tercero, a nivel ambiental el herbicida tiene efectos de largo plazo en la contaminación de ríos y lagunas, junto con daños a la biodiversidad [@cox1995; @brauman2011; @relyea2005; @lajmanovich2015]. Por último, tiene efectos sobre la violencia en los territorios, dado que genera en las guerrillas la necesidad de ratificar su control territorial [@reyes2014; @abadie2014]. 
+No obstante, la forma en la que las aspersiones aéreas pueden afectar esta utlidad no es directa, sino que se puede dar por medio de distintos canales. Primero, se ha demostrado que el glifosato en grandes cantidades concentradas genera problemas de salud como: enfermedades dermatológicas, abortos, daños en la salud reproductiva e incluso aumenta la probabilidad de cáncer Linfoma Non-Hodgkins [@camacho2014; @univalle_2020; @zhang2019]. Segundo, a nivel económico, además de destruir cultivos lícitos a su paso, produce daños en la fertilidad del suelo y dificulta la germinación de semillas [@bromilow1996; @andrea2003; @ruiz2014]. Tercero, a nivel ambiental el herbicida tiene efectos de largo plazo en la contaminación de ríos y lagunas, junto con daños a la biodiversidad [@cox1995; @brauman2011; @relyea2005; @lajmanovich2015]. Por último, tiene efectos sobre la violencia en los territorios, dado que genera en las guerrillas la necesidad de ratificar su control territorial [@reyes2014; @abadie2014].
 
 De acuerdo con lo anterior, la manera en la que el glifosato afecta la utilidad de permanecer en los territorios se puede describir del siguiente modo:
 
@@ -105,7 +103,6 @@ En resumen, la investigación se centra en medir la magnitud y la dirección de 
 # 5. Estrategia Empírica
 
 Para estimar el efecto entre el desplazamiento forzado interno y las aspersiones con glifosato es necesario medir la variación a nivel mensual y municipal. Primero, porque la aplicación del programa solo podía darse máximo tres meses en el año, por lo que para captar las diferencias del efecto de acuerdo a la intensidad es necesario desagregar la información a este nivel. Segundo, la decisión de aspersión estaba condicionada a lo que en el PECIG se llamaban núcleos. Estos eran puntos habilitados, en su mayoría aeropuertos, para preparar el herbicida y distribuirlo (anexo 4). Por lo tanto, el momento de aspersión se determinaba de acuerdo con la cercanía del municipio a cada núcleo. De este modo, la relación se encuentra modelada en la siguiente ecuación:
-
 
 $$log(y_{it+1}) = \alpha + \beta AG_{it} + \theta X_{it} + \delta_{i} + \delta_{m} + \delta_{t} +  \varepsilon_{it} \ \ \ (4)$$
 
@@ -126,7 +123,6 @@ La figura 3, la posible relación entre el desplazamiento y las aspersiones. La 
 ```{r chart1, out.width = "90%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Correlación Desplazamiento y Aspersión Aérea con Glifosato", fig.pos="H"}
 knitr::include_graphics(c("../Visualizations/output/Scatter.png"))
 ```
-
 
 Para comprobar si existe una correlación espacial entre ambas variables, la figura 4 muestra la asociación espacial LISA entre las variables. El color rojo representa los puntos en los que se aglomeró esta correlación de manera fuerte, es decir, donde el desplazamiento fue alto y las aspersiones también. El color azul muestra los puntos donde ambas variables tuvieron un bajo comportamiento. El color azul claro refleja las regiones donde hubo altos niveles de desplazamiento y baja intensidad de aspersión y el color amarillo claro representa el caso contrario. Además, los municipios grises son aquellos donde no hubo correlación signficativa entre ambas variables.
 
@@ -186,23 +182,22 @@ Para corroborar que el instrumento puede ser utilizado dentro del modelo es nece
 
 Primero, la relevancia del instrumento significa que la variable de interés, en este caso las aspersiones aéreas con glifosato, debe estar fuertemente correlacionada con el instrumento, la velocidad del viento. En la subsección anterior ya se mostró la importancia de las condiciones climáticas favorables para determinar el número de hectáreas asperjadas por municipio.
 
-La tabla 1, muestra el resultado de la primera etapa de la regresión. Es decir, un modelo MCO con efectos fijos por municipio y año con errores robustos y clusterizados. Allí se puede notar que la corrrelación entre la velocidad del viento y las aspersiones aéreas son estadísticamente signficativas y con dirección negativa. Esto signfica que, a mayor velocidad del viento, menores niveles de aspersión aérea, lo cual es consistente con las condiciones del PMA. 
+La tabla 1, muestra el resultado de la primera etapa de la regresión. Es decir, un modelo MCO con efectos fijos por municipio y año con errores robustos y clusterizados. Allí se puede notar que la corrrelación entre la velocidad del viento y las aspersiones aéreas son estadísticamente signficativas y con dirección negativa. Esto signfica que, a mayor velocidad del viento, menores niveles de aspersión aérea, lo cual es consistente con las condiciones del PMA.
 
 Además, en la tabla 1, el F estadístico es mayor a 10, lo que indicaría que el instrumento es fuerte [@stock2002]. Sin embargo, cuando se tiene en cuenta los problemas de hetroscedasticidad y autocorrelación de los errores del modelo, el instrumento pierde relevancia como se muestra en el F estadístico efectivo [@olea2013]. Esto significa que, no se puede afirmar que el instrumento sea lo suficientemente fuerte, lo cual puede afectar los resultados de la estimación.
 
 ::: {#tbl-panel layout-ncol="1"}
-
-|                 |   (1)   |
-|:----------------|:-------:|
-|Velocidad viento | -141.2*** |
-|                 | (17.3)  |
-|                 |         |
-|N                |  10165  |
-|R<sup>2</sup>    |  0.021   |
-|F estadístico    |  18.7  |
-|F estadístico efectivo |   9.34  |
-|Controles        |   Sí    |
-|Efectos Fijos    |   Sí    |
+|                        |    \(1\)     |
+|:-----------------------|:------------:|
+| Velocidad viento       | -141.2\*\*\* |
+|                        |    (17.3)    |
+|                        |              |
+| N                      |    10165     |
+| R<sup>2</sup>          |    0.021     |
+| F estadístico          |     18.7     |
+| F estadístico efectivo |     9.34     |
+| Controles              |      Sí      |
+| Efectos Fijos          |      Sí      |
 
 : Variable dependiente: *Desplazamiento forzado*
 
@@ -212,7 +207,6 @@ Los errores estándar son robustos y están corregidos por clusters a nivel muni
 
 Resultados primera etapa
 :::
-
 
 En segundo lugar, la restricción de exclusión implica que el instrumento no puede estar relacionado con las características no incluidas en el modelo que afecten el desplazamiento. Es decir, la variable instrumental no se puede correlacionar con el término error. Implicitamente, esto también deriva en que el único canal por el que el la velocidad del viento afecta al desplazamiento forzado es por medio de las aspersiones aéreas. Este supuesto se puede enunciar formalmente del siguiente modo:
 
@@ -224,16 +218,15 @@ Para corroborar lo anterior, la tabla 2 muestra los resultados de un modelo de M
 
 [^11]: El modelo se calculó con la misma matriz de controles aplicadas en ambas etapas de los Minimos Cuadrados en Dos Etapas (2SLS) de la sección anterior.
 
-::: {#tbl-panel layout-ncol="1"}
-
-|                 | Municipios con Aspérsion Aérea  | Municipios sin Aspérsion Aérea |
-|:----------------|:-------------------------------:|:-------------------------------:|
-|Velocidad viento |             0.024*              |              0.011              |
-|                 |             (0.015)             |             (0.007)             |
-|N                |              11378              |              65126              |
-|R<sup>2</sup>    |              0.73               |              0.56               |
-|Controles        |               Sí                |               Sí                |
-|Efectos Fijos    |               Sí                |               Sí                |
+::: {layout-ncol="1"}
+|                  | Municipios con Aspérsion Aérea | Municipios sin Aspérsion Aérea |
+|:----------------|:-------------------------:|:-------------------------:|
+| Velocidad viento |            0.024\*             |             0.011              |
+|                  |            (0.015)             |            (0.007)             |
+| N                |             11378              |             65126              |
+| R<sup>2</sup>    |              0.73              |              0.56              |
+| Controles        |               Sí               |               Sí               |
+| Efectos Fijos    |               Sí               |               Sí               |
 
 : Variable dependiente: *Desplazamiento forzado*
 
@@ -270,11 +263,9 @@ Los datos del PECIG, a nivel mensual, fueron proporcionados por la Dirección de
 
 Al igual que con el desplazamiento, hubo municipios donde la aspersión fue desproporcionalmente mayor respecto al promedio de la aplicación del programa. La mayoría de estos municipios se encuentran entre Nariño y Guaviare. Por ejemplo, municipios como Tumaco se alcanzaron a asperjar hasta 100.182 entre 2004 y 2012; en Magüi 65.798; en San José del Guaviare 59.358; en Nariño 54.767; y el Charco 50.852. Esto es muestra que la aplicación del programa fue bastante heterogénea de acuerdo a cada región.
 
-
 ```{r chart5, out.width = "60%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Aspersiones Aéreas municipales en Colombia (2004 - 2012)", fig.pos="H"}
 knitr::include_graphics("../Visualizations/output/aspersiones.png")
 ```
-
 
 ## 6.3. Controles
 
@@ -283,7 +274,6 @@ Para incluir los controles basados en violencia, se utilizaron otras violaciones
 En el caso de variables asociadas al programa, se tomaron las precipitaciones de cada territorio tomando como variable la frecuencia de las lluvias de los datos DISC de la NASA. Además, se ha demostrado que la luminosidad de los municipios es una buena variable proxy de desarrollo económico y desprotección estatal [@elvidge1997; @baugh2010]. Por ende, se tomaron los datos del Earth Observation Group del Instituto de Política Pública de Payne que proporcionan esta información satelital diariamente. Estas variables mencionadas se encuentran a nivel píxel, para estas, se promediaron los pixeles que moldeaban cada municipio y luego se calculó la media mensual para cada uno.
 
 \newpage
-
 
 # Referencias
 
@@ -326,6 +316,5 @@ knitr::include_graphics("../Apendix/apendice3.png")
 
 knitr::include_graphics("../Apendix/apendice4.png")
 ```
-
 
 \newpage
