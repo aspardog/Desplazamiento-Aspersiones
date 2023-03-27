@@ -3,7 +3,13 @@
  tab codmpio, gen(dmpio)
  tab date, gen(date)
  
- ivreg2 desplazamiento_log vegetation cultivos night_lights rainFall lag1_ruv_combates lag1_ruv_abandono_despojo lag1_cnmh_minas lag1_cnmh_reclutamiento lag1_ruv_homicidio dm* dr* dmpio* (spraying = windSpeedRMBOS), robust cluster(codmpio)
+ xtset codmpio date
+
+  xtivreg2 desplazamiento_log (spraying = windSpeedRMBOS) vegetation cultivos night_lights rainFall lag1_ruv_combates lag1_ruv_abandono_despojo lag1_cnmh_minas lag1_cnmh_reclutamiento lag1_ruv_homicidio, fe robust cluster(codmpio)
+  weakivtest, level(0.1)
+
+ 
+ ivreg2 desplazamiento_log vegetation cultivos night_lights rainFall ruv_combates ruv_abandono_despojo cnmh_minas cnmh_reclutamiento ruv_homicidio  (spraying = windSpeedRMBOS) i.codmpio i.date, robust cluster(codmpio)
   weakivtest, level(0.1)
 
   ivreg2 sum_desplazamiento_log cultivos vegetation sum_combates sum_despojo sum_minas sum_reclutamiento sum_homicidio night_lights  dm* dr* dmpio* (spraying = windSpeedRMBOS), robust cluster(codmpio)
