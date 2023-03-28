@@ -84,10 +84,10 @@ antimerge_data.df <- readRDS("Data/Merge/output/antimerge_data.rds")
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 controles_fe <- c('vegetation', 'cultivos', 'night_lights', "rainFall", 'ruv_desaparicion_forzada',
-                  'ruv_combates', 'ruv_abandono_despojo', 'cnmh_minas', 'cnmh_reclutamiento', 'ruv_homicidio')
+                  'ruv_combates', 'ruv_abandono_despojo', 'cnmh_minas', 'cnmh_reclutamiento', 'ruv_homicidio', 'windIV10RMBOS')
 
 controles_fe_3month <- c('vegetation', 'cultivos', 'night_lights', "rainFall",
-                         'sum_combates', 'sum_despojo', 'sum_minas', 'sum_reclutamiento', 'sum_homicidio')
+                         'sum_combates', 'sum_despojo', 'sum_minas', 'sum_reclutamiento', 'sum_homicidio', 'windIV10RMBOS')
 
 ef <- c('year', 'codmpio', 'month')
 
@@ -114,8 +114,10 @@ finalRegData <- as.data.frame(finalMonth.reg[["model"]]) %>%
          night_lights = as.double(night_lights))
 
 codmpioData <- merge_data.df %>%
-  select(codmpio, date, year, month, desplazamiento_log, vegetation, night_lights, windSpeedRMBOS, windSpeedFLDAS,
-         windIV05RMBOS, windIV10RMBOS, windIV15RMBOS, windIV20RMBOS)
+  select(codmpio, date, year, month, desplazamiento_log, vegetation, night_lights, windSpeedRMBOS, windSpeedFLDAS, windSpeedMERRA,
+         windIV05RMBOS, windIV15RMBOS, windIV20RMBOS, windIV25RMBOS, windIV30RMBOS,
+         windIV05MERRA, windIV10MERRA, windIV15MERRA, windIV20MERRA, windIV25MERRA, windIV30MERRA,
+  )
 
 finalRegData.df <- finalRegData %>%
   left_join(codmpioData, by = c("desplazamiento_log", "vegetation", "night_lights"))
@@ -156,8 +158,10 @@ finalRegData3Month <- as.data.frame(final3Month.reg[["model"]]) %>%
          night_lights = as.double(night_lights))
 
 codmpioData3Month <- merge_data.df %>%
-  select(codmpio, date, year, month, sum_desplazamiento_log, vegetation, night_lights, windSpeedRMBOS, windSpeedFLDAS,
-         windIV05RMBOS, windIV10RMBOS, windIV15RMBOS, windIV20RMBOS)
+  select(codmpio, date, year, month, sum_desplazamiento_log, vegetation, night_lights, windSpeedRMBOS, windSpeedFLDAS, windSpeedMERRA,
+         windIV05RMBOS, windIV10RMBOS, windIV15RMBOS, windIV20RMBOS, windIV25RMBOS, windIV30RMBOS,
+         windIV05MERRA, windIV10MERRA, windIV15MERRA, windIV20MERRA, windIV25MERRA, windIV30MERRA,
+         )
 
 finalRegData3Month.df <- finalRegData3Month  %>%
   left_join(codmpioData3Month, by = c("sum_desplazamiento_log", "vegetation", "night_lights"))
@@ -213,10 +217,19 @@ ggsave(figureScatter, filename = "Visualizations/output/Scatter.png", dpi = 320,
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+ggplot(data = test.df, aes(y = spraying, x = windIV10RMBOS)) +
+  geom_boxplot()
+
 firstStage <- plm(data = finalRegData.df,
-                  formula = paste0("spraying ~  windSpeedRMBOS + windIV10RMBOS +", paste(controles_fe, collapse = "+")),
+                  formula = paste0("spraying ~  windSpeedRMBOS +", paste(controles_fe, collapse = "+")),
                   effect = "twoways", model = "within", index=c("codmpio", "date"))
 summary(firstStage)
+
+ggplot(data = finalRegData.df, aes(y = spraying, x = rainFall)) +
+  geom_point() +
+  stat_smooth(method=lm, color="#C42126", se= T, size = 1)
+  #scale_x_continuous(limits = c(0,3))
+  
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -225,12 +238,12 @@ summary(firstStage)
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 restExcl1 <- plm(data = antimerge_data.df,
-                formula = paste0("desplazamiento_log ~  windSpeedRMBOS + windIV10RMBOS +", paste(controles_fe, collapse = "+")),
+                formula = paste0("desplazamiento_log ~  windSpeedRMBOS + windIV10RMBOS + ", paste(controles_fe, collapse = "+")),
                 effect = "twoways", model = "within", index=c("codmpio", "date"))
 summary(restExcl1)
 
 restExcl2 <- plm(data = finalRegData.df,
-                formula = paste0("desplazamiento_log ~  windSpeedRMBOS + windIV10RMBOS +", paste(controles_fe, collapse = "+")),
+                formula = paste0("desplazamiento_log ~  windSpeedRMBOS +  windIV10RMBOS +", paste(controles_fe, collapse = "+")),
                 effect = "twoways", model = "within", index=c("codmpio", "date"))
 summary(restExcl2)
 
@@ -245,7 +258,7 @@ summary(restExcl2)
 IV1MonthW <- plm(data= finalRegData.df,
                 formula =  
                   paste0("desplazamiento_log ~ spraying ","|",
-                         paste("windSpeedFLDAS")),
+                         paste("windSpeedFLDAS + windIV10RMBOS ")),
                 effect = "twoways", 
                 model = "within", 
                 index=c("codmpio", "date"))
@@ -255,7 +268,7 @@ IV1Month <- plm(data= finalRegData.df,
                 formula =  
                   paste0("desplazamiento_log ~ spraying +",
                   paste(controles_fe, collapse = "+"),"|",
-                  paste("windSpeedRMBOS + windIV10RMBOS +"),
+                  paste("windSpeedRMBOS +"),
                   paste(controles_fe, collapse = "+")),
                 effect = "twoways", 
                 model = "within", 
@@ -275,11 +288,6 @@ IV3Month <- plm(data= finalRegData3Month.df,
 summary(IV3Month)
 coeftest(IV3Month, vcov=vcovHC(IV3Month, type="sss", cluster="group"))  
 
-
-windIV.reg <- ivreg(data = merge_data.df,
-                    formula = paste0("log(ruv_desplazamiento_forzado + quantile(ruv_desplazamiento_forzado, .25)^2/quantile(ruv_desplazamiento_forzado, .75)) ~",  paste(controles_fe, collapse = "+"), paste(" | spraying | windSpeedFLDAS + rainFall")))
-summary(windIV.reg)
-cluster_errors.fn(windIV.reg)
 
 
 models <- list(
