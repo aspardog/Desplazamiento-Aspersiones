@@ -88,7 +88,7 @@ Este trabajo busca entender si las aspersiones con glifosato son una variable qu
 
 $$ \frac{\partial \ u^{P}}{\partial \ g} \ \ \ (2)$$
 
-No obstante, la forma en la que las aspersiones aéreas pueden afectar esta utlidad no es directa, sino que se puede dar por medio de distintos canales. Primero, se ha demostrado que el glifosato en grandes cantidades concentradas genera problemas de salud como: enfermedades dermatológicas, abortos, daños en la salud reproductiva e incluso aumenta la probabilidad de cáncer Linfoma Non-Hodgkins [@camacho2014; @univalle_2020; @zhang2019]. Segundo, a nivel económico, además de destruir cultivos lícitos a su paso, produce daños en la fertilidad del suelo y dificulta la germinación de semillas [@bromilow1996; @andrea2003; @ruiz2014]. Tercero, a nivel ambiental el herbicida tiene efectos de largo plazo en la contaminación de ríos y lagunas, junto con daños a la biodiversidad [@cox1995; @brauman2011; @relyea2005; @lajmanovich2015]. Por último, tiene efectos sobre la violencia en los territorios, dado que genera en las guerrillas la necesidad de ratificar su control territorial [@reyes2014; @abadie2014].
+No obstante, la forma en la que las aspersiones aéreas pueden afectar esta utlidad no es directa, sino que se da por medio de distintos canales. Primero, se ha demostrado que el glifosato en grandes cantidades concentradas genera problemas de salud como: enfermedades dermatológicas, abortos espotáneos, daños en la salud reproductiva e incluso aumenta la probabilidad de cáncer Linfoma Non-Hodgkins [@camacho2014; @univalle_2020; @zhang2019]. Segundo, a nivel económico, además de destruir cultivos lícitos a su paso, produce daños en la fertilidad del suelo y dificulta la germinación de semillas [@bromilow1996; @andrea2003; @ruiz2014]. Tercero, a nivel ambiental el herbicida tiene efectos de largo plazo en la contaminación de ríos y lagunas, junto con daños a la biodiversidad [@cox1995; @brauman2011; @relyea2005; @lajmanovich2015]. Por último, tiene efectos sobre la violencia en los territorios, dado que genera en las guerrillas la necesidad de ratificar su control territorial [@reyes2014; @abadie2014].
 
 De acuerdo con lo anterior, la manera en la que el glifosato afecta la utilidad de permanecer en los territorios se puede describir del siguiente modo:
 
@@ -99,6 +99,8 @@ $$
 Donde $h(g)$ son las condiciones en salud, $e(g)$ las económicas, $a(g)$ las ambientales y $s(g)$ las asociadas a seguridad, todo esto bajo un contexto de exposición a las aspersiones aéreas con glifosato. La aproximación a entender mejor estos canales se presenta en la sección 9.
 
 En resumen, la investigación se centra en medir la magnitud y la dirección de $\frac{\partial \ u^{P}}{\partial \ g}$. Esto significa que la unidad de análisis de este trabajo son únicamente los municipios donde se aplicó el programa. Por lo tanto, este trabajo no estudia el efecto de aplicar o no el programa, sino la relación de cambio de aplicarlo con mayor intensidad.
+
+La siguiente sección expone la estrategia empírica para cuantificar el efecto mencionado anteriormente. Esta explica la forma en la que esta investigación se aproxima a medir la intensidad de aspersión, y propone un modelo que relaciona el desplazamiento con la aspersión, controlando por efectos fijos de cada municipio estudiado.
 
 # 5. Estrategia Empírica
 
