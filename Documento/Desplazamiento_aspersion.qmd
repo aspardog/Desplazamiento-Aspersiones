@@ -32,9 +32,9 @@ En este contexto, el objetivo de este trabajo es determinar cuál fue la magnitu
 
 [^3]: Decreto 2562 de 2001. Donde se establece una atención especial a las víctimas de desplazamiento forzado por violencia.
 
-Esta investigación busca solucionar ese problema estableciendo la relación existente entre las aspersiones aéreas y los desplazamientos forzados registrados. No obstante, por el diseño del Plan Colombia, los municipios en los que se asperjó están asociados directamente con el conflicto armado, que a su vez se encuentran relacionados con el desplazamiento forzado. Esto implica que no se puede determinar un efecto causal de ambas variables dado que presentan problemas de endogeneidad. Para corregirlos, se utiliza el método de Variables Instrumentales (IV) que permite identificar el efecto causal de ambas variables través de un instrumento exógeno. En este documento se emplea como instrumento la fuerza de los vientos. Dentro de los líneamientos en el momento de fumigar, el viento era una variable decisión que afectaba directamente la intensidad de aspersión. Por lo tanto, el instrumento permite encontrar variación exógena, no en la aplicación del programa, sino en la intensidad de las aspersiones, lo cual permite exponer los resultados en términos de relaciones de cambio.
+Esta investigación busca solucionar ese problema estableciendo la relación existente entre las aspersiones aéreas y los desplazamientos forzados registrados. No obstante, por el diseño del Plan Colombia, los municipios en los que se asperjó están asociados directamente con el conflicto armado, que a su vez se encuentran relacionados con el desplazamiento forzado. Esto implica que no se puede determinar un efecto causal de ambas variables dado que presentan problemas de endogeneidad. Para corregirlos, se utiliza el método de Variables Instrumentales (IV) que permite identificar el efecto causal de ambas variables través de un instrumento exógeno. En este documento se emplea como instrumento la fuerza de los vientos. Dentro de los líneamientos en el momento de fumigar, el viento era una variable decisión que afectaba directamente probabilidad y la intensidad de aspersión. Por lo tanto, este instrumento permite encontrar variación exógena, no en la aplicación del programa, sino en la intensidad de las aspersiones, lo cual permite exponer los resultados en términos de relaciones de cambio.
 
-Los resultados de este trabajo estiman que por cada 10 hectáreas adicionales de coca asperjada existió un aumento del % de desplazamientos forzados en los municipios y meses donde se aplicó el programa. Además, la decisión de desplazarse no es inmediata en todos los casos: los resultados indican que también existe una relación entre las aspersiones y la migración forzada acumulada tres meses después de la aplicación del programa. En este caso, por cada 10 hectáreas asperjadas adicionales, los desplazamientos aumentaban en un %. Más aún, se encontró que existen efectos diferenciados de acuerdo a la intensidad de aspersión. Es decir, el efecto es mayor en los municipios donde se intensificó el PECIG. Esto ocurre especialmente en los municipios que se encuentran en el quintil de intensidad
+Los resultados de este trabajo estiman que por cada 10 hectáreas adicionales de coca asperjada existió un aumento del % de desplazamientos forzados en los municipios y meses donde se aplicó el programa. Además, la decisión de desplazarse no es inmediata en todos los casos: los resultados indican que también existe una relación entre las aspersiones y la migración forzada acumulada tres meses después de la aplicación del programa. En este caso, por cada 10 hectáreas asperjadas adicionales, los desplazamientos aumentaban en un %. Más aún, se encontró que existen efectos diferenciados de acuerdo a la intensidad de aspersión. Es decir, el efecto es mayor en los municipios donde se intensificó el PECIG. Esto ocurre especialmente en los municipios que se encuentran en el quintil de intensidad más alto.
 
 Son cuatro los posibles canales directos por los cuales existe esta relación: las afectaciones en salud, los daños ambientales, la intensificación de la violencia y los efectos económicos adversos. Estos obedecen a consecuencias del conflicto armado que han sido ampliamente estudiadas pero pocos estudios las han relacionado con la política antidroga, además del conflicto armado. La mayoría de estudios se centran en la relación del narcotráfico como financiador y prolongador de diferentes conflictos armados en el mundo [@cornell2005; @monteleone2016; @gutierrez2020; @mercille2011; @angrist2008; @ballve2012], más que en la evaluación de los programas de política antidroga frente a las guerras civiles. Es decir, son menos los estudios que exponen estos programas como un agravante de la violencia en los territorios [@reyes2014; @abadie2014; @zuleta2017; @turkoglu2022]. En consecuencia, esta investigación contribuye a esa literatura cuantificando el efecto que tuvo el programa principal de política antidroga como un intensificador del conflicto armado y explicando los posibles canales por los que se da esta relación.
 
@@ -98,9 +98,7 @@ $$
 
 Donde $h(g)$ son las condiciones en salud, $e(g)$ las económicas, $a(g)$ las ambientales y $s(g)$ las asociadas a seguridad, todo esto bajo un contexto de exposición a las aspersiones aéreas con glifosato. La aproximación a entender mejor estos canales se presenta en la sección 9.
 
-En resumen, la investigación se centra en medir la magnitud y la dirección de $\frac{\partial \ u^{P}}{\partial \ g}$. Esto significa que la unidad de análisis de este trabajo son únicamente los municipios donde se aplicó el programa. Por lo tanto, este trabajo no estudia el efecto de aplicar o no el programa, sino la relación de cambio de aplicarlo con mayor intensidad.
-
-La siguiente sección expone la estrategia empírica para cuantificar el efecto mencionado anteriormente. Esta explica la forma en la que esta investigación se aproxima a medir la intensidad de aspersión, y propone un modelo que relaciona el desplazamiento con la aspersión, controlando por efectos fijos de cada municipio estudiado.
+En resumen, la investigación se centra en medir la magnitud y la dirección de $\frac{\partial \ u^{P}}{\partial \ g}$. Esto significa que la unidad de análisis de este trabajo son únicamente los municipios donde se aplicó el programa. Por lo tanto, este trabajo no estudia el efecto de aplicar o no el programa, sino la relación de cambio de aplicarlo con mayor intensidad. La siguiente sección expone la estrategia empírica para cuantificar este efecto. Esta explica la forma en la que esta investigación se aproxima a medir la intensidad de aspersión, y propone un modelo que relaciona la perdida de utilidad de las poblaciones a raíz del PECIG. Esto por medio del número de desplazamientos que sucedieron relacionados con las aspersiones aéreas con glifosato.
 
 # 5. Estrategia Empírica
 
@@ -116,7 +114,7 @@ Para controlar la variabilidad sistemática relacionada con factores no observad
 
 De acuerdo con @angrist2009 los controles adecuados son variables que han sido fijadas en el momento en que se determinó el regresor de interés. Por lo tanto, la matriz de controles $X_{it}$ contiene variables que influían en la asignación y la aplicación del programa. En cuanto a las variables que afectaban la asignación del programa, se incluyeron variables asociadas a la presencia de grupos armados, principalmente enfocadas en violencia contra la población civil y enfrentamientos contra el ejército. Además, se introdujó el uso del suelo como proxy de la presencia no violenta de los grupos armados, pues se ha demostrado que los lugares donde habitaban transforman las decisiones de uso de la tierra [@fajardo2004; @arias2012]. Por último, dado que uno de los objetivos fijados del plan era promover el desarrollo económico en los municipios desprotegidos, se utilizó la variable de luminosidad municipal para aproximarse al desarrollo económico, o la falta de este, en cada región.
 
-Por otro lado, existen variables que afectaban directamente la aplicación del programa determinadas por el PMA, por esto se añadió la intensidad de las lluvias como una variable que controla la probabilidad de aspersión. Sin embargo, no se añadieron los cultivos de coca por los problemas de multicolinealidad perfecta que esto podría generar, dado que es la variable central para determinar el lugar y la intensidad de aspersión eran las hectáreas de estos cultivos ilícitos.
+Por otro lado, existen variables que afectaban directamente la aplicación del programa determinadas por el PMA, por esto se añadió la intensidad de las lluvias como una variable que controla la probabilidad de aspersión. Además, se añadieron los choques de viento municipales, esto debido a que cuando estos eran mayores a 10km/h era prohibida la ejecución del programa. Finalmente, se añadieron los cultivos de coca que es la variable central para determinar el lugar y la intensidad de aspersión.
 
 Además, $\varepsilon_{it}$ es el error de regresión de cada municipio y cada mes. Dado que la aspersión solo se podía dar hasta tres veces al año, en el resto de meses no se aplicaba el programa. Esto significa que, en las observaciones hay grupos de observación que no varían a nivel municipal. De manera que los errores convencionales pueden subestimar la varianza de los coeficientes [@moulton1986], por lo tanto, los errores se clusterizaron a nivel municipal.
 
@@ -138,11 +136,11 @@ Para corregir estos problemas de endogeneidad se utiliza un modelo de variables 
 
 ## 5.1. Instrumento: Velocidad del Viento.
 
-Para cumplir con el Plan de Manejo Ambiental (PMA), la policia antinarcóticos contaba con un sistema que proporcionaba información en tiempo real de las condiciones climáticas y la densidad de cultivos de coca en una grilla de 10 km [@rodriguez2020]. El día y la intensidad de las aspersiones se encontraban condicionados a estas variables contextuales que garantizaran el complimiento de los parámetros establecidos en el PMA (anexo 3). De esta manera, la velocidad del viento no podía ser mayor a 10km/h debido a que para asperjar las aeronaves tenían que volar a una altura máxima de 30m. Por lo tanto, este es un instrumento relevante en la decisión de la intensidad [^7] y del momento de asperjar [^8].
+Para cumplir con el Plan de Manejo Ambiental (PMA), la policia antinarcóticos contaba con un sistema que proporcionaba información en tiempo real de las condiciones climáticas y la densidad de cultivos de coca en una grilla de 10 km [@rodriguez2020]. La intensidad de las aspersiones se encontraban condicionados a estas variables contextuales que garantizaran el complimiento de los parámetros establecidos en el PMA (anexo 3). De esta manera, la velocidad del viento no podía ser mayor a 10km/h debido a que para asperjar las aeronaves tenían que volar a una altura máxima de 30m. Aún así, cuando el viento no alcanzaba su límite, la aplicación total del programa se encontraba condicionada por esta variable. Por lo tanto, este es un instrumento relevante en la decisión de la intensidad de la aspersión en cada municipio[^7] [^8].
 
 [^7]: Intensidad contado en términos de número de hectareas asperjadas por municipio.
 
-[^8]: Además para pruebas de robustez se utilizaron las bases RMBOS y MERRA2 del mismo portal que estiman la velocidad del tiempo por medio de otros modelos. La base FLDAS fue utilizada porque es la que contiene información con menor número de grados, es decir es más detallada a nivel de grilla.
+[^8]: Además para pruebas de robustez se utilizaron las bases FLDAS y MERRA2 del mismo portal que estiman la velocidad del tiempo por medio de otros modelos. La base FLDAS fue utilizada porque es la que contiene información con menor número de grados, es decir es más detallada a nivel de grilla.
 
 La figura 5, muestra los promedios anuales del número de hectáreas asperjadas con glifosato y velocidad del viento de cada mes a nível municipal, en esta se puede ver que existe una relación negativa entre ambas variables. Entre más velocidad del viento hubiese menores era el número de hectáreas asperjadas en cada territorio. En este sentido, el instrumento captura la variación aleatoria del cambio en la intensidad de aspersión en cada municipio.
 
@@ -150,7 +148,7 @@ La figura 5, muestra los promedios anuales del número de hectáreas asperjadas 
 knitr::include_graphics(c("../Visualizations/output/viento_aspersion.png"))
 ```
 
-Para construir el instrumento, se utilizó la base de datos FLDAS[^9] del portal de datos GES DISC de la NASA. La base cuenta con la información mensual del promedio de velocidad del viento diaría entre las 8 de la mañana y las 5 de la tarde[^10]. Además, se encuentra dividida por pixeles de 0.1x0.1 grados. Esta información se agregó calculando la media mensual de la velocidad del viento de cada municipio ($V_{it}$). La ecuación de la variable instrumental ($V_{it}$) se muestra a continuación:
+Para construir el instrumento, se utilizó la base de datos RMBOS[^9] del portal de datos GES DISC de la NASA. La base cuenta con la información mensual del promedio de velocidad del viento diaría entre las 8 de la mañana y las 5 de la tarde[^10]. Además, se encuentra dividida por pixeles de 0.25x0.25 grados. Esta información se agregó calculando la media mensual de la velocidad del viento de cada municipio ($V_{it}$). La ecuación de la variable instrumental ($V_{it}$) se muestra a continuación:
 
 [^9]: Además para pruebas de robustez se utilizaron las bases RMBOS y MERRA2 del mismo portal que estiman la velocidad del tiempo por medio de otros modelos. La base FLDAS fue utilizada porque es la que contiene información con menor número de grados, es decir es más detallada a nivel de grilla.
 
@@ -172,11 +170,11 @@ La segunda etapa representada en la ecuación 6 expone la relación entre la var
 
 $$log(\tilde{y_{it+1}}) = \tilde\alpha + \tilde\beta \widehat{AG_{it}} + \tilde\theta X_{it} + \delta_{i} + \delta_{t} +  \tilde\varepsilon_{it} \ \ \ (6)$$
 
-Finalmente, la figura 5 muestra que la intensidad de las aspersiones aéreas con glifosato era distinta entre regiones. Por lo tanto, pueden existir efectos heterogéneos por departamento. La ecuación para estimar estos efectos diferenciados es:
+Finalmente, la figura 5 muestra que el número de hectaréas asperjadas con glifosato era distinta entre regiones. Por lo tanto, pueden existir efectos heterogéneos en cuanto a la intensidad de la aplicación. La ecuación para estimar estos efectos diferenciados es:
 
-$$log(\tilde{y_{it}}) =  \delta_{d} +\tilde\beta \widehat{AG_{it}} + \tilde\beta \widehat{AG_{it}} * D_{jt} +\tilde\theta X_{it} + \delta_{i} + \delta_{t} + \delta_{m} + \delta_{d} + \tilde\varepsilon_{it} \ \ \ (7)$$
+$$log(\tilde{y_{it}}) =  \delta_{d} +\tilde\beta \widehat{AG_{it}} + \tilde\beta \widehat{AG_{it}} * Int_{jt} +\tilde\theta X_{it} + \delta_{i} + \delta_{t} + \delta_{m} + \delta_{int} + \tilde\varepsilon_{it} \ \ \ (7)$$
 
-Donde $\delta_{d}$ son los efectos fijos de cada departamento y $D_{jt}$ es una variable binaria que toma valores de 1 por cada departamento. En este caso, el modelo toma como punto de comparación Antioquia, debido a que historicamente este ha sido el departamento más afectado por el conflicto armado.
+Donde $\delta_{int}$ son los efectos fijos por quintiles de intensidad de aspersión y $Int_{jt}$ es una variable binaria que toma valores de 1 por cada quintil. En este caso, el modelo toma como punto de comparación el primer quintil, debido a que así se pueden evaluar que tanto cambia el efecto acorde al aumento en el número de hectaréas asperjadas.
 
 ## 5.3. Supuestos de Identificación y Verificación de Validez.
 
@@ -184,22 +182,22 @@ Para corroborar que el instrumento puede ser utilizado dentro del modelo es nece
 
 Primero, la relevancia del instrumento significa que la variable de interés, en este caso las aspersiones aéreas con glifosato, debe estar fuertemente correlacionada con el instrumento, la velocidad del viento. En la subsección anterior ya se mostró la importancia de las condiciones climáticas favorables para determinar el número de hectáreas asperjadas por municipio.
 
-La tabla 1, muestra el resultado de la primera etapa de la regresión. Es decir, un modelo MCO con efectos fijos por municipio y año con errores robustos y clusterizados. Allí se puede notar que la corrrelación entre la velocidad del viento y las aspersiones aéreas son estadísticamente signficativas y con dirección negativa. Esto signfica que, a mayor velocidad del viento, menores niveles de aspersión aérea, lo cual es consistente con las condiciones del PMA.
+La tabla 1, muestra el resultado de la primera etapa de la regresión. Es decir, un modelo con efectos fijos por municipio, mes y año con errores clusterizados. Allí se puede notar que la corrrelación entre la velocidad del viento y las aspersiones aéreas son estadísticamente signficativas y con dirección negativa. Esto signfica que, a mayor velocidad del viento, menores niveles de aspersión aérea, lo cual es consistente con las condiciones del PMA.
 
-Además, en la tabla 1, el F estadístico es mayor a 10, lo que indicaría que el instrumento es fuerte [@stock2002]. Sin embargo, cuando se tiene en cuenta los problemas de hetroscedasticidad y autocorrelación de los errores del modelo, el instrumento pierde relevancia como se muestra en el F estadístico efectivo [@olea2013]. Esto significa que, no se puede afirmar que el instrumento sea lo suficientemente fuerte, lo cual puede afectar los resultados de la estimación.
+Por otro lado, en la tabla 1 se puede observar que el valor del F estadístico es mayor a 10, lo que sugiere que el instrumento utilizado es fuerte [@stock2002]. No obstante, es importante considerar que al tener en cuenta los problemas de heterocedasticidad y autocorrelación de los errores del modelo, el instrumento pierde relevancia, como se muestra en el F estadístico efectivo [@olea2013]. Este último tiene un valor de 12.936 y, si bien supera el umbral establecido para la hipótesis nula de que el instrumento no contiene más del 20% del sesgo de los casos más críticos, no logra superar la prueba con un umbral del 10%. Esto sugiere que el instrumento puede contener un cierto grado de sesgo que afecta la precisión de la estimación.
 
 ::: {#tbl-panel layout-ncol="1"}
-|                        |    \(1\)     |
-|:-----------------------|:------------:|
-| Velocidad viento       | -141.2\*\*\* |
-|                        |    (17.3)    |
-|                        |              |
-| N                      |    10165     |
-| R<sup>2</sup>          |    0.021     |
-| F estadístico          |     18.7     |
-| F estadístico efectivo |     9.34     |
-| Controles              |      Sí      |
-| Efectos Fijos          |      Sí      |
+|                        |    \(1\)    |
+|:-----------------------|:-----------:|
+| Velocidad viento       | -168,9\*\*\* |
+|                        |   (46,7)    |
+|                        |             |
+| N                      |    10.180    |
+| R<sup>2</sup>          |    0,022    |
+| F estadístico          |   19,03    |
+| F estadístico efectivo |   18,12    |
+| Controles              |     Sí      |
+| Efectos Fijos          |     Sí      |
 
 : Variable dependiente: *Desplazamiento forzado*
 
@@ -216,17 +214,18 @@ $$E[V_{it} \ \times \ \tilde\varepsilon_{it}| \ X_{it}] = 0 \ \ \ (8)$$
 
 A pesar de que este supuesto no puede ser testeado directamente, resulta intuitivo que el único canal por medio del cual el viento afecte el desplazamiento forzado sea la aspersión aérea. Cuando el desplazamiento es forzado, es por un motivo propio del conflicto armado, por lo tanto, la velocidad del viento no podría ser una razón valida para registrarse como víctima.
 
-Para corroborar lo anterior, la tabla 2 muestra los resultados de un modelo de MCO entre desplazamiento forzado y velocidad del viento en los municipios en los que se aplicó el programa y los que no [^11]. Si bien estos resultados no determinan una relación causal entre ambas variables, sí determinan que para los municipios donde se asperjó la correlación con la velocidad del viento es estadisticamente significativa, mientras que en los que no se asperjó, no es concluyente. Por lo tanto, desde los datos, existen indicios de que el instrumento sí cumple con la restricción de exclusión.
+Para corroborar lo anterior, la tabla 2 muestra los resultados de una regresión entre el desplazamiento forzado y velocidad del viento en los municipios en los que se aplicó el programa y los que no [^11]. Si bien estos resultados no determinan una relación causal entre ambas variables, sí determinan que para los municipios donde se asperjó la correlación con la velocidad del viento es estadisticamente significativa, mientras que en los que no se asperjó, no es concluyente. Además, la tabla 2 confirma que la corrrelación de los vientos con el desplazamiento es negativa, lo cual es consistente con la correlación que tiene el viento con las aspersiones aéreas. Por lo tanto, desde los datos, existen indicios de que el instrumento sí cumple con la restricción de exclusión.
 
 [^11]: El modelo se calculó con la misma matriz de controles aplicadas en ambas etapas de los Minimos Cuadrados en Dos Etapas (2SLS) de la sección anterior.
 
-::: {layout-ncol="1"}
+::: {#tbl-panel layout-ncol="1"}
 |                  | Municipios con Aspérsion Aérea | Municipios sin Aspérsion Aérea |
-|:----------------|:-------------------------:|:-------------------------:|
-| Velocidad viento |            0.024\*             |             0.011              |
-|                  |            (0.015)             |            (0.007)             |
-| N                |             11378              |             65126              |
-| R<sup>2</sup>    |              0.73              |              0.56              |
+|:-----------------|:-------------------------:|:-------------------------:|
+| Velocidad viento |            -0,061\*            |             -0,021             |
+|                  |            (0,0324)            |            (0,0243)            |
+|                  |                                |                                |
+| N                |             10.180             |             18.657              |
+| R<sup>2</sup>    |             0,0432             |             0,0158             |
 | Controles        |               Sí               |               Sí               |
 | Efectos Fijos    |               Sí               |               Sí               |
 
@@ -274,6 +273,28 @@ knitr::include_graphics("../Visualizations/output/aspersiones.png")
 Para incluir los controles basados en violencia, se utilizaron otras violaciones a derechos humanos dentro del Registro Único de Víctimas. Además, se complementó con información del Centro Nacional de Memoria Histórica, que documenta de manera más amplia otros hechos como las masacres y los ataques a la población. Es importante resaltar que estas variables presentan problemas de subregistro, por lo que no es correcto asumir que representan completamente la violencia de cada municipio. Por otro lado, para incluir los usos del suelo se utilizaron los datos DISC de la NASA [@indexvegetation2002], los cuales miden la variación en el uso del suelo de acuerdo a imagenes que día a día proporcionan tamaño y las caracteristicas de la vegetación.
 
 En el caso de variables asociadas al programa, se tomaron las precipitaciones de cada territorio tomando como variable la frecuencia de las lluvias de los datos DISC de la NASA. Además, se ha demostrado que la luminosidad de los municipios es una buena variable proxy de desarrollo económico y desprotección estatal [@elvidge1997; @baugh2010]. Por ende, se tomaron los datos del Earth Observation Group del Instituto de Política Pública de Payne que proporcionan esta información satelital diariamente. Estas variables mencionadas se encuentran a nivel píxel, para estas, se promediaron los pixeles que moldeaban cada municipio y luego se calculó la media mensual para cada uno.
+
+# 7. Resultados
+
+::: {#tbl-panel layout-ncol="1"}
+
+|                                 |    (MCO)    |  (IV)   |    (IV)    |
+|:--------------------------------|:-----------:|:----------:|:----------:|
+|Aspersiones Aéreas 
+con Glifosato | 0,0065*** |   0,004  | 0,0359*  |
+|                                 | (0,000024)  | (0,000237) | (0,000191) |
+|                                 |             |            |            |
+|N                                |    10.180    |   10.180    |   10.180    |
+|Controles                        |     Sí      |     No     |     Sí     |
+|Efectos Fijos                    |     Sí      |     Sí     |     Sí     |
+: Variable dependiente: *Desplazamiento forzado*
+
+\*\*\* p\<0.01, \*\* p\<0.05, \* p\<0.1.
+
+Los errores estándar son robustos y están corregidos por clusters a nivel municipal.
+
+Relación entre aspersiones aéreas y desplazamientos forzados
+:::
 
 \newpage
 

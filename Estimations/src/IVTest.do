@@ -9,7 +9,7 @@
   weakivtest, level(0.1)
 
  
- ivreg2 desplazamiento_log vegetation cultivos night_lights rainFall ruv_combates ruv_abandono_despojo ruv_desaparicion_forzada cnmh_minas cnmh_reclutamiento ruv_homicidio  (spraying = windSpeedRMBOS windIV30RMBOS) i.codmpio i.date, robust cluster(codmpio)
+ ivreg2 desplazamiento_log vegetation cultivos night_lights rainFall ruv_combates ruv_abandono_despojo ruv_desaparicion_forzada cnmh_minas cnmh_reclutamiento ruv_homicidio  windIV10RMBOS (spraying_norm = windSpeedRMBOS) i.codmpio i.date, robust cluster(codmpio)
   weakivtest, level(0.1)
 
   ivreg2 sum_desplazamiento_log cultivos vegetation sum_combates sum_despojo sum_minas sum_reclutamiento sum_homicidio night_lights  dm* dr* dmpio* (spraying = windSpeedRMBOS), robust cluster(codmpio)
