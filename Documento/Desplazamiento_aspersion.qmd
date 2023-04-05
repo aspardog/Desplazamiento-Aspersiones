@@ -6,7 +6,7 @@ format: pdf
 editor: visual
 biblio-style: "apalike"
 csl: apa.csl
-lang: es    
+lang: es
 biblatexoptions:
   - style = apa
 header-includes:
@@ -36,7 +36,7 @@ Esta investigación busca solucionar ese problema estableciendo la relación exi
 
 Los resultados de este trabajo estiman que por cada 10 hectáreas adicionales de coca asperjada existió un aumento del % de desplazamientos forzados en los municipios y meses donde se aplicó el programa. Además, la decisión de desplazarse no es inmediata en todos los casos: los resultados indican que también existe una relación entre las aspersiones y la migración forzada acumulada tres meses después de la aplicación del programa. En este caso, por cada 10 hectáreas asperjadas adicionales, los desplazamientos aumentaban en un %. Más aún, se encontró que existen efectos diferenciados de acuerdo a la intensidad de aspersión. Es decir, el efecto es mayor en los municipios donde se intensificó el PECIG. Esto ocurre especialmente en los municipios que se encuentran en el quintil de intensidad más alto.
 
-Son cuatro los posibles canales directos por los cuales existe esta relación: las afectaciones en salud, los daños ambientales, la intensificación de la violencia y los efectos económicos adversos. Estos obedecen a consecuencias del conflicto armado que han sido ampliamente estudiadas pero pocos estudios las han relacionado con la política antidroga, además del conflicto armado. La mayoría de estudios se centran en la relación del narcotráfico como financiador y prolongador de diferentes conflictos armados en el mundo [@cornell2005; @monteleone2016; @gutierrez2020; @mercille2011; @angrist2008; @ballve2012], más que en la evaluación de los programas de política antidroga frente a las guerras civiles. Es decir, son menos los estudios que exponen estos programas como un agravante de la violencia en los territorios [@reyes2014; @abadie2014; @zuleta2017; @turkoglu2022]. En consecuencia, esta investigación contribuye a esa literatura cuantificando el efecto que tuvo el programa principal de política antidroga como un intensificador del conflicto armado y explicando los posibles canales por los que se da esta relación.
+Son cuatro los posibles canales directos por los cuales existe esta relación: las alteraciones en salud, los daños ambientales, la intensificación de la violencia y los efectos económicos adversos. Estos obedecen a consecuencias del conflicto armado que han sido ampliamente estudiadas pero pocos estudios las han relacionado con la política antidroga, además del conflicto armado. La mayoría de estudios se centran en la relación del narcotráfico como financiador y prolongador de diferentes conflictos armados en el mundo [@cornell2005; @monteleone2016; @gutierrez2020; @mercille2011; @angrist2008; @ballve2012], más que en la evaluación de los programas de política antidroga frente a las guerras civiles. Es decir, son menos los estudios que exponen estos programas como un agravante de la violencia en los territorios [@reyes2014; @abadie2014; @zuleta2017; @turkoglu2022]. En consecuencia, esta investigación contribuye a esa literatura cuantificando el efecto que tuvo el programa principal de política antidroga como un intensificador del conflicto armado y explicando los posibles canales por los que se da esta relación.
 
 Paralelamente, esta investigación ofrece elementos de política pública en dos líneas: la política antidroga y los programas para mitigar el conflicto armado. Respecto a la primera, recientemente se ha debatido la posibilidad de legalizar las aspersiones aéreas y retomarlas como principal política para combatir el narcotráfico [^4]. Han sido múltiples los estudios que cuestionan su efectividad [@mejia2016; @gaviria2011] y muestran sus consecuencias negativas sobre la población [@rodriguez2020; @camacho2014; @reyes2014]. Estos resultados contribuyen al debate de los costos y beneficios de este programa, en particular, aportan una nueva variable a tener en cuenta en la evaluación de las consecuencias no deseadas que las aspersiones con glifosato pueden generar sobre la población.
 
@@ -104,17 +104,17 @@ En resumen, la investigación se centra en medir la magnitud y la dirección de 
 
 Para estimar el efecto entre el desplazamiento forzado interno y las aspersiones con glifosato es necesario medir la variación a nivel mensual y municipal. Primero, porque la aplicación del programa solo podía darse máximo tres meses en el año, por lo que para captar las diferencias del efecto de acuerdo a la intensidad es necesario desagregar la información a este nivel. Segundo, la decisión de aspersión estaba condicionada a lo que en el PECIG se llamaban núcleos. Estos eran puntos habilitados, en su mayoría aeropuertos, para preparar el herbicida y distribuirlo (anexo 4). Por lo tanto, el momento de aspersión se determinaba de acuerdo con la cercanía del municipio a cada núcleo. De este modo, la relación se encuentra modelada en la siguiente ecuación:
 
-$$log(y_{it+1}) = \alpha + \beta AG_{it} + \theta X_{it} + \delta_{i} + \delta_{m} + \delta_{t} +  \varepsilon_{it} \ \ \ (4)$$
+$$log(y_{it}) = \alpha + \beta AG_{it-p} + \theta X_{it-p} + \delta_{i} + \delta_{m} + \delta_{t} +  \varepsilon_{it-p} \ \ \ (4)$$
 
-Donde $log(y_{it})$ es el logaritmo de los desplazamientos mensuales en el municipio $i$ en el mes $t+1$ [^6]. Esto significa que, el modelo recoge la relación entres las aspersiones aéreas y los desplazamientos forzados en el mes siguiente. Esto por dos razones: primero, la decisión de movilizarse no se puede asumir como inmediata después de la aspersión, sino como una consecuencia en la afectación del bienestar por medio de los canales ya expuestos. Segundo, de esta forma se asegura que en los datos los desplazamientos que se estan midiendo en la relación son todos antecedidos por la aplicación del programa. Además, $AG_{it}$ son las hectáreas asperjadas en el municipio $i$ en el mes $t$. Por lo tanto, $\beta$ mide la magnitud del efecto entre las aspersiones con glifosato y el desplazamiento del mes siguiente.
+Donde $log(y_{it})$ es el logaritmo de los desplazamientos mensuales [^6] en el municipio $i$ en el mes $t$ y $AG_{i\ t-p}$ es la aplicación del programa en ese mismo municipio en un periodo $p$ anterior. Es decir, si $p = 1$ las aspersiones aéreas se habran suministrado en el mes justamente anterior. Esto debido a que no se pueden asociar los desplazamientos en el tiempo con el mismo periodo de fumigación, pues no existe una forma de conocer cuál del los dos hechos ocurrió primero. Esto produce un error de medición que generaría que $\beta$ tienda a cero [@angrist2009]. Además, en vista de que la decisión de movilizarse no se puede asumir como inmediata, medir el rezago temporal del programa sobre el desplazamiento resulta consistente con la decisión de las personas que habitan en estos municipios con alta desprotección.
 
 [^6]: Se aplicó el método de cuartiles [@stahel2013] al logaritmo de los desplazamientos para corregir los casos en donde estos tomen valores iguales a cero. En este link, se encuentra una explicación más detallada: https://aosmith.rbind.io/2018/09/19/the-log-0-problem/#thinking-about-0-values.
 
-Para controlar la variabilidad sistemática relacionada con factores no observados, se aplican efectos fijos por municipio, año y mes. Los efectos fijos por municipio ($\delta_{i}$) controlan la heterogeneidad geográfica, como la estructura socioeconómica o características culturales. Los efectos fijos ($\delta_{t}$) por año permiten controlar la posible tendencia temporal de la relación entre las variables, mientras que los mensuales ($\delta_{m}$) controlan la posible estacionalidad en los datos. Al incorporar estos efectos fijos, se diferencian los efectos de las variables explicativas y los factores específicos de cada unidad geográfica y temporal.
+Para controlar la variabilidad sistemática relacionada con factores no observados, se aplican efectos fijos por municipio, año y mes. Los efectos fijos por municipio ($\delta_{i}$) controlan la heterogeneidad geográfica, como la estructura socioeconómica o características culturales. Los efectos fijos ($\delta_{t}$) por año y mes permiten controlar la posible tendencia temporal de la relación entre las variables, paralelamente también controlan la posible estacionalidad en los datos. Al incorporar estos efectos fijos, se diferencian los efectos de las variables explicativas y los factores específicos de cada unidad geográfica y temporal.
 
-De acuerdo con @angrist2009 los controles adecuados son variables que han sido fijadas en el momento en que se determinó el regresor de interés. Por lo tanto, la matriz de controles $X_{it}$ contiene variables que influían en la asignación y la aplicación del programa. En cuanto a las variables que afectaban la asignación del programa, se incluyeron variables asociadas a la presencia de grupos armados, principalmente enfocadas en violencia contra la población civil y enfrentamientos contra el ejército. Además, se introdujó el uso del suelo como proxy de la presencia no violenta de los grupos armados, pues se ha demostrado que los lugares donde habitaban transforman las decisiones de uso de la tierra [@fajardo2004; @arias2012]. Por último, dado que uno de los objetivos fijados del plan era promover el desarrollo económico en los municipios desprotegidos, se utilizó la variable de luminosidad municipal para aproximarse al desarrollo económico, o la falta de este, en cada región.
+La matriz de controles $X_{it}$ contiene variables que influían en la asignación y la aplicación del programa. En cuanto a las variables que afectaban la asignación del programa, se incluyeron variables asociadas a la presencia de grupos armados, principalmente enfocadas en violencia contra la población civil y enfrentamientos contra el ejército. Además, se introdujó el uso del suelo como proxy de la presencia no violenta de los grupos armados, pues se ha demostrado que los lugares donde habitaban transforman las decisiones de uso de la tierra [@fajardo2004; @arias2012]. Por último, dado que uno de los objetivos fijados del plan era promover el desarrollo económico en los municipios desprotegidos, se utilizó la variable de luminosidad municipal para aproximarse al desarrollo económico, o la falta de este, en cada región.
 
-Por otro lado, existen variables que afectaban directamente la aplicación del programa determinadas por el PMA, por esto se añadió la intensidad de las lluvias como una variable que controla la probabilidad de aspersión. Además, se añadieron los choques de viento municipales, esto debido a que cuando estos eran mayores a 10km/h era prohibida la ejecución del programa. Finalmente, se añadieron los cultivos de coca que es la variable central para determinar el lugar y la intensidad de aspersión.
+Por otro lado, existen variables que afectaban directamente la aplicación del programa determinadas por el PMA, por esto se añadió la intensidad de las lluvias como una variable que controla la probabilidad de aspersión. Además, se añadieron los choques de viento municipales, esto debido a que cuando estos eran mayores a 10km/h era prohibida la ejecución del programa. Por otro lado, no se incluyeron los cultivos de coca debido a que el objetivo principal del programa era la reducción de estos, lo cual signfica que más que ser una variable de control es una variable de resultados, por lo tanto su inclusión podría generar problemas de sesgos en el modelo [@angrist2009].
 
 Además, $\varepsilon_{it}$ es el error de regresión de cada municipio y cada mes. Dado que la aspersión solo se podía dar hasta tres veces al año, en el resto de meses no se aplicaba el programa. Esto significa que, en las observaciones hay grupos de observación que no varían a nivel municipal. De manera que los errores convencionales pueden subestimar la varianza de los coeficientes [@moulton1986], por lo tanto, los errores se clusterizaron a nivel municipal.
 
@@ -168,11 +168,11 @@ Donde $V_{it}$ es la velocidad del viento en el municipio $i$ en el mes $t$. Ade
 
 La segunda etapa representada en la ecuación 6 expone la relación entre la variable dependiente y la variable instrumenda estimada ($\widehat{AG_{it}}$) en la primera etapa. Esto quiere decir que el nuevo estimador $\tilde\beta$ presenta relación del desplazamiento forzado con las aspersiones aéreas con glifosato corregidas por la variación aleatoria que le impone la velocidad del viento.
 
-$$log(\tilde{y_{it+1}}) = \tilde\alpha + \tilde\beta \widehat{AG_{it}} + \tilde\theta X_{it} + \delta_{i} + \delta_{t} +  \tilde\varepsilon_{it} \ \ \ (6)$$
+$$log(\dot{y_{it}}) = \dot\alpha + \dot\beta \widehat{AG_{it-p}} + \dot\theta X_{it-p} + \delta_{i} + \delta_{t} +  \dot\varepsilon_{it} \ \ \ (6)$$
 
 Finalmente, la figura 5 muestra que el número de hectaréas asperjadas con glifosato era distinta entre regiones. Por lo tanto, pueden existir efectos heterogéneos en cuanto a la intensidad de la aplicación. La ecuación para estimar estos efectos diferenciados es:
 
-$$log(\tilde{y_{it}}) =  \delta_{d} +\tilde\beta \widehat{AG_{it}} + \tilde\beta \widehat{AG_{it}} * Int_{jt} +\tilde\theta X_{it} + \delta_{i} + \delta_{t} + \delta_{m} + \delta_{int} + \tilde\varepsilon_{it} \ \ \ (7)$$
+$$log(\tilde{y_{i}}) =  \delta_{d} +\tilde\beta \widehat{AG_{it-p}} + \tilde\beta \widehat{AG_{it-p}} * Int_{jt-p} +\tilde\theta X_{it-p} + \delta_{i} + \delta_{t}  + \delta_{int} + \tilde\varepsilon_{it-p} \ \ \ (7)$$
 
 Donde $\delta_{int}$ son los efectos fijos por quintiles de intensidad de aspersión y $Int_{jt}$ es una variable binaria que toma valores de 1 por cada quintil. En este caso, el modelo toma como punto de comparación el primer quintil, debido a que así se pueden evaluar que tanto cambia el efecto acorde al aumento en el número de hectaréas asperjadas.
 
@@ -187,17 +187,17 @@ La tabla 1, muestra el resultado de la primera etapa de la regresión. Es decir,
 Por otro lado, en la tabla 1 se puede observar que el valor del F estadístico es mayor a 10, lo que sugiere que el instrumento utilizado es fuerte [@stock2002]. No obstante, es importante considerar que al tener en cuenta los problemas de heterocedasticidad y autocorrelación de los errores del modelo, el instrumento pierde relevancia, como se muestra en el F estadístico efectivo [@olea2013]. Este último tiene un valor de 12.936 y, si bien supera el umbral establecido para la hipótesis nula de que el instrumento no contiene más del 20% del sesgo de los casos más críticos, no logra superar la prueba con un umbral del 10%. Esto sugiere que el instrumento puede contener un cierto grado de sesgo que afecta la precisión de la estimación.
 
 ::: {#tbl-panel layout-ncol="1"}
-|                        |    \(1\)    |
-|:-----------------------|:-----------:|
+|                        |    \(1\)     |
+|:-----------------------|:------------:|
 | Velocidad viento       | -168,9\*\*\* |
-|                        |   (46,7)    |
-|                        |             |
+|                        |    (46,7)    |
+|                        |              |
 | N                      |    10.180    |
-| R<sup>2</sup>          |    0,022    |
-| F estadístico          |   19,03    |
-| F estadístico efectivo |   18,12    |
-| Controles              |     Sí      |
-| Efectos Fijos          |     Sí      |
+| R<sup>2</sup>          |    0,022     |
+| F estadístico          |    19,03     |
+| F estadístico efectivo |    18,12     |
+| Controles              |      Sí      |
+| Efectos Fijos          |      Sí      |
 
 : Variable dependiente: *Desplazamiento forzado*
 
@@ -224,7 +224,7 @@ Para corroborar lo anterior, la tabla 2 muestra los resultados de una regresión
 | Velocidad viento |            -0,061\*            |             -0,021             |
 |                  |            (0,0324)            |            (0,0243)            |
 |                  |                                |                                |
-| N                |             10.180             |             18.657              |
+| N                |             10.180             |             18.657             |
 | R<sup>2</sup>    |             0,0432             |             0,0158             |
 | Controles        |               Sí               |               Sí               |
 | Efectos Fijos    |               Sí               |               Sí               |
@@ -276,17 +276,17 @@ En el caso de variables asociadas al programa, se tomaron las precipitaciones de
 
 # 7. Resultados
 
-::: {#tbl-panel layout-ncol="1"}
 
-|                                 |    (MCO)    |  (IV)   |    (IV)    |
-|:--------------------------------|:-----------:|:----------:|:----------:|
-|Aspersiones Aéreas 
-con Glifosato | 0,0065*** |   0,004  | 0,0359*  |
-|                                 | (0,000024)  | (0,000237) | (0,000191) |
-|                                 |             |            |            |
-|N                                |    10.180    |   10.180    |   10.180    |
-|Controles                        |     Sí      |     No     |     Sí     |
-|Efectos Fijos                    |     Sí      |     Sí     |     Sí     |
+::: {#tbl-panel layout-ncol="1"} 
+|                                  |    (MCO)     |   \(IV\)   |   \(IV\)   |
+|:---------------------------------|:------------:|:----------:|:----------:|
+| Aspersiones Aéreas con Glifosato | 0,0065\*\*\* |   0,004    |  0,0359\*  |
+|                                  |  (0,000024)  | (0,000237) | (0,000191) |
+|                                  |              |            |            |
+| N                                |    10.180    |   10.180   |   10.180   |
+| Controles                        |      Sí      |     No     |     Sí     |
+| Efectos Fijos                    |      Sí      |     Sí     |     Sí     |
+
 : Variable dependiente: *Desplazamiento forzado*
 
 \*\*\* p\<0.01, \*\* p\<0.05, \* p\<0.1.
@@ -294,6 +294,29 @@ con Glifosato | 0,0065*** |   0,004  | 0,0359*  |
 Los errores estándar son robustos y están corregidos por clusters a nivel municipal.
 
 Relación entre aspersiones aéreas y desplazamientos forzados
+:::
+
+```{r chart6, out.width = "90%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Correlación Desplazamiento y Aspersión Aérea con Glifosato", fig.pos="H"}
+knitr::include_graphics(c("../Visualizations/output/DinamicEffects.png"))
+```
+
+::: {#tbl-panel layout-ncol="1"}
+
+|                                  |    (MCO)    |  (IV WC)  |  \(IV\)   |
+|:---------------------------------|:-----------:|:---------:|:---------:|
+| Aspersiones Aéreas con Glifosato | 0,005\*\*\* |  -0,006   |  0,039\*  |
+|                                  |  (0,00002)  | (0,00024) | (0,00021) |
+| N                                |   10.180    |  10.180   |  10.180   |
+| Controles                        |     Sí      |    No     |    Sí     |
+| Efectos Fijos                    |     Sí      |    Sí     |    Sí     |
+
+: Variable dependiente: *Desplazamiento forzado*
+
+\*\*\* p\<0.01, \*\* p\<0.05, \* p\<0.1.
+
+Los errores estándar son robustos y están corregidos por clusters a nivel municipal.
+
+Relación entre aspersiones aéreas y desplazamientos forzados acumulados tres meses después de la aplicación del programa
 :::
 
 \newpage
