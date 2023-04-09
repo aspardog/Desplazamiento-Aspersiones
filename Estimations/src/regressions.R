@@ -622,13 +622,166 @@ IVHReg <- plm(data= IVHF,
                model = "within", 
                index=c("codmpio", "date"))
 summary(IVHReg)
+IVHRegHE <- coeftest(IVHReg, vcov=vcovHC(IVHReg, type="sss", cluster="group")) 
+IVHRegHEIC <- confint(IVHReg, vcov=vcovHC(IVHReg, type="sss", cluster="group"), level = 0.9)
 
-IVASP <- plm(data= IVHF,
-             formula = paste0("desplazamiento_log ~ spraying*quintilesAspersion + quintilesAspersion + spraying +",
+estimate <- as.data.frame(IVHRegHE[,]) %>%
+  rownames_to_column(var = "variable") %>%
+  filter(variable %in% c("spraying:hetEffectsHigh-High", "spraying:hetEffectsHigh-Low", "spraying:hetEffectsLow-High"))
+CI <- as.data.frame(IVHRegHEIC[,]) %>%
+  rownames_to_column(var = "variable") %>%
+  filter(variable %in% c("spraying:hetEffectsHigh-High", "spraying:hetEffectsHigh-Low", "spraying:hetEffectsLow-High")) %>%
+  rename("lower" = "5 %", "upper" = "95 %")
+
+data2plot <- estimate %>%
+  inner_join(CI, by = "variable") %>%
+  mutate(
+    order_value =
+      case_when(
+        variable == "spraying:hetEffectsLow-High" ~ 1,
+        variable == "spraying:hetEffectsHigh-Low" ~ 2,
+        variable == "spraying:hetEffectsHigh-High" ~ 3,
+      ),
+    variable = 
+      case_when(
+        variable == "spraying:hetEffectsLow-High" ~ "Baja Aspersión - Altos Cultivos",
+        variable == "spraying:hetEffectsHigh-Low" ~ "Alta Aspersión - Bajos Cultivos",
+        variable == "spraying:hetEffectsHigh-High" ~ "Alta Aspersión - Altos Cultivos",
+      )
+  )
+
+HECocaPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate)) +
+  geom_hline(yintercept = 0, lty = 1, color = "#fa4d57", lwd = 1)  +
+  geom_linerange(aes(x = reorder(variable, order_value),  ymin = lower, ymax = upper),
+                 lwd = 0.5, position = position_dodge(width = .7), 
+                 stat = "identity", color = "#003b8a")+
+  geom_point(aes(x =reorder(variable, order_value), y = Estimate), 
+             size = 3.5, position = position_dodge(width = 1), color = "#003b8a") +
+  geom_point(aes(x = reorder(variable, order_value), y = Estimate), 
+             size = 2.5, position = position_dodge(width = 1), color = "white") +
+  scale_y_continuous(limits = c(-0.1, 0.1),
+                     breaks = seq(-0.1, 0.1, by = 0.05),
+                     expand = expansion(mult = 0.025), position = "left",
+                     labels = c("-0.1", "-0.05", "0", "0.05","0.1")) +
+  coord_flip() +
+  labs(x = "Nivel de aspersión y cultivos de coca",
+       y = "Efecto aspersiones sobre desplazamiento") +
+  theme(panel.background   = element_blank(),
+        plot.background    = element_blank(),
+        panel.grid.major   = element_line(size     = 0.25,
+                                          colour   = "#5e5c5a",
+                                          linetype = "dashed"),
+        panel.grid.minor   = element_blank(),
+        axis.ticks  = element_blank(),
+        plot.margin  = unit(c(0, 0, 0, 0), "points")) +
+  theme(legend.position = "none",
+        panel.background   = element_blank(),
+        panel.grid.major.x = element_line(colour = "#d1cfd1", 
+                                          size = 0.5, linetype = "dashed"),
+        legend.title = element_blank(),
+        axis.title.y = element_text(size = 12, margin   = margin(0, 20, 0, 10), vjust = 1),
+        axis.title.x = element_text(size = 12, margin   = margin(20, 0, 10, 0), vjust = 0),
+        axis.text.x  = element_text(size = 10),
+        axis.text.y  = element_text(size = 10),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.x  = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        ggh4x.axis.ticks.length.minor = rel(1),
+        axis.line.x.bottom = element_line(linetype = "solid", size = 1));HECocaPlot 
+ggsave(HECocaPlot, filename = "Visualizations/output/CultivosHE.png", dpi = 320, width = 10, height = 7.5)
+
+
+# Quintiles intensidad
+
+
+IVASP <- merge_data.df %>%
+  group_by(codmpio) %>%
+  summarise(asp_total = sum(spraying_norm, na.rm = T)) %>%
+  ungroup()
+
+quintiles <- quantile(IVASP$asp_total, probs = seq(0, 1, 0.2))
+IVASP$quintil <- cut(IVASP$asp_total, quintiles, labels = FALSE)
+IVASP$quintil <- as.factor(IVASP$quintil)
+
+IVASP <- merge_data.df %>%
+  left_join(IVASP, by = "codmpio")
+
+IVASP.reg <- plm(data= IVASP,
+             formula = paste0("desplazamiento_log ~ quintil + spraying + quintil*spraying +",
                               paste(controles_fe, collapse = "+"),"|",
-                              paste("windSpeedRMBOS*quintilesAspersion + quintilesAspersion +"),
+                              paste("windSpeedRMBOS*quintil + quintil +"),
                               paste(controles_fe, collapse = "+")),
-             effect = "twoways", 
-             model = "within", 
+             effect = "individual", 
+             model = "random", 
              index=c("codmpio", "date"))
-summary(IVASP)
+summary(IVASP.reg)
+IVASPHE <- coeftest(IVASP.reg, vcov=vcovHC(IVASP.reg, type="sss", cluster="group")) 
+IVASPHEIC <- confint(IVASP.reg, vcov=vcovHC(IVASP.reg, type="sss", cluster="group"), level = 0.9)
+
+estimate <- as.data.frame(IVASPHE[,]) %>%
+  rownames_to_column(var = "variable") %>%
+  filter(variable %in% c("quintil2:spraying", "quintil3:spraying", "quintil4:spraying", "quintil5:spraying"))
+CI <- as.data.frame(IVASPHEIC[,]) %>%
+  rownames_to_column(var = "variable") %>%
+  filter(variable %in% c("quintil2:spraying", "quintil3:spraying", "quintil4:spraying", "quintil5:spraying")) %>%
+  rename("lower" = "5 %", "upper" = "95 %")
+
+data2plot <- estimate %>%
+  inner_join(CI, by = "variable") %>%
+  mutate(
+    order_value =
+      case_when(
+        variable == "quintil2:spraying" ~ 1,
+        variable == "quintil3:spraying" ~ 2,
+        variable == "quintil4:spraying" ~ 3,
+        variable == "quintil5:spraying" ~ 4
+      ),
+    variable = 
+      case_when(
+        variable == "quintil2:spraying" ~ "Segundo quintil",
+        variable == "quintil3:spraying" ~ "Tercer quintil",
+        variable == "quintil4:spraying" ~ "Cuarto quintil",
+        variable == "quintil5:spraying" ~ "Quinto quintil"
+  )
+  )
+
+HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate)) +
+  geom_hline(yintercept = 0, lty = 1, color = "#fa4d57", lwd = 1)  +
+  geom_linerange(aes(x = reorder(variable, order_value),  ymin = lower, ymax = upper),
+                lwd = 0.5, position = position_dodge(width = .7), 
+                stat = "identity", color = "#003b8a")+
+  geom_point(aes(x =reorder(variable, order_value), y = Estimate), 
+             size = 3.5, position = position_dodge(width = 1), color = "#003b8a") +
+  geom_point(aes(x = reorder(variable, order_value), y = Estimate), 
+             size = 2.5, position = position_dodge(width = 1), color = "white") +
+  scale_y_continuous(limits = c(-0.1, 0.1),
+                     breaks = seq(-0.1, 0.1, by = 0.05),
+                     expand = expansion(mult = 0.025), position = "left",
+                     labels = c("-0.1", "-0.05", "0", "0.05","0.1")) +
+  coord_flip() +
+  labs(x = "Quintil",
+       y = "Efecto aspersiones sobre desplazamiento") +
+  theme(panel.background   = element_blank(),
+        plot.background    = element_blank(),
+        panel.grid.major   = element_line(size     = 0.25,
+                                          colour   = "#5e5c5a",
+                                          linetype = "dashed"),
+        panel.grid.minor   = element_blank(),
+        axis.ticks  = element_blank(),
+        plot.margin  = unit(c(0, 0, 0, 0), "points")) +
+  theme(legend.position = "none",
+        panel.background   = element_blank(),
+        panel.grid.major.x = element_line(colour = "#d1cfd1", 
+                                          size = 0.5, linetype = "dashed"),
+        legend.title = element_blank(),
+        axis.title.y = element_text(size = 12, margin   = margin(0, 20, 0, 10), vjust = 1),
+        axis.title.x = element_text(size = 12, margin   = margin(20, 0, 10, 0), vjust = 0),
+        axis.text.x  = element_text(size = 10),
+        axis.text.y  = element_text(size = 10),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.x  = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        ggh4x.axis.ticks.length.minor = rel(1),
+        axis.line.x.bottom = element_line(linetype = "solid", size = 1));HEPlot 
+ggsave(HEPlot, filename = "Visualizations/output/AspersionHE.png", dpi = 320, width = 10, height = 7.5)
+
