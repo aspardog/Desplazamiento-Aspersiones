@@ -3,6 +3,7 @@ title: "Programas que afectan a la población desplazada: el caso de las aspersi
 author: "Santiago Pardo"
 bibliography: references.bib
 format: pdf
+pandoc_args: "--pdf-engine=xelatex"
 editor: visual
 biblio-style: "apalike"
 csl: apa.csl
@@ -14,6 +15,10 @@ header-includes:
       - \floatplacement{table}{H}
       - \usepackage{booktabs}
       - \usepackage{siunitx}
+      - \usepackage{multirow}
+      - \usepackage{graphicx}
+      - \usepackage{tabularx}
+      - \usepackage{dcolumn}
 ---
 
 # Abstract
@@ -174,7 +179,9 @@ Donde $V_{it}$ es la velocidad del viento en el municipio $i$ en el mes $t$. Ade
 
 La segunda etapa representada en la ecuación 6 expone la relación entre la variable dependiente y la variable instrumenda estimada ($\widehat{AG_{it}}$) en la primera etapa. Esto quiere decir que el nuevo estimador $\dot\beta$ presenta relación del desplazamiento forzado con las aspersiones aéreas con glifosato corregidas por la variación aleatoria que le impone la velocidad del viento.
 
-$$log(\dot{y_{it}}) = \dot\alpha + \dot\beta \widehat{AG_{it-p}} + \dot\theta X_{it-p} + \delta_{i} + \delta_{t} +  \dot\varepsilon_{it} \ \ \ (6)$$ Finalmente, la figura 5 muestra que el número de hectaréas asperjadas con glifosato era distinta entre regiones. Por lo tanto, pueden existir efectos heterogéneos en cuanto a la intensidad de la aplicación. La ecuación para estimar estos efectos diferenciados es:
+$$log(\dot{y_{it}}) = \dot\alpha + \dot\beta \widehat{AG_{it-p}} + \dot\theta X_{it-p} + \delta_{i} + \delta_{t} +  \dot\varepsilon_{it} \ \ \ (6)$$
+
+Finalmente, la figura 5 muestra que el número de hectaréas asperjadas con glifosato era distinta entre regiones. Por lo tanto, pueden existir efectos heterogéneos en cuanto a la intensidad de la aplicación. La ecuación para estimar estos efectos diferenciados es:
 
 $$log(\tilde{y_{i}}) =  \delta_{d} +\tilde\beta \widehat{AG_{it-p}} + \tilde\beta \widehat{AG_{it-p}} * Int_{jt-p} +\tilde\theta X_{it-p} + \delta_{i} + \delta_{t}  + \delta_{int} + \tilde\varepsilon_{it-p} \ \ \ (7)$$
 
@@ -222,9 +229,9 @@ Para confirmar lo anterior, se presenta en la Tabla 2 una comparación de la reg
 
 [^14]: El modelo se calculó con las mismas variables del modelo principal. Es decir, la misma matriz de controles aplicadas en ambas etapas de los Minimos Cuadrados en Dos Etapas (2SLS) y los mismos efectos fijos de la sección anterior.
 
-::: {layout-ncol="1"}
+::: {#tbl-panel layout-ncol="1"}
 |                  | Municipios con Aspérsion Aérea | Municipios sin Aspérsion Aérea |
-|:------------------|:-------------------------:|:-------------------------:|
+|:-----------------|:-------------------------:|:-------------------------:|
 | Velocidad viento |            -0,061\*            |             -0,021             |
 |                  |            (0,0324)            |            (0,0243)            |
 |                  |                                |                                |
@@ -284,7 +291,7 @@ En cuanto a las variables espaciales relacionadas con el programa, se utilizaron
 
 El objetivo de este trabajo es mostrar la relación entre el desplazamiento forzado en Colombia y las aspersiones aéreas con glifosato. La tabla 3 muestra los resultados de tres modelos aplicados para responder a la pregunta de cuál es el efecto de la aplicación del PECIG en el desplazamiento del mes siguiente. La columna (1) expone la regresión por Mínimos Cuadrados Ordinarios (MCO). Esta indica que existe una correlación condicionada positiva y estadisticamente significativa entre los desplazamientos forzados y las aspersiones aéreas. Sin embargo, esta relación puede asumirse como causal. La columna (2) refleja lo resultados de la segunda etapa del método de Variables Instrumentales (IV), sin introducir las variables de control que afectaban la ejecución del programa. Este efecto no es estadísticamente signficativo. No obstante, al introducir los controles en la columna (3) sobre el IV, el efecto es mayor, y significativo. Lo anterior signfica que al controlar por variables relacionadas con violencia, desarollo económico y las condiciones ambientales, se captura el efecto neto de la razón de cambio entre el número de hectareas asperjadas y los desplazamientos forzados en el mes siguiente.
 
-::: {layout-ncol="1"}
+::: {#tbl-panel layout-ncol="1"}
 |                                  |    \(1\)     |   \(2\)    |   \(3\)    |
 |:---------------------------------|:------------:|:----------:|:----------:|
 | Aspersiones Aéreas con Glifosato | 0,0065\*\*\* |   0,004    |  0,0359\*  |
@@ -302,8 +309,7 @@ Los errores estándar son robustos y están corregidos por clusters a nivel muni
 
 Relación entre aspersiones aéreas y desplazamientos forzados
 :::
-
-La tabla 3 expone que la relación entre ambas variables es consistentemente positiva, es decir, a mayor cantidad de hectáreas asperjadas, mayor número de desplazamientos en el mes siguiente. En la columna (3) se observa la relación causal entre ambas variables, mostrando que ante el aumento de una hectárea adicional asperjada, el desplazamiento en el mes siguiente aumenta en un 0,03%. Este efecto parece ser pequeño, sin embargo, la aplicación del programa fue masiva y existen municipios que alcanzaron niveles de aspersión de hasta 7.000 hectáreas en un mes. En otras palabras, 100 hectáreas fumigadas implicaban un crecimiento en el desplazamiento de 3,6% respecto a los meses en los que no se asperjó en los municipios que hacían parte del programa.
+La tabla 3 expone que la relación entre ambas variables es consistentemente positiva, es decir, a mayor cantidad de hectáreas asperjadas, mayor número de desplazamientos en el mes siguiente. En la columna (3) se observa la relación causal entre ambas variables, mostrando que ante el aumento de una hectárea adicional asperjada, el desplazamiento en el mes siguiente aumenta en un 0,03%. Este efecto parece ser pequeño, sin embargo, la aplicación del programa fue masiva y existen municipios que alcanzaron niveles de aspersión de hasta 7.000 hectáreas en un mes. En otras palabras, 100 hectáreas fumigadas adicionales implicaban un crecimiento en el desplazamiento de 3,6% respecto a los meses en los que no se asperjó en los municipios que hacían parte del programa.
 
 Ahora bien, la decisión de desplazarse no puede asumirse como inmediata: esta podía tomarse en una ventana de tiempo más amplia que el mes siguiente. Por lo tanto, la figura 6 muestra la relación dinámica en el tiempo que podía tener el programa sobre el desplazamiento forzado. Esta figura muestra el efecto mensual de las aspersiones sobre el desplazamiento forzado en un período de cuatro meses después de la aplicación del programa. La razón por la que se escogió esta ventana de tiempo es que la re-aplicación del programa se daba entre cuatro y seis meses después de fumigar, dependiendo de las condiciones ambientales de cada municipio. Además, se añadieron dos períodos anteriores como efecto placebo para confirmar que el efecto sobre el desplazamiento no existe antes de la aspersión.
 
@@ -311,11 +317,11 @@ Ahora bien, la decisión de desplazarse no puede asumirse como inmediata: esta p
 knitr::include_graphics(c("../Visualizations/output/DinamicEffects.png"))
 ```
 
-Los resultados muestran que el efecto sobre el desplazamiento es significativo en el mes siguiente y dos meses después de la aplicación del programa. En este caso, en el período $t+2$ es incluso mayor que el presentado anteriormente. La estimación indica que ante un aumento 10 hectáreas asperjadas el desplazamiento forzado aumentaba en un 4,6%. Sin embargo, para el resto de meses no existe una relación estadisticamente signficativa. Esto quiere decir que la relación es signficativa en el corto plazo. Además, para los meses anteriores a la aplicación del programa no existe ningún tipo de relación. Si bien esto muestra que no hay efectos de desplazamiento anticiapado al programa, principalmente refleja que el modelo está capturando un efecto consistente después de la aplicación del programa. Finalmente, en el periodo $t$ no se espera que exista un nivel estadísticamente significativo, dado que para este periodo se presentan errores de medición al no reconocer cuál de los dos eventos ocurre primero.
+Los resultados muestran que el efecto sobre el desplazamiento es significativo en el mes siguiente y dos meses después de la aplicación del programa. En este caso, en el período $t+2$ es incluso mayor que el presentado anteriormente. La estimación indica que ante un aumento 100 hectáreas asperjadas el desplazamiento forzado aumentaba en un 4,6%. Sin embargo, para el resto de meses no existe una relación estadisticamente signficativa. Esto quiere decir que la relación es signficativa en el corto plazo. Además, para los meses anteriores a la aplicación del programa no existe ningún tipo de relación. Si bien esto muestra que no hay efectos de desplazamiento anticiapado al programa, principalmente refleja que el modelo está capturando un efecto consistente después de la aplicación del programa. Finalmente, en el periodo $t$ no se espera que exista un nivel estadísticamente significativo, dado que para este periodo se presentan errores de medición al no reconocer cuál de los dos eventos ocurre primero.
 
 Considerando que los efectos son dinámicos en el corto plazo, en la tabla 4 se tomó el número de desplazamientos acumulados de los tres meses siguientes a la aspersión como variable dependiente, para determinar un efecto trimestral. Al igual que en la tabla 1, la columna (1) muestra que estimando la correlación por MCO el efecto es estadisticamente significativo y positivo. En la columna (2) al aplicar el método de Variables Instrumentales sin controles la relación pierde signficancia. Sin embargo, en la columa (3) añadiendo los controles, la relación es positiva y signficativa, indicando que ante el aumento de 100 hectaréas asperjadas, el desplazamiento trimestral aumenta en un 3,9%.
 
-::: {layout-ncol="1"}
+::: {#tbl-panel layout-ncol="1"}
 |                                  |    \(1\)    |   \(2\)   |   \(3\)   |
 |:---------------------------------|:-----------:|:---------:|:---------:|
 | Aspersiones Aéreas con Glifosato | 0,005\*\*\* |  -0,006   |  0,039\*  |
@@ -333,7 +339,43 @@ Los errores estándar son robustos y están corregidos por clusters a nivel muni
 Relación entre aspersiones aéreas y desplazamientos forzados acumulados tres meses después de la aplicación del programa
 :::
 
-# 7.1. Efectos Heterogeneos
+## 7.1. Efectos Heterogeneos
+
+La aplicación del programa se presentó en volumenes muy distintos. La figura 5 muestra que durante el periodo de interes hubo municipios donde se fumigaron desde 103 hectareas en estos 8 años, hasta municipios cuyo volumen de aspersión alcanzaron las 100.000 hecatareas asperjadas. Esto indica que pueden existir efectos diferenciados del PECIG sobre el desplazamiento forzado en las regiones, pues es intuitivo que dado los efectos adversos del glifosato, la expocisión al herbicida en mayor nivel podía producir mayores niveles de desplazamiento forzado en las regiones.
+
+De este modo, la figura 7 muestra el efecto diferenciado de los municipios que recibieron en mayor cantidad el programa. Es decir, se organizó la muestra de acuerdo a quintiles de aspersión municipal durante todo el programa y se estimó el modelo mostrado en la ecuación 7 tomando como base los municipios del primer cuartil. Los resultados indican que los efectos heterogeneos no son concluyentes, sin embargo, el valor estimado es consistentemente positivo para todos los quintiles. Esto índica que si bien la diferencia en los efectos no es estadisticamente significativa podría exisitr un efecto mayor en los quintiles más altos.
+
+```{r chart7, out.width = "90%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Efectos Heterogeneos por Quintiles de Aspersión", fig.pos="H"}
+knitr::include_graphics(c("../Visualizations/output/AspersionHE.png"))
+```
+
+Por otro lado, el programa estaba enfocado en erradicar los cultivos de coca, sin embargo, no necesariamente los sitios de mayor aspersión eran donde se concetraba más cultivos. Esto significa que en ciertos territorios el programa se dio de forma más intensa en relación a la erradicación de cultivos. Esto pudo haber producido efectos diferenciados sobre el desplazamiento debido a que la relación entre cultivos y aspersiones pudo haber generado un impacto mayor sobre los territorios donde se presentaba mayor presencia de conflicto armado. Por lo tanto para medir los efectos heterogeneos es necesario tener en cuenta cuatro niveles distintos como lo muestra la tabla 5. Primero, los municipios donde hubo altos niveles de aspersión y altos niveles de coca [^18], estos son los municipios donde se concetró más el programa y que se encuentran en su mayoría en la zona del sur del país. Segundo, los municipios con altos niveles de coca pero bajos niveles de aspersión, estos son en su mayoría municipios de la zona fronteriza con Venezuela. Además, estan los municipios con altos niveles de aspersión y bajos cultivos de coca que corresponden principalmente al magdalena medio. Por último, estan los municipios con bajos niveles de aspersión y bajos niveles de coca que se localizan en su mayoría en la zona central del país.
+
+[^18]: Los niveles de aspersión y de coca se definen como altos y bajos de acuerdo a si estan por encima o por debajo de la media.
+
+```{=latex}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[H]
+\centering
+\caption{Efectos Heterogeneos Cultivos de coca y Aspersión}
+\label{tab:my-table}
+\resizebox{10cm}{!}{%
+\begin{tabular}{|c|cc|}
+\hline
+                                           & \multicolumn{2}{c|}{\textbf{Aspersiones aeréas}} \\ \hline
+\multirow{2}{*}{\textbf{Cultivos de Coca}} & \multicolumn{1}{c|}{Alto - Alto}  & Alto - Bajo  \\ \cline{2-3} 
+                                           & \multicolumn{1}{c|}{Bajo - Alto}  & Bajo - Bajo  \\ \hline
+\end{tabular}%
+}
+\end{table}
+```
+En este sentido, la figura 8 muestra los efectos heterogeneos de acuerdo a los diferentes niveles de aspersión mostrados en la tabla 5. La categoria que se toma como base es la de bajos niveles de coca y de aspersión. La figura muestra que no existe ningún efecto que sea estadisticamente signficativo. Sin embargo, es destacable la dirección de los efectos, el efecto diferenciado entre los municipios con altos niveles de coca y aspersión son menores que los de los bajos niveles de coca y aspersión. Esto sugiere que en los municipios donde se asperjó menos y se presentaba más coca sufrió menos desplazamiento. Al contrario, los municipios con bajos niveles de coca pero alta aspersión tiene un signo positivo lo que sugiere que sufrieron de mayores niveles de desplazamiento. Esto se puede deber a los efectos adversos del programa en términos de violencia, debido a que se ha mostrado que donde se aplicó el programa con mayor intensidad el conflicto se acrecentó [@reyes2014; @abadie2014].
+
+```{r chart8, out.width = "90%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Efectos Heterogeneos por niveles de cultivos de coca y aspersión", fig.pos="H"}
+knitr::include_graphics(c("../Visualizations/output/CultivosHE.png"))
+```
 
 \newpage
 

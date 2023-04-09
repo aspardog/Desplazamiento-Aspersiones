@@ -1,0 +1,41 @@
+
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: Sun, Apr 09, 2023 - 15:11:57
+% Requires LaTeX packages: dcolumn 
+\begin{table}[!htbp] \centering 
+  \caption{Relación Aspersiones Aéreas y Desplazamiento Forzado} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-4} 
+\\[-1.8ex] & \multicolumn{3}{c}{Desplazamiento Forzado Interno} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)}\\ 
+\hline \\[-1.8ex] 
+ Aspersiones Aéreas con Glifosato & 0.0001^{***} & -0.001^{**} & 0.0003 \\ 
+  & (0.00002) & (0.0004) & (0.0004) \\ 
+ \hline \\[-1.8ex] 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular}
+\centerline{\begin{minipage}{0.95\textwidth}~\
+\footnotesize{Los errores estándar son robustos y están corregidos por clusters a nivel municipal. *** p<0.01, ** p<0.05, * p<0.1.} \end{minipage}} 
+\end{table} 
+
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: Sun, Apr 09, 2023 - 15:11:57
+% Requires LaTeX packages: dcolumn 
+\begin{table}[!htbp] \centering 
+  \caption{Relación Aspersiones Aéreas y Desplazamiento Forzado} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ \\ 
+\hline \\[-1.8ex] 
+\end{tabular}
+\centerline{\begin{minipage}{0.95\textwidth}~\
+\footnotesize{Los errores estándar son robustos y están corregidos por clusters a nivel municipal. *** p<0.01, ** p<0.05, * p<0.1.} \end{minipage}} 
+\end{table} 

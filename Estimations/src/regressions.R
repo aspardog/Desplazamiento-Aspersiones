@@ -25,8 +25,7 @@
 
 library(pacman)
 p_load(tidyverse, sandwich, lmtest, ivreg, corrr, modelsummary, kableExtra, gt, 
-       tibble, stargazer, plm,  ggpubr, showtext, patchwork, ggh4x)
-
+       tibble, stargazer, plm,  ggpubr, showtext, patchwork, ggh4x, knitr, flextable)
 EH_panel <- function(mainData = data2plot,
                      line_color = "#003b8a",
                      line_size  = 0.5,
@@ -224,7 +223,7 @@ coeftest(restExcl2, vcov=vcovHC(restExcl2, type="sss", cluster="group"))
 
 Month1FE <- plm(data= merge_data.df,
                   formula =  
-                    paste0("desplazamiento_log ~ spraying_norm +",
+                    paste0("desplazamiento_log ~ spraying +",
                            paste(controles_fe, collapse = "+")),
                   effect = "twoways", 
                   model = "within", 
@@ -236,11 +235,11 @@ Month1MCO <- coeftest(Month1FE, vcov=vcovHC(Month1FE, type="sss", cluster="group
 
 IV1Month <- plm(data= merge_data.df,
                 formula =  
-                  paste0("desplazamiento_log ~ spraying_norm |",
-                         paste("windSpeedRMBOS + windIVDaysRMBOS ")),
-                effect = "individual", 
+                  paste0("desplazamiento_log ~ spraying |",
+                         paste("windSpeedRMBOS")),
+                effect = "twoways", 
                 model = "within", 
-                index=c("codmpio", "date", "coddpto"))
+                index=c("codmpio", "date"))
 summary(IV1Month)
 IV <- coeftest(IV1Month, vcov=vcovHC(IV1Month, type="sss", cluster="group"))  
 
@@ -249,38 +248,61 @@ IV <- coeftest(IV1Month, vcov=vcovHC(IV1Month, type="sss", cluster="group"))
 
 IV1MonthFE <- plm(data= merge_data.df,
                 formula =  
-                  paste0("desplazamiento_log ~ spraying_norm +",
+                  paste0("desplazamiento_log ~ spraying +",
                   paste(controles_fe, collapse = "+"),"|",
-                  paste("windSpeedFLDAS + windIVDaysRMBOS  +"),
+                  paste("windSpeedRMBOS  +"),
                   paste(controles_fe, collapse = "+")),
                 effect = "twoways", 
                 model = "within", 
-                index=c("codmpio", "date"), diagnostics = TRUE)
+                index=c("codmpio", "date"), diagnostics = TRUE, cluster = "codmpio")
 summary(IV1MonthFE)
 IVFE <- coeftest(IV1MonthFE, vcov=vcovHC(IV1MonthFE, type="sss", cluster="group"))  
 
 models <- list(
-  "(MCO)"    = Month1MCO,
-  "(IV WC)"  = IV,
-  "(IV)"     = IVFE
+  "(1)"    = Month1MCO,
+  "(2)"    = IV,
+  "(3)"   = IVFE
 )
 
-coef_rename_ws <- "Aspersiones Aéreas \ncon Glifosato"
+Nota <- "Los errores estándar son robustos y están corregidos por clusters a nivel municipal.\n *** p<0.01, ** p<0.05, * p<0.1."
 
-gm <- tibble::tribble(
-  ~raw,        ~clean,          ~fmt,
-  "nobs",      "N",             0,
-  "r.squared", "R<sup>2</sup>", 2,)
-new_rows <- tibble::tribble(
-  ~term,~"(MCO)",~"(IV WC)",~"(IV)",
-  "Controles","Sí","No","Sí",
-  "Efectos Fijos", "Sí","Sí","Sí")
+s <- stargazer(models, 
+          title="Relación Aspersiones Aéreas y Desplazamiento Forzado",
+          align=TRUE, 
+          dep.var.labels=c("Desplazamiento Forzado Interno"),
+          covariate.labels=c("Aspersiones Aéreas con Glifosato"), 
+          no.space = TRUE, keep = "spraying", package = T,
+          keep.stat = c("rsq", "n"), notes.align = "l")
 
-modelsummary(models, estimate = "{estimate}{stars}", ,
-             coef_omit = c(-1), stars = c('*' = .1, '**' = .05, '***' = 0.01), 
-             output = "markdown", fmt = 6, coef_rename = coef_rename_ws, 
-             gof_map = gm, add_rows = new_rows, title = "Aspersiones aéreas", 
-             notes = "*** p<0.01, ** p<0.05, * p<0.1.Los errores estándar son robustos y están corregidos por clusters a nivel municipal.")
+
+# coef_rename_ws <- "Aspersiones Aéreas \ncon Glifosato"
+# 
+# gm <- tibble::tribble(
+#   ~raw,        ~clean,          ~fmt,
+#   "nobs",      "N",             0,
+#   "r.squared", "R<sup>2</sup>", 2,)
+# new_rows <- tibble::tribble(
+#   ~term,~"(1)",~"(2)",~"(3)",
+#   "Controles","Sí","No","Sí",
+#   "Efectos Fijos", "Sí","Sí","Sí")
+# 
+# nota <- "Los errores estándar son robustos y están corregidos por clusters a nivel municipal. *** p<0.01, ** p<0.05, * p<0.1."
+# tab <- modelsummary(models, 
+#                     estimate = "{estimate}{stars}",
+#                     coef_omit = c(-1), 
+#                     stars = c('*' = .1, '**' = .05, '***' = 0.01),
+#                     output = "latex", fmt = 6, coef_rename = coef_rename_ws, 
+#                     gof_map = gm, add_rows = new_rows, 
+#                     title = "Aspersiones aéreas",
+#                     add_table_notes = nota %>% 
+#                       as_chunk() %>% 
+#                       add_row() %>% 
+#                       row_spec(c(1), font_size = 8))
+#   
+# table_3 <- tab %>%
+#   tab_footnote(footnote = md("Los errores estándar son robustos y están corregidos por clusters a nivel municipal. *** p<0.01, ** p<0.05, * p<0.1."))
+
+
 
 # Fixed effects 3 Months
 
