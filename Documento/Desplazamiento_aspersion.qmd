@@ -222,9 +222,9 @@ Para confirmar lo anterior, se presenta en la Tabla 2 una comparación de la reg
 
 [^14]: El modelo se calculó con las mismas variables del modelo principal. Es decir, la misma matriz de controles aplicadas en ambas etapas de los Minimos Cuadrados en Dos Etapas (2SLS) y los mismos efectos fijos de la sección anterior.
 
-::: {#tbl-panel layout-ncol="1"}
+::: {layout-ncol="1"}
 |                  | Municipios con Aspérsion Aérea | Municipios sin Aspérsion Aérea |
-|:-----------------|:-------------------------:|:-------------------------:|
+|:------------------|:-------------------------:|:-------------------------:|
 | Velocidad viento |            -0,061\*            |             -0,021             |
 |                  |            (0,0324)            |            (0,0243)            |
 |                  |                                |                                |
@@ -282,10 +282,10 @@ En cuanto a las variables espaciales relacionadas con el programa, se utilizaron
 
 # 7. Resultados
 
-El objetivo central de este trabajo es mostrar la posible relación existente entre el desplazamiento forzado en Colombia y las aspersiones aéreas con glifosato. La tabla 3 muestra la relación existente entre la aplicación del PECIG y el desplazamiento forzado en el mes siguiente. La columna (1) expone la regresión por Mínimos Cuadrados Ordinarios (MCO). Esta índica que existe una correlación condicionada positiva y estadisticamente significativa entre los desplazamientos forzados y las aspersiones aéreas. Sin embargo, esta no relación no se puede asumir como causal. La columna (2) refleja lo resultados de la segunda etapa del método de Variables Instrumentales (IV) sin introducir las variables de control que afectaban la ejecución del programa. Este efecto no es estadisticamente signficativo. No obstante, al introducir los controles en la columna (3) sobre el IV, el efecto aumenta y se vuelve signficativo, esto signfica que al controlar relacionadas con violencia, desarollo economico y las condiciones ambientales, se atrapa el efecto neto de la razón de cambio entre el número de hectareas asperjadas y los desplazamientos forzados en el mes siguiente.
+El objetivo de este trabajo es mostrar la relación entre el desplazamiento forzado en Colombia y las aspersiones aéreas con glifosato. La tabla 3 muestra los resultados de tres modelos aplicados para responder a la pregunta de cuál es el efecto de la aplicación del PECIG en el desplazamiento del mes siguiente. La columna (1) expone la regresión por Mínimos Cuadrados Ordinarios (MCO). Esta indica que existe una correlación condicionada positiva y estadisticamente significativa entre los desplazamientos forzados y las aspersiones aéreas. Sin embargo, esta relación puede asumirse como causal. La columna (2) refleja lo resultados de la segunda etapa del método de Variables Instrumentales (IV), sin introducir las variables de control que afectaban la ejecución del programa. Este efecto no es estadísticamente signficativo. No obstante, al introducir los controles en la columna (3) sobre el IV, el efecto es mayor, y significativo. Lo anterior signfica que al controlar por variables relacionadas con violencia, desarollo económico y las condiciones ambientales, se captura el efecto neto de la razón de cambio entre el número de hectareas asperjadas y los desplazamientos forzados en el mes siguiente.
 
-::: {#tbl-panel layout-ncol="1"}
-|                                  |    (1)       |   (2)      |     (3)   |
+::: {layout-ncol="1"}
+|                                  |    \(1\)     |   \(2\)    |   \(3\)    |
 |:---------------------------------|:------------:|:----------:|:----------:|
 | Aspersiones Aéreas con Glifosato | 0,0065\*\*\* |   0,004    |  0,0359\*  |
 |                                  |  (0,000024)  | (0,000237) | (0,000191) |
@@ -303,20 +303,20 @@ Los errores estándar son robustos y están corregidos por clusters a nivel muni
 Relación entre aspersiones aéreas y desplazamientos forzados
 :::
 
-La tabla 3 expone que la relación entre ambas variables es consistentemente positiva, es decir, a mayor cantidad de hectareas asperjadas mayor era el número de desplazamientos en el mes siguiente. La columna (3) expone la relación causal entre ambas variables, mostrando que ante el aumento en una hectárea adicional asperjada, el desplazamiento en el mes siguiente aumentaba en un 0,03%. Este efecto parece ser pequeño, sin embargo teniendo en cuenta el caracter másivo en la aplicación del programa, existian municipios que alcanzaron niveles de aspersión de hasta 7.000 hectáreas. De modo que en términos más plausibles, ante el aumento en 100 hectáreas fumigadas, los desplazamientos forzados crecian en un 3,6% respecto a los meses en los que no se aplicó el programa de los municipios que en algún momento recibieron fumigaciones.
+La tabla 3 expone que la relación entre ambas variables es consistentemente positiva, es decir, a mayor cantidad de hectáreas asperjadas, mayor número de desplazamientos en el mes siguiente. En la columna (3) se observa la relación causal entre ambas variables, mostrando que ante el aumento de una hectárea adicional asperjada, el desplazamiento en el mes siguiente aumenta en un 0,03%. Este efecto parece ser pequeño, sin embargo, la aplicación del programa fue masiva y existen municipios que alcanzaron niveles de aspersión de hasta 7.000 hectáreas en un mes. En otras palabras, 100 hectáreas fumigadas implicaban un crecimiento en el desplazamiento de 3,6% respecto a los meses en los que no se asperjó en los municipios que hacían parte del programa.
 
-Ahora bien, la decisión de desplazarse no se puede asumir como inmediata, esta podía tomarse en una ventana mayor de tiempo que el mes siguiente. Por lo tanto, la figura 6 muestra la relación dinámica en el tiempo que podía tener el programa sobre el desplazamiento forzado. Esta figura muestra el efecto mensual de las aspersiones sobre el desplazamiento forzado en un periodo de cuatro meses después de la aplicación del programa. La razón por la que se escogió esta ventana de tiempo se debe a que la re-aplicación del programa se volvía a dar entre cuatro y seis meses después de fumigar dependiendo de las condiciones ambientales de cada municipio. Además, se añadieron dos periodos anteriores como efecto placebo para determinar el efecto de la aspersión sin haber aplicado el programa. 
+Ahora bien, la decisión de desplazarse no puede asumirse como inmediata: esta podía tomarse en una ventana de tiempo más amplia que el mes siguiente. Por lo tanto, la figura 6 muestra la relación dinámica en el tiempo que podía tener el programa sobre el desplazamiento forzado. Esta figura muestra el efecto mensual de las aspersiones sobre el desplazamiento forzado en un período de cuatro meses después de la aplicación del programa. La razón por la que se escogió esta ventana de tiempo es que la re-aplicación del programa se daba entre cuatro y seis meses después de fumigar, dependiendo de las condiciones ambientales de cada municipio. Además, se añadieron dos períodos anteriores como efecto placebo para confirmar que el efecto sobre el desplazamiento no existe antes de la aspersión.
 
 ```{r chart6, out.width = "90%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Correlación Desplazamiento y Aspersión Aérea con Glifosato", fig.pos="H"}
 knitr::include_graphics(c("../Visualizations/output/DinamicEffects.png"))
 ```
 
-Los resultados muestran que el efecto de desplazarse es significativo en el mes siguiente y dos meses después de la aplicación del programa. En este caso, en el periodo $t+2$ es incluso mayor que el presentado anteriormente. La estimación índica que ante un aumento 10 hectáreas asperjadas el desplazamiento forzado aumentaba en un 4,6%. Sin embargo, para el resto de meses no existe una relación signficativa estadisticamente. Esto quiere decir que la relación es signficativa en el corto plazo. Además, para los meses anteriores a la aplicación del programa tampoco existe ningún tipo de relación, si bien esto muestra que no existía ningún efecto de desplazamiento anticiapado al programa, principalmente reflejar que el modelo esta capturando un efecto consistente después de la aplicación del programa. Finalmente, en el periodo $t$ no se espera que exista un nivel estadistico significativo dado que para este periodo se presentan errores de medición al no reconocer cuál de los dos eventos ocurre primero. 
+Los resultados muestran que el efecto sobre el desplazamiento es significativo en el mes siguiente y dos meses después de la aplicación del programa. En este caso, en el período $t+2$ es incluso mayor que el presentado anteriormente. La estimación indica que ante un aumento 10 hectáreas asperjadas el desplazamiento forzado aumentaba en un 4,6%. Sin embargo, para el resto de meses no existe una relación estadisticamente signficativa. Esto quiere decir que la relación es signficativa en el corto plazo. Además, para los meses anteriores a la aplicación del programa no existe ningún tipo de relación. Si bien esto muestra que no hay efectos de desplazamiento anticiapado al programa, principalmente refleja que el modelo está capturando un efecto consistente después de la aplicación del programa. Finalmente, en el periodo $t$ no se espera que exista un nivel estadísticamente significativo, dado que para este periodo se presentan errores de medición al no reconocer cuál de los dos eventos ocurre primero.
 
-Del mismo modo, al tener en cuenta que los efectos son dinámicos de corto plazo, en la tabla 4 se tomó el número de desplazamientos acumulados de los tres meses siguientes como variable dependiente, para determinar un efecto trimestral. Al igual que en la tabla 1, la columna (1) muestra que estimando la correlación por MCO el efecto es estadisticamente significativo y positivo. En la columna (2) al aplicar el método de Variables Instrumentales sin controles la relación pierde signficancia. Sin embargo, en la columa (3) añadiendo los controles, la relación es positiva y signficativa, indicando que ante el aumento de 100 hectaréas asperjadas, el desplazamiento trimestral aumenta en un 3,9%.
+Considerando que los efectos son dinámicos en el corto plazo, en la tabla 4 se tomó el número de desplazamientos acumulados de los tres meses siguientes a la aspersión como variable dependiente, para determinar un efecto trimestral. Al igual que en la tabla 1, la columna (1) muestra que estimando la correlación por MCO el efecto es estadisticamente significativo y positivo. En la columna (2) al aplicar el método de Variables Instrumentales sin controles la relación pierde signficancia. Sin embargo, en la columa (3) añadiendo los controles, la relación es positiva y signficativa, indicando que ante el aumento de 100 hectaréas asperjadas, el desplazamiento trimestral aumenta en un 3,9%.
 
-::: {#tbl-panel layout-ncol="1"}
-|                                  |    (1)    |  (2)  |  (3)   |
+::: {layout-ncol="1"}
+|                                  |    \(1\)    |   \(2\)   |   \(3\)   |
 |:---------------------------------|:-----------:|:---------:|:---------:|
 | Aspersiones Aéreas con Glifosato | 0,005\*\*\* |  -0,006   |  0,039\*  |
 |                                  |  (0,00002)  | (0,00024) | (0,00021) |
@@ -334,8 +334,6 @@ Relación entre aspersiones aéreas y desplazamientos forzados acumulados tres m
 :::
 
 # 7.1. Efectos Heterogeneos
-
-
 
 \newpage
 
