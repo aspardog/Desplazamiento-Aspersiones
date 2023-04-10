@@ -83,27 +83,27 @@ Bajo este contexto, el período de estudio de esta investigación se extiende de
 
 # 4. Marco Conceptual
 
-La decisión detrás de un desplazamiento forzado no se debe a una sola razón, sino a la suma de eventos que pueden ocurrir en un territorio que sufre la guerra. Las víctimas tienen que ponderar la disyuntiva entre irse, y enfrentarse a un nuevo contexto; o quedarse y afrontar las consecuencias de hacerlo, ambas opciones bajo situaciones de plena incertidumbre. En este sentido, @ibanez2008book modela esta decisión como la situación en la que la utilidad esperada del desplazamiento ($u^{D}$) es mayor que la utilidad esperada de permanecer en el sitio de origen ($u^{P}$).
+La decisión detrás de un desplazamiento forzado no se debe a una sola razón, sino a la suma de eventos que ocurren en un territorio que sufre la guerra. Las víctimas tienen que ponderar la disyuntiva entre irse, y enfrentarse a un nuevo contexto, o quedarse y afrontar las consecuencias de hacerlo, ambas opciones bajo situaciones de plena incertidumbre. En este sentido, @ibanez2008book modela esta decisión como la situación en la que la utilidad esperada del desplazamiento ($u^{D}$) es mayor que la utilidad esperada de permanecer en el sitio de origen ($u^{P}$).
 
 $$
-u^{D} > u^{P} \ \ \ (1)
+u^{D} > u^{Q} \ \ \ (1)
 $$
 
 Este trabajo busca entender si las aspersiones con glifosato son una variable que afecta la utilidad de permanecer en el sitio de origen. Es decir, se centra en estimar la derivada parcial de las aspersiones ($g$) respecto a la utilidad de quedarse en su hogar.
 
-$$ \frac{\partial \ u^{P}}{\partial \ g} \ \ \ (2)$$
+$$ \frac{\partial \ U(g)^{Q}}{\partial \ g} \ \ \ (2)$$
 
-No obstante, la forma en la que las aspersiones aéreas pueden afectar esta utlidad no es directa, sino que se da por medio de distintos canales. Primero, se ha demostrado que el glifosato en grandes cantidades concentradas genera problemas de salud como: enfermedades dermatológicas, abortos espotáneos, daños en la salud reproductiva e incluso aumenta la probabilidad de cáncer Linfoma Non-Hodgkins [@camacho2014; @univalle_2020; @zhang2019]. Segundo, a nivel económico, además de destruir cultivos lícitos a su paso, produce daños en la fertilidad del suelo y dificulta la germinación de semillas [@bromilow1996; @andrea2003; @ruiz2014]. Tercero, a nivel ambiental el herbicida tiene efectos de largo plazo en la contaminación de ríos y lagunas, junto con daños a la biodiversidad [@cox1995; @brauman2011; @relyea2005; @lajmanovich2015]. Por último, tiene efectos sobre la violencia en los territorios, dado que genera en las guerrillas la necesidad de ratificar su control territorial [@reyes2014; @abadie2014].
+No obstante, es probable que la forma en la que las aspersiones aéreas pueden afectar esta utlidad no sea inmediata, pues hay distintas consecuencias que anteceden el desplazamiento. Primero, se ha demostrado que el glifosato en grandes cantidades concentradas genera problemas de salud \[@camacho2014; @univalle_2020; @zhang2019\]. Segundo, a nivel económico, destruye cultivos lícitos a su paso y produce daños en la fertilidad del suelo \[@bromilow1996; @andrea2003; @ruiz2014\]. Tercero, a nivel ambiental el herbicida tiene efectos de largo plazo en la contaminación de ríos y lagunas, junto con daños a la biodiversidad \[@cox1995; @brauman2011; @relyea2005; @lajmanovich2015\]. Por último, tiene efectos sobre la violencia en los territorios, dado que genera en las guerrillas la necesidad de ratificar su control territorial \[@reyes2014; @abadie2014\]. La aproximación a entender mejor estos canales se presenta en la sección 9.
 
-De acuerdo con lo anterior, la manera en la que el glifosato afecta la utilidad de permanecer en los territorios se puede describir del siguiente modo:
+De acuerdo con las razones anteriormente expuestas, el interés de este trabajo es entender la relación entre las aspersiones áereas y el desplazamiento forzado. Esto incluye responder a la regunta de si el efecto sobre el desplazamiento es inmediato u ocurre rezagadamente. En ese sentido, la medida de interés es la derivada en períodos de tiempo posteriores a la fumigación:
 
 $$
-\frac{\partial \  u^{P}(h(g),e(g),a(g),s(g))}{\partial \ g} = \frac{ \partial \ u^{P}}{\partial h(g)} \frac{\partial h(g)}{\partial g} + \frac{ \partial \ u^{P}}{\partial e(g)} \frac{\partial e(g)}{\partial g} + \frac{ \partial \ u^{P}}{\partial a(g)} \frac{\partial a(g)}{\partial g} + \frac{ \partial \ u^{P}}{\partial v(g)} \frac{\partial v(g)}{\partial g} \ \ \ (3) \
+\frac{\partial \  U(g)^{Q}_{t+p}}{\partial \ g_{t}}  (3)
 $$
 
-Donde $h(g)$ son las condiciones en salud, $e(g)$ las económicas, $a(g)$ las ambientales y $s(g)$ las asociadas a seguridad, todo esto bajo un contexto de exposición a las aspersiones aéreas con glifosato. La aproximación a entender mejor estos canales se presenta en la sección 9.
+Donde $t$ es el período de la aplicación y $t+p$ es un período posterior a la aplicación.
 
-En resumen, esta investigación se enfoca en medir la magnitud y dirección de $\frac{\partial \ u^{P}}{\partial \ g}$, lo que significa que el análisis se limita a los municipios donde se implementó el programa. Por lo tanto, el objetivo no es evaluar el efecto de aplicar o no el programa sobre el desplazamiento forzado, sino medir la relación de cambio al aumentar su intensidad. En la siguiente sección se describe la estrategia empírica utilizada para cuantificar este efecto, que implica medir la intensidad de aspersión y proponer un modelo que relacione la pérdida de utilidad de la población con las aspersiones, utilizando como indicador el número de desplazamientos forzados relacionados con las aspersiones aéreas de glifosato.
+En resumen, esta investigación se enfoca en medir la magnitud y dirección de $\frac{\partial \  U(g)^{Q}_{t+p}}{\partial \ g_{t}}$, lo que significa que el análisis se limita a los municipios donde se implementó el programa. Por lo tanto, el objetivo no es evaluar el efecto de aplicar o no el programa sobre el desplazamiento forzado, sino medir la relación de cambio al aumentar su intensidad. Además, este análisis también busca responder a la pregunta de si hay efectos dinámicos en el tiempo. En la siguiente sección se describe la estrategia empírica utilizada para cuantificar este efecto, que implica medir la intensidad de aspersión y proponer un modelo que relacione la pérdida de utilidad de la población con las aspersiones, utilizando como indicador el número de desplazamientos forzados relacionados con las aspersiones aéreas de glifosato.
 
 # 5. Estrategia Empírica
 
@@ -229,9 +229,9 @@ Para confirmar lo anterior, se presenta en la Tabla 2 una comparación de la reg
 
 [^14]: El modelo se calculó con las mismas variables del modelo principal. Es decir, la misma matriz de controles aplicadas en ambas etapas de los Minimos Cuadrados en Dos Etapas (2SLS) y los mismos efectos fijos de la sección anterior.
 
-::: {#tbl-panel layout-ncol="1"}
+::: {layout-ncol="1"}
 |                  | Municipios con Aspérsion Aérea | Municipios sin Aspérsion Aérea |
-|:-----------------|:-------------------------:|:-------------------------:|
+|:------------------|:-------------------------:|:-------------------------:|
 | Velocidad viento |            -0,061\*            |             -0,021             |
 |                  |            (0,0324)            |            (0,0243)            |
 |                  |                                |                                |
@@ -291,7 +291,7 @@ En cuanto a las variables espaciales relacionadas con el programa, se utilizaron
 
 El objetivo de este trabajo es mostrar la relación entre el desplazamiento forzado en Colombia y las aspersiones aéreas con glifosato. La tabla 3 muestra los resultados de tres modelos aplicados para responder a la pregunta de cuál es el efecto de la aplicación del PECIG en el desplazamiento del mes siguiente. La columna (1) expone la regresión por Mínimos Cuadrados Ordinarios (MCO). Esta indica que existe una correlación condicionada positiva y estadisticamente significativa entre los desplazamientos forzados y las aspersiones aéreas. Sin embargo, esta relación puede asumirse como causal. La columna (2) refleja lo resultados de la segunda etapa del método de Variables Instrumentales (IV), sin introducir las variables de control que afectaban la ejecución del programa. Este efecto no es estadísticamente signficativo. No obstante, al introducir los controles en la columna (3) sobre el IV, el efecto es mayor, y significativo. Lo anterior signfica que al controlar por variables relacionadas con violencia, desarollo económico y las condiciones ambientales, se captura el efecto neto de la razón de cambio entre el número de hectareas asperjadas y los desplazamientos forzados en el mes siguiente.
 
-::: {#tbl-panel layout-ncol="1"}
+::: {layout-ncol="1"}
 |                                  |    \(1\)     |   \(2\)    |   \(3\)    |
 |:---------------------------------|:------------:|:----------:|:----------:|
 | Aspersiones Aéreas con Glifosato | 0,0065\*\*\* |   0,004    |  0,0359\*  |
@@ -309,6 +309,7 @@ Los errores estándar son robustos y están corregidos por clusters a nivel muni
 
 Relación entre aspersiones aéreas y desplazamientos forzados
 :::
+
 La tabla 3 expone que la relación entre ambas variables es consistentemente positiva, es decir, a mayor cantidad de hectáreas asperjadas, mayor número de desplazamientos en el mes siguiente. En la columna (3) se observa la relación causal entre ambas variables, mostrando que ante el aumento de una hectárea adicional asperjada, el desplazamiento en el mes siguiente aumenta en un 0,03%. Este efecto parece ser pequeño, sin embargo, la aplicación del programa fue masiva y existen municipios que alcanzaron niveles de aspersión de hasta 7.000 hectáreas en un mes. En otras palabras, 100 hectáreas fumigadas adicionales implicaban un crecimiento en el desplazamiento de 3,6% respecto a los meses en los que no se asperjó en los municipios que hacían parte del programa.
 
 Ahora bien, la decisión de desplazarse no puede asumirse como inmediata: esta podía tomarse en una ventana de tiempo más amplia que el mes siguiente. Por lo tanto, la figura 6 muestra la relación dinámica en el tiempo que podía tener el programa sobre el desplazamiento forzado. Esta figura muestra el efecto mensual de las aspersiones sobre el desplazamiento forzado en un período de cuatro meses después de la aplicación del programa. La razón por la que se escogió esta ventana de tiempo es que la re-aplicación del programa se daba entre cuatro y seis meses después de fumigar, dependiendo de las condiciones ambientales de cada municipio. Además, se añadieron dos períodos anteriores como efecto placebo para confirmar que el efecto sobre el desplazamiento no existe antes de la aspersión.
@@ -321,7 +322,7 @@ Los resultados muestran que el efecto sobre el desplazamiento es significativo e
 
 Considerando que los efectos son dinámicos en el corto plazo, en la tabla 4 se tomó el número de desplazamientos acumulados de los tres meses siguientes a la aspersión como variable dependiente, para determinar un efecto trimestral. Al igual que en la tabla 1, la columna (1) muestra que estimando la correlación por MCO el efecto es estadisticamente significativo y positivo. En la columna (2) al aplicar el método de Variables Instrumentales sin controles la relación pierde signficancia. Sin embargo, en la columa (3) añadiendo los controles, la relación es positiva y signficativa, indicando que ante el aumento de 100 hectaréas asperjadas, el desplazamiento trimestral aumenta en un 3,9%.
 
-::: {#tbl-panel layout-ncol="1"}
+::: {layout-ncol="1"}
 |                                  |    \(1\)    |   \(2\)   |   \(3\)   |
 |:---------------------------------|:-----------:|:---------:|:---------:|
 | Aspersiones Aéreas con Glifosato | 0,005\*\*\* |  -0,006   |  0,039\*  |
@@ -339,17 +340,17 @@ Los errores estándar son robustos y están corregidos por clusters a nivel muni
 Relación entre aspersiones aéreas y desplazamientos forzados acumulados tres meses después de la aplicación del programa
 :::
 
-## 7.1. Efectos Heterogeneos
+## 7.1. Efectos Heterogéneos
 
-La aplicación del programa se presentó en volumenes muy distintos. La figura 5 muestra que durante el periodo de interes hubo municipios donde se fumigaron desde 103 hectareas en estos 8 años, hasta municipios cuyo volumen de aspersión alcanzaron las 100.000 hecatareas asperjadas. Esto indica que pueden existir efectos diferenciados del PECIG sobre el desplazamiento forzado en las regiones, pues es intuitivo que dado los efectos adversos del glifosato, la expocisión al herbicida en mayor nivel podía producir mayores niveles de desplazamiento forzado en las regiones.
+La aplicación del programa se presentó en volúmenes muy distintos. La figura 5 muestra que durante el período de interés hubo municipios donde se fumigaron desde 103 hectáreas en 8 años, hasta municipios cuyo volúmen de aspersión alcanzó las 100.000 hectáreas asperjadas en el mismo tiempo. Esto indica que pueden existir efectos diferenciados del PECIG sobre el desplazamiento forzado en las regiones, pues dados los efectos adversos del glifosato, la expocisión al herbicida en mayor nivel podría producir mayores niveles de desplazamiento en las regiones.
 
-De este modo, la figura 7 muestra el efecto diferenciado de los municipios que recibieron en mayor cantidad el programa. Es decir, se organizó la muestra de acuerdo a quintiles de aspersión municipal durante todo el programa y se estimó el modelo mostrado en la ecuación 7 tomando como base los municipios del primer cuartil. Los resultados indican que los efectos heterogeneos no son concluyentes, sin embargo, el valor estimado es consistentemente positivo para todos los quintiles. Esto índica que si bien la diferencia en los efectos no es estadisticamente significativa podría exisitr un efecto mayor en los quintiles más altos.
+De este modo, la figura 7 muestra el efecto diferenciado de los municipios que recibieron en mayor medida el programa. Es decir, se organizó la muestra de acuerdo a quintiles de aspersión municipal durante todo el programa y se estimó el modelo de la ecuación 7 tomando como base los municipios del primer cuartil. Los resultados indican que los efectos heterogéneos no son concluyentes, sin embargo, el valor estimado es consistentemente positivo para todos los quintiles. Esto indica que si bien la diferencia en los efectos no es estadísticamente significativa, podría exisitr un efecto mayor en los quintiles más altos.
 
 ```{r chart7, out.width = "90%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Efectos Heterogeneos por Quintiles de Aspersión", fig.pos="H"}
 knitr::include_graphics(c("../Visualizations/output/AspersionHE.png"))
 ```
 
-Por otro lado, el programa estaba enfocado en erradicar los cultivos de coca, sin embargo, no necesariamente los sitios de mayor aspersión eran donde se concetraba más cultivos. Esto significa que en ciertos territorios el programa se dio de forma más intensa en relación a la erradicación de cultivos. Esto pudo haber producido efectos diferenciados sobre el desplazamiento debido a que la relación entre cultivos y aspersiones pudo haber generado un impacto mayor sobre los territorios donde se presentaba mayor presencia de conflicto armado. Por lo tanto para medir los efectos heterogeneos es necesario tener en cuenta cuatro niveles distintos como lo muestra la tabla 5. Primero, los municipios donde hubo altos niveles de aspersión y altos niveles de coca [^18], estos son los municipios donde se concetró más el programa y que se encuentran en su mayoría en la zona del sur del país. Segundo, los municipios con altos niveles de coca pero bajos niveles de aspersión, estos son en su mayoría municipios de la zona fronteriza con Venezuela. Además, estan los municipios con altos niveles de aspersión y bajos cultivos de coca que corresponden principalmente al magdalena medio. Por último, estan los municipios con bajos niveles de aspersión y bajos niveles de coca que se localizan en su mayoría en la zona central del país.
+Por otro lado, el programa estaba enfocado en erradicar los cultivos de coca, sin embargo, no necesariamente los sitios de mayor aspersión eran donde se concetraban más cultivos. Esto significa que en ciertos territorios el programa se dio de forma más intensa respecto a la erradicación de cultivos. Esto pudo haber producido efectos diferenciados sobre el desplazamiento debido a que la relación entre cultivos y aspersiones probablemente afectó más a los territorios donde el conflicto armado era más agudo. Por lo tanto para medir los efectos heterogéneos es necesario tener en cuenta cuatro niveles distintos, como lo muestra la tabla 5. Primero, los municipios donde hubo altos niveles de aspersión y altos niveles de coca [^18], estos son los municipios donde se concetró más el programa y se encuentran en su mayoría en la zona del sur del país. Segundo, los municipios con altos niveles de coca pero bajos niveles de aspersión, estos son en su mayoría municipios de la zona fronteriza con Venezuela. Además, están los municipios con altos niveles de aspersión y bajos cultivos de coca que corresponden principalmente al Magdalena Medio. Por último, los municipios con bajos niveles de aspersión y bajos niveles de coca que se localizan en su mayoría en la zona central del país.
 
 [^18]: Los niveles de aspersión y de coca se definen como altos y bajos de acuerdo a si estan por encima o por debajo de la media.
 
@@ -371,7 +372,7 @@ Por otro lado, el programa estaba enfocado en erradicar los cultivos de coca, si
 }
 \end{table}
 ```
-En este sentido, la figura 8 muestra los efectos heterogeneos de acuerdo a los diferentes niveles de aspersión mostrados en la tabla 5. La categoria que se toma como base es la de bajos niveles de coca y de aspersión. La figura muestra que no existe ningún efecto que sea estadisticamente signficativo. Sin embargo, es destacable la dirección de los efectos, el efecto diferenciado entre los municipios con altos niveles de coca y aspersión son menores que los de los bajos niveles de coca y aspersión. Esto sugiere que en los municipios donde se asperjó menos y se presentaba más coca sufrió menos desplazamiento. Al contrario, los municipios con bajos niveles de coca pero alta aspersión tiene un signo positivo lo que sugiere que sufrieron de mayores niveles de desplazamiento. Esto se puede deber a los efectos adversos del programa en términos de violencia, debido a que se ha mostrado que donde se aplicó el programa con mayor intensidad el conflicto se acrecentó [@reyes2014; @abadie2014].
+En este sentido, la figura 8 muestra los efectos heterogéneos de acuerdo a los diferentes niveles de aspersión de la tabla 5. La categoría que se toma como base es la de bajos niveles de coca y de aspersión. La figura muestra que no existe ningún efecto estadisticamente signficativo. Sin embargo, cabe anotar la dirección de los efectos: el efecto diferenciado entre los municipios con altos niveles de coca y aspersión es menor que el de los bajos niveles de coca y aspersión. Esto sugiere que los municipios donde se asperjó menos y se presentaba más coca sufrieron menos desplazamiento. Al contrario, los municipios con bajos niveles de coca pero alta aspersión tienen un signo positivo, lo que sugiere que fueron exuestos a mayores niveles de desplazamiento. Esto puede deberse a los efectos adversos del programa en términos de violencia, debido a que se ha mostrado que donde se aplicó el programa con mayor intensidad el conflicto se acrecentó [@reyes2014; @abadie2014].
 
 ```{r chart8, out.width = "90%", warning=F, fig.show=F, echo=F, fig.align='center', fig.cap="Efectos Heterogeneos por niveles de cultivos de coca y aspersión", fig.pos="H"}
 knitr::include_graphics(c("../Visualizations/output/CultivosHE.png"))
