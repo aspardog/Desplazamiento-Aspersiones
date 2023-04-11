@@ -73,6 +73,7 @@ EH_panel <- function(mainData = data2plot,
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") 
+
 antimerge_data.df <- readRDS("Data/Merge/output/antimerge_data.rds") 
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -81,8 +82,8 @@ antimerge_data.df <- readRDS("Data/Merge/output/antimerge_data.rds")
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-controles_fe <- c('vegetation', 'night_lights', "rainFall", 'ruv_desaparicion_forzada', 'ruv_homicidio',
-                  'ruv_combates', 'ruv_abandono_despojo', 'cnmh_minas', 'cnmh_reclutamiento', 'windIV10RMBOS')
+controles_fe <- c('night_lights', "rainFall", 'vegetation', 'ruv_homicidio',
+                  'ruv_combates', 'ruv_abandono_despojo', 'cnmh_minas', 'lag1_cnmh_reclutamiento')
 
 controles_fe_3month <- c('vegetation', 'night_lights', "rainFall", 'sum_homicidio',
                          'sum_combates', 'sum_despojo', 'sum_minas', 'sum_reclutamiento')
@@ -188,7 +189,7 @@ ef <- c('year', 'codmpio', 'month')
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 firstStage <- plm(data = merge_data.df,
-                  formula = paste0("spraying_norm ~ windIVDaysRMBOS +  windSpeedFLDAS +", paste(controles_fe, collapse = "+")),
+                  formula = paste0("spraying_norm ~  windSpeedRMBOS + windIVDaysRMBOS +", paste(controles_fe, collapse = "+")),
                   effect = "twoways", model = "within", index=c("codmpio", "date"))
 summary(firstStage)
 coeftest(firstStage, vcov=vcovHC(firstStage, type="sss", cluster="group"))  
@@ -201,14 +202,14 @@ coeftest(firstStage, vcov=vcovHC(firstStage, type="sss", cluster="group"))
 
 restExcl1 <- plm(data = antimerge_data.df,
                 formula = paste0("desplazamiento_log ~  windSpeedRMBOS + windIVDaysRMBOS +", paste(controles_fe, collapse = "+")),
-                effect = "twoways", model = "within", index=c("codmpio", "date"))
+                effect = "individual", model = "within", index=c("codmpio", "date", "query"))
 summary(restExcl1)
 coeftest(restExcl1, vcov=vcovHC(restExcl1, type="sss", cluster="group"))  
 
 
 restExcl2 <- plm(data = merge_data.df,
-                formula = paste0("desplazamiento_log ~  windSpeedRMBOS + windIVDaysRMBOS+", paste(controles_fe, collapse = "+")),
-                effect = "twoways", model = "within", index=c("codmpio", "date"))
+                formula = paste0("desplazamiento_log ~  windSpeedRMBOS +windIVDaysRMBOS+", paste(controles_fe, collapse = "+")),
+                effect = "twoways", model = "within", index=c("codmpio", "date", "query"))
 summary(restExcl2)
 coeftest(restExcl2, vcov=vcovHC(restExcl2, type="sss", cluster="group"))  
 
@@ -223,7 +224,7 @@ coeftest(restExcl2, vcov=vcovHC(restExcl2, type="sss", cluster="group"))
 
 Month1FE <- plm(data= merge_data.df,
                   formula =  
-                    paste0("desplazamiento_log ~ spraying +",
+                    paste0("desplazamiento_log ~ spraying_norm +",
                            paste(controles_fe, collapse = "+")),
                   effect = "twoways", 
                   model = "within", 
@@ -235,8 +236,8 @@ Month1MCO <- coeftest(Month1FE, vcov=vcovHC(Month1FE, type="sss", cluster="group
 
 IV1Month <- plm(data= merge_data.df,
                 formula =  
-                  paste0("desplazamiento_log ~ spraying |",
-                         paste("windSpeedRMBOS")),
+                  paste0("desplazamiento_log ~ spraying_norm |",
+                         paste("windSpeedRMBOS + windIVDaysRMBOS")),
                 effect = "twoways", 
                 model = "within", 
                 index=c("codmpio", "date"))
@@ -248,13 +249,13 @@ IV <- coeftest(IV1Month, vcov=vcovHC(IV1Month, type="sss", cluster="group"))
 
 IV1MonthFE <- plm(data= merge_data.df,
                 formula =  
-                  paste0("desplazamiento_log ~ spraying +",
+                  paste0("desplazamiento_log ~ spraying_norm +",
                   paste(controles_fe, collapse = "+"),"|",
-                  paste("windSpeedRMBOS  +"),
+                  paste("windSpeedRMBOS + windIVDaysRMBOS +"),
                   paste(controles_fe, collapse = "+")),
                 effect = "twoways", 
                 model = "within", 
-                index=c("codmpio", "date"), diagnostics = TRUE, cluster = "codmpio")
+                index=c("codmpio", "date"), diagnostics = TRUE)
 summary(IV1MonthFE)
 IVFE <- coeftest(IV1MonthFE, vcov=vcovHC(IV1MonthFE, type="sss", cluster="group"))  
 
@@ -807,3 +808,23 @@ HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate
         axis.line.x.bottom = element_line(linetype = "solid", size = 1));HEPlot 
 ggsave(HEPlot, filename = "Visualizations/output/AspersionHE.png", dpi = 320, width = 10, height = 7.5)
 
+## 
+# PRUEBAS
+##
+
+controles_fe_pop <- c('night_lights', "rainFall", 'vegetation', 
+                      'ruv_homicidio_pop','ruv_combates_pop', 'ruv_abandono_despojo_pop', 
+                      'cnmh_minas_pop', 'cnmh_desaparicion_pop')
+
+IV1MonthFE <- plm(data= merge_data.df,
+                  formula =  
+                    paste0("lag1_ruv_desplazamiento_forzado_pop ~ spraying_norm +",
+                           paste(controles_fe_pop, collapse = "+"),"|",
+                           paste("windSpeedRMBOS + windIVDaysRMBOS +"),
+                           paste(controles_fe_pop, collapse = "+")),
+                  effect = "twoways", 
+                  model = "within", 
+                  index=c("codmpio", "date", "query"), diagnostics = TRUE)
+summary(IV1MonthFE)
+
+IVFE <- coeftest(IV1MonthFE, vcov=vcovHC(IV1MonthFE, type="sss", cluster="group"))  
