@@ -67,8 +67,8 @@ EH_panel <- function(mainData = data2plot,
 }
 
 controles_fe_pop <- c('night_lights', "rainFall","vegetation", 'ruv_abandono_despojo_pop',
-                      'ruv_combates_pop', 'ruv_abandono_despojo_pop', 'windIV10RMBOS',
-                      'cnmh_minas_pop', 'cnmh_desaparicion_pop')
+                      'ruv_combates_pop', 'ruv_abandono_despojo_pop', 'ruv_homicidio_pop',
+                      'cnmh_minas_pop', 'cnmh_desaparicion_pop', 'windIV10RMBOS')
 
 controles_fe_3month <- c('night_lights', "rainFall","vegetation", 'sum_combates_pop', 'sum_despojo_pop', 
                          'sum_minas_pop', 'sum_reclutamiento_pop', 'windIV10RMBOS')
@@ -105,7 +105,9 @@ coeftest(firstStage, vcov=vcovHC(firstStage, type="sss", cluster="group"))
 restExcl1 <- plm(data = antimerge_data.df,
                  formula = paste0("lag1_ruv_desplazamiento_forzado_pop ~  windSpeedRMBOS +", paste(controles_fe_pop, collapse = "+")),
                  effect = "twoways", model = "within", index=c("codmpio", "date", "query"))
+
 summary(restExcl1)
+
 coeftest(restExcl1, vcov=vcovHC(restExcl1, type="sss", cluster="group"))  
 
 
@@ -138,7 +140,7 @@ Month1MCO <- coeftest(Month1FE, vcov=vcovHC(Month1FE, type="sss", cluster="group
 IV1Month <- plm(data= merge_data.df,
                 formula =  
                   paste0("lag1_ruv_desplazamiento_forzado_pop ~ spraying_norm |",
-                         paste("windSpeedRMBOS")),
+                         paste(" windSpeedRMBOS")),
                 effect = "twoways", 
                 model = "within", 
                 index=c("codmpio", "date", "query"))
@@ -152,7 +154,7 @@ IV1MonthFE <- plm(data= merge_data.df,
                   formula =  
                     paste0("lag1_ruv_desplazamiento_forzado_pop ~ spraying_norm +",
                            paste(controles_fe_pop, collapse = "+"),"|",
-                           paste("windSpeedRMBOS  +"),
+                           paste(" windSpeedRMBOS  +"),
                            paste(controles_fe_pop, collapse = "+")),
                   effect = "twoways", 
                   model = "within", 
@@ -417,29 +419,32 @@ IVEF <- merge_data.df %>%
   ungroup() 
 
 IVHF <- IVEF %>%
-  mutate(hetEffects = if_else(meanAspersion > meanYearAspersion & meanCultivos > meanYearCultivos, "High-High",
+  mutate(hetEffects = if_else(meanAspersion > meanYearAspersion & meanCultivos > meanYearCultivos, "1High-High",
                               if_else(meanAspersion > meanYearAspersion & meanCultivos < meanYearCultivos, "High-Low",
                                       if_else(meanAspersion < meanYearAspersion & meanCultivos > meanYearCultivos, "Low-High",
-                                              if_else(meanAspersion < meanYearAspersion & meanCultivos < meanYearCultivos, "1Low-Low", NA_character_))))) %>%
+                                              if_else(meanAspersion < meanYearAspersion & meanCultivos < meanYearCultivos, "Low-Low", NA_character_))))) %>%
   mutate(quintilesAspersion = as.factor(ntile(spraying, 5)),
          hetEffects = as.factor(hetEffects),
          desp = lag1_ruv_desplazamiento_forzado_pop/100)
 
 IVHReg <- plm(data= IVHF,
-              formula = paste0("desp ~ spraying_norm + hetEffects + spraying_norm*hetEffects | windSpeedRMBOS + hetEffects + windSpeedRMBOS*hetEffects"),
+              formula =   
+                paste0("desp ~ spraying_norm + hetEffects + spraying_norm*hetEffects +",
+                       paste(controles_fe_pop, collapse = "+"),"|",
+                       paste("windSpeedRMBOS + hetEffects + windSpeedRMBOS*hetEffects +"),
+                       paste(controles_fe_pop, collapse = "+")),
               effect = "individual", 
-              model = "random", 
+              model = "within", 
               index=c("codmpio", "date", "query"))
-summary(IVHReg)
 IVHRegHE <- coeftest(IVHReg, vcov=vcovHC(IVHReg, type="sss", cluster="group")) 
-IVHRegHEIC <- confint(IVHReg, vcov=vcovHC(IVHReg, type="sss", cluster="group"), level = 0.8)
+IVHRegHEIC <- confint(IVHRegHE, level = 0.8)
 
 estimate <- as.data.frame(IVHRegHE[,]) %>%
   rownames_to_column(var = "variable") %>%
-  filter(variable %in% c("spraying_norm:hetEffectsHigh-High", "spraying_norm:hetEffectsHigh-Low", "spraying_norm:hetEffectsLow-High"))
+  filter(variable %in% c("spraying_norm:hetEffectsLow-Low", "spraying_norm:hetEffectsHigh-Low", "spraying_norm:hetEffectsLow-High"))
 CI <- as.data.frame(IVHRegHEIC[,]) %>%
   rownames_to_column(var = "variable") %>%
-  filter(variable %in% c("spraying_norm:hetEffectsHigh-High", "spraying_norm:hetEffectsHigh-Low", "spraying_norm:hetEffectsLow-High")) %>%
+  filter(variable %in% c("spraying_norm:hetEffectsLow-Low", "spraying_norm:hetEffectsHigh-Low", "spraying_norm:hetEffectsLow-High")) %>%
   rename("lower" = "10 %", "upper" = "90 %")
 
 data2plot <- estimate %>%
@@ -449,13 +454,13 @@ data2plot <- estimate %>%
       case_when(
         variable == "spraying_norm:hetEffectsLow-High" ~ 1,
         variable == "spraying_norm:hetEffectsHigh-Low" ~ 2,
-        variable == "spraying_norm:hetEffectsHigh-High" ~ 3,
+        variable == "spraying_norm:hetEffectsLow-Low" ~ 3,
       ),
     variable = 
       case_when(
         variable == "spraying_norm:hetEffectsLow-High" ~ "Baja Aspersión - Altos Cultivos",
         variable == "spraying_norm:hetEffectsHigh-Low" ~ "Alta Aspersión - Bajos Cultivos",
-        variable == "spraying_norm:hetEffectsHigh-High" ~ "Alta Aspersión - Altos Cultivos",
+        variable == "spraying_norm:hetEffectsLow-Low" ~ "Baja Aspersión - Bajos Cultivos",
       )
   )
 
@@ -468,10 +473,10 @@ HECocaPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Esti
              size = 3.5, position = position_dodge(width = 1), color = "#003b8a") +
   geom_point(aes(x = reorder(variable, order_value), y = Estimate), 
              size = 2.5, position = position_dodge(width = 1), color = "white") +
-  scale_y_continuous(limits = c(-0.5, 0.5),
-                     breaks = seq(-0.5, 0.5, by = 0.25),
+  scale_y_continuous(limits = c(-0.25, 0.25),
+                     breaks = seq(-0.25, 0.25, by = 0.125),
                      expand = expansion(mult = 0.025), position = "left",
-                     labels = c("-0.5", "-0.25", "0", "0.25","0.5")) +
+                     labels = c("-0.25", "-0.125", "0", "0.125","0.25")) +
   coord_flip() +
   labs(x = "Nivel de aspersión y cultivos de coca",
        y = "Efecto aspersiones sobre desplazamiento") +
@@ -507,22 +512,132 @@ IVASP <- merge_data.df %>%
   summarise(asp_total = sum(spraying_norm, na.rm = T)) %>%
   ungroup()
 
-quintiles <- quantile(IVASP$asp_total, probs = seq(0, 1, 0.2))
+quintiles <- quantile(IVASP$asp_total, probs = seq(0, 1, 0.25))
 IVASP$quintil <- cut(IVASP$asp_total, quintiles, labels = FALSE)
 IVASP$quintil <- as.factor(IVASP$quintil)
 
 IVASP.df <- merge_data.df %>%
   left_join(IVASP, by = "codmpio") %>%
-  mutate(des = lag1_ruv_desplazamiento_forzado_pop/100)
+  mutate(des = lag1_ruv_desplazamiento_forzado_pop/100) %>%
+  drop_na(quintil) %>%
+  mutate(quintil = if_else(quintil == 1, "quintil1",
+                           if_else(quintil == 2, "1quintil2",
+                                   if_else(quintil == 3, "quintil3","1quintil4"))))
+  #drop_na(quintil)
 
 IVASP.reg <- plm(data= IVASP.df,
-                 formula = paste0("des ~ spraying_norm + quintil*spraying_norm + quintil | windSpeedRMBOS + windSpeedRMBOS*quintil + quintil"),
+                 formula =   
+                   paste0("des ~ spraying_norm + quintil + spraying_norm*quintil +",
+                          paste(controles_fe_pop, collapse = "+"),"|",
+                          paste("windSpeedRMBOS + quintil + windSpeedRMBOS*quintil +"),
+                          paste(controles_fe_pop, collapse = "+")) ,
                  effect = "individual", 
-                 model = "random", 
+                 model = "within", 
                  index=c("date", "codmpio", "query"))
 summary(IVASP.reg)
 IVASPHE <- coeftest(IVASP.reg, vcov=vcovHC(IVASP.reg, type="sss", cluster="group")) 
-IVASPHEIC <- confint(IVASP.reg, vcov=vcovHC(IVASP.reg, type="sss", cluster="group"), level = 0.8)
+IVASPHEIC <- confint(IVASPHE, level = 0.8)
+
+estimate <- as.data.frame(IVASPHE[,]) %>%
+  rownames_to_column(var = "variable") %>%
+  filter(variable %in% c("spraying_norm:quintil1", "spraying_norm:quintil3", "spraying_norm:quintil4", "spraying_norm:quintil5"))
+CI <- as.data.frame(IVASPHEIC[,]) %>%
+  rownames_to_column(var = "variable") %>%
+  filter(variable %in% c("spraying_norm:quintil1", "spraying_norm:quintil3", "spraying_norm:quintil4", "spraying_norm:quintil5")) %>%
+  rename("lower" = "10 %", "upper" = "90 %")
+
+data2plot <- estimate %>%
+  inner_join(CI, by = "variable") %>%
+  mutate(
+    order_value =
+      case_when(
+        variable == "spraying_norm:quintil1" ~ 1,
+        variable == "spraying_norm:quintil3" ~ 2,
+        variable == "spraying_norm:quintil4" ~ 3,
+        variable == "spraying_norm:quintil5" ~ 4
+      ),
+    variable = 
+      case_when(
+        variable == "spraying_norm:quintil1" ~ "Segundo quintil",
+        variable == "spraying_norm:quintil3" ~ "Tercer quintil",
+        variable == "spraying_norm:quintil4" ~ "Cuarto quintil",
+        variable == "spraying_norm:quintil5" ~ "Quinto quintil"
+      )
+  )
+
+HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate)) +
+  geom_hline(yintercept = 0, lty = 1, color = "#fa4d57", lwd = 1)  +
+  geom_linerange(aes(x = reorder(variable, order_value),  ymin = lower, ymax = upper),
+                 lwd = 0.5, position = position_dodge(width = .7), 
+                 stat = "identity", color = "#003b8a")+
+  geom_point(aes(x =reorder(variable, order_value), y = Estimate), 
+             size = 3.5, position = position_dodge(width = 1), color = "#003b8a") +
+  geom_point(aes(x = reorder(variable, order_value), y = Estimate), 
+             size = 2.5, position = position_dodge(width = 1), color = "white") +
+  scale_y_continuous(limits = c(-2, 2),
+                     breaks = seq(-2, 2, by = 1),
+                     expand = expansion(mult = 0.025), position = "left",
+                     labels = c("-2", "-1", "0", "1","2")) +
+  coord_flip() +
+  labs(x = "Quintil",
+       y = "Efecto aspersiones sobre desplazamiento") +
+  theme(panel.background   = element_blank(),
+        plot.background    = element_blank(),
+        panel.grid.major   = element_line(size     = 0.25,
+                                          colour   = "#5e5c5a",
+                                          linetype = "dashed"),
+        panel.grid.minor   = element_blank(),
+        axis.ticks  = element_blank(),
+        plot.margin  = unit(c(0, 0, 0, 0), "points")) +
+  theme(legend.position = "none",
+        panel.background   = element_blank(),
+        panel.grid.major.x = element_line(colour = "#d1cfd1", 
+                                          size = 0.5, linetype = "dashed"),
+        legend.title = element_blank(),
+        axis.title.y = element_text(size = 12, margin   = margin(0, 20, 0, 10), vjust = 1),
+        axis.title.x = element_text(size = 12, margin   = margin(20, 0, 10, 0), vjust = 0),
+        axis.text.x  = element_text(size = 10),
+        axis.text.y  = element_text(size = 10),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.x  = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        ggh4x.axis.ticks.length.minor = rel(1),
+        axis.line.x.bottom = element_line(linetype = "solid", size = 1));HEPlot 
+ggsave(HEPlot, filename = "Visualizations/output/AspersionHENorm.png", dpi = 320, width = 7.5, height = 7.5)
+
+# Quintiles intensidad COCA
+
+
+IVASP <- merge_data.df %>%
+  group_by(codmpio) %>%
+  mutate(cultivos_norm = (cultivos/mpio_area)) %>%
+  summarise(asp_total = sum(cultivos_norm, na.rm = T)) %>%
+  ungroup()
+
+quintiles <- quantile(IVASP$asp_total, probs = seq(0, 1, 0.25))
+IVASP$quintil <- cut(IVASP$asp_total, quintiles, labels = FALSE)
+IVASP$quintil <- as.factor(IVASP$quintil)
+
+IVASP.df <- merge_data.df %>%
+  left_join(IVASP, by = "codmpio") %>%
+  mutate(des = lag1_ruv_desplazamiento_forzado_pop/100) #%>%
+  #mutate(quintil = if_else(quintil == 1, "quintil1",
+                           #if_else(quintil == 2, "quintil2",
+                                   #if_else(quintil == 3, "quintil3",
+                                           #if_else(quintil == 4, "quintil4", "1quintil5")))))
+
+IVASP.reg <- plm(data= IVASP.df,
+                 formula =   
+                   paste0("des ~ spraying_norm + quintil + spraying_norm*quintil +",
+                          paste(controles_fe_pop, collapse = "+"),"|",
+                          paste("windSpeedRMBOS + quintil + windSpeedRMBOS*quintil +"),
+                          paste(controles_fe_pop, collapse = "+")) ,
+                 effect = "individual", 
+                 model = "within", 
+                 index=c("date", "codmpio", "query"))
+summary(IVASP.reg)
+IVASPHE <- coeftest(IVASP.reg, vcov=vcovHC(IVASP.reg, type="sss", cluster="group")) 
+IVASPHEIC <- confint(IVASPHE, level = 0.8)
 
 estimate <- as.data.frame(IVASPHE[,]) %>%
   rownames_to_column(var = "variable") %>%
@@ -590,13 +705,13 @@ HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate
         ggh4x.axis.ticks.length.minor = rel(1),
         axis.line.x.bottom = element_line(linetype = "solid", size = 1));HEPlot 
 ggsave(HEPlot, filename = "Visualizations/output/AspersionHENorm.png", dpi = 320, width = 7.5, height = 7.5)
-
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
 ##   6. Trimestral                                                              ----
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+controles_fe_3month <- c('night_lights', "rainFall","vegetation", 'sum_combates_pop', 'sum_despojo_pop', 
+                         'sum_minas_pop', 'sum_reclutamiento_pop')
 # Fixed effects 3 Months
 
 Month3FE <- plm(data= merge_data.df,
