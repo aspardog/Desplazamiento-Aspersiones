@@ -508,28 +508,26 @@ ggsave(HECocaPlot, filename = "Visualizations/output/CultivosHENorm.png", dpi = 
 
 
 IVASP <- merge_data.df %>%
+  filter(spraying > 0) %>%
   group_by(codmpio) %>%
-  summarise(asp_total = sum(spraying_norm, na.rm = T)) %>%
-  ungroup()
+  summarise(asp_total = mean(spraying_norm, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(codmpio = as.character(codmpio))
 
-quintiles <- quantile(IVASP$asp_total, probs = seq(0, 1, 0.25))
-IVASP$quintil <- cut(IVASP$asp_total, quintiles, labels = FALSE)
-IVASP$quintil <- as.factor(IVASP$quintil)
+cuartiles <- quantile(IVASP$asp_total, probs = seq(0, 1, 0.25))
+IVASP$cuartil <- cut(IVASP$asp_total, cuartiles, labels = FALSE)
+IVASP$cuartil <- as.factor(IVASP$cuartil)
 
 IVASP.df <- merge_data.df %>%
-  left_join(IVASP, by = "codmpio") %>%
-  mutate(des = lag1_ruv_desplazamiento_forzado_pop/100) %>%
-  drop_na(quintil) %>%
-  mutate(quintil = if_else(quintil == 1, "quintil1",
-                           if_else(quintil == 2, "1quintil2",
-                                   if_else(quintil == 3, "quintil3","1quintil4"))))
-  #drop_na(quintil)
+  mutate(codmpio = as.character(codmpio)) %>%
+  left_join(IVASP, by = c("codmpio")) %>%
+  mutate(des = lag1_ruv_desplazamiento_forzado_pop/100) 
 
 IVASP.reg <- plm(data= IVASP.df,
                  formula =   
-                   paste0("des ~ spraying_norm + quintil + spraying_norm*quintil +",
+                   paste0("des ~ spraying_norm + cuartil + spraying_norm*cuartil +",
                           paste(controles_fe_pop, collapse = "+"),"|",
-                          paste("windSpeedRMBOS + quintil + windSpeedRMBOS*quintil +"),
+                          paste("windSpeedRMBOS + cuartil + windSpeedRMBOS*cuartil +"),
                           paste(controles_fe_pop, collapse = "+")) ,
                  effect = "individual", 
                  model = "within", 
@@ -540,10 +538,10 @@ IVASPHEIC <- confint(IVASPHE, level = 0.8)
 
 estimate <- as.data.frame(IVASPHE[,]) %>%
   rownames_to_column(var = "variable") %>%
-  filter(variable %in% c("spraying_norm:quintil1", "spraying_norm:quintil3", "spraying_norm:quintil4", "spraying_norm:quintil5"))
+  filter(variable %in% c("spraying_norm:cuartil2", "spraying_norm:cuartil3", "spraying_norm:cuartil4"))
 CI <- as.data.frame(IVASPHEIC[,]) %>%
   rownames_to_column(var = "variable") %>%
-  filter(variable %in% c("spraying_norm:quintil1", "spraying_norm:quintil3", "spraying_norm:quintil4", "spraying_norm:quintil5")) %>%
+  filter(variable %in% c("spraying_norm:cuartil2", "spraying_norm:cuartil3", "spraying_norm:cuartil4")) %>%
   rename("lower" = "10 %", "upper" = "90 %")
 
 data2plot <- estimate %>%
@@ -551,18 +549,16 @@ data2plot <- estimate %>%
   mutate(
     order_value =
       case_when(
-        variable == "spraying_norm:quintil1" ~ 1,
-        variable == "spraying_norm:quintil3" ~ 2,
-        variable == "spraying_norm:quintil4" ~ 3,
-        variable == "spraying_norm:quintil5" ~ 4
+        variable == "spraying_norm:cuartil2" ~ 1,
+        variable == "spraying_norm:cuartil3" ~ 2,
+        variable == "spraying_norm:cuartil4" ~ 3
       ),
     variable = 
       case_when(
-        variable == "spraying_norm:quintil1" ~ "Segundo quintil",
-        variable == "spraying_norm:quintil3" ~ "Tercer quintil",
-        variable == "spraying_norm:quintil4" ~ "Cuarto quintil",
-        variable == "spraying_norm:quintil5" ~ "Quinto quintil"
-      )
+        variable == "spraying_norm:cuartil2" ~ "Segundo cuartil",
+        variable == "spraying_norm:cuartil3" ~ "Tercer cuartil",
+        variable == "spraying_norm:cuartil4" ~ "Cuarto cuartil"      
+        )
   )
 
 HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate)) +
@@ -579,7 +575,7 @@ HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate
                      expand = expansion(mult = 0.025), position = "left",
                      labels = c("-2", "-1", "0", "1","2")) +
   coord_flip() +
-  labs(x = "Quintil",
+  labs(x = "Quintil de intensidad de aspersión",
        y = "Efecto aspersiones sobre desplazamiento") +
   theme(panel.background   = element_blank(),
         plot.background    = element_blank(),
@@ -609,9 +605,10 @@ ggsave(HEPlot, filename = "Visualizations/output/AspersionHENorm.png", dpi = 320
 
 
 IVASP <- merge_data.df %>%
+  filter(cultivos > 0) %>%
   group_by(codmpio) %>%
   mutate(cultivos_norm = (cultivos/mpio_area)) %>%
-  summarise(asp_total = sum(cultivos_norm, na.rm = T)) %>%
+  summarise(asp_total = mean(cultivos_norm, na.rm = T)) %>%
   ungroup()
 
 quintiles <- quantile(IVASP$asp_total, probs = seq(0, 1, 0.25))
@@ -620,11 +617,7 @@ IVASP$quintil <- as.factor(IVASP$quintil)
 
 IVASP.df <- merge_data.df %>%
   left_join(IVASP, by = "codmpio") %>%
-  mutate(des = lag1_ruv_desplazamiento_forzado_pop/100) #%>%
-  #mutate(quintil = if_else(quintil == 1, "quintil1",
-                           #if_else(quintil == 2, "quintil2",
-                                   #if_else(quintil == 3, "quintil3",
-                                           #if_else(quintil == 4, "quintil4", "1quintil5")))))
+  mutate(des = lag1_ruv_desplazamiento_forzado_pop/100) 
 
 IVASP.reg <- plm(data= IVASP.df,
                  formula =   
@@ -641,10 +634,10 @@ IVASPHEIC <- confint(IVASPHE, level = 0.8)
 
 estimate <- as.data.frame(IVASPHE[,]) %>%
   rownames_to_column(var = "variable") %>%
-  filter(variable %in% c("spraying_norm:quintil2", "spraying_norm:quintil3", "spraying_norm:quintil4", "spraying_norm:quintil5"))
+  filter(variable %in% c("spraying_norm:quintil2", "spraying_norm:quintil3", "spraying_norm:quintil4"))
 CI <- as.data.frame(IVASPHEIC[,]) %>%
   rownames_to_column(var = "variable") %>%
-  filter(variable %in% c("spraying_norm:quintil2", "spraying_norm:quintil3", "spraying_norm:quintil4", "spraying_norm:quintil5")) %>%
+  filter(variable %in% c("spraying_norm:quintil2", "spraying_norm:quintil3", "spraying_norm:quintil4")) %>%
   rename("lower" = "10 %", "upper" = "90 %")
 
 data2plot <- estimate %>%
@@ -655,15 +648,13 @@ data2plot <- estimate %>%
         variable == "spraying_norm:quintil2" ~ 1,
         variable == "spraying_norm:quintil3" ~ 2,
         variable == "spraying_norm:quintil4" ~ 3,
-        variable == "spraying_norm:quintil5" ~ 4
       ),
     variable = 
       case_when(
         variable == "spraying_norm:quintil2" ~ "Segundo quintil",
         variable == "spraying_norm:quintil3" ~ "Tercer quintil",
-        variable == "spraying_norm:quintil4" ~ "Cuarto quintil",
-        variable == "spraying_norm:quintil5" ~ "Quinto quintil"
-      )
+        variable == "spraying_norm:quintil4" ~ "Cuarto quintil"
+        )
   )
 
 HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate)) +
@@ -680,7 +671,7 @@ HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate
                      expand = expansion(mult = 0.025), position = "left",
                      labels = c("-2", "-1", "0", "1","2")) +
   coord_flip() +
-  labs(x = "Quintil",
+  labs(x = "Quintil de niveles cultivos de coca",
        y = "Efecto aspersiones sobre desplazamiento") +
   theme(panel.background   = element_blank(),
         plot.background    = element_blank(),
@@ -704,7 +695,7 @@ HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate
         panel.grid.minor.y = element_blank(),
         ggh4x.axis.ticks.length.minor = rel(1),
         axis.line.x.bottom = element_line(linetype = "solid", size = 1));HEPlot 
-ggsave(HEPlot, filename = "Visualizations/output/AspersionHENorm.png", dpi = 320, width = 7.5, height = 7.5)
+ggsave(HEPlot, filename = "Visualizations/output/CultivosHENorm.png", dpi = 320, width = 7.5, height = 7.5)
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
 ##   6. Trimestral                                                              ----

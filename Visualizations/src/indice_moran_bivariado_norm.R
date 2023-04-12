@@ -92,8 +92,8 @@ merge_data.sf <- colombia.sf %>%
   mutate(ruv_desplazamiento_forzado_pop = if_else(is.na(lag1_ruv_desplazamiento_forzado_pop) == T, 0, lag1_ruv_desplazamiento_forzado_pop),
          spraying_norm = if_else(is.na(spraying_norm) == T, 0, spraying_norm)) %>%
   group_by(codmpio, dpto_ccdgo) %>%
-  summarise(desplazamiento_forzado_pop = sum(ruv_desplazamiento_forzado_pop, na.rm = T),
-            aspersiones_norm = sum(spraying_norm, na.rm = T))
+  summarise(desplazamiento_forzado_pop = mean(ruv_desplazamiento_forzado_pop, na.rm = T),
+            aspersiones_norm = mean(spraying_norm, na.rm = T))
 
 # Variables to use in the correlation: white and black population in each census track
 
@@ -199,5 +199,5 @@ a <- ggplot(map_sf) +
         legend.title = element_text(size = 12, face = "bold"),
         plot.background = element_rect(fill = "white", colour = "white"));a
 
-ggsave(a, filename = "Visualizations/output/moran_bivariado.png", dpi = 320, width = 10, height = 10)
+ggsave(a, filename = "Visualizations/output/moran_bivariado_norm.png", dpi = 320, width = 10, height = 10)
 

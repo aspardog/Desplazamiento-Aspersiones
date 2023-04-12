@@ -39,6 +39,9 @@ colombia.sf <- st_read("Data/Download/input/ShapeFiles/Municipio_ctm12.shp") %>%
   filter(codmpio != 88001) %>%
   filter(codmpio != 88564) 
 
+population.df    <- readRDS("Data/Download/output/Population/population.rds") %>%
+  mutate(codmpio = as.numeric(codmpio))
+
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
 ##    2. Calculation                                                                         ----
@@ -47,11 +50,22 @@ colombia.sf <- st_read("Data/Download/input/ShapeFiles/Municipio_ctm12.shp") %>%
 
 desplazamiento.df <- ruv.df %>%
   group_by(codmpio) %>%
-  summarise(desplazamientos = sum(ruv_desplazamiento_forzado))
+  summarise(desplazamientos = sum(ruv_desplazamiento_forzado, na.rm = T))
 
 data2plot <- colombia.sf %>%
   left_join(desplazamiento.df, by = "codmpio") %>%
   select(codmpio, desplazamientos)
+
+desplazamientos_pop <- ruv.df %>%
+  left_join(population.df, by = "codmpio") %>%
+  filter(population != 0) %>%
+  mutate(desplazamiento_pop = (ruv_desplazamiento_forzado/population)*100) %>%
+  group_by(codmpio) %>%
+  summarise(desplazamientos = mean(desplazamiento_pop, na.rm = T)) 
+
+desplazamientos_pop  <- colombia.sf %>%
+  left_join(desplazamientos_pop, by = "codmpio")
+
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -62,7 +76,7 @@ mapas <- function(data, variable, grupo){
   
   mapa <- data %>%
     group_by({{grupo}}) %>%
-    dplyr::summarize(counter = sum({{variable}}, na.rm = T))
+    dplyr::summarize(counter = sum({{variable}}*100, na.rm = T))
   
   mapa <- mapa %>%
     mutate(breaks = cut(counter, b = unique(round((quantile(counter, probs= seq(0,1,1/5), na.rm = T)),0)), dig.lab = 6), include.lowest = TRUE) %>%
@@ -100,3 +114,5 @@ a <- mapas(data = data2plot, variable = desplazamientos, grupo = codmpio);a
 
 ggsave(a, filename = "Visualizations/output/desplazamientos.png", dpi = 320, width = 10, height = 10)
 
+b <- mapas(data = desplazamientos_pop, variable = desplazamientos, grupo = codmpio);b
+ggsave(a, filename = "Visualizations/output/desplazamientosNorm.png", dpi = 320, width = 10, height = 10)

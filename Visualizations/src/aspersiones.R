@@ -32,20 +32,22 @@ p_load(sf, tmap, RColorBrewer, cartogram, geodaData, tidyverse, ggthemes)
 
 # Load data
 merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") %>%
-  filter(year < 2013) %>%
-  filter(year > 2003)
+  mutate(codmpio = as.character(codmpio)) %>%
+  group_by(codmpio) %>%
+  summarise(aspersiones = mean(spraying_norm, na.rm = T)) 
+
   
 
 colombia.sf <- st_read("Data/Download/input/ShapeFiles/Municipio_ctm12.shp") %>%
-  mutate(codmpio = as.numeric(mpio_ccnct)) %>%
+  mutate(codmpio = as.character(mpio_ccnct)) %>%
   filter(codmpio != 88001) %>%
   filter(codmpio != 88564) 
 
 merge_data.sf <- colombia.sf %>%
   left_join(merge_data.df, by = "codmpio") %>%
-  select(codmpio, spraying) %>%
-  mutate(aspersiones = if_else(spraying == 0 , NA_real_, spraying),
-         aspersiones = round(aspersiones, 0))
+  select(codmpio, aspersiones) %>%
+  mutate(aspersiones = if_else(aspersiones == 0 , NA_real_, aspersiones),
+         aspersiones = round(aspersiones*100,2))
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -59,7 +61,7 @@ mapas <- function(data,variable, grupo){
     dplyr::summarize(counter = sum({{variable}}, na.rm = T))
   
   mapa <- mapa %>%
-    mutate(breaks = cut(counter, b = unique((quantile(counter, probs= seq(0,1,1/20), na.rm = T))), dig.lab = 7), include.lowest = TRUE) %>%
+    mutate(breaks = cut(counter, b = unique(quantile(counter, probs= seq(0,1,1/30), na.rm = T)), dig.lab = 7), include.lowest = TRUE) %>%
     arrange(counter)
   
   col <- 5
@@ -74,7 +76,7 @@ mapas <- function(data,variable, grupo){
     scale_fill_manual(values = fichas,
                       limits = breaks2, na.value = "white") +
     theme_map()+
-    labs(fill = "Hectáreas asperjadas",
+    labs(fill = "Intensidad de hectáreas asperjadas",
          caption = "Fuente: DIRAN") +
     theme(legend.key.size = unit(1, "cm"),
           legend.position = "right",
@@ -89,10 +91,10 @@ mapas <- function(data,variable, grupo){
   
   return(a)
 }
-a <- mapas(data = merge_data.sf, variable = aspersiones, grupo = codmpio)
+a <- mapas(data = merge_data.sf, variable = aspersiones, grupo = codmpio);a
 
 ### PLOT
 
-ggsave(a, filename = "Visualizations/output/aspersiones.png", dpi = 320, width = 10, height = 10)
+ggsave(a, filename = "Visualizations/output/aspersionesNorm.png", dpi = 320, width = 10, height = 10)
 
 
