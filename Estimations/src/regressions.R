@@ -101,81 +101,81 @@ ef <- c('year', 'codmpio', 'month')
 
 #spraying_rate
 
-# finalMonth.reg <- plm(formula =  paste0("desplazamiento_log ~ spraying +", 
-#                                         paste(controles_fe, collapse = "+")),
-#                       data= merge_data.df, effect = "twoways", model = "within", index=c("codmpio", "date"))
-# summary(finalMonth.reg)
-# coeftest(finalMonth.reg, vcov=vcovHC(finalMonth.reg, type="sss", cluster="group"))  
-# 
-# merge_data.df$fittedMonth = predict(finalMonth.reg)
-# 
-# scatter_month <- merge_data.df %>%
-#   filter(spraying > 0) %>%
-#   mutate(aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
-#   ggplot(data = ., aes(x = aspersiones_log, y = fittedMonth)) +
-#   geom_point(mapping=aes(x = aspersiones_log, y = desplazamiento_log)) +
-#   geom_smooth(method=lm, aes(y = fittedMonth), color="#C42126", se= T, size = 1) +
-#   stat_cor(method = "pearson") +
-#   labs(subtitle = "Correlación mensual entre el desplazamiento forzado \ny aspersión aérea",
-#        x ="Logaritmo de aspersiones con glifosato", 
-#        y = "Logaritmo de desplazamientos forzados") +
-#   theme(panel.background   = element_blank(),
-#         panel.grid.major   = element_blank(),
-#         axis.ticks  = element_blank(),
-#         plot.subtitle = element_text(size = 12, hjust = 0.5, face = "bold"),
-#         axis.text = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
-#         axis.title = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
-#         plot.background = element_rect(fill = "white", colour = "white"))
-# 
-# #haven::write_dta(finalRegData.df, path = "Data/Merge/output/merge_data.dta")
-# #saveRDS(finalRegData.df, file = "Data/Merge/output/merge_data.rds")
-# 
+finalMonth.reg <- plm(formula =  paste0("desplazamiento_log ~ spraying +",
+                                         paste(controles_fe, collapse = "+")),
+                       data= merge_data.df, effect = "twoways", model = "within", index=c("codmpio", "date"))
+ summary(finalMonth.reg)
+ coeftest(finalMonth.reg, vcov=vcovHC(finalMonth.reg, type="sss", cluster="group"))
+
+ merge_data.df$fittedMonth = predict(finalMonth.reg)
+
+ scatter_month <- merge_data.df %>%
+   filter(spraying > 0) %>%
+   mutate(aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
+   ggplot(data = ., aes(x = aspersiones_log, y = fittedMonth)) +
+   geom_point(mapping=aes(x = aspersiones_log, y = desplazamiento_log)) +
+   geom_smooth(method=lm, aes(y = fittedMonth), color="#C42126", se= T, size = 1) +
+   stat_cor(method = "pearson") +
+   labs(subtitle = "Correlación mensual entre intensidad desplazamiento forzado \ny aspersión aérea",
+        x ="Logaritmo de intensidad aspersiones con glifosato",
+        y = "Logaritmo de intensidad desplazamientos forzados") +
+   theme(panel.background   = element_blank(),
+         panel.grid.major   = element_blank(),
+         axis.ticks  = element_blank(),
+         plot.subtitle = element_text(size = 12, hjust = 0.5, face = "bold"),
+         axis.text = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
+         axis.title = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
+         plot.background = element_rect(fill = "white", colour = "white"))
+
+ #haven::write_dta(finalRegData.df, path = "Data/Merge/output/merge_data.dta")
+ #saveRDS(finalRegData.df, file = "Data/Merge/output/merge_data.rds")
+
 # # 3 month
-# 
-# final3Month.reg <- plm(formula =  paste0("sum_desplazamiento_log ~ spraying + cultivos +",
-#                          paste(controles_fe_3month, collapse = "+")),
-#                        data= merge_data.df, effect = "twoways", model = "within", index=c("codmpio", "date"))
-# summary(final3Month.reg)
-# coeftest(final3Month.reg, vcov=vcovHC(final3Month.reg, type="sss", cluster="group")) 
-# 
-# merge_data.df$fitted3Month = predict(final3Month.reg)
-# 
-# scatter_3month <- merge_data.df %>%
-#   filter(spraying > 0) %>%
-#   mutate(aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
-#   ggplot(data = ., aes(x = aspersiones_log, y = fitted3Month)) +
-#   geom_point(mapping=aes(x = aspersiones_log, y = sum_desplazamiento_log)) +
-#   stat_smooth(method=lm, aes(y = fitted3Month, x = aspersiones_log), color="#C42126", se= T, size = 1) +
-#   stat_cor(method = "pearson") +
-#   labs(subtitle = "Correlación entre el desplazamiento trimestral \nacumulado y aspersión aérea con glifosato*",
-#        x ="Logaritmo de aspersiones con glifosato", 
-#        y = "Logaritmo de desplazamientos forzados") +
-#   theme(panel.background   = element_blank(),
-#         panel.grid.major   = element_blank(),
-#         axis.ticks  = element_blank(),
-#         plot.subtitle = element_text(size = 12, hjust = 0.5, face = "bold"),
-#         axis.text = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
-#         axis.title = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
-#         plot.background = element_rect(fill = "white", colour = "white"));scatter_3month
-# 
+#
+ final3Month.reg <- plm(formula =  paste0("sum_desplazamiento_log ~ spraying + cultivos +",
+                          paste(controles_fe_3month, collapse = "+")),
+                        data= merge_data.df, effect = "twoways", model = "within", index=c("codmpio", "date"))
+ summary(final3Month.reg)
+ coeftest(final3Month.reg, vcov=vcovHC(final3Month.reg, type="sss", cluster="group"))
+
+ merge_data.df$fitted3Month = predict(final3Month.reg)
+
+ scatter_3month <- merge_data.df %>%
+   filter(spraying > 0) %>%
+   mutate(aspersiones_log = log(spraying + quantile(spraying, .25)^2/quantile(spraying, .75))) %>%
+   ggplot(data = ., aes(x = aspersiones_log, y = fitted3Month)) +
+   geom_point(mapping=aes(x = aspersiones_log, y = sum_desplazamiento_log)) +
+   stat_smooth(method=lm, aes(y = fitted3Month, x = aspersiones_log), color="#C42126", se= T, size = 1) +
+   stat_cor(method = "pearson") +
+   labs(subtitle = "Correlación entre el desplazamiento trimestral \nacumulado y aspersión aérea con glifosato*",
+        x ="Logaritmo de aspersiones con glifosato",
+        y = "Logaritmo de desplazamientos forzados") +
+   theme(panel.background   = element_blank(),
+         panel.grid.major   = element_blank(),
+         axis.ticks  = element_blank(),
+         plot.subtitle = element_text(size = 12, hjust = 0.5, face = "bold"),
+         axis.text = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
+         axis.title = element_text(size = 8, margin   = margin(10, 20, 20, 0)),
+         plot.background = element_rect(fill = "white", colour = "white"));scatter_3month
+
 # figures <- list()
 # figures[["Panel A"]] <- scatter_month
 # figures[["Panel B"]] <- scatter_3month
-# 
-# figureScatter <- figures[["Panel A"]] + plot_spacer() + figures[["Panel B"]]  + 
+#
+# figureScatter <- figures[["Panel A"]] + plot_spacer() + figures[["Panel B"]]  +
 #   plot_layout(ncol = 3, nrow = 1,
 #               widths = unit(c(10,2,10), "cm"),
-#               heights = unit(15, "cm"))+ 
+#               heights = unit(15, "cm"))+
 #   plot_annotation(caption = "*El primer mes de desplazamiento forzado acumulado se cuenta a partir del mes en el que asperjó",
 #                   theme = theme(plot.caption = element_text(hjust = 0, size = 8, margin = margin(20, 0, 0, 0))));figureScatter
-# 
+#
 # ggsave(figureScatter, filename = "Visualizations/output/Scatter.png", dpi = 320, width = 10, height = 7.5)
 
 
 # m1coeffs_std <- data.frame(summary(final.reg)$coefficients)
 # coi_indices <- which(!startsWith(row.names(m1coeffs_std), 'codmpio'))
 # m1coeffs_std[coi_indices,]
-# 
+#
 # m1coeffs_cl <- coeftest(final.reg, vcov = vcovCL, cluster = ~codmpio)
 # m1coeffs_cl[coi_indices,]
 # (m1cis <- coefci(final.reg , parm = coi_indices, vcov = vcovCL,

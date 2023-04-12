@@ -502,7 +502,7 @@ HECocaPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Esti
         panel.grid.minor.y = element_blank(),
         ggh4x.axis.ticks.length.minor = rel(1),
         axis.line.x.bottom = element_line(linetype = "solid", size = 1));HECocaPlot 
-ggsave(HECocaPlot, filename = "Visualizations/output/CultivosHENorm.png", dpi = 320, width = 7.5, height = 7.5)
+ggsave(HECocaPlot, filename = "Visualizations/output/CultivosAspersionHENorm.png", dpi = 320, width = 7.5, height = 7.5)
 
 # Quintiles intensidad
 
@@ -702,7 +702,7 @@ ggsave(HEPlot, filename = "Visualizations/output/CultivosHENorm.png", dpi = 320,
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 controles_fe_3month <- c('night_lights', "rainFall","vegetation", 'sum_combates_pop', 'sum_despojo_pop', 
-                         'sum_minas_pop', 'sum_reclutamiento_pop')
+                         'sum_minas_pop', 'sum_reclutamiento_pop', 'sum_homicidio')
 # Fixed effects 3 Months
 
 Month3FE <- plm(data= merge_data.df,

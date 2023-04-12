@@ -32,24 +32,23 @@ p_load(sf, tmap, RColorBrewer, cartogram, geodaData, tidyverse, ggthemes, lubrid
 
 # Load data
 merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") %>%
-  filter(year < 2013) %>%
-  filter(year > 2003)
+  mutate(codmpio = as.character(codmpio))
 
 
 colombia.sf <- st_read("Data/Download/input/ShapeFiles/Municipio_ctm12.shp") %>%
-  mutate(codmpio = as.numeric(mpio_ccnct)) %>%
+  mutate(codmpio = as.character(mpio_ccnct)) %>%
   filter(codmpio != 88001) %>%
   filter(codmpio != 88564) 
 
 merge_data.sf <- colombia.sf %>%
   left_join(merge_data.df, by = "codmpio") %>%
-  select(codmpio, spraying, date, windSpeedFLDAS) %>%
-  mutate(aspersiones = if_else(spraying == 0 , NA_real_, spraying),
-         aspersiones = round(aspersiones, 0)) %>%
+  select(codmpio, spraying_norm, date, windSpeedRMBOS) %>%
+  mutate(aspersiones = if_else(spraying_norm == 0 , NA_real_, spraying_norm),
+         aspersiones = round(aspersiones, 1)) %>%
   filter(aspersiones > 0) %>%
   arrange(date) %>%
   group_by(date) %>%
-  summarise(intensidad = mean(aspersiones, na.rm = T), windSpeed = mean(windSpeedFLDAS, na.rm = T)) %>%
+  summarise(intensidad = mean(aspersiones, na.rm = T), windSpeed = mean(windSpeedRMBOS, na.rm = T)) %>%
   st_drop_geometry()
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -63,30 +62,30 @@ data2plot <- merge_data.sf %>%
          date = parse_date_time(date, "ym")) %>%
   group_by(year) %>%
   summarise(intensidad = mean(intensidad), windSpeed = mean(windSpeed)) %>%
-  mutate(logIntensidad = log(intensidad + quantile(intensidad, .25)^2/quantile(intensidad, .75)),
-         logWindSpeed  = log(windSpeed + quantile(windSpeed, .25)^2/quantile(windSpeed, .75))) %>%
+  #mutate(logIntensidad = log(intensidad + quantile(intensidad, .25)^2/quantile(intensidad, .75)),
+         #logWindSpeed  = log(windSpeed + quantile(windSpeed, .25)^2/quantile(windSpeed, .75))) %>%
   rename(Año = year)
 
 # Option 1
 
-coeff <- 5
+coeff <- 1.5
 
 a <- ggplot(data2plot, aes(x=Año)) +
   
-  geom_line( aes(y=logWindSpeed, linetype = "Velocidad del Viento"), color = "#427AA1", show.legend = T) + 
-  geom_point(aes(y=logWindSpeed), color = "#427AA1") +
-  geom_line( aes(y=logIntensidad/5, linetype = "Aspersiones Aéreas"), color = "#679436", show.legend = T) +
-  geom_point(aes(y=logIntensidad/5), color = "#679436") +
+  geom_line( aes(y=windSpeed, linetype = "Velocidad del Viento"), color = "#427AA1", show.legend = T) + 
+  geom_point(aes(y=windSpeed), color = "#427AA1") +
+  geom_line( aes(y=intensidad*1.5, linetype = "Aspersiones Aéreas"), color = "#679436", show.legend = T) +
+  geom_point(aes(y=intensidad*1.5), color = "#679436") +
   
 
   scale_y_continuous(
     
     # Features of the first axis
-    name = "Log(Velocidad del Viento)", breaks = seq(0, 2, by = 0.1),
+    name = "Velocidad del Viento", breaks = seq(0, 2, by = 0.1),
     
     # Add a second axis and specify its features
-    sec.axis = sec_axis(~.*coeff, name="Log(Aspersiones aereas)", breaks = seq(6, 8, by = 0.5)), 
-    expand = expansion(mult = c(0.25, 0.05))
+    sec.axis = sec_axis(~.*coeff, name=" Intensidad aspersiones aereas)", breaks = seq(0, 8, by = 0.5)), 
+    expand = expansion(mult = c(0.2, 0.05))
   ) +
   scale_x_continuous(breaks = seq(2004, 2012, by = 1),limits = c(2004,2012)) +
   theme(panel.background   = element_blank(),
@@ -119,7 +118,7 @@ a <- ggplot(data2plot, aes(x=Año)) +
         legend.key = element_rect(fill = "transparent"), legend.title = element_blank()
         );a
 
-ggsave(a, filename = "Visualizations/output/viento_aspersion.png", dpi = 320, width = 7.5, height = 5)
+ggsave(a, filename = "Visualizations/output/viento_aspersionNorm.png", dpi = 320, width = 7.5, height = 5)
 
 # Option 2
 

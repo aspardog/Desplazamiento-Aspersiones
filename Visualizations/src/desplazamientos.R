@@ -79,7 +79,7 @@ mapas <- function(data, variable, grupo){
     dplyr::summarize(counter = sum({{variable}}*100, na.rm = T))
   
   mapa <- mapa %>%
-    mutate(breaks = cut(counter, b = unique(round((quantile(counter, probs= seq(0,1,1/5), na.rm = T)),0)), dig.lab = 6), include.lowest = TRUE) %>%
+    mutate(breaks = cut(counter, b = unique(round((quantile(counter, probs= seq(0,1,1/5), na.rm = T)),0)), dig.lab = 7), include.lowest = TRUE) %>%
     arrange(counter)
   
   col <- 5
@@ -115,4 +115,4 @@ a <- mapas(data = data2plot, variable = desplazamientos, grupo = codmpio);a
 ggsave(a, filename = "Visualizations/output/desplazamientos.png", dpi = 320, width = 10, height = 10)
 
 b <- mapas(data = desplazamientos_pop, variable = desplazamientos, grupo = codmpio);b
-ggsave(a, filename = "Visualizations/output/desplazamientosNorm.png", dpi = 320, width = 10, height = 10)
+ggsave(b, filename = "Visualizations/output/desplazamientosNorm.png", dpi = 320, width = 10, height = 10)
