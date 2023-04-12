@@ -32,11 +32,13 @@ p_load(sf, tmap, RColorBrewer, cartogram, geodaData, tidyverse, ggthemes)
 
 # Load data
 merge_data.df <- readRDS("Data/Merge/output/merge_data.rds") %>%
-  mutate(codmpio = as.character(codmpio)) %>%
+  mutate(codmpio = as.character(codmpio),
+         mpio_area = mpio_area*100, # Trasnformación a hectareas
+         coca_norm = round((cultivos/mpio_area)*10000,2)
+  ) %>%
   group_by(codmpio) %>%
-  summarise(aspersiones = mean(spraying_norm, na.rm = T)) 
-
-  
+  summarise(aspersiones = mean(spraying_norm, na.rm = T),
+            coca = mean(coca_norm, na.rm = T)) 
 
 colombia.sf <- st_read("Data/Download/input/ShapeFiles/Municipio_ctm12.shp") %>%
   mutate(codmpio = as.character(mpio_ccnct)) %>%
@@ -45,9 +47,11 @@ colombia.sf <- st_read("Data/Download/input/ShapeFiles/Municipio_ctm12.shp") %>%
 
 merge_data.sf <- colombia.sf %>%
   left_join(merge_data.df, by = "codmpio") %>%
-  select(codmpio, aspersiones) %>%
+  select(codmpio, aspersiones, coca) %>%
   mutate(aspersiones = if_else(aspersiones == 0 , NA_real_, aspersiones),
-         aspersiones = round(aspersiones*100,2))
+         aspersiones = round(aspersiones*100,2),
+         coca = round(coca,2)
+         )
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -61,7 +65,7 @@ mapas <- function(data,variable, grupo){
     dplyr::summarize(counter = sum({{variable}}, na.rm = T))
   
   mapa <- mapa %>%
-    mutate(breaks = cut(counter, b = unique(quantile(counter, probs= seq(0,1,1/30), na.rm = T)), dig.lab = 7), include.lowest = TRUE) %>%
+    mutate(breaks = cut(counter, b = unique(quantile(counter, probs= seq(0,1,1/35), na.rm = T)), dig.lab = 7), include.lowest = TRUE) %>%
     arrange(counter)
   
   col <- 5
@@ -92,7 +96,7 @@ mapas <- function(data,variable, grupo){
   return(a)
 }
 a <- mapas(data = merge_data.sf, variable = aspersiones, grupo = codmpio);a
-
+b <- mapas(data = merge_data.sf, variable = coca, grupo = codmpio);b
 ### PLOT
 
 ggsave(a, filename = "Visualizations/output/aspersionesNorm.png", dpi = 320, width = 10, height = 10)

@@ -607,7 +607,7 @@ ggsave(HEPlot, filename = "Visualizations/output/AspersionHENorm.png", dpi = 320
 IVASP <- merge_data.df %>%
   filter(cultivos > 0) %>%
   group_by(codmpio) %>%
-  mutate(cultivos_norm = (cultivos/mpio_area)) %>%
+  mutate(cultivos_norm = (cultivos/mpio_area)*100) %>%
   summarise(asp_total = mean(cultivos_norm, na.rm = T)) %>%
   ungroup()
 

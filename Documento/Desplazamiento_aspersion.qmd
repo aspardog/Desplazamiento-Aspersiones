@@ -39,9 +39,11 @@ En este contexto, el objetivo de este trabajo es determinar cuál fue la magnitu
 
 Esta investigación busca solucionar ese problema estableciendo la relación existente entre las aspersiones aéreas y los desplazamientos forzados registrados. No obstante, por el diseño del Plan Colombia, los municipios en los que se asperjó están asociados directamente con el conflicto armado, que a su vez se encuentran relacionados con el desplazamiento forzado. Esto implica que no se puede determinar un efecto causal de ambas variables dado que presentan problemas de endogeneidad. Para corregirlos, se utiliza el método de Variables Instrumentales (IV) que permite identificar el efecto causal de ambas variables través de un instrumento exógeno. En este documento se emplea como instrumento la fuerza de los vientos. Dentro de los líneamientos en el momento de fumigar, el viento era una variable decisión que afectaba directamente probabilidad y la intensidad de aspersión. Por lo tanto, este instrumento permite encontrar variación exógena, no en la aplicación del programa, sino en la intensidad de las aspersiones, lo cual permite exponer los resultados en términos de relaciones de cambio.
 
-Los resultados de este trabajo estiman que por cada 100 hectáreas adicionales de coca asperjada existió un aumento del % de desplazamientos forzados por cada 100 habitantes en los municipios y meses donde se aplicó el programa. Además, la decisión de desplazarse no es inmediata en todos los casos: los resultados indican que también existe una relación entre las aspersiones y la migración forzada acumulada tres meses después de la aplicación del programa. En este caso, por cada 100 hectáreas asperjadas adicionales, los desplazamientos por cada 100 habitantes aumentaban en un %. Más aún, se encontró que existen efectos diferenciados de acuerdo a la intensidad de aspersión. Es decir, el efecto es mayor en los municipios donde se intensificó el PECIG. Esto ocurre especialmente en los municipios que se encuentran en el quintil de intensidad más alto.
+Los resultados de este trabajo estiman que ante un aumento de un punto porcentual en la intensidad de aspersión, la tasa de desplazamiento agregada en el tiempo aumenta en 4,04 puntos porcentuales. Al desagregar el efecto por los meses posteriores al programa se encuentra que estos aumentos son de 1,28 puntos porcentuales en el mes justamente posterior, 1,47 puntos dos meses después de la aplicación y 1,3 puntos porcentuales en el tercer mes. Esto evidencia que la decisión de desplazarse no es inmediata, pero sí ocurre en un corto plazo después de la fumigación.
 
-Son cuatro los posibles canales directos por los cuales existe esta relación: las alteraciones en salud, los daños ambientales, la intensificación de la violencia y los efectos económicos adversos. Estos obedecen a consecuencias del conflicto armado que han sido ampliamente estudiadas pero pocos estudios las han relacionado con la política antidroga, además del conflicto armado. La mayoría de estudios se centran en la relación del narcotráfico como financiador y prolongador de diferentes conflictos armados en el mundo [@cornell2005; @monteleone2016; @gutierrez2020; @mercille2011; @angrist2008; @ballve2012], más que en la evaluación de los programas de política antidroga frente a las guerras civiles. Es decir, son menos los estudios que exponen estos programas como un agravante de la violencia en los territorios [@reyes2014; @abadie2014; @zuleta2017; @turkoglu2022]. En consecuencia, esta investigación contribuye a esa literatura cuantificando el efecto que tuvo el programa principal de política antidroga como un intensificador del conflicto armado y explicando los posibles canales por los que se da esta relación.
+Del mismo modo, existen efectos diferenciados de acuerdo con el volumen de hectáreas de coca y la interacción con las aspersiones. En especial se encontró que los municipios que se encuentran en el cuartil más alto tienen un efecto diferenciado de 0,18 puntos porcentuales por encima de los municipios del cuartil más bajo. Además, al comparar los municipios con altos niveles de coca y altos niveles en la intensidad de aspersión se encuentra que los municipios con altos niveles de aspersión y bajas tasas de aspersión tienen efectos significativamente menores. Esto indica que los cultivos de coca son un intensificador del desplazamiento forzado ante una intensidad mayor de las fumigaciones, lo que sugiere que la interacción en estas variables afecta la economía detrás de la coca que agudiza el conflicto armado en estas regiones.
+
+Son cuatro los posibles canales directos por los cuales existe la relación entre el PECIG y el desplazamiento: las alteraciones en salud, los daños ambientales, la intensificación de la violencia y los efectos económicos adversos. Estos obedecen a consecuencias del conflicto armado que han sido ampliamente estudiadas pero pocos estudios las han relacionado con la política antidroga, además del conflicto armado. La mayoría de estudios se centran en la relación del narcotráfico como financiador y prolongador de diferentes conflictos armados en el mundo [@cornell2005; @monteleone2016; @gutierrez2020; @mercille2011; @angrist2008; @ballve2012], más que en la evaluación de los programas de política antidroga frente a las guerras civiles. Es decir, son menos los estudios que exponen estos programas como un agravante de la violencia en los territorios [@reyes2014; @abadie2014; @zuleta2017; @turkoglu2022]. En consecuencia, esta investigación contribuye a esa literatura cuantificando el efecto que tuvo el programa principal de política antidroga como un intensificador del conflicto armado y explicando los posibles canales por los que se da esta relación.
 
 Paralelamente, esta investigación ofrece elementos de política pública en dos líneas: la política antidroga y los programas para mitigar el conflicto armado. Respecto a la primera, recientemente se ha debatido la posibilidad de legalizar las aspersiones aéreas y retomarlas como principal política para combatir el narcotráfico [^4]. Han sido múltiples los estudios que cuestionan su efectividad [@mejia2016; @gaviria2011] y muestran sus consecuencias negativas sobre la población [@rodriguez2020; @camacho2014; @reyes2014]. Estos resultados contribuyen al debate de los costos y beneficios de este programa, en particular, aportan una nueva variable a tener en cuenta en la evaluación de las consecuencias no deseadas que las aspersiones con glifosato pueden generar sobre la población.
 
@@ -202,13 +204,13 @@ Donde $V_{it}$ es la velocidad del viento en el municipio $i$ en el mes $t$. Ade
 La segunda etapa representada en la ecuación 6 expone la relación entre la variable dependiente y la variable instrumenda estimada ($\widehat{AG_{it}}$) en la primera etapa. Esto quiere decir que el nuevo estimador $\dot\beta$ presenta relación de la tasa de desplazamiento forzado con la intensidad de aspersiones aéreas con glifosato corregidas por la variación aleatoria que le impone la velocidad del viento.
 
 $$
-log(\dot{y_{it}}) = \dot\alpha + \dot\beta \widehat{AG_{it-p}} + \dot\theta X_{it-p} + \delta_{i} + \delta_{t} +  \dot\varepsilon_{it} \ \ \ (7)
+\dot{y_{it}} = \dot\alpha + \dot\beta \widehat{AG_{it-p}} + \dot\theta X_{it-p} + \delta_{i} + \delta_{t} +  \dot\varepsilon_{it} \ \ \ (7)
 $$
 
 Finalmente, la figura 5 muestra que la tasa de hectaréas asperjadas con glifosato era distinta entre regiones. Por lo tanto, pueden existir efectos heterogéneos en cuanto a la intensidad de la aplicación. Además, también pueden existir efectos distintos de acuerdo a los niveles de cultivos de coca de los municipios, dado que era la variable central sobre la que giraba el programa. La ecuación para estimar estos efectos diferenciados es:
 
 $$
-log(\tilde{y_{i}}) =  \delta_{d} +\tilde\beta \widehat{AG_{it-p}} + \tilde\beta \widehat{AG_{it-p}} * Int_{jt-p} +\tilde\theta X_{it-p} + \delta_{i} + \delta_{t}  + \delta_{int} + \tilde\varepsilon_{it-p} \ \ \ (8)
+\dot{y_{it}} =  \delta_{d} +\dot\beta \widehat{AG_{it-p}} + \dot\beta \widehat{AG_{it-p}} * Int_{jt-p} +\tilde\theta X_{it-p} + \delta_{i} + \delta_{t}  + \delta_{int} + \dot\varepsilon_{it-p} \ \ \ (8)
 $$
 
 Donde $\delta_{int}$ son los efectos heterogéneos y $Int_{jt}$ es una variable binaria que toma valores de 1 por cada efecto diferenciado. En este caso, el modelo toma como punto de comparación los niveles más bajos de aspersión y de cultivos, debido a que así se pueden evaluar que tanto cambia el efecto acorde al aumento de las categorias de comparación.
@@ -464,7 +466,7 @@ knitr::include_graphics("../Apendix/apendice3.png")
 
 \newpage
 
-## Anexo 4: Nucleos de aplicación del PECIG
+## Anexo 4: Núcleos de aplicación del PECIG
 
 ```{r apendice4, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 
@@ -472,3 +474,10 @@ knitr::include_graphics("../Apendix/apendice4.png")
 ```
 
 \newpage
+
+## Anexo 5: Mapa de cultivos de cultivos de coca en relación al tamaño del municipio (2004 - 2012)
+
+```{r apendice5, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
+
+knitr::include_graphics("../Apendix/apendice5.png")
+```
