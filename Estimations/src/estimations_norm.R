@@ -66,12 +66,15 @@ EH_panel <- function(mainData = data2plot,
   return(plot)
 }
 
-controles_fe_pop <- c('night_lights', "rainFall","vegetation", 'ruv_abandono_despojo_pop',
-                      'ruv_combates_pop', 'ruv_abandono_despojo_pop', 'ruv_homicidio_pop',
-                      'cnmh_minas_pop', 'cnmh_desaparicion_pop', 'windIV10RMBOS')
+controles_fe_pop <- c('night_lights', 
+                      "rainFall","vegetation", 'windIV10RMBOS',
+                      'ruv_abandono_despojo_pop','ruv_combates_pop', 'ruv_homicidio_pop',
+                      'cnmh_minas_pop', 'cnmh_reclutamiento_pop','cnmh_desaparicion_pop')
 
-controles_fe_3month <- c('night_lights', "rainFall","vegetation", 'sum_combates_pop', 'sum_despojo_pop', 
-                         'sum_minas_pop', 'sum_reclutamiento_pop', 'windIV10RMBOS')
+controles_fe_3month <- c('night_lights', 
+                         "rainFall","vegetation", 'windIV10RMBOS',
+                         'sum_combates_pop', 'sum_despojo_pop', 'sum_minas_pop', 'sum_reclutamiento_pop', 
+                         'sum_homicidio_pop', 'sum_desaparicion_pop')
 
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -92,9 +95,35 @@ antimerge_data.df <- readRDS("Data/Merge/output/antimerge_data.rds")
 
 firstStage <- plm(data = merge_data.df,
                   formula = paste0("spraying_norm ~  windSpeedRMBOS +", paste(controles_fe_pop, collapse = "+")),
-                  effect = "twoways", model = "within", index=c("codmpio", "date"))
+                  effect = "twoways", model = "within", index=c("codmpio", "date", "query"))
 summary(firstStage)
-coeftest(firstStage, vcov=vcovHC(firstStage, type="sss", cluster="group"))  
+stdFirstStage <- coeftest(firstStage, vcov=vcovHC(firstStage, type="sss", cluster="group"))  
+
+stargazer(
+  firstStage, 
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Aspersiones aéreas",
+  keep = "windSpeedRMBOS",
+  se = list(stdFirstStage[, 2]), 
+  title = "Resultados primera etapa", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = TRUE, 
+  covariate.labels = c("Velocidad del Viento"), 
+  omit = "Constant",
+  add.lines = list(c("F estadístico", "21,208"),
+                   c("F estadístico efectivo", "17,952"),
+                   c("Efectos Fijos", "Sí"),
+                   c("Controles", "Sí")),
+  #column.labels = c("MCO"),
+  column.sep.width = "7pt",
+  keep.stat = c("rsq", "n"), 
+  p = stdFirstStage[, 4],
+  decimal.mark = ",",
+  notes.align = "l"
+  )
+# Nota: Los errores fueron clusterizado a nivel municipal. Los valores dentro de los parentesis representan la desviación estandar. Paralelamente se aplicaron efectos fijos por municipio, año-mes y núcleo. Las variables de control asociadas a la violencia se tomaron en tasas por 100 habitantes, estas son: desaparición forzada, reclutamiento de menores, minas, combates y despojo. Las variables de control geograficas son: choques de viento, indice de vegetación y niveles de lluvia. La variable de control asociada al desarrollo economico es la intensidad de luminosidad del municipio. Además, los niveles de signifancia se ven representados de la siguiente manera: $^{*}$p$<$0,1; $^{**}$p$<$0,05; $^{***}$p$<$0,01  
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -108,14 +137,37 @@ restExcl1 <- plm(data = antimerge_data.df,
 
 summary(restExcl1)
 
-coeftest(restExcl1, vcov=vcovHC(restExcl1, type="sss", cluster="group"))  
+restExcl1std <- coeftest(restExcl1, vcov=vcovHC(restExcl1, type="sss", cluster="group"))  
 
 
 restExcl2 <- plm(data = merge_data.df,
                  formula = paste0("lag1_ruv_desplazamiento_forzado_pop ~  windSpeedRMBOS +", paste(controles_fe_pop, collapse = "+")),
                  effect = "twoways", model = "within", index=c("codmpio", "date", "query"))
 summary(restExcl2)
-coeftest(restExcl2, vcov=vcovHC(restExcl2, type="sss", cluster="group"))  
+restExcl2std <- coeftest(restExcl2, vcov=vcovHC(restExcl2, type="sss", cluster="group"))  
+
+stargazer(
+  restExcl1, restExcl2,
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "windSpeedRMBOS",
+  se = list(restExcl1std[, 2], restExcl2std[, 2]), 
+  title = "Resultados primera etapa", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = TRUE, 
+  covariate.labels = c("Velocidad del Viento"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Sí"),
+                   c("Controles", "Sí")),
+  #column.labels = c("MCO"),
+  column.sep.width = "7pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(restExcl1std[, 4], restExcl2std[,4]),
+  decimal.mark = ",",
+  notes.align = "l"
+)
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -133,7 +185,7 @@ Month1FE <- plm(data= merge_data.df,
                 model = "within", 
                 index=c("codmpio", "date", "query"))
 summary(Month1FE)
-Month1MCO <- coeftest(Month1FE, vcov=vcovHC(Month1FE, type="sss", cluster="group"))  
+Month1MCOstd <- coeftest(Month1FE, vcov=vcovHC(Month1FE, type="sss", cluster="group"))  
 
 # One month
 
@@ -145,7 +197,7 @@ IV1Month <- plm(data= merge_data.df,
                 model = "within", 
                 index=c("codmpio", "date", "query"))
 summary(IV1Month)
-IV <- coeftest(IV1Month, vcov=vcovHC(IV1Month, type="sss", cluster="group"))  
+IVstd <- coeftest(IV1Month, vcov=vcovHC(IV1Month, type="sss", cluster="group"))  
 
 
 # One month controles
@@ -160,7 +212,31 @@ IV1MonthFE <- plm(data= merge_data.df,
                   model = "within", 
                   index=c("codmpio", "date", "query"), diagnostics = TRUE)
 summary(IV1MonthFE)
-IVFE <- coeftest(IV1MonthFE, vcov=vcovHC(IV1MonthFE, type="sss", cluster="group"))  
+IVFEstd <- coeftest(IV1MonthFE, vcov=vcovHC(IV1MonthFE, type="sss", cluster="group"))  
+
+stargazer(
+  Month1FE, IV1Month, IV1MonthFE,
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "spraying_norm",
+  se = list(Month1MCOstd[, 2], IVstd[, 2], IVFEstd[, 2]), 
+  title = "Resultados primera etapa", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = TRUE, 
+  covariate.labels = c("Aspersiones aéreas"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si", "Si", "Si"),
+                   c("Controles", "Si", "No", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "7pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(Month1MCOstd[, 4], IVstd[,4], IVFEstd[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
@@ -179,14 +255,14 @@ IV1MonthFE <- plm(data= merge_data.df,
                            paste(controles_fe_pop, collapse = "+")),
                   effect = "twoways", 
                   model = "within", 
-                  index=c("codmpio", "date"))
+                  index=c("codmpio", "date", "query"))
 summary(IV1MonthFE)
-IVFE <- coeftest(IV1MonthFE, vcov=vcovHC(IV1MonthFE, type="sss", cluster="group"))  
-IVFECI <- confint(IVFE, level = 0.9)
+IVFER <- coeftest(IV1MonthFE, vcov=vcovHC(IV1MonthFE, type="sss", cluster="group"))  
+IVFECI <- confint(IVFER, level = 0.9)
 
-IVFET1 <- data.frame("Estimate" = IVFE[[1]],
-                     "std" = IVFE[[1,2]],
-                     "p.value" = IVFE[[1,4]],
+IVFET1 <- data.frame("Estimate" = IVFER[[1]],
+                     "std" = IVFER[[1,2]],
+                     "p.value" = IVFER[[1,4]],
                      "label" = "t+1",
                      "lower" = IVFECI[[1]],
                      "upper" = IVFECI[[1,2]])
@@ -204,14 +280,14 @@ IV2MonthFE <- plm(data= dataLag2.df,
                            paste(controles_fe_pop, collapse = "+")),
                   effect = "twoways", 
                   model = "within", 
-                  index=c("codmpio", "date"))
+                  index=c("codmpio", "date", "query"))
 summary(IV2MonthFE)
-IVFE2 <- coeftest(IV2MonthFE, vcov=vcovHC(IV2MonthFE, type="sss", cluster="group"))  
-IVFE2CI <- confint(IVFE2, level = 0.9)
+IVFE2R <- coeftest(IV2MonthFE, vcov=vcovHC(IV2MonthFE, type="sss", cluster="group"))  
+IVFE2CI <- confint(IVFE2R, level = 0.9)
 
-IVFET2 <- data.frame("Estimate" = IVFE2[[1]],
-                     "std" = IVFE2[[1,2]],
-                     "p.value" = IVFE2[[1,4]],
+IVFET2 <- data.frame("Estimate" = IVFE2R[[1]],
+                     "std" = IVFE2R[[1,2]],
+                     "p.value" = IVFE2R[[1,4]],
                      "label" = "t+2",
                      "lower" = IVFE2CI[[1]],
                      "upper" = IVFE2CI[[1,2]]) 
@@ -228,17 +304,42 @@ IV3MonthFE <- plm(data= dataLag3.df,
                            paste(controles_fe_pop, collapse = "+")),
                   effect = "twoways", 
                   model = "within", 
-                  index=c("codmpio", "date"))
+                  index=c("codmpio", "date", "query"))
 summary(IV3MonthFE)
-IVFE3 <- coeftest(IV3MonthFE, vcov=vcovHC(IV3MonthFE, type="sss", cluster="group"), parm = ci) 
-IVFE3CI <- confint(IVFE3, level = 0.9)
+IVFE3R <- coeftest(IV3MonthFE, vcov=vcovHC(IV3MonthFE, type="sss", cluster="group"), parm = ci) 
+IVFE3CI <- confint(IVFE3R, level = 0.9)
 
-IVFET3 <- data.frame("Estimate" = IVFE3[[1]],
-                     "std" = IVFE3[[1,2]],
-                     "p.value" = IVFE3[[1,4]],
+IVFET3 <- data.frame("Estimate" = IVFE3R[[1]],
+                     "std" = IVFE3R[[1,2]],
+                     "p.value" = IVFE3R[[1,4]],
                      "label" = "t+3",
                      "lower" = IVFE3CI[[1]],
                      "upper" = IVFE3CI[[1,2]])
+
+stargazer(
+  IV1MonthFE, IV2MonthFE, IV3MonthFE,
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "spraying_norm",
+  se = list( IVFER[, 2], IVFE2R[, 2], IVFE3R[, 2]), 
+  title = "Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = FALSE, 
+  covariate.labels = c("Aspersiones aéreas"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si", "Si", "Si"),
+                   c("Controles", "Si", "Si", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "5pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(IVFER[, 4], IVFE2R[, 4], IVFE3R[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)
+
 # t+4
 
 dataLag4.df <- merge_data.df %>%
@@ -252,14 +353,14 @@ IV4MonthFE <- plm(data= dataLag4.df,
                            paste(controles_fe_pop, collapse = "+")),
                   effect = "twoways", 
                   model = "within", 
-                  index=c("codmpio", "date"))
+                  index=c("codmpio", "date", "query"))
 summary(IV4MonthFE)
-IVFE4 <- coeftest(IV4MonthFE, vcov=vcovHC(IV4MonthFE, type="sss", cluster="group"))  
-IVFE4CI <- confint(IVFE4, level = 0.9)
+IVFE4R <- coeftest(IV4MonthFE, vcov=vcovHC(IV4MonthFE, type="sss", cluster="group"))  
+IVFE4CI <- confint(IVFE4R, level = 0.9)
 
-IVFET4 <- data.frame("Estimate" = IVFE4[[1]],
-                     "std" = IVFE4[[1,2]],
-                     "p.value" = IVFE4[[1,4]],
+IVFET4 <- data.frame("Estimate" = IVFE4R[[1]],
+                     "std" = IVFE4R[[1,2]],
+                     "p.value" = IVFE4R[[1,4]],
                      "label" = "t+4",
                      "lower" = IVFE4CI[[1]],
                      "upper" = IVFE4CI[[1,2]])
@@ -275,14 +376,14 @@ IVTMonthFE <- plm(data= dataT.df,
                            paste(controles_fe_pop, collapse = "+")),
                   effect = "twoways", 
                   model = "within", 
-                  index=c("codmpio", "date"))
+                  index=c("codmpio", "date", "query"))
 summary(IVTMonthFE)
-IVFET <- coeftest(IVTMonthFE, vcov=vcovHC(IVTMonthFE, type="sss", cluster="group"))  
-IVFETCI <- confint(IVFET, level = 0.9)
+IVFETR <- coeftest(IVTMonthFE, vcov=vcovHC(IVTMonthFE, type="sss", cluster="group"))  
+IVFETCI <- confint(IVFETR, level = 0.9)
 
-IVFET  <- data.frame("Estimate" = IVFET[[1]],
-                     "std" = IVFET[[1,2]],
-                     "p.value" = IVFET[[1,4]],
+IVFET  <- data.frame("Estimate" = IVFETR[[1]],
+                     "std" = IVFETR[[1,2]],
+                     "p.value" = IVFETR[[1,4]],
                      "label" = "t",
                      "lower" = IVFETCI[[1]],
                      "upper" = IVFETCI[[1,2]])
@@ -303,14 +404,14 @@ IVM1MonthFE <- plm(data= dataLagM1.df,
                             paste(controles_fe_pop, collapse = "+")),
                    effect = "twoways", 
                    model = "within", 
-                   index=c("codmpio", "date"))
+                   index=c("codmpio", "date", "query"))
 summary(IVM1MonthFE)
-IVFEM1 <- coeftest(IVM1MonthFE, vcov=vcovHC(IVM1MonthFE, type="sss", cluster="group"))  
-IVFEM1CI <- confint(IVFEM1, level = 0.9)
+IVFEM1R <- coeftest(IVM1MonthFE, vcov=vcovHC(IVM1MonthFE, type="sss", cluster="group"))  
+IVFEM1CI <- confint(IVFEM1R, level = 0.9)
 
-IVFEM1  <- data.frame("Estimate" = IVFEM1[[1]],
-                      "std" = IVFEM1[[1,2]],
-                      "p.value" = IVFEM1[[1,4]],
+IVFEM1  <- data.frame("Estimate" = IVFEM1R[[1]],
+                      "std" = IVFEM1R[[1,2]],
+                      "p.value" = IVFEM1R[[1,4]],
                       "label" = "t-1",
                       "lower" = IVFEM1CI[[1]],
                       "upper" = IVFEM1CI[[1,2]])
@@ -331,14 +432,14 @@ IVM2MonthFE <- plm(data= dataLagM2.df,
                             paste(controles_fe_pop, collapse = "+")),
                    effect = "twoways", 
                    model = "within", 
-                   index=c("codmpio", "date"))
+                   index=c("codmpio", "date", "query"))
 summary(IVM2MonthFE)
-IVFEM2 <- coeftest(IVM2MonthFE, vcov=vcovHC(IVM2MonthFE, type="sss", cluster="group"))  
-IVFEM2CI <- confint(IVFEM2, level = 0.9)
+IVFEM2R <- coeftest(IVM2MonthFE, vcov=vcovHC(IVM2MonthFE, type="sss", cluster="group"))  
+IVFEM2CI <- confint(IVFEM2R, level = 0.9)
 
-IVFEM2  <- data.frame("Estimate" = IVFEM2[[1]],
-                      "std" = IVFEM2[[1,2]],
-                      "p.value" = IVFEM2[[1,4]],
+IVFEM2  <- data.frame("Estimate" = IVFEM2R[[1]],
+                      "std" = IVFEM2R[[1,2]],
+                      "p.value" = IVFEM2R[[1,4]],
                       "label" = "t-2",
                       "lower" = IVFEM2CI[[1]],
                       "upper" = IVFEM2CI[[1,2]])
@@ -436,8 +537,33 @@ IVHReg <- plm(data= IVHF,
               effect = "individual", 
               model = "within", 
               index=c("codmpio", "date", "query"))
+summary(IVHReg)
 IVHRegHE <- coeftest(IVHReg, vcov=vcovHC(IVHReg, type="sss", cluster="group")) 
 IVHRegHEIC <- confint(IVHRegHE, level = 0.8)
+
+stargazer(
+  IVHReg, 
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "spraying_norm",
+  se = list(IVHRegHE[, 2]), 
+  title = "Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = FALSE, 
+  covariate.labels = c("Aspersiones aéreas"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si"),
+                   c("Controles", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "5pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(IVHRegHE[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)
 
 estimate <- as.data.frame(IVHRegHE[,]) %>%
   rownames_to_column(var = "variable") %>%
@@ -536,6 +662,30 @@ summary(IVASP.reg)
 IVASPHE <- coeftest(IVASP.reg, vcov=vcovHC(IVASP.reg, type="sss", cluster="group")) 
 IVASPHEIC <- confint(IVASPHE, level = 0.8)
 
+stargazer(
+  IVASP.reg, 
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "spraying_norm",
+  se = list(IVASPHE[, 2]), 
+  title = "Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = FALSE, 
+  covariate.labels = c("Aspersiones aéreas"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si"),
+                   c("Controles", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "5pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(IVASPHE[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)
+
 estimate <- as.data.frame(IVASPHE[,]) %>%
   rownames_to_column(var = "variable") %>%
   filter(variable %in% c("spraying_norm:cuartil2", "spraying_norm:cuartil3", "spraying_norm:cuartil4"))
@@ -632,6 +782,30 @@ summary(IVASP.reg)
 IVASPHE <- coeftest(IVASP.reg, vcov=vcovHC(IVASP.reg, type="sss", cluster="group")) 
 IVASPHEIC <- confint(IVASPHE, level = 0.8)
 
+stargazer(
+  IVASP.reg, 
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "spraying_norm",
+  se = list(IVASPHE[, 2]), 
+  title = "Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = FALSE, 
+  covariate.labels = c("Aspersiones aéreas"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si"),
+                   c("Controles", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "5pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(IVASPHE[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)
+
 estimate <- as.data.frame(IVASPHE[,]) %>%
   rownames_to_column(var = "variable") %>%
   filter(variable %in% c("spraying_norm:quintil2", "spraying_norm:quintil3", "spraying_norm:quintil4"))
@@ -696,13 +870,13 @@ HEPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate
         ggh4x.axis.ticks.length.minor = rel(1),
         axis.line.x.bottom = element_line(linetype = "solid", size = 1));HEPlot 
 ggsave(HEPlot, filename = "Visualizations/output/CultivosHENorm.png", dpi = 320, width = 7.5, height = 7.5)
+
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
 ##   6. Trimestral                                                              ----
 ##
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-controles_fe_3month <- c('night_lights', "rainFall","vegetation", 'sum_combates_pop', 'sum_despojo_pop', 
-                         'sum_minas_pop', 'sum_reclutamiento_pop', 'sum_homicidio')
+
 # Fixed effects 3 Months
 
 Month3FE <- plm(data= merge_data.df,
@@ -711,9 +885,9 @@ Month3FE <- plm(data= merge_data.df,
                          paste(controles_fe_3month, collapse = "+")),
                 effect = "twoways", 
                 model = "within", 
-                index=c("codmpio", "date"))
+                index=c("codmpio", "date", "query"))
 summary(Month3FE)
-Month3MCO <- coeftest(Month3FE, vcov=vcovHC(Month3FE, type="sss", cluster="group"))  
+Month3MCOstd <- coeftest(Month3FE, vcov=vcovHC(Month3FE, type="sss", cluster="group"))  
 
 # IV 3 Months without controls
 
@@ -722,9 +896,9 @@ IV3Month <- plm(data= merge_data.df,
                   paste0("sum_desplazamiento_pop ~ spraying_norm | windSpeedRMBOS"),
                 effect = "twoways",
                 model = "within",
-                index=c("codmpio", "date"))
+                index=c("codmpio", "date", "query"))
 summary(IV3Month)
-IV3M <- coeftest(IV3Month, vcov=vcovHC(IV3Month, type="sss", cluster="group")) 
+IV3Mstd <- coeftest(IV3Month, vcov=vcovHC(IV3Month, type="sss", cluster="group")) 
 
 # IV 3 months with controls
 
@@ -736,6 +910,137 @@ IV3MonthFE <- plm(data= merge_data.df,
                            paste(controles_fe_3month, collapse = "+")),
                   effect = "twoways",
                   model = "within",
-                  index=c("codmpio", "date"))
+                  index=c("codmpio", "date", "query"))
 summary(IV3MonthFE)
-IVFE3M <- coeftest(IV3MonthFE, vcov=vcovHC(IV3MonthFE, type="sss", cluster="group"))  
+IVFE3Mstd <- coeftest(IV3MonthFE, vcov=vcovHC(IV3MonthFE, type="sss", cluster="group"))  
+
+stargazer(
+  Month3FE, IV3Month, IV3MonthFE,
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "spraying_norm",
+  se = list(Month3MCOstd[, 2], IV3Mstd[, 2], IVFE3Mstd[, 2]), 
+  title = "Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = FALSE, 
+  covariate.labels = c("Aspersiones aéreas"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si", "Si", "Si"),
+                   c("Controles", "Si", "No", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "7pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(Month3MCOstd[, 4], IV3Mstd[,4], IVFE3Mstd[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)
+
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+##
+##   7. Robustez                                                            ----
+##
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# IV 3 Months without controls
+
+IV3Month <- plm(data= merge_data.df,
+                formula = 
+                  paste0("sum_desplazamiento_pop ~ spraying_norm | windSpeedRMBOS"),
+                effect = "twoways",
+                model = "within",
+                index=c("codmpio", "date", "query"))
+summary(IV3Month)
+IV3Mstd <- coeftest(IV3Month, vcov=vcovHC(IV3Month, type="sss", cluster="group")) 
+
+controles_geograficos <- c("rainFall","vegetation", 'windIV10RMBOS')
+controles_violencia <- c(
+  'sum_combates_pop', 'sum_despojo_pop', 
+  'sum_minas_pop', 'sum_reclutamiento_pop', 'sum_homicidio_pop',
+  'sum_desaparicion_pop')
+controles_economicos <- c('night_lights')
+
+# IV 3 months geograficos
+
+IV3MonthG <- plm(data= merge_data.df,
+                  formula = 
+                    paste0("sum_desplazamiento_pop ~ spraying_norm +",
+                           paste(controles_geograficos, collapse = "+"),"|",
+                           paste("windSpeedRMBOS +"),
+                           paste(controles_geograficos, collapse = "+")),
+                  effect = "twoways",
+                  model = "within",
+                  index=c("codmpio", "date"))
+summary(IV3MonthG)
+IV3MGstd <- coeftest(IV3MonthG, vcov=vcovHC(IV3MonthG, type="sss", cluster="group"))  
+
+# IV 3 months violencia
+
+IV3MonthV <- plm(data= merge_data.df,
+                 formula = 
+                   paste0("sum_desplazamiento_pop ~ spraying_norm +",
+                          paste(controles_violencia, collapse = "+"),"|",
+                          paste("windSpeedRMBOS +"),
+                          paste(controles_violencia, collapse = "+")),
+                 effect = "twoways",
+                 model = "within",
+                 index=c("codmpio", "date"))
+summary(IV3MonthV)
+IV3MVstd <- coeftest(IV3MonthV, vcov=vcovHC(IV3MonthV, type="sss", cluster="group"))  
+
+# IV 3 months economicos
+
+IV3MonthE <- plm(data= merge_data.df,
+                 formula = 
+                   paste0("sum_desplazamiento_pop ~ spraying_norm +",
+                          paste(controles_economicos, collapse = "+"),"|",
+                          paste("windSpeedRMBOS +"),
+                          paste(controles_economicos, collapse = "+")),
+                 effect = "twoways",
+                 model = "within",
+                 index=c("codmpio", "date"))
+summary(IV3MonthE)
+IV3MEstd <- coeftest(IV3MonthE, vcov=vcovHC(IV3MonthE, type="sss", cluster="group"))  
+
+# IV 3 months with controls
+
+IV3MonthFE <- plm(data= merge_data.df,
+                  formula = 
+                    paste0("sum_desplazamiento_pop ~ spraying_norm +",
+                           paste(controles_fe_3month, collapse = "+"),"|",
+                           paste("windSpeedRMBOS +"),
+                           paste(controles_fe_3month, collapse = "+")),
+                  effect = "twoways",
+                  model = "within",
+                  index=c("codmpio", "date", "query"))
+summary(IV3MonthFE)
+IVFE3Mstd <- coeftest(IV3MonthFE, vcov=vcovHC(IV3MonthFE, type="sss", cluster="group"))  
+
+stargazer(
+  IV3Month, IV3MonthG, IV3MonthV, IV3MonthE, IV3MonthFE,
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "spraying_norm",
+  se = list(IV3Mstd[, 2], IV3MGstd[, 2], IV3MVstd[, 2], IV3MEstd[, 2], IVFE3Mstd[, 2]), 
+  title = "Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = TRUE, 
+  covariate.labels = c("Aspersiones aéreas"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si", "Si", "Si", "Si", "Si"),
+                   c("Controles geográficos", "No", "Si", "No", "No", "Si"),
+                   c("Controles violencia", "No", "No", "Si", "No", "Si"),
+                   c("Controles economicos", "No", "No", "No", "Si", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "7pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(IV3Mstd[, 4], IV3MGstd[,4], IV3MVstd[, 4], IV3MEstd[, 4], IVFE3Mstd[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)
+
