@@ -74,7 +74,7 @@ MPlot <- ggplot(data2plot, aes(x = reorder(variable, order_value), y = Estimate)
                      expand = expansion(mult = 0.025), position = "left",
                      labels = c("0", "1","2", "3", "4", "5")) +
   coord_flip() +
-  labs(x = "Quintil de niveles cultivos de coca",
+  labs(x = "Cuartiles de aplicación del programa",
        y = "Efecto aspersiones sobre desplazamiento") +
   theme(panel.background   = element_blank(),
         plot.background    = element_blank(),

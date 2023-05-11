@@ -26,45 +26,6 @@
 library(pacman)
 p_load(tidyverse, sandwich, lmtest, ivreg, corrr, modelsummary, kableExtra, gt, 
        tibble, stargazer, plm,  ggpubr, showtext, patchwork, ggh4x, knitr, flextable)
-EH_panel <- function(mainData = data2plot,
-                     line_color = "#003b8a",
-                     line_size  = 0.5,
-                     point_color = "#003b8a",
-                     point_size   = 2.5) {
-  
-  plot <- ggplot(mainData, aes(x = reorder(label, order_value), y = estimate)) +
-    geom_hline(yintercept = 0, lty = 1, color = "#fa4d57", lwd = 1)  +
-    geom_errorbar(aes(x = reorder(label, order_value),  ymin = lower, ymax = upper),
-                  lwd = line_size, position = position_dodge(width = .7), 
-                  stat = "identity", color = line_color)+
-    geom_point(aes(x = reorder(label, order_value), y = estimate), 
-               size = point_size, position = position_dodge(width = .7), color = point_color) +
-    geom_point(aes(x = reorder(label, order_value), y = estimate), 
-               size = 2, position = position_dodge(width = .7), color = "white") +
-    scale_y_continuous(limits = c(-0.2, 0.2),
-                       breaks = seq(-0.2, 0.2, by = 0.1),
-                       expand = expansion(mult = 0.025), position = "left",
-                       labels = c("-0.2", "-0.1", "0", "0.1","0.2"))+
-    theme(panel.background   = element_blank(),
-          plot.background    = element_blank(),
-          panel.grid.major   = element_line(size     = 0.25,
-                                            colour   = "#5e5c5a",
-                                            linetype = "dashed"),
-          panel.grid.minor   = element_blank(),
-          axis.ticks  = element_blank(),
-          plot.margin  = unit(c(0, 0, 0, 0), "points")) +
-    theme(legend.position = "none",
-          panel.background   = element_blank(),
-          panel.grid.major.x = element_line(colour = "#d1cfd1", 
-                                            size = 0.5, linetype = "dashed"),
-          legend.title = element_blank(),
-          axis.title       = element_blank(),
-          panel.grid.major.y = element_blank(),
-          panel.grid.minor.x  = element_blank(),
-          panel.grid.minor.y = element_blank())
-  
-  return(plot)
-}
 
 controles_fe_pop <- c('night_lights', 
                       "rainFall","vegetation", 'windIV10RMBOS',
@@ -937,6 +898,33 @@ stargazer(
   notes.align = "l",
   notes.append = F
 )
+
+stargazer(
+  IV3MonthFE,
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = c("spraying_norm", "sum_combates_pop", 'sum_despojo_pop', 'sum_minas_pop', 'sum_reclutamiento_pop', 
+           'sum_homicidio_pop', 'sum_desaparicion_pop'),
+  se = list(IVFE3Mstd[, 2]), 
+  title = "Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = FALSE, 
+  covariate.labels = c("Aspersiones aéreas", "Tasa de combates", "Tasa de despojo", "Tasa de minas", "Tasa de reclutamiento",
+                       "Tasa de homicidio", "Tasa de desaparición forzada"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si", "Si", "Si"),
+                   c("Controles", "Si", "No", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "7pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(IVFE3Mstd[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)
+
 
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ##
