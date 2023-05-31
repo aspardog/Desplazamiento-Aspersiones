@@ -25,7 +25,6 @@ header-includes:
       - \usepackage{dcolumn}
       - \usepackage{threeparttable}
       - \usepackage{caption}\captionsetup[figure]{position=top}
-
 ---
 
 # Resumen
@@ -504,14 +503,13 @@ Por otro lado, el PECIG tenía como objetivo la erradicación de los cultivos de
 
 [^17]: El primer cuartil representa los municipios con menores niveles de coca en relación con su tamaño.
 
-La tabla 6 expone que, en el mes después de asperjar, todos los cuartiles tienen un efecto estadísticamente mayor a los del cuartil más bajo. Esto implica que la relación entre la intensidad de las aspersiones aéreas y las tasas de desplazamiento forzado es mayor en los municipios con tasas de cultivos de coca más altos. Para el segundo mes, las diferencias significativas se mantienen únicamente en el tercer cuartil; mientras que para el tercer mes, se da en el segundo y tercer cuartil. 
+La tabla 6 expone que, en el mes después de asperjar, todos los cuartiles tienen un efecto estadísticamente mayor a los del cuartil más bajo. Esto implica que la relación entre la intensidad de las aspersiones aéreas y las tasas de desplazamiento forzado es mayor en los municipios con tasas de cultivos de coca más altos. Para el segundo mes, las diferencias significativas se mantienen únicamente en el tercer cuartil; mientras que para el tercer mes, se da en el segundo y tercer cuartil.
 
 Los resultados sugieren que los cultivos de coca son un intensificador del conflicto armado en el momento de asperjar. Además para ciertos municipios el aumento del efecto tiene rezagos en el tiempo. Esto se puede explicar por dos factores: la violencia que gira alrededor de los cultivos de coca; y los choques en la oferta de cultivos.
 
 Primero, se ha mostrado que, alrededor de la economía de la droga se establecen grupos armados que buscan proteger todas las cadenas de valor de la producción de cocaína. Esto ha generado que la violencia en los municipios con alta presencia de cultivos de coca sea mayor que en el resto del país [@arias2014; @Ferro2019; @mejia2013]. De esta manera, cuando se asperja, estos grupos reaccionan intentando proteger el insumo, o imponiendo su control territorial ante una posible instauración del ejército, lo cual se deriva en mayores niveles de desplazamiento forzado [@reyes2014; @abadie2014].
 
 Segundo, diferentes estudios han mostrado que choques a la oferta de cocaína también aumentan la violencia en los territorios [@godoy2018; @zuleta2017]. Esto se explica principalmente porque el origen de estos choques viene de esfuerzos por retomar el control territorial o afectar la producción de cocaína que termina produciendo enfrentamientos y combates. Sin embargo, también se debe a que los grupos armados, ante la necesidad de mantener su demanda, empiezan a establecer presiones sobre los cultivadores para que sigan produciendo este insumo [@comisionverdad2022]. Por lo tanto, los choques en la oferta pueden generar violencia e incertidumbre en la población que conllevan en un aumento en las tasas de desplazamiento de estos territorios.
-
 
 ```{=tex}
 \begin{table}[!htbp] \centering 

@@ -35,27 +35,15 @@ editor: visual
 “El desplazamiento que se tuvo, que se vio en ese tiempo, fue bastante masivo. La gente salió y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, no había un plan de contingencia para atender a las personas desplazadas por las fumigaciones; no lo hubo, ni lo hay” (Yonda, 2021)
 
 
+# Pregunta de investigación
+
 ## Pregunta de investigación
 
-::: {.panel-tabset} {.smaller}
-
-### Pregunta de investigación
-
-¿Cuál es la magnitud del efecto de las aspersiones áereas con glifosato (PECIG) sobre el desplazamiento?
-
-### Contexto {.smaller}
-
--   La primera etapa del Plan Colombia era la reducción del **50% de los cultivos de coca**. 
+\
+\
 \
 
--   Se creó el PECIG a cargo de la Policía. 
-\
-
--   Se aplicó masivamente en municipios con mayor presencia de coca y
-actores ilegales. 
-
-
-:::
+**¿Cuál es la magnitud del efecto de las aspersiones áereas con glifosato (PECIG) sobre el desplazamiento?**
 
 
 ## Principales hallazgos
