@@ -7,13 +7,65 @@ format:
 editor: visual
 ---
 
-# Introducción 
+# Introducción
 
 ## Motivación {.smaller}
 
-- En Colombia el conflicto armado ha dejado al menos 8.391.662 víctimas de desplazamiento forzado interno registradas.
+\
+\
+\
 
-    - Esto equivale al 16% de la población actual de Colombia.
-    
-- 
+-   En Colombia hay más de **8 millones de víctimas** de desplazamiento forzado,  que equivaldría al **16%** de la población actual.
+\
+
+-   Aunque hay motivos relacionados con la violencia, las causas pueden ir más allá.
+\
+
+-   En el contexto de conflicto armado y guerra contra las drogas, se creó **el Plan Colombia**.
+\
+
+- Las aspersiones, el programa principal del Plan Colombia, tuvieron efectos negativos sobre la población.
+
+
+## Motivación 
+
+\
+\
+
+“El desplazamiento que se tuvo, que se vio en ese tiempo, fue bastante masivo. La gente salió y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, no había un plan de contingencia para atender a las personas desplazadas por las fumigaciones; no lo hubo, ni lo hay” (Yonda, 2021)
+
+
+## Pregunta de investigación
+
+::: {.panel-tabset} {.smaller}
+
+### Pregunta de investigación
+
+¿Cuál es la magnitud del efecto de las aspersiones áereas con glifosato (PECIG) sobre el desplazamiento?
+
+### Contexto {.smaller}
+
+-   La primera etapa del Plan Colombia era la reducción del **50% de los cultivos de coca**. 
+\
+
+-   Se creó el PECIG a cargo de la Policía. 
+\
+
+-   Se aplicó masivamente en municipios con mayor presencia de coca y
+actores ilegales. 
+
+
+:::
+
+
+## Principales hallazgos
+
+\
+\
+
+El aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **3.73 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo. 
+
+# Metodología
+
+## Estrategia empírica {.smaller}
 
