@@ -1,0 +1,31 @@
+/*-- scss:defaults --*/
+
+$body-bg: #fff;
+$body-color: #222222;
+$link-color: #577590;
+$theme-orange: #CF5C36;
+$theme-grey: #999999;
+$chead-color: #0D3B66;
+
+/*-- scss:rules --*/
+ul li { padding: 7px 0px; }
+
+.high {
+    color: $theme-orange;
+    font-weight: bold;
+}
+
+.under {
+    color: $theme-grey;
+}
+
+.ending {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.chead {
+    color: $chead-color;
+    font-weight: bold;
+    font-size: larger;
+}
