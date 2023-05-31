@@ -3,13 +3,17 @@ title: "Eppur si muove "
 subtitle: "El efecto de las aspersiones aéreas con glifosato en el desplazamiento forzado en Colombia"
 format:
   revealjs: 
-    theme: [simple, custom.scss]
+    theme: [serif]
 editor: visual
 ---
 
 # Introducción 
 
-## Motivación
+## Motivación {.smaller}
 
 - En Colombia el conflicto armado ha dejado al menos 8.391.662 víctimas de desplazamiento forzado interno registradas.
+
+    - Esto equivale al 16% de la población actual de Colombia.
+    
+- 
 
