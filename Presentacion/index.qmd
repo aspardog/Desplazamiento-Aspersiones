@@ -1,9 +1,9 @@
 ---
 title: "Eppur si muove "
 subtitle: "El efecto de las aspersiones aéreas con glifosato en el desplazamiento forzado en Colombia"
-format:
+format: 
   revealjs: 
-    theme: [serif]
+    theme: [simple]
 editor: visual
 ---
 
@@ -15,25 +15,20 @@ editor: visual
 \
 \
 
--   En Colombia hay más de **8 millones de víctimas** de desplazamiento forzado,  que equivaldría al **16%** de la población actual.
-\
+-   En Colombia hay más de **8 millones de víctimas** de desplazamiento forzado, que equivaldría al **16%** de la población actual.\
 
--   Aunque hay motivos relacionados con la violencia, las causas pueden ir más allá.
-\
+-   Aunque hay motivos relacionados con la violencia, las causas pueden ir más allá.\
 
--   En el contexto de conflicto armado y guerra contra las drogas, se creó **el Plan Colombia**.
-\
+-   En el contexto de conflicto armado y guerra contra las drogas, se creó **el Plan Colombia**.\
 
-- Las aspersiones, el programa principal del Plan Colombia, tuvieron efectos negativos sobre la población.
+-   Las aspersiones, el programa principal del Plan Colombia, tuvieron efectos negativos sobre la población.
 
-
-## Motivación 
+## Motivación
 
 \
 \
 
-“El desplazamiento que se tuvo, que se vio en ese tiempo, fue bastante masivo. La gente salió y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, no había un plan de contingencia para atender a las personas desplazadas por las fumigaciones; no lo hubo, ni lo hay” (Yonda, 2021)
-
+"El desplazamiento que se tuvo, que se vio en ese tiempo, fue bastante masivo. La gente salió y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, no había un plan de contingencia para atender a las personas desplazadas por las fumigaciones; no lo hubo, ni lo hay" (Yonda, 2021)
 
 # Pregunta de investigación
 
@@ -45,15 +40,59 @@ editor: visual
 
 **¿Cuál es la magnitud del efecto de las aspersiones áereas con glifosato (PECIG) sobre el desplazamiento?**
 
-
-## Principales hallazgos
+## Principales hallazgos {.smaller}
 
 \
-\
 
-El aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **3.73 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo. 
+-   Ante un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **3.73 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo.
+
+    -   En el mes inmediatamente después de la aspersión el aumento es de **1,28 puntos porcentuales**.
+    -   En el segundo mes el aumento es de **1,46 puntos porcentuales**.
+    -   En el tercer mes el aumento es de **1.3 puntos porcentuales**.
+
+-   **La reiteración de la aspersión intensifica** los niveles de desplazamiento producidos por la aspersión.
+
+-   Existen efectos heterogéneos en la relación de acuerdo al **volumen de cultivos de coca**.
 
 # Metodología
 
 ## Estrategia empírica {.smaller}
 
+
+# Resultados
+
+## Efectos dinámicos
+
+::: panel-tabset
+### Gráfica
+
+![](media/DinamicEffectsNorm.png){width="50%"}
+
+### Tabla
+
+![](media/Tabla1.jpg){width="75%"}
+
+:::
+
+## Efecto agregado en el tiempo
+
+![](media/Tabla2.jpg){width="75%"}
+
+## Efectos Heterogeneos
+
+::: panel-tabset
+
+### Intensidad de aspersión
+
+![](media/Tabla3.jpg){width="50%"}
+
+### Cultivos de coca
+
+![](media/Tabla3.jpg){width="25%"}
+
+:::
+
+
+## Mecanismos
+
+# Conclusiones
