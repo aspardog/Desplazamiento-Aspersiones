@@ -335,27 +335,26 @@
 <h1>Introducción</h1>
 
 </section>
-<section id="motivación" class="slide level2 smaller">
+<section id="motivación" class="slide level2">
 <h2>Motivación</h2>
 <p><br>
 <br>
 </p>
 <p>“El desplazamiento que se tuvo, que se vio en ese tiempo, fue bastante masivo. La gente salió y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, no había un plan de contingencia para atender a las personas desplazadas por las fumigaciones; no lo hubo, ni lo hay” (Yonda, 2021)</p>
 </section>
-<section id="motivación-1" class="slide level2">
+<section id="motivación-1" class="slide level2 smaller">
 <h2>Motivación</h2>
 <p><br>
 <br>
 <br>
 </p>
 <ul>
-<li><p>En Colombia hay más de <strong>8 millones de víctimas</strong> de desplazamiento forzado, que equivaldría al <strong>16%</strong> de la población actual.<br>
-</p></li>
+<li><p>En Colombia hay más de <strong>8 millones de víctimas</strong> de desplazamiento forzado.</p></li>
 <li><p>Aunque hay motivos relacionados con la violencia, las causas pueden ir más allá.<br>
 </p></li>
 <li><p>En el contexto de conflicto armado y guerra contra las drogas, se creó <strong>el Plan Colombia</strong>.<br>
 </p></li>
-<li><p>Las aspersiones, el programa principal del Plan Colombia, tuvieron efectos negativos sobre la población.</p></li>
+<li><p><strong>El Programa de Erradicación de Cultivos Ilicitos con Glifosato (PECIG)</strong>: el programa principal del Plan Colombia.</p></li>
 </ul>
 </section></section>
 <section>
@@ -400,8 +399,8 @@
 <p><img data-src="media/apendice4.png" style="width:70.0%"></p>
 </div><div class="column" style="width:50%;">
 <ul>
-<li><p>El Programa de Erradicación de Cultivos Ilicitos con Glifosato (PECIG) fue el programa principal del Plan Colombia.</p></li>
 <li><p>Se seleccionaron los municipios de acuerdo a la magnitud de cultivos de coca y la presencia de conflicto armado en el territorio.</p></li>
+<li><p>Se dividieron los municipios por núcleos de aplicación.</p></li>
 <li><p>El PECIG se prohibió en 2014 por los daños en salud que le generaba a la población.</p></li>
 </ul>
 </div>
@@ -414,8 +413,8 @@
 </div><div class="column" style="width:50%;">
 <ul>
 <li><p>Para mitigar con los efectos negativos de la aspersión, el DIRAN tenía que cumplir con un Plan de Manejo Ambiental (PMA)</p></li>
-<li><p>Este plan imponía condiciones bajo las cuales se pudiese asperjar.</p></li>
-<li><p>En la resolución 1054 del 2003 se establecieron nuevas medidas geográficas.</p></li>
+<li><p>Este plan imponía condiciones geográficas bajo las cuales se pudiese asperjar.</p></li>
+<li><p>No se podía asperjar en una ventana de 4 meses después de la aplicación del programa.</p></li>
 </ul>
 </div>
 </div>
@@ -428,22 +427,18 @@
 <h1>Metodología</h1>
 
 </section>
-<section id="estrategia-empírica" class="slide level2 smaller">
-<h2>Estrategia empírica</h2>
-<p>Modelo de variable instrumental con efectos fijos:</p>
-<p><span class="math display">\[
-{y_{it}} = \alpha + \beta_{t-p} \widehat{AG_{it-p}} + \theta X_{it-p} + \delta_{i} + \delta_{t} + \delta_{n} + \varepsilon_{it} \ \ \
-\]</span></p>
-<p>donde:</p>
-<p>-<span class="math inline">\({y_{it}}\)</span> es la tasa de desplazamientos mensuales en el municipio <span class="math inline">\(i\)</span> y el mes <span class="math inline">\(t\)</span>.</p>
-<p>-<span class="math inline">\(\widehat{AG_{it-p}}\)</span> es la intensidad de aplicación del programa en el municipio <span class="math inline">\(i\)</span> y el mes <span class="math inline">\(p\)</span> previo.</p>
-<p>-<span class="math inline">\(X_{it-p}\)</span> es la matriz de controles de variables que influían en la asignación y aplicación del programa.</p>
-<p>-<span class="math inline">\(\delta_{i}\)</span> son los efectos fijos por municipio.</p>
-<p>-<span class="math inline">\(\delta_{t}\)</span> son los efectos fijos por tiempo.</p>
-<p>-<span class="math inline">\(\delta_{n}\)</span> son los efectos fijos por núcleo.</p>
+<section id="aspersión-vs-desplazamiento" class="slide level2">
+<h2>Aspersión vs Desplazamiento</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Aspersiones aéreas <img data-src="media/aspersiones.png" style="width:90.0%"></p>
+</div><div class="column" style="width:50%;">
+<p>Desplazamientos <img data-src="media/desplazamientos.png" style="width:90.0%"></p>
+</div>
+</div>
 </section>
-<section id="instrumento" class="slide level2 smaller">
-<h2>Instrumento</h2>
+<section id="instrumento-velocidad-del-viento" class="slide level2 smaller">
+<h2>Instrumento: Velocidad del viento</h2>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Fortaleza del instrumento</a></li><li><a href="#tabset-2-2">Restricción de exclusión</a></li></ul>
 <div class="tab-content">
@@ -467,6 +462,20 @@
 </div>
 </div>
 </section>
+<section id="estrategia-empírica" class="slide level2 smaller">
+<h2>Estrategia empírica</h2>
+<p>Modelo de variable instrumental con efectos fijos:</p>
+<p><span class="math display">\[
+{y_{it}} = \alpha + \beta_{t-p} \widehat{AG_{it-p}} + \theta X_{it-p} + \delta_{i} + \delta_{t} + \delta_{n} + \varepsilon_{it} \ \ \
+\]</span></p>
+<p>donde:</p>
+<p>-<span class="math inline">\({y_{it}}\)</span> es la tasa de desplazamientos mensuales en el municipio <span class="math inline">\(i\)</span> y el mes <span class="math inline">\(t\)</span>.</p>
+<p>-<span class="math inline">\(\widehat{AG_{it-p}}\)</span> es la intensidad de aplicación del programa en el municipio <span class="math inline">\(i\)</span> y el mes <span class="math inline">\(p\)</span> previo.</p>
+<p>-<span class="math inline">\(X_{it-p}\)</span> es la matriz de controles de variables que influían en la asignación y aplicación del programa.</p>
+<p>-<span class="math inline">\(\delta_{i}\)</span> son los efectos fijos por municipio.</p>
+<p>-<span class="math inline">\(\delta_{t}\)</span> son los efectos fijos por tiempo.</p>
+<p>-<span class="math inline">\(\delta_{n}\)</span> son los efectos fijos por núcleo.</p>
+</section>
 <section id="datos" class="slide level2 smaller">
 <h2>Datos</h2>
 <p><br>
@@ -481,7 +490,7 @@
 <li><p><strong>Controles:</strong></p>
 <ul>
 <li><strong>RUV y CNMH:</strong> Violaciones a Derechos Humanos.</li>
-<li><strong>DISC de la NASA:</strong> Lluvias y suo del suelo.</li>
+<li><strong>DISC de la NASA:</strong> Lluvias y uso del suelo.</li>
 <li><strong>Earth Observation Group:</strong> Luminosidad.</li>
 <li><strong>DISC de la NASA:</strong> Choques de viento.</li>
 </ul></li>
@@ -567,6 +576,27 @@
 </div>
 </div>
 </div>
+</section>
+<section id="comentarios" class="slide level2 smaller">
+<h2>Comentarios</h2>
+<ol type="1">
+<li>La condición de esperar cuatro meses para volver a asperjar no siempre se cumplia. Como es el efecto cuando se agregan los meses donde se asperjó consecutivamente.</li>
+</ol>
+<ul>
+<li>Ante un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de <strong>2.65 puntos porcentuales</strong> en la tasa de desplazamiento agregada en el tiempo.</li>
+</ul>
+<ol start="2" type="1">
+<li>Una buena prueba de robustez es cubrir todo el periodo del PECIG, es decir desde el 2001 al 2014.</li>
+</ol>
+<ul>
+<li>El coeficiente cambia a 4,21 puntos porcentuales y se mantiene su nivel se significancia.</li>
+</ul>
+<ol start="3" type="1">
+<li>No es necesario incluír los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.</li>
+</ol>
+<ul>
+<li>El coeficiente cambia a 4,29 puntos porcentuales y se mantiene significativo.</li>
+</ul>
 </section></section>
 <section>
 <section id="conclusiones" class="title-slide slide level1 center">

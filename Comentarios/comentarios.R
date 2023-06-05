@@ -54,17 +54,19 @@ merge_data.df <- readRDS("Data/Merge/output/merge_data.rds")
 ## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 agg.df <- merge_data.df %>%
-  mutate(des = sum_desplazamiento) 
+  mutate(het = if_else(spraying_norm > 0 & lag1_spraying > 0, 1, 0))  %>%
+  mutate(des = sum_desplazamiento_pop) %>%
+  mutate(sum_spraying_new = if_else(het == 1, lag1_spraying + spraying_norm, spraying_norm))
 
-agg.reg <- plm(data = het.df,
+agg.reg <- plm(data = agg.df,
                formula =   
-                 paste0("des ~ sum_spraying +",
+                 paste0("des ~ sum_spraying_new +",
                         paste(controles_fe_3month, collapse = "+"),"|",
                         paste("windSpeedRMBOS +"),
                         paste(controles_fe_3month, collapse = "+")) ,
-               effect = "individual", 
+               effect = "twoways", 
                model = "within", 
-               index=c("date", "codmpio", "query"))
+               index=c("date", "codmpio"))
 
 AGG <- coeftest(agg.reg, vcov=vcovHC(agg.reg, type="sss", cluster="group")) 
 AGG
@@ -101,7 +103,7 @@ stargazer(
 
 het.df <- merge_data.df %>%
   mutate(het = if_else(spraying_norm > 0 & (lag3_spraying > 0 | lag2_spraying > 0 | lag1_spraying > 0), 1, 0))  %>%
-  mutate(des = sum_desplazamiento/100) 
+  mutate(des = sum_desplazamiento_pop) 
 
 het.reg <- plm(data = het.df,
                formula =   
