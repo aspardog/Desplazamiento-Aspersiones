@@ -1,0 +1,135 @@
+---
+format: pdf
+pandoc_args: "--pdf-engine=xelatex"
+editor: visual
+biblio-style: "apalike"
+csl: apa.csl
+lang: es
+biblatexoptions:
+  - style = apa
+header-includes:
+      - \usepackage{float}
+      - \floatplacement{table}{H}
+      - \usepackage{booktabs}
+      - \usepackage{siunitx}
+      - \usepackage{multirow}
+      - \usepackage{graphicx}
+      - \usepackage{tabularx}
+      - \usepackage{dcolumn}
+      - \usepackage{threeparttable}
+      - \usepackage{caption}\captionsetup[figure]{position=top}
+---
+
+```{=tex}
+\begin{table}[!htbp] \centering 
+  \caption{Relación entre aspersiones aéreas y el desplazamiento en meses posteriores} 
+  \label{} 
+\begin{threeparttable}
+\begin{tabular}{@{\extracolsep{5pt}}lD{,}{,}{-3} D{,}{,}{-3} D{,}{,}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{Variable dependiente: Desplazamiento Forzado} \\ 
+\cline{2-4} 
+\\[-1.8ex] & \multicolumn{1}{c}{(t + 1)} & \multicolumn{1}{c}{(t + 2)} & \multicolumn{1}{c}{(t + 3)}\\ 
+\hline \\[-1.8ex] 
+ Aspersiones aéreas & 1,280^{**} & 1,464^{***} & 1,314^{*} \\ 
+  & (0,623) & (0,440) & (0,746) \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Efectos Fijos & Si & Si & Si \\ 
+Controles & Si & Si & Si \\ 
+Observaciones & \multicolumn{1}{c}{10,246} & \multicolumn{1}{c}{10,058} & \multicolumn{1}{c}{9,868} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0,001} & \multicolumn{1}{c}{0,0001} & \multicolumn{1}{c}{0,00001} \\ 
+\hline 
+\end{tabular} 
+\begin{tablenotes}[flushleft] 
+        \tiny % el tamaño de la fuente de la nota
+        \item Nota: Los errores fueron clusterizado a nivel municipal. Los valores dentro de los parentesis representan la desviación estandar. Paralelamente se aplicaron efectos fijos por municipio, año-mes y núcleo. Las variables de control asociadas a la violencia se tomaron en tasas por 100 habitantes, estas son: desaparición forzada, reclutamiento de menores, minas, combates y despojo. Las variables de control geograficas son: choques de viento, indice de vegetación y niveles de lluvia. La variable de control asociada al desarrollo economico es la intensidad de luminosidad del municipio. Además, los niveles de signifancia se ven representados de la siguiente manera: $^{*}$p$<$0,1; $^{**}$p$<$0,05; $^{***}$p$<$0,01  
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+```
+
+\newpage
+
+```{=latex}
+\begin{table}[!htbp] \centering 
+  \caption{Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado} 
+  \label{} 
+\begin{threeparttable}
+\begin{tabular}{@{\extracolsep{7pt}}lD{,}{,}{-3} D{,}{,}{-3} D{,}{,}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{Variable dependiente: Desplazamiento Forzado} \\ 
+\cline{2-4} 
+\\[-1.8ex] & \multicolumn{1}{c}{(MCO)} & \multicolumn{1}{c}{(IV)} & \multicolumn{1}{c}{(IV)}\\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)}\\ 
+\hline \\[-1.8ex] 
+ Aspersiones aéreas & -0,031 & 3,743^{**} & 3,728^{***} \\ 
+  & (0,088) & (1,760) & (1,277) \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Efectos Fijos & Si & Si & Si \\ 
+Controles & Si & No & Si \\ 
+Observaciones & \multicolumn{1}{c}{10,246} & \multicolumn{1}{c}{10,246} & \multicolumn{1}{c}{10,246} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0,169} & \multicolumn{1}{c}{0,00001} & \multicolumn{1}{c}{0,085} \\ 
+\hline 
+\end{tabular} 
+\begin{tablenotes}[flushleft] 
+        \tiny % el tamaño de la fuente de la nota
+        \item Nota: Los errores fueron clusterizado a nivel municipal. Los valores dentro de los parentesis representan la desviación estandar. Paralelamente se aplicaron efectos fijos por municipio, año-mes y núcleo. Las variables de control asociadas a la violencia se tomaron en tasas por 100 habitantes, estas son: desaparición forzada, reclutamiento de menores, minas, combates y despojo. Las variables de control geograficas son: choques de viento, indice de vegetación y niveles de lluvia. La variable de control asociada al desarrollo economico es la intensidad de luminosidad del municipio. Además, los niveles de signifancia se ven representados de la siguiente manera: $^{*}$p$<$0,1; $^{**}$p$<$0,05; $^{***}$p$<$0,01  
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+```
+
+\newpage
+
+```{=tex}
+\begin{table}[!htbp] \centering 
+  \caption{Efecto heterogéneo de las aspersiones sobre el desplazamiento en el tiempo, de acuerdo a los cuartiles de volumen de coca} 
+  \label{} 
+\begin{threeparttable}
+\begin{tabular}{@{\extracolsep{5pt}}lD{,}{,}{-3} D{,}{,}{-3} D{,}{,}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{Variable dependiente: Desplazamiento Forzado} \\ 
+\cline{2-4} 
+\\[-1.8ex] & \multicolumn{1}{c}{(t + 1)} & \multicolumn{1}{c}{(t + 2)} & \multicolumn{1}{c}{(t + 3)}\\ 
+\hline \\[-1.8ex] 
+ Aspersiones aéreas & -0,137^{**} & -0,090 & -0,162^{***} \\ 
+  & (0,069) & (0,063) & (0,046) \\ 
+  & & & \\ 
+ Cuartil2 & 0,035 & 0,041 & 0,041 \\ 
+  & (0,044) & (0,046) & (0,048) \\ 
+  & & & \\ 
+ Cuartil3 & 0,123^{**} & 0,122^{**} & 0,149^{***} \\ 
+  & (0,053) & (0,056) & (0,054) \\ 
+  & & & \\ 
+ Cuartil4 & 0,216^{***} & 0,225^{***} & 0,259^{***} \\ 
+  & (0,057) & (0,061) & (0,060) \\ 
+  & & & \\ 
+ Aspersiones aéreas*Cuartil2 & 0,523^{***} & 0,138 & 0,560^{**} \\ 
+  & (0,188) & (0,138) & (0,234) \\ 
+  & & & \\ 
+ Aspersiones aéreas*Cuartil3 & 0,385^{***} & 0,259^{***} & 0,326^{***} \\ 
+  & (0,105) & (0,079) & (0,102) \\ 
+  & & & \\ 
+ Aspersiones aéreas*Cuartil4 & 0,131^{*} & 0,036 & 0,090 \\ 
+  & (0,073) & (0,081) & (0,066) \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Efectos Fijos & Si & Si & Si \\ 
+Controles & Si & Si & Si \\ 
+Observaciones & \multicolumn{1}{c}{9,834} & \multicolumn{1}{c}{9,671} & \multicolumn{1}{c}{9,506} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0,015} & \multicolumn{1}{c}{0,015} & \multicolumn{1}{c}{0,013} \\ 
+\hline 
+\end{tabular} 
+\begin{tablenotes}[flushleft] 
+        \tiny % el tamaño de la fuente de la nota
+        \item Nota: Los errores fueron clusterizado a nivel municipal. Los valores dentro de los parentesis representan la desviación estandar. Paralelamente se aplicaron efectos fijos por municipio, año-mes y núcleo. Las variables de control asociadas a la violencia se tomaron en tasas por 100 habitantes, estas son: desaparición forzada, reclutamiento de menores, minas, combates y despojo. Las variables de control geograficas son: choques de viento, indice de vegetación y niveles de lluvia. La variable de control asociada al desarrollo economico es la intensidad de luminosidad del municipio. Además, los niveles de signifancia se ven representados de la siguiente manera: $^{*}$p$<$0,1; $^{**}$p$<$0,05; $^{***}$p$<$0,01  
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+```
+

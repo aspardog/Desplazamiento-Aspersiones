@@ -1,0 +1,24 @@
+---
+title: "Eppur si muove "
+subtitle: "El efecto de las aspersiones aéreas con glifosato en el desplazamiento forzado en Colombia"
+format: 
+  revealjs: 
+    theme: [simple]
+editor: visual
+---
+
+# Ejercicios adicionales
+
+## Comentarios {.smaller}
+
+1.   La condición de esperar cuatro meses para volver a asperjar no siempre se cumplia.
+    
+- Como es el efecto cuando se agregan los meses donde se asperjó de manera seguida.
+- ¿Existe algún efecto diferenciado entre los municipios que recibieron el programa en meses consecutivos?
+
+2.   Una buena prueba de robustez es cubrir todo el periodo del PECIG, es decir desde el 2001 al 2014.
+
+- ¿Este Plan de Manejo Ambiental realmente mitigó el desplazamiento?
+
+3.   No es necesario incluír los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.
+
