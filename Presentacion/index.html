@@ -7,7 +7,7 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.1.189">
+  <meta name="generator" content="quarto-1.2.313">
 
   <title>Eppur si muove</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -322,11 +322,14 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="center">
+<section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Eppur si muove</h1>
   <p class="subtitle">El efecto de las aspersiones aéreas con glifosato en el desplazamiento forzado en Colombia</p>
-</section>
 
+<div class="quarto-title-authors">
+</div>
+
+</section>
 <section>
 <section id="introducción" class="title-slide slide level1 center">
 <h1>Introducción</h1>
@@ -574,25 +577,22 @@
 </div>
 </div>
 </section>
-<section id="comentarios" class="slide level2 smaller">
-<h2>Comentarios</h2>
+<section id="ejercicios-adicionales" class="slide level2 smaller">
+<h2>Ejercicios adicionales</h2>
 <ol type="1">
-<li>La condición de esperar cuatro meses para volver a asperjar no siempre se cumplia. ¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?.</li>
+<li>¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?.</li>
 </ol>
 <ul>
 <li>Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de <strong>2.65 puntos porcentuales</strong> en la tasa de desplazamiento agregada en el tiempo.</li>
 </ul>
 <ol start="2" type="1">
-<li>Una buena prueba de robustez es cubrir todo el periodo del PECIG, es decir desde el 2001 al 2014.</li>
+<li>Prueba de robustez es cubrir todo el periodo del PECIG, es decir desde el 2001 al 2014.</li>
 </ol>
 <ul>
-<li>El coeficiente cambia a <strong>4.21 puntos porcentuales</strong> y se mantiene su nivel se significancia.</li>
+<li>El coeficiente cambia a <strong>3.35 puntos porcentuales</strong> y se mantiene su nivel se significancia.</li>
 </ul>
-</section>
-<section id="comentarios-1" class="slide level2 smaller">
-<h2>Comentarios</h2>
 <ol start="3" type="1">
-<li>No es necesario incluir los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.</li>
+<li>Extraer los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.</li>
 </ol>
 <ul>
 <li>El coeficiente cambia a <strong>4.29 puntos porcentuales</strong> y se mantiene significativo.</li>
@@ -605,29 +605,15 @@
 </section>
 <section id="conclusiones-1" class="slide level2 smaller">
 <h2>Conclusiones</h2>
-<div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Efecto</a></li><li><a href="#tabset-6-2">Mecanismos</a></li></ul>
-<div class="tab-content">
-<div id="tabset-6-1">
-<p><br>
-</p>
 <ul>
-<li><p>Ante un aumento de un punto porcentual en la intensidad de aspersión, la tasa de desplazamiento aumenta <strong>3.73 puntos porcentuales</strong> en un período de tres meses.<br>
-</p></li>
-<li><p>La decisión de desplazarse no es inmediata, pero sí tiene un efecto en el corto plazo.</p></li>
-</ul>
-</div>
-<div id="tabset-6-2">
-<p><br>
-</p>
+<li><p>Esta investigación muestra la relación existente entre el desplazamiento forzado y las aspersiones aéreas con glifosato.</p></li>
+<li><p>Este trabajo contribuye a entender razones que van más allá de la violencia asociadas al desplazamiento.</p>
 <ul>
-<li><p>Los cultivos de coca son un instesificador del conflicto una vez se aplica el programa.<br>
-</p></li>
-<li><p>Los municipios con niveles de coca más altos tienen un efecto estadísticamente mayor a los que tienen bajos niveles.</p></li>
+<li>Permite entender otras dinámicas del desplazamiento. Decisión vs Impulso.</li>
+</ul></li>
+<li><p>Permite entender otras consecuencias de la expocisión a economías cocaleras como lo es el desplazamiento forzado de las personas que se encuentran al rededor de estas.</p></li>
+<li><p>Aporta nuevas variables a tener en cuenta al establecer políticas públicas enfocadas en seguridad.</p></li>
 </ul>
-</div>
-</div>
-</div>
 <div class="footer footer-default">
 
 </div>
@@ -881,7 +867,24 @@
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -919,24 +922,42 @@
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
     });
     </script>

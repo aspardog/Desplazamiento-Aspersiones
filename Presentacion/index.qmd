@@ -250,19 +250,17 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 ![](media/Mecanismos.png){width="50%"}
 :::
 
-## Comentarios {.smaller}
+## Ejercicios adicionales {.smaller}
 
-1.  La condición de esperar cuatro meses para volver a asperjar no siempre se cumplia. ¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?.
+1.  ¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?.
 
 -  Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **2.65 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo.
 
-2.  Una buena prueba de robustez es cubrir todo el periodo del PECIG, es decir desde el 2001 al 2014.
+2.  Prueba de robustez es cubrir todo el periodo del PECIG, es decir desde el 2001 al 2014.
 
--   El coeficiente cambia a **4.21 puntos porcentuales** y se mantiene su nivel se significancia.
+-   El coeficiente cambia a **3.35 puntos porcentuales** y se mantiene su nivel se significancia.
 
-## Comentarios {.smaller}
-
-3.  No es necesario incluir los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.
+3.  Extraer los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.
 
 - El coeficiente cambia a **4.29 puntos porcentuales** y se mantiene significativo.
 
@@ -270,20 +268,14 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 
 ## Conclusiones {.smaller}
 
-::: panel-tabset
-### Efecto
+- Esta investigación muestra la relación existente entre el desplazamiento forzado y las aspersiones aéreas con glifosato.
 
-\
+- Este trabajo contribuye a entender razones que van más allá de la violencia asociadas al desplazamiento. 
 
--   Ante un aumento de un punto porcentual en la intensidad de aspersión, la tasa de desplazamiento aumenta **3.73 puntos porcentuales** en un período de tres meses.\
+    - Permite entender otras dinámicas del desplazamiento. Decisión vs Impulso.
 
--   La decisión de desplazarse no es inmediata, pero sí tiene un efecto en el corto plazo.
+- Permite entender otras consecuencias de la expocisión a economías cocaleras como lo es el desplazamiento forzado de las personas que se encuentran al rededor de estas. 
 
-### Mecanismos
+- Aporta nuevas variables a tener en cuenta al establecer políticas públicas enfocadas en seguridad.
 
-\
 
--   Los cultivos de coca son un instesificador del conflicto una vez se aplica el programa.\
-
--   Los municipios con niveles de coca más altos tienen un efecto estadísticamente mayor a los que tienen bajos niveles.
-:::

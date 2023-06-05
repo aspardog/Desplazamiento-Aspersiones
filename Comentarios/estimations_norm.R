@@ -28,7 +28,7 @@ p_load(tidyverse, sandwich, lmtest, ivreg, corrr, modelsummary, kableExtra, gt,
        tibble, stargazer, plm,  ggpubr, showtext, patchwork, ggh4x, knitr, flextable)
 
 controles_fe_pop <- c('night_lights', 
-                      "rainFall","vegetation", 
+                      "rainFall","vegetation",
                       'ruv_abandono_despojo_pop','ruv_combates_pop', 'ruv_homicidio_pop',
                       'cnmh_minas_pop', 'cnmh_reclutamiento_pop','cnmh_desaparicion_pop')
 
