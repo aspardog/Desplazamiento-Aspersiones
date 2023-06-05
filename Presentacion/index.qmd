@@ -29,7 +29,7 @@ editor: visual
 
 -   En el contexto de conflicto armado y guerra contra las drogas, se creó **el Plan Colombia**.\
 
--   **El Programa de Erradicación de Cultivos Ilicitos con Glifosato (PECIG)**: el programa principal del Plan Colombia.
+-   **El Programa de Erradicación de Cultivos Ilícitos con Glifosato (PECIG)**: el programa principal del Plan Colombia.
 
 # Pregunta de investigación
 
@@ -45,13 +45,13 @@ editor: visual
 
 \
 
--   Ante un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **3.73 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo.
+-   Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **3.73 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo.
 
     -   La decisión de desplazarse no es inmediata pero sí **se da en el corto plazo**.
 
 -   **La reiteración de la aspersión intensifica** los niveles de desplazamiento producidos por la aspersión.
 
--   Existen efectos heterogéneos en la relación de acuerdo al **volumen de cultivos de coca**.
+-   Existen efectos heterogéneos en la relación de acuerdo al **volúmen de cultivos de coca**.
 
 # Contexto
 
@@ -86,7 +86,7 @@ editor: visual
 ::: {.column width="50%"}
 
 
-- Para mitigar con los efectos negativos de la aspersión, el DIRAN tenía que cumplir con un Plan de Manejo Ambiental (PMA)
+- Para mitigar los efectos negativos de la aspersión, el DIRAN tenía que cumplir con un Plan de Manejo Ambiental (PMA)
 
 - Este plan imponía condiciones geográficas bajo las cuales se pudiese asperjar.
 
@@ -252,17 +252,19 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 
 ## Comentarios {.smaller}
 
-1.  La condición de esperar cuatro meses para volver a asperjar no siempre se cumplia. Como es el efecto cuando se agregan los meses donde se asperjó consecutivamente.
+1.  La condición de esperar cuatro meses para volver a asperjar no siempre se cumplia. ¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?.
 
--  Ante un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **2.65 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo.
+-  Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **2.65 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo.
 
 2.  Una buena prueba de robustez es cubrir todo el periodo del PECIG, es decir desde el 2001 al 2014.
 
--   El coeficiente cambia a 4,21 puntos porcentuales y se mantiene su nivel se significancia.
+-   El coeficiente cambia a **4.21 puntos porcentuales** y se mantiene su nivel se significancia.
 
-3.  No es necesario incluír los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.
+## Comentarios {.smaller}
 
-- El coeficiente cambia a 4,29 puntos porcentuales y se mantiene significativo.
+3.  No es necesario incluir los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.
+
+- El coeficiente cambia a **4.29 puntos porcentuales** y se mantiene significativo.
 
 # Conclusiones
 

@@ -7,7 +7,7 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.313">
+  <meta name="generator" content="quarto-1.1.189">
 
   <title>Eppur si muove</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -322,14 +322,11 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" class="center">
   <h1 class="title">Eppur si muove</h1>
   <p class="subtitle">El efecto de las aspersiones aéreas con glifosato en el desplazamiento forzado en Colombia</p>
-
-<div class="quarto-title-authors">
-</div>
-
 </section>
+
 <section>
 <section id="introducción" class="title-slide slide level1 center">
 <h1>Introducción</h1>
@@ -354,7 +351,7 @@
 </p></li>
 <li><p>En el contexto de conflicto armado y guerra contra las drogas, se creó <strong>el Plan Colombia</strong>.<br>
 </p></li>
-<li><p><strong>El Programa de Erradicación de Cultivos Ilicitos con Glifosato (PECIG)</strong>: el programa principal del Plan Colombia.</p></li>
+<li><p><strong>El Programa de Erradicación de Cultivos Ilícitos con Glifosato (PECIG)</strong>: el programa principal del Plan Colombia.</p></li>
 </ul>
 </section></section>
 <section>
@@ -375,12 +372,12 @@
 <p><br>
 </p>
 <ul>
-<li><p>Ante un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de <strong>3.73 puntos porcentuales</strong> en la tasa de desplazamiento agregada en el tiempo.</p>
+<li><p>Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de <strong>3.73 puntos porcentuales</strong> en la tasa de desplazamiento agregada en el tiempo.</p>
 <ul>
 <li>La decisión de desplazarse no es inmediata pero sí <strong>se da en el corto plazo</strong>.</li>
 </ul></li>
 <li><p><strong>La reiteración de la aspersión intensifica</strong> los niveles de desplazamiento producidos por la aspersión.</p></li>
-<li><p>Existen efectos heterogéneos en la relación de acuerdo al <strong>volumen de cultivos de coca</strong>.</p></li>
+<li><p>Existen efectos heterogéneos en la relación de acuerdo al <strong>volúmen de cultivos de coca</strong>.</p></li>
 </ul>
 </section></section>
 <section>
@@ -412,7 +409,7 @@
 <p><img data-src="media/apendice3.png" style="width:70.0%"></p>
 </div><div class="column" style="width:50%;">
 <ul>
-<li><p>Para mitigar con los efectos negativos de la aspersión, el DIRAN tenía que cumplir con un Plan de Manejo Ambiental (PMA)</p></li>
+<li><p>Para mitigar los efectos negativos de la aspersión, el DIRAN tenía que cumplir con un Plan de Manejo Ambiental (PMA)</p></li>
 <li><p>Este plan imponía condiciones geográficas bajo las cuales se pudiese asperjar.</p></li>
 <li><p>No se podía asperjar en una ventana de 4 meses después de la aplicación del programa.</p></li>
 </ul>
@@ -580,22 +577,25 @@
 <section id="comentarios" class="slide level2 smaller">
 <h2>Comentarios</h2>
 <ol type="1">
-<li>La condición de esperar cuatro meses para volver a asperjar no siempre se cumplia. Como es el efecto cuando se agregan los meses donde se asperjó consecutivamente.</li>
+<li>La condición de esperar cuatro meses para volver a asperjar no siempre se cumplia. ¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?.</li>
 </ol>
 <ul>
-<li>Ante un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de <strong>2.65 puntos porcentuales</strong> en la tasa de desplazamiento agregada en el tiempo.</li>
+<li>Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de <strong>2.65 puntos porcentuales</strong> en la tasa de desplazamiento agregada en el tiempo.</li>
 </ul>
 <ol start="2" type="1">
 <li>Una buena prueba de robustez es cubrir todo el periodo del PECIG, es decir desde el 2001 al 2014.</li>
 </ol>
 <ul>
-<li>El coeficiente cambia a 4,21 puntos porcentuales y se mantiene su nivel se significancia.</li>
+<li>El coeficiente cambia a <strong>4.21 puntos porcentuales</strong> y se mantiene su nivel se significancia.</li>
 </ul>
+</section>
+<section id="comentarios-1" class="slide level2 smaller">
+<h2>Comentarios</h2>
 <ol start="3" type="1">
-<li>No es necesario incluír los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.</li>
+<li>No es necesario incluir los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.</li>
 </ol>
 <ul>
-<li>El coeficiente cambia a 4,29 puntos porcentuales y se mantiene significativo.</li>
+<li>El coeficiente cambia a <strong>4.29 puntos porcentuales</strong> y se mantiene significativo.</li>
 </ul>
 </section></section>
 <section>
@@ -881,24 +881,7 @@
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
         setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -936,42 +919,24 @@
           return note.innerHTML;
         });
       }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
           });
-        }
+          return popup.innerHTML;
+        });
       }
     });
     </script>
