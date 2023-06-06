@@ -7,7 +7,7 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.313">
+  <meta name="generator" content="quarto-1.1.189">
 
   <title>Eppur si muove</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -322,14 +322,11 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" class="center">
   <h1 class="title">Eppur si muove</h1>
   <p class="subtitle">El efecto de las aspersiones aéreas con glifosato en el desplazamiento forzado en Colombia</p>
-
-<div class="quarto-title-authors">
-</div>
-
 </section>
+
 <section>
 <section id="introducción" class="title-slide slide level1 center">
 <h1>Introducción</h1>
@@ -561,7 +558,7 @@
 <ul>
 <li><p><strong>El mecanismo que concatena los anteriores es la reiteración en la aplicación del programa.</strong></p>
 <ul>
-<li>Después de la septima reiteración del programa, los efectos de las aspersiones sobre el desplazamiento son mayores.</li>
+<li>Después de la séptima reiteración del programa, los efectos de las aspersiones sobre el desplazamiento son mayores.</li>
 </ul></li>
 </ul>
 </div>
@@ -588,7 +585,7 @@
 <section id="efectos-heterogéneos" class="slide level2">
 <h2>Efectos Heterogéneos</h2>
 <ul>
-<li>No se puede afirmar que los municipios en los que se asperjó con mayor intensidad tengan una relación entre asperisión y desplazamiento más fuerte.</li>
+<li>No se puede afirmar que los municipios en los que se asperjó con mayor intensidad tengan una relación entre aspersión y desplazamiento más fuerte.</li>
 </ul>
 <p><br>
 </p>
@@ -598,8 +595,12 @@
 </section>
 <section id="ejercicios-adicionales" class="slide level2 smaller">
 <h2>Ejercicios adicionales</h2>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Preguntas</a></li><li><a href="#tabset-6-2">Tabla 1</a></li><li><a href="#tabset-6-3">Tabla 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
 <ol type="1">
-<li>¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?.</li>
+<li>¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?</li>
 </ol>
 <ul>
 <li>Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de <strong>2.65 puntos porcentuales</strong> en la tasa de desplazamiento agregada en el tiempo.</li>
@@ -610,12 +611,37 @@
 <ul>
 <li>El coeficiente cambia a <strong>3.35 puntos porcentuales</strong> y se mantiene su nivel se significancia.</li>
 </ul>
+</div>
+<div id="tabset-6-2">
+<p><img data-src="media/Tabla1.png" style="width:75.0%"></p>
+</div>
+<div id="tabset-6-3">
+<p><img data-src="media/Tabla2.png" style="width:75.0%"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicios-adicionales-1" class="slide level2 smaller">
+<h2>Ejercicios adicionales</h2>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Preguntas</a></li><li><a href="#tabset-7-2">Tabla 3</a></li><li><a href="#tabset-7-3">Tabla 4</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
 <ol start="3" type="1">
 <li>Extraer los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.</li>
 </ol>
 <ul>
 <li>El coeficiente cambia a <strong>4.29 puntos porcentuales</strong> y se mantiene significativo.</li>
 </ul>
+</div>
+<div id="tabset-7-2">
+<p><img data-src="media/Tabla3.png" style="width:75.0%"></p>
+</div>
+<div id="tabset-7-3">
+<p><img data-src="media/Tabla4.png" style="width:75.0%"></p>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="conclusiones" class="title-slide slide level1 center">
@@ -629,7 +655,7 @@
 <ul>
 <li>Permite entender otras dinámicas del desplazamiento. Decisión vs Impulso.</li>
 </ul></li>
-<li><p>Permite entender otras consecuencias de la expocisión a economías cocaleras como lo es el desplazamiento forzado de las personas que se encuentran alrededor de estas.</p></li>
+<li><p>Permite entender otras consecuencias de la exposición a economías cocaleras como lo es el desplazamiento forzado de las personas que se encuentran alrededor de estas.</p></li>
 <li><p>Aporta nuevas variables a tener en cuenta al establecer políticas públicas enfocadas en seguridad.</p>
 <ul>
 <li>Reconoce la condición de víctimas por otras causas del conflicto diferentes a la violencia.</li>
@@ -888,24 +914,7 @@
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
         setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -943,42 +952,24 @@
           return note.innerHTML;
         });
       }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
           });
-        }
+          return popup.innerHTML;
+        });
       }
     });
     </script>
