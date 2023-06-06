@@ -182,6 +182,20 @@ donde:
 
 # Resultados
 
+## Efecto agregado en el tiempo
+
+::: panel-tabset
+### Efecto
+
+\
+
+El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos porcentuales** ante un aumento de un punto porcentual en la tasa de aspersión.
+
+### Tabla
+
+![](media/EfectoAgregado.png){width="75%"}
+:::
+
 ## Efectos dinámicos {.smaller}
 
 ::: panel-tabset
@@ -206,28 +220,6 @@ donde:
 ![](media/MesesPosteriores.png){width="75%"}
 :::
 
-## Efecto agregado en el tiempo
-
-::: panel-tabset
-### Efecto
-
-\
-
-El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos porcentuales** ante un aumento de un punto porcentual en la tasa de aspersión.
-
-### Tabla
-
-![](media/EfectoAgregado.png){width="75%"}
-:::
-
-## Efectos Heterogéneos
-
--   No se puede afirmar que los municipios en los que se asperjó con mayor intensidad tengan una relación entre asperisión y desplazamiento más fuerte.
-
-\
-
--   La relación entre la aspersión aérea y la tasa de desplazamiento es **más fuerte en los municipios con tasas de cultivos de coca más altas**.
-
 ## Mecanismos {.smaller}
 
 ::: panel-tabset
@@ -243,12 +235,41 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 
 \
 
-**El mecanismo que concatena los anteriores es la reiteración en la aplicación del programa.**
+- **El mecanismo que concatena los anteriores es la reiteración en la aplicación del programa.**
+
+    - Después de la septima reiteración del programa, los efectos de las aspersiones sobre el desplazamiento son mayores.
 
 ### Gráfica
 
-![](media/Mecanismos.png){width="50%"}
+::: columns
+::: {.column width="40%"}
+-   Existe un efecto mayor para los municipios que recibieron entre ocho y 17 veces el programa (segundo cuartil).
+
+-   Después del segundo quintil el efecto diferenciado es mayor pero menor.
+ 
+    - Inelasticidad en desplazamiento y aspersión
+
 :::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="50%"}
+![](media/Mecanismos.png){width="100%"}
+:::
+:::
+:::
+
+
+## Efectos Heterogéneos
+
+-   No se puede afirmar que los municipios en los que se asperjó con mayor intensidad tengan una relación entre asperisión y desplazamiento más fuerte.
+
+\
+
+-   La relación entre la aspersión aérea y la tasa de desplazamiento es **más fuerte en los municipios con tasas de cultivos de coca más altas**.
+
 
 ## Ejercicios adicionales {.smaller}
 
@@ -275,5 +296,7 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 - Permite entender otras consecuencias de la expocisión a economías cocaleras como lo es el desplazamiento forzado de las personas que se encuentran alrededor de estas. 
 
 - Aporta nuevas variables a tener en cuenta al establecer políticas públicas enfocadas en seguridad.
+
+    - Reconoce la condición de víctimas por otras causas del conflicto diferentes a la violencia.
 
 

@@ -28,12 +28,12 @@ p_load(tidyverse, sandwich, lmtest, ivreg, corrr, modelsummary, kableExtra, gt,
        tibble, stargazer, plm,  ggpubr, showtext, patchwork, ggh4x, knitr, flextable)
 
 controles_fe_pop <- c('night_lights', 
-                      "rainFall","vegetation",
+                      "rainFall","vegetation",'windIV10RMBOS',
                       'ruv_abandono_despojo_pop','ruv_combates_pop', 'ruv_homicidio_pop',
                       'cnmh_minas_pop', 'cnmh_reclutamiento_pop','cnmh_desaparicion_pop')
 
 controles_fe_3month <- c('night_lights', 
-                         "rainFall","vegetation",
+                         "rainFall","vegetation",'windIV10RMBOS',
                          'sum_combates_pop', 'sum_despojo_pop', 'sum_minas_pop', 'sum_reclutamiento_pop', 
                          'sum_homicidio_pop', 'sum_desaparicion_pop')
 
@@ -365,3 +365,26 @@ IV3MonthFE <- plm(data= merge_data.df,
 summary(IV3MonthFE)
 IVFE3Mstd <- coeftest(IV3MonthFE, vcov=vcovHC(IV3MonthFE, type="sss", cluster="group"))  
 
+stargazer(
+  IV3MonthFE,
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "spraying_norm",
+  se = list(IVFE3Mstd[, 2]), 
+  title = "Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = FALSE, 
+  covariate.labels = c("Aspersiones aéreas"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si", "Si", "Si"),
+                   c("Controles", "Si", "No", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "7pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(IVFE3Mstd[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)

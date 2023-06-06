@@ -117,3 +117,27 @@ het.reg <- plm(data = het.df,
 
 HET <- coeftest(het.reg, vcov=vcovHC(het.reg, type="sss", cluster="group")) 
 HET
+
+stargazer(
+  het.reg,
+  type = "latex",
+  dep.var.labels= "Aspersiones aéreas",
+  dep.var.caption = "Variable dependiente: Desplazamiento Forzado",
+  keep = "sum_spraying",
+  se = list(HET[, 2]), 
+  title = "Efecto agregado de las aspersiones aéreas sobre el desplazamiento forzado", 
+  align = TRUE, 
+  dep.var.labels.include = FALSE, 
+  no.space = FALSE, 
+  covariate.labels = c("Aspersiones aéreas"), 
+  omit = "Constant",
+  add.lines = list(c("Efectos Fijos", "Si", "Si", "Si"),
+                   c("Controles", "Si", "No", "Si")),
+  #column.labels = c("MCO"),
+  column.sep.width = "7pt",
+  keep.stat = c("rsq", "n"), 
+  p = list(HET[, 4]),
+  decimal.mark = ",",
+  notes.align = "l",
+  notes.append = F
+)

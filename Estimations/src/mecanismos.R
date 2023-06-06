@@ -54,9 +54,9 @@ data2plot <- estimate %>%
       ),
     variable = 
       case_when(
-        variable == "spraying_norm:intensidad2" ~ "Segundo quintil",
-        variable == "spraying_norm:intensidad3" ~ "Tercer quintil",
-        variable == "spraying_norm:intensidad4" ~ "Cuarto quintil"
+        variable == "spraying_norm:intensidad2" ~ "Segundo cuartil",
+        variable == "spraying_norm:intensidad3" ~ "Tercer cuartil",
+        variable == "spraying_norm:intensidad4" ~ "Cuarto cuartil"
       )
   )
 
