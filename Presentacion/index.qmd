@@ -14,7 +14,7 @@ editor: visual
 \
 \
 
-"El desplazamiento que se tuvo, que se vio en ese tiempo, fue bastante masivo. La gente salió y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, no había un plan de contingencia para atender a las personas desplazadas por las fumigaciones; no lo hubo, ni lo hay" (Yonda, 2021)
+"El desplazamiento que se tuvo, que se vio en ese tiempo, **fue bastante masivo**. La **gente salió** y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, **no había un plan de contingencia** para atender a las personas desplazadas por las **fumigaciones**; no lo hubo, ni lo hay" (Yonda, 2021)
 
 
 ## Motivación {.smaller}
@@ -176,30 +176,12 @@ donde:
 -   **Controles:**
 
     -   **RUV y CNMH:** Violaciones a Derechos Humanos.
-    -   **DISC de la NASA:** Lluvias y uso del suelo.
+    -   **DISC de la NASA:** Lluvias, Choques de viento y uso del suelo.
     -   **Earth Observation Group:** Luminosidad.
-    -   **DISC de la NASA:** Choques de viento.
 
 # Resultados
 
-## Efecto agregado en el tiempo
-
-::: panel-tabset
-### Efecto
-
-\
-
-El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos porcentuales** ante un aumento de un punto porcentual en la tasa de aspersión.
-
-### Tabla
-
-![](media/EfectoAgregado.png){width="75%"}
-:::
-
 ## Efectos dinámicos {.smaller}
-
-::: panel-tabset
-### Gráfica
 
 ::: columns
 ::: {.column width="30%"}
@@ -215,9 +197,19 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 :::
 :::
 
+
+## Efecto agregado en el tiempo
+
+::: panel-tabset
+### Efecto
+
+\
+
+El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos porcentuales** ante un aumento de un punto porcentual en la tasa de aspersión.
+
 ### Tabla
 
-![](media/MesesPosteriores.png){width="75%"}
+![](media/EfectoAgregado.png){width="75%"}
 :::
 
 ## Mecanismos {.smaller}
@@ -275,45 +267,31 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 
 ::: panel-tabset
 
-### Preguntas
+### Comentario 1
 
 1.  ¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?
 
 -  Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **2.65 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo.
 
+![](media/Tabla1.png){width="50%"}
+
+### Comentario 2
+
 2.  Prueba de robustez es cubrir todo el periodo del PECIG, es decir desde el 2001 al 2014.
 
 -   El coeficiente cambia a **3.35 puntos porcentuales** y se mantiene su nivel se significancia.
 
+![](media/Tabla3.png){width="50%"}
 
-### Tabla 1
-
-![](media/Tabla1.png){width="75%"}
-
-### Tabla 2
-
-![](media/Tabla2.png){width="75%"}
-:::
-
-## Ejercicios adicionales {.smaller}
-
-::: panel-tabset
-
-### Preguntas
+### Comentario 3
 
 3.  Extraer los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.
 
 - El coeficiente cambia a **4.29 puntos porcentuales** y se mantiene significativo.
 
-### Tabla 3
-
-![](media/Tabla3.png){width="75%"}
-
-### Tabla 4
-
-![](media/Tabla4.png){width="75%"}
-
+![](media/Tabla4.png){width="50%"}
 :::
+
 
 # Conclusiones
 
@@ -329,4 +307,4 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 
     - Reconoce la condición de víctimas por otras causas del conflicto diferentes a la violencia.
 
-
+# ¡Gracias!
