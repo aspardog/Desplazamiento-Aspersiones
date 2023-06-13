@@ -3,19 +3,19 @@ title: "Eppur si muove "
 subtitle: "El efecto de las aspersiones aéreas con glifosato en el desplazamiento forzado en Colombia"
 format: 
   revealjs: 
-    theme: [serif, custom.scss]
+    theme: [serif, custom.scss]    
+    embed-resources: true
 editor: visual
 ---
 
 # Introducción
 
-## Motivación 
+## Motivación
 
 \
 \
 
 "El desplazamiento que se tuvo, que se vio en ese tiempo, **fue bastante masivo**. La **gente salió** y el territorio quedó prácticamente solo y la atención a las comunidades fue mínima por parte del gobierno. Como digo, **no había un plan de contingencia** para atender a las personas desplazadas por las **fumigaciones**; no lo hubo, ni lo hay" (Yonda, 2021)
-
 
 ## Motivación {.smaller}
 
@@ -58,62 +58,51 @@ editor: visual
 ## PECIG {.smaller}
 
 ::: panel-tabset
-
 ### Aspersiones
 
 ::: columns
 ::: {.column width="50%"}
 ![](media/apendice4.png){width="70%"}
 :::
+
 ::: {.column width="50%"}
+-   Se seleccionaron los municipios de acuerdo a la magnitud de cultivos de coca y la presencia de conflicto armado en el territorio.
 
-- Se seleccionaron los municipios de acuerdo a la magnitud de cultivos de coca y la presencia de conflicto armado en el territorio.
+-   Se dividieron los municipios por núcleos de aplicación.
 
-- Se dividieron los municipios por núcleos de aplicación.
-
-- El PECIG se prohibió en 2014 por los daños en salud que le generaba a la población.
-
+-   El PECIG se prohibió en 2014 por los daños en salud que le generaba a la población.
 :::
 :::
+
 ### PMA
 
 ::: columns
 ::: {.column width="50%"}
-
 ![](media/apendice3.png){width="70%"}
-
 :::
+
 ::: {.column width="50%"}
+-   Para mitigar los efectos negativos de la aspersión, el DIRAN tenía que cumplir con un Plan de Manejo Ambiental (PMA)
 
+-   Este plan imponía condiciones geográficas bajo las cuales se pudiese asperjar.
 
-- Para mitigar los efectos negativos de la aspersión, el DIRAN tenía que cumplir con un Plan de Manejo Ambiental (PMA)
-
-- Este plan imponía condiciones geográficas bajo las cuales se pudiese asperjar.
-
-- No se podía asperjar en una ventana de 4 meses después de la aplicación del programa.
-
+-   No se podía asperjar en una ventana de 4 meses después de la aplicación del programa.
+:::
 :::
 :::
 
-:::
 # Metodología
 
 ## Aspersión vs Desplazamiento
 
 ::: columns
 ::: {.column width="50%"}
-
-Aspersiones aéreas
-![](media/aspersiones.png){width="90%"}
-
+Aspersiones aéreas ![](media/aspersiones.png){width="90%"}
 :::
+
 ::: {.column width="50%"}
-
-Desplazamientos
-![](media/desplazamientos.png){width="90%"}
-
+Desplazamientos ![](media/desplazamientos.png){width="90%"}
 :::
-
 :::
 
 ## Instrumento: Velocidad del viento {.smaller}
@@ -197,7 +186,6 @@ donde:
 :::
 :::
 
-
 ## Efecto agregado en el tiempo
 
 ::: panel-tabset
@@ -227,9 +215,9 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 
 \
 
-- **El mecanismo que concatena los anteriores es la reiteración en la aplicación del programa.**
+-   **El mecanismo que concatena los anteriores es la reiteración en la aplicación del programa.**
 
-    - Después de la séptima reiteración del programa, los efectos de las aspersiones sobre el desplazamiento son mayores.
+    -   Después de la séptima reiteración del programa, los efectos de las aspersiones sobre el desplazamiento son mayores.
 
 ### Gráfica
 
@@ -238,13 +226,11 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 -   Existe un efecto mayor para los municipios que recibieron entre ocho y 17 veces el programa (segundo cuartil).
 
 -   Después del segundo quintil el efecto diferenciado es mayor pero menor.
- 
-    - Inelasticidad en desplazamiento y aspersión
 
+    -   Inelasticidad en desplazamiento y aspersión
 :::
 
 ::: {.column width="10%"}
-
 :::
 
 ::: {.column width="50%"}
@@ -252,7 +238,6 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 :::
 :::
 :::
-
 
 ## Efectos Heterogéneos
 
@@ -262,16 +247,14 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 
 -   La relación entre la aspersión aérea y la tasa de desplazamiento es **más fuerte en los municipios con tasas de cultivos de coca más altas**.
 
-
 ## Ejercicios adicionales {.smaller}
 
 ::: panel-tabset
-
 ### Comentario 1
 
 1.  ¿Cúal es el efecto cuando se agregan los meses donde se asperjó consecutivamente?
 
--  Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **2.65 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo.
+-   Un aumento de un punto porcentual en la intesidad de aspersión implica un aumento de **2.65 puntos porcentuales** en la tasa de desplazamiento agregada en el tiempo.
 
 ![](media/Tabla1.png){width="50%"}
 
@@ -287,24 +270,23 @@ El efecto de las asperiones agregado en el tiempo es un aumento de **3.73 puntos
 
 3.  Extraer los choques de viento como control, no aporta y puede ir en contravía con la restricción de exclusión.
 
-- El coeficiente cambia a **4.29 puntos porcentuales** y se mantiene significativo.
+-   El coeficiente cambia a **4.29 puntos porcentuales** y se mantiene significativo.
 
 ![](media/Tabla4.png){width="50%"}
 :::
-
 
 # Conclusiones
 
 ## Conclusiones {.smaller}
 
-- Este trabajo contribuye a entender razones que van más allá de la violencia asociadas al desplazamiento. 
+-   Este trabajo contribuye a entender razones que van más allá de la violencia asociadas al desplazamiento.
 
-    - Permite entender otras dinámicas del desplazamiento. Decisión vs Impulso.
+    -   Permite entender otras dinámicas del desplazamiento. Decisión vs Impulso.
 
-- Permite entender otras consecuencias de la exposición a economías cocaleras como lo es el desplazamiento forzado de las personas que se encuentran alrededor de estas. 
+-   Permite entender otras consecuencias de la exposición a economías cocaleras como lo es el desplazamiento forzado de las personas que se encuentran alrededor de estas.
 
-- Aporta nuevas variables a tener en cuenta al establecer políticas públicas enfocadas en seguridad.
+-   Aporta nuevas variables a tener en cuenta al establecer políticas públicas enfocadas en seguridad.
 
-    - Reconoce la condición de víctimas por otras causas del conflicto diferentes a la violencia.
+    -   Reconoce la condición de víctimas por otras causas del conflicto diferentes a la violencia.
 
 # ¡Gracias!
