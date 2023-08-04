@@ -503,11 +503,13 @@ Además, la tabla 6 expone que, en el mes después de asperjar, todos los cuarti
 \
 \
 
-En resumen, los resultados de esta investigación demuestran que existe una relación causal entre el desplazamiento forzado interno y las aspersiones aéreas con glifosato.
+En resumen, los resultados de esta sección demuestran que existe una relación causal entre el desplazamiento forzado interno y las aspersiones aéreas con glifosato. Más específicamente, muestran que un aumento de un punto porcentual en la intensidad de aspersión implica un aumento de 4,29 puntos porcentuales en la tasa de desplazamiento en un período agregado de tres meses después de la aspersión. Además, al evaluar individualmente el efecto sobre los meses posteriores al programa, se encuentra que el aumento fue de 1,25 puntos porcentuales en el mes siguiente; 1,4 puntos porcentuales, dos meses después de la aplicación y 1,15 puntos porcentuales, después del tercer mes.
+
+Por otro lado, estos resultados también muestran que no existen efectos heterogéneos por intensidad de aspersión, pero sí se evidencian diferencias en el efecto de acuerdo al volúmen de cultivos de coca.
 
 ```{=tex}
 \begin{table}[!htbp] \centering 
-  \caption{Efecto heterogéneo de las aspersiones sobre el desplazamiento en el tiempo, de acuerdo a los cuartiles de volumen de coca} 
+  \caption{Efecto heterogéneo de las aspersiones sobre el desplazamiento en el tiempo, de acuerdo a los cuartiles de volúmen de coca} 
   \label{} 
 \begin{threeparttable}
 \begin{tabular}{@{\extracolsep{5pt}}lD{,}{,}{-3} D{,}{,}{-3} D{,}{,}{-3} } 
