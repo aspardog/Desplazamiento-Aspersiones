@@ -499,6 +499,12 @@ Por otro lado, el PECIG tenía como objetivo la erradicación de los cultivos de
 
 Además, la tabla 6 expone que, en el mes después de asperjar, todos los cuartiles tienen un efecto estadísticamente mayor a los del cuartil más bajo. Esto implica que la relación entre la intensidad de las aspersiones aéreas y las tasas de desplazamiento forzado es mayor en los municipios con tasas de cultivos de coca más altos. Para el segundo mes, las diferencias significativas se mantienen únicamente en el tercer cuartil; mientras que para el tercer mes, se da en el segundo y tercer cuartil.
 
+\
+\
+\
+
+En resumen, los resultados de esta investigación demuestran que existe una relación causal entre el desplazamiento forzado interno y las aspersiones aéreas con glifosato.
+
 ```{=tex}
 \begin{table}[!htbp] \centering 
   \caption{Efecto heterogéneo de las aspersiones sobre el desplazamiento en el tiempo, de acuerdo a los cuartiles de volumen de coca} 
