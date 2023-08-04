@@ -67,12 +67,12 @@ EH_panel <- function(mainData = data2plot,
 }
 
 controles_fe_pop <- c('night_lights', 
-                      "rainFall","vegetation", 'windIV10RMBOS',
+                      "rainFall","vegetation", 
                       'ruv_abandono_despojo_pop','ruv_combates_pop', 'ruv_homicidio_pop',
                       'cnmh_minas_pop', 'cnmh_reclutamiento_pop','cnmh_desaparicion_pop')
 
 controles_fe_3month <- c('night_lights', 
-                         "rainFall","vegetation", 'windIV10RMBOS',
+                         "rainFall","vegetation", 
                          'sum_combates_pop', 'sum_despojo_pop', 'sum_minas_pop', 'sum_reclutamiento_pop', 
                          'sum_homicidio_pop', 'sum_desaparicion_pop')
 

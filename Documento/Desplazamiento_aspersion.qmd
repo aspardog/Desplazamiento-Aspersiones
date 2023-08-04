@@ -3,7 +3,7 @@ title: "Eppur si muove: el efecto de las aspersiones aéreas con glifosato en el
 title-meta: \vspace{-2em}
 author: "Angel Santiago Pardo González^[Universidad de los Andes, facultad de Economía. Correo: as.pardo10@uniandes.edu.co.]"
 author-meta: \vspace{-5em}
-thanks: "Agradezo a mi asesor Ignacio Sarmiento y a mi co-asesor Carlos Toruño por sus asesorías, dispocisión y comentarios. A María Juliana Durán, Andres David Lagos, Edicson Luna y Mariana Posada por todo su apoyo incondicional en este trabajo. A Eduard Martínez y Manuel Fernández por sus aportes y buenas ideas al inicio de esta investigación. Al Registro Único de Víctimas (RUV) y la Dirección Nacional de Policia Antinarcoticos (DIRAN) por haber compartido sus datos. A los investigadores de la Comisión de la Verdad (CEV) por compartirme toda su guía, experiencia y conocimiento para desarrollar este estudio."
+thanks: "Agradezo a mi asesor Ignacio Sarmiento y a mi co-asesor Carlos Toruño por sus consejos, dispocisión y comentarios. A María Juliana Durán, Andres David Lagos, Edicson Luna y Mariana Posada por todo su apoyo incondicional en este trabajo. A Daniel Mejía, Stanislao Maldonado, Eduard Martínez y Manuel Fernández por sus aportes y buenas ideas para esta investigación. Al Registro Único de Víctimas (RUV) y la Dirección Nacional de Policia Antinarcoticos (DIRAN) por haber compartido sus datos. A los investigadores de la Comisión de la Verdad (CEV) por compartirme toda su guía, experiencia y conocimiento para desarrollar este estudio."
 
 bibliography: references.bib
 format: pdf
@@ -29,7 +29,7 @@ header-includes:
 
 # Resumen
 
-En este estudio se analiza la relación entre el desplazamiento forzado interno y el Programa de Aspersiones Aéreas con Glifosato (PECIG) durante el Plan Colombia, utilizando Variables Instrumentales (IV) para corregir los problemas de endogeneidad causados por la asociación del programa con el conflicto armado. Esta investigación muestra que un aumento de un punto porcentual en la intensidad de aspersión está relacionado con un aumento de 3,73 puntos porcentuales en la tasa de desplazamiento en un periodo de tres meses después de asperjar. Al evaluar individualmente el efecto sobre los meses posteriores al programa, se encuentra que estos aumentos fueron de 1,28 puntos porcentuales en el mes inmediatamente posterior; 1,47 puntos porcentuales, dos meses después de la aplicación y 1,3 puntos porcentuales, después del tercer mes. Del mismo modo, las estimaciones muestran que la reiteración en las fumigaciones y un alto volumen en los cultivos de coca son un canal directo para explicar el aumento en las tasas de desplazamiento causadas por el PECIG.
+En este estudio se analiza la relación entre el desplazamiento forzado interno y el Programa de Aspersiones Aéreas con Glifosato (PECIG) durante el Plan Colombia, utilizando Variables Instrumentales (IV) para corregir los problemas de endogeneidad causados por la asociación del programa con el conflicto armado. Esta investigación muestra que un aumento de un punto porcentual en la intensidad de aspersión está relacionado con un aumento de 4,29 puntos porcentuales en la tasa de desplazamiento en un periodo de tres meses después de asperjar. Al evaluar individualmente el efecto sobre los meses posteriores al programa, se encuentra que estos aumentos fueron de 1,25 puntos porcentuales en el mes inmediatamente posterior; 1,4 puntos porcentuales, dos meses después de la aplicación y 1,15 puntos porcentuales, después del tercer mes. Del mismo modo, las estimaciones muestran que la reiteración en las fumigaciones y un alto volumen en los cultivos de coca son un canal directo para explicar el aumento en las tasas de desplazamiento causadas por el PECIG.
 
 ### Palabras clave: Desplazamiento forzado, Programa de Aspersiones Aéreas con Glifosato (PECIG), Política Antidroga, conflicto armado, Plan Colombia, cultivos de coca.
 
@@ -51,13 +51,13 @@ Bajo este marco, el objetivo de este trabajo es determinar cuál fue la magnitud
 
 En este sentido, esta investigación busca demostrar la relación existente entre las aspersiones aéreas y los desplazamientos forzados registrados. No obstante, por el diseño del Plan Colombia, los municipios en los que se asperjó están asociados directamente con el conflicto armado, que son los que más sufren de desplazamientos forzados. Esto implica que evaluar la relación causal de las fumigaciones sobre las migraciones forzadas podría presentar sesgos en la estimación. Para corregirlos, se utilizan Variables Instrumentales (IV) que permite identificar el efecto causal de ambas variables través de un instrumento exógeno.
 
-Para efectos de esta investigación se emplea como instrumento la fuerza de los vientos. Dentro de los lineamientos de fumigación, el viento es una variable decisiva a la hora de fumigar. El instrumento permite encontrar la variación exógena en la intensidad de las aspersiones en la medida que afectaba la probabilidad de su ejecución en ciertos territorios. Esto permite establecer una relación entre las aspersiones aéreas y el desplazamiento forzado únicamente en los municipios en los que se aplicó el programa y en términos de relaciones de cambio.
+Para efectos de esta investigación, se emplea como instrumento la fuerza de los vientos. Dentro de los lineamientos del programa, el viento es una variable decisiva a la hora de fumigar, en la medida en que afectaba la intensidad de la aspersión cuando este era muy alto. En consecuencia, este instrumento permite encontrar variación aleatoria a través de la decisión de cuánto asperjar en un municipio de acuerdo a sus condiciones climáticas. Por tanto, los efectos encontrados solo se puede establecer en términos de relaciones de cambio únicamente en los municipios en los que se aplicó el programa. 
 
-Los resultados de este trabajo estiman que el aumento de un punto porcentual en la intensidad de aspersión, se relaciona con 3,73 puntos porcentuales más en la tasa de desplazamiento agregada en el tiempo. Al evaluar individualmente el efecto sobre los meses posteriores al programa, se encuentra que estos aumentos fueron de 1,28 puntos porcentuales en el mes inmediatamente posterior; 1,47 puntos más, dos meses después de la aplicación y 1,3 puntos porcentuales más, después del tercer mes. Esto, evidencia que la decisión de desplazarse no es inmediata, pero sí ocurre en el corto plazo luego de la fumigación.
+Los resultados de este trabajo estiman que el aumento de un punto porcentual en la intensidad de aspersión, se relaciona con 4,29 puntos porcentuales más en la tasa de desplazamiento agregada en el tiempo. Al evaluar individualmente el efecto sobre los meses posteriores al programa, se encuentra que estos aumentos fueron de 1,25 puntos porcentuales en el mes inmediatamente posterior; 1,4 puntos más, dos meses después de la aplicación y 1,15 puntos porcentuales más, después del tercer mes. Esto, evidencia que la decisión de desplazarse no es inmediata, pero sí ocurre en el corto plazo luego de la fumigación.
 
 Se encontró también que los municipios que tenían una mayor cantidad de cultivos de coca, tienen un efecto diferenciado en el tiempo estadísticamente mayor a los que tienen menor volumen (tomando como referencia los municipios del cuartil más bajo de coca). Los resultados sugieren que los cultivos de coca son un intensificador del conflicto armado en el momento en el que se asperjaba. Esto dado que alrededor de esta economía se establecen grupos armados que buscan proteger los cultivos y mantener su control territorial.
 
-Frente a esto, son cuatro los canales que más se han estudiado, respecto a las consecuencias de las fumigaciones, que pueden explicar su relación con la migración forzada: las alteraciones en salud, los daños ambientales, la intensificación de la violencia y los efectos socioeconómicos adversos. En ese sentido, cuando las personas se encontraban altamente expuestas a estos contextos derivados de la aplicación del PECIG es de esperarse que su intención de permanecer en su territorio cambié. Esta investigación encuentra que a medida que aumentaba el número de aplicaciones del programa, la tasa de desplazamiento forzado en los municipios también aumentaba. Esto implica que existe un efecto diferenciado entre los municipios que estuvieron constantemente expuestos al programa respecto a los que asperjaron ocasionalmente. Por lo tanto, el canal que intensificaba el desplazamiento forzado era la re-aplicación constante del PECIG en los territorios.
+Un tercer hallazgo de esta investigación es que a medida que aumentaba el número de aplicaciones del programa, la tasa de desplazamiento forzado en los municipios también aumentaba. Esto implica que existe un efecto diferenciado entre los municipios que estuvieron constantemente expuestos al programa respecto a los que asperjaron ocasionalmente. Por lo tanto, la re-aplicación constante del PECIG eran un intensificador del desplazamiendo, debido a que las personas en los territorios estaban constamente expuestas a efectos no deseados de las aspersiones como las afectaciones en salud, los daños ambientales, los efectos socioeconomicos adversos o la intensificación de la violencia.
 
 La mayoría de estudios se han centrando en la relación del narcotráfico como financiador y prolongador de diferentes conflictos armados en el mundo [@cornell2005; @monteleone2016; @gutierrez2020; @mercille2011; @angrist2008; @ballve2012], más que en la evaluación de los programas de política antidroga frente a las guerras civiles. Es decir, son menos los estudios que exponen estos programas como un agravante de la violencia en los territorios [@reyes2014; @abadie2014; @zuleta2017; @turkoglu2022]. En consecuencia, esta investigación contribuye a esa literatura cuantificando el efecto que tuvo el principal programa de política antidroga como un intensificador del conflicto armado y explicando los posibles canales por los que se da esta relación.
 
@@ -103,26 +103,21 @@ Bajo este contexto, el período de estudio de análisis se extiende entre 2004, 
 
 # 4. Marco Conceptual
 
-La decisión detrás de un desplazamiento forzado no está sujeta a una sola razón. Son una suma de eventos que ocurren en un territorio que sufre la guerra. Las víctimas tienen que ponderar la disyuntiva entre irse, y enfrentarse a un nuevo contexto, o quedarse y afrontar las consecuencias de hacerlo, ambas opciones bajo situaciones de plena incertidumbre. En este sentido, @ibanez2008book modela esta decisión como la situación en la que la utilidad esperada del desplazamiento ($u^{D}$) es mayor a la utilidad esperada de permanecer en el sitio de origen ($u^{O}$).
+La decisión detrás de un desplazamiento forzado no está sujeta a una sola razón, son una suma de eventos que ocurren en un territorio que sufre la guerra. Las víctimas tienen que ponderar la disyuntiva entre irse, y enfrentarse a un nuevo contexto, o quedarse y afrontar las consecuencias de hacerlo, ambas opciones bajo situaciones de plena incertidumbre. En este sentido, @ibanez2008book modela esta decisión como la situación en la que la utilidad esperada del desplazamiento ($u^{D}$) es mayor a la utilidad esperada de permanecer en el sitio de origen ($u^{O}$).
 
-$$
-u^{D} > u^{O} \ \ \ (1)
-$$
-
-Este trabajo busca entender si las aspersiones con glifosato son una variable que afecta esa utilidad de permanecer en el sitio de origen. Es decir, se centra en estimar la derivada parcial de las aspersiones ($g$) respecto a la utilidad de quedarse en su hogar.
+Este trabajo busca entender si las aspersiones con glifosato son una causa suficientemente negativa como para afectar la utilidad esperada de permanecer en el sitio de origen hasta el punto que las personas en los territorios prefieran desplazarse. Es decir, las estimaciones se centra en encontrar la derivada parcial de las aspersiones ($g$) respecto a la utilidad de quedarse en su hogar. En este caso, el efecto no es estudiado individualmente sino de manera agregada a nivel municipal, por lo tanto la ecuación a estimar es la siguiente:
 
 $$ 
-\frac{\partial \ U(g)^{O}}{\partial \ g} \ \ \ (2)
+\frac{\partial \ U_m(g)^{O}}{\partial \ g} \ \ \ (1)
 $$
+Donde $\partial \ U_m(g)^{O}$ es el cambio en la utilidad de permanecer en el municipio de orgien $m$ y $\partial \ g$ es el cambio en la intensidad de aspersión.
 
-No obstante, es probable que la manera en la que las aspersiones aéreas podrían impactar esta utlidad no sea inmediata, pues estas tienen distintas consecuencias que anteceden el desplazamiento.
+Es probable que la manera en la que las aspersiones aéreas podrían impactar esta utlidad no sea inmediata. De acuerdo con diferentes investigaciones se ha encontrado que las personas expuestas al glifosato concentrada en grandes cantidades genera diversas enfermedades, principalmente, demartologicas y respiratorias [@camacho2014; @univalle_2020; @zhang2019]. Además, a nivel económico, es altamente efectivo destruyendo y afectando la fertilidad de cultivos licitos como café, semillas y tuberculos [@bromilow1996; @andrea2003; @ruiz2014]. Del mismo modo, a nivel ambiental, el herbicida tiene efectos de largo plazo en la contaminación de ríos y lagunas, junto con daños a la biodiversidad [@cox1995; @brauman2011; @relyea2005; @lajmanovich2015]. También, la aplicación del programa produjo mayores niveles de violencia en la medida que provocaba la necesidad de los grupos armados de ratificar su control territorial [@reyes2014; @abadie2014]. 
 
-Para comenzar, se ha demostrado que el glifosato en grandes cantidades concentradas genera problemas de salud [@camacho2014; @univalle_2020; @zhang2019]. En segundo lugar, a nivel económico, destruye cultivos lícitos a su paso y produce daños en la fertilidad del suelo [@bromilow1996; @andrea2003; @ruiz2014]. También, a nivel ambiental el herbicida tiene efectos de largo plazo en la contaminación de ríos y lagunas, junto a daños a la biodiversidad [@cox1995; @brauman2011; @relyea2005; @lajmanovich2015]. Por último, tiene efectos sobre la violencia en los territorios, dado que genera en las guerrillas la necesidad de ratificar su control territorial [@reyes2014; @abadie2014]. La aproximación a entender mejor estos canales se presenta en la sección 9.
-
-Dado que el interés de este trabajo es entender la relación entre las aspersiones áereas y el desplazamiento forzado. Esto incluye responder a la pregunta de si el efecto sobre el desplazamiento es inmediato u ocurre rezagadamente. En ese sentido, la medida de interés es la derivada en distintos períodos de tiempo posteriores a la fumigación con glifosato:
+En consencuencia, la suma de todas estos efectos del programa pueden anteceder y afectar la decisión de una persona de desplazarse, la cual se puede dar en un periodo posterior a la aplicación del programa. Por esta razón, la medida de interés es la derivada en distintos períodos de tiempo posteriores a la fumigación con glifosato:
 
 $$
-\frac{\partial \  U(g)^{O}_{t}}{\partial \ g_{t-p}} \ \ \ (3)
+\frac{\partial \  U(g)^{O}_{t}}{\partial \ g_{t-p}} \ \ \ (2)
 $$
 
 Donde $t-p$ es el período de la aplicación y $t$ es el periodo que se ve afectado por el programa.
@@ -161,7 +156,7 @@ Por otro lado, la matriz de controles $X_{it-p}$ contiene variables que influía
 
 [^7]: Las variables asociadas a la violencia también se tomaron en tasas por cada 100 habitantes.
 
-Del mismo modo, existen variables que afectaban directamente la aplicación del programa determinadas por el PMA, por esto se añadió la intensidad de las lluvias como una variable que controla la probabilidad de aspersión. Además, se añadieron los choques de viento municipales, debido a que cuando estos se encuentran por encima de un rango de 7,4km/h para helicoptros y 10km/h para avionetas era prohibida la aspersión. Por lo tanto, esta variable controla los días del mes en donde los vientos eran anormales en los municipios. Por otro lado, no se incluyeron los cultivos de coca debido a que el objetivo principal del programa era la reducción de estos, lo cual significa que más que una variable de control es una variable asociada a los resultados, por lo tanto su inclusión podría generar sesgos en el modelo [@angrist2009]. No obstante, dado que el programa estaba enfocado en las zonas rurales donde se plantaban estos cultivos, se introdujo el uso del suelo como una variable que ayuda a medir los cambios en la vegetación y la presencia de cultivos lícitos e ilícitos.
+Del mismo modo, existen variables que afectaban directamente la aplicación del programa determinadas por el PMA, por esto se añadió la intensidad de las lluvias como una variable que controla la probabilidad de aspersión. Por otro lado, no se incluyeron los cultivos de coca debido a que el objetivo principal del programa era la reducción de estos, lo cual significa que más que una variable de control es una variable asociada a los resultados, por lo tanto su inclusión podría generar sesgos en el modelo [@angrist2009]. No obstante, dado que el programa estaba enfocado en las zonas rurales donde se plantaban estos cultivos, se introdujo el uso del suelo como una variable que ayuda a medir los cambios en la vegetación y la presencia de cultivos lícitos e ilícitos.
 
 Para controlar la variabilidad sistemática relacionada con factores no observados, se aplican efectos fijos por municipio, núcleo, año y mes. Los efectos fijos por municipio ($\delta_{i}$) controlan la heterogeneidad geográfica, características culturales u otros factores que no varíen en el territorio. Los efectos fijos por núcleo ($\delta_{n}$) captan las diferencias en el efecto de acuerdo a la agrupación que el programa le asignó a cada región para su fumigación (anexo 4). Los efectos fijos ($\delta_{t-p}$) por año y mes permiten controlar la posible tendencia temporal de la relación entre las variables, paralelamente también controlan la posible estacionalidad en los datos. Al incorporar estos efectos fijos, se diferencian los efectos de las variables explicativas y los factores específicos de cada unidad geográfica y temporal.
 
@@ -253,8 +248,8 @@ El primero, la relevancia del instrumento significa que la variable de interés,
  & \multicolumn{1}{c}{(1)} \\ 
  & \multicolumn{1}{c}{} \\ 
 \hline \\[-1.8ex] 
- Velocidad del Viento & -0,097^{***} \\ 
-  & (0,022) \\ 
+ Velocidad del Viento & -0,083^{***} \\ 
+  & (0,019) \\ 
  \hline \\[-1.8ex] 
 F estadístico & 21,208 \\ 
 F estadístico efectivo & 17,952 \\ 
@@ -304,8 +299,8 @@ Para confirmar lo anterior, se presenta en la Tabla 2 una comparación de la reg
 \\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)}\\ 
 \\[-1.8ex] & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\ 
 \hline \\[-1.8ex] 
- Velocidad del Viento & 0,013 & -0,124^{*} \\ 
-  & (0,022) & (0,057) \\ 
+ Velocidad del Viento & 0,035 & -0,104^{*} \\ 
+  & (0,026) & (0,076) \\ 
  \hline \\[-1.8ex] 
 Efectos Fijos & Si & Si\\ 
 Controles & Si & Si\\ 
@@ -357,7 +352,7 @@ Al igual que con el desplazamiento, hubo municipios donde la aspersión fue desp
 
 Para incluir los controles basados en violencia, se utilizaron otras violaciones a derechos humanos dentro del Registro Único de Víctimas. Además, se complementó con información del Centro Nacional de Memoria Histórica. Es importante resaltar que estas variables presentan problemas de subregistro, por lo que no es correcto asumir que representan completamente la violencia en cada municipio.
 
-En cuanto a las variables espaciales relacionadas con el programa, se utilizaron los datos de la frecuencia de las lluvias y la variación del uso del suelo del conjunto [@indexvegetation2002] de datos DISC de la NASA. Para medir la luminosidad, se emplearon los datos diarios proporcionados por el Earth Observation Group del Instituto de Política Pública de Payne. Por último, para medir los choques de viento a nivel municipal, se utilizaron los mismos datos que en el instumento, pero se contabilizó el número de días en los que el viento fue anómalo, tomando en cuenta su estacionalidad. [^15] Todas estas variables se encontraban a nivel de píxel, por lo que se promediaron los píxeles que conformaban cada municipio y se calculó la media mensual para cada uno de ellos.
+En cuanto a las variables espaciales relacionadas con el programa, se utilizaron los datos de la frecuencia de las lluvias y la variación del uso del suelo del conjunto [@indexvegetation2002] de datos DISC de la NASA. Para medir la luminosidad, se emplearon los datos diarios proporcionados por el Earth Observation Group del Instituto de Política Pública de Payne. [^15] Todas estas variables se encontraban a nivel de píxel, por lo que se promediaron los píxeles que conformaban cada municipio y se calculó la media mensual para cada uno de ellos.
 
 [^15]: Esta medición tiene en cuenta la variación en el uso del suelo de acuerdo a imágenes que día a día proporcionan tamaño y las características de la vegetación.
 
@@ -373,7 +368,7 @@ knitr::include_graphics(c("../Visualizations/output/DinamicEffectsNorm.png"))
 
 Esta figura muestra que existe una relación causal en el mes siguiente de la aspersión; y dos meses y tres meses después de su aplicación. Sin embargo, esta relación no se mantiene el cuarto mes, lo que significa que el efecto que produce las aspersiones sobre el desplazamiento se sostienen únicamente en el corto plazo. Por otro lado, para los meses anteriores a la aplicación del programa no existe ningún tipo de impacto. Si bien esto muestra que no hay efectos de desplazamiento anticipados al PECIG, principalmente refleja que el modelo está capturando un efecto consistente después de la aplicación del programa. Finalmente, en el periodo $t$ no se espera que exista un nivel estadísticamente significativo, dado que para este período se presentan errores de medición al no reconocer cuál de los dos eventos ocurre primero.
 
-De este modo, la tabla 3 muestra la magnitud de los efectos de las aspersiones sobre el desplazamiento de los primeros tres meses después de la aplicación del programa. Los resultados indican que en el mes inmediatamente después ($t+1$), el desplazamiento forzado crecía 1,28 puntos porcentuales ante el aumento de un punto porcentual en la tasa de aspersión. En el segundo mes ($t+2$), el efecto es aún mayor, pues aumenta en 1,47 puntos porcentuales. Finalmente, en el tercer mes ($t+3$), efecto se mantiene positivo con un aumento de 1,3 puntos porcentuales.
+De este modo, la tabla 3 muestra la magnitud de los efectos de las aspersiones sobre el desplazamiento de los primeros tres meses después de la aplicación del programa. Los resultados indican que en el mes inmediatamente después ($t+1$), el desplazamiento forzado crecía 1,25 puntos porcentuales ante el aumento de un punto porcentual en la tasa de aspersión. En el segundo mes ($t+2$), el efecto es aún mayor, pues aumenta en 1,4 puntos porcentuales. Finalmente, en el tercer mes ($t+3$), efecto se mantiene positivo con un aumento de 1,15 puntos porcentuales.
 
 ```{=tex}
 \begin{table}[!htbp] \centering 
@@ -387,8 +382,8 @@ De este modo, la tabla 3 muestra la magnitud de los efectos de las aspersiones s
 \cline{2-4} 
 \\[-1.8ex] & \multicolumn{1}{c}{(t + 1)} & \multicolumn{1}{c}{(t + 2)} & \multicolumn{1}{c}{(t + 3)}\\ 
 \hline \\[-1.8ex] 
- Aspersiones aéreas & 1,280^{**} & 1,464^{***} & 1,314^{*} \\ 
-  & (0,623) & (0,440) & (0,746) \\ 
+ Aspersiones aéreas & 1,252^{**} & 1,401^{***} & 1,151^{*} \\ 
+  & (0,930) & (0,672) & (0,513) \\ 
   & & & \\ 
 \hline \\[-1.8ex] 
 Efectos Fijos & Si & Si & Si \\ 
@@ -406,7 +401,7 @@ R$^{2}$ & \multicolumn{1}{c}{0,001} & \multicolumn{1}{c}{0,0001} & \multicolumn{
 ```
 \newpage
 
-Considerando que los efectos son dinámicos en el corto plazo, en la tabla 4 se tomó la tasa de desplazamiento acumulada de los tres meses siguientes a la aspersión como variable dependiente, para determinar un efecto agregado en el tiempo de la aplicación del PECIG. La columna (1) muestra que estimando la correlación por MCO el efecto no tiene ningún nivel de significancia. En la columna (2) al aplicar el método de Variables Instrumentales, sin controles, la relación se vuelve positiva y significativa tomando valores de un aumento de 3,74 puntos porcentuales. En la columna (3) añadiendo los controles, la magnitud no cambia, sin embargo se reduce el error estandar volviendo la estimación más precisa. De este modo, el efecto agregado en el tiempo de las aspersiones sobre el desplazamiento es de un aumento de 3,73 puntos porcentuales ante un aumento de un punto porcentual sobre la tasa de aspersión.
+Considerando que los efectos son dinámicos en el corto plazo, en la tabla 4 se tomó la tasa de desplazamiento acumulada de los tres meses siguientes a la aspersión como variable dependiente, para determinar un efecto agregado en el tiempo de la aplicación del PECIG. La columna (1) muestra que estimando la correlación por MCO el efecto no tiene ningún nivel de significancia. En la columna (2) al aplicar el método de Variables Instrumentales, sin controles, la relación se vuelve positiva y significativa tomando valores de un aumento de 3,74 puntos porcentuales. En la columna (3) añadiendo los controles, la magnitud no cambia, sin embargo se reduce el error estandar volviendo la estimación más precisa. De este modo, el efecto agregado en el tiempo de las aspersiones sobre el desplazamiento es de un aumento de 4,291 puntos porcentuales ante un aumento de un punto porcentual sobre la tasa de aspersión.
 
 Los resultados de esta investigación demuestran que la aplicación del PECIG intensificó el desplazamiento forzado interno en Colombia entre los años 2004 y 2012. Sin embargo, este trabajo tiene varias limitaciones. Primero, el efecto encontrado mide los cambios en la intensidad de aspersión, lo cual no permite comparar cómo fue el desplazamiento en estos territorios con respecto a los que no recibieron nunca el programa. Segundo, las tasas de desplazamiento solo pueden ser tomadas en relación con la población del 2003, debido a que el desplazamiento está relacionado con los cambios poblacionales por lo que sería impreciso tomar la población del mismo año. Finalmente, el estudio solo tiene en cuenta el periodo comprendido entre 2004 y 2012, lo que implica que no sé puede asegurar que esta relación se mantuviese durante todo el PECIG que empezó en el año 2001 y se prohibió en el 2014.
 
@@ -423,8 +418,8 @@ Los resultados de esta investigación demuestran que la aplicación del PECIG in
 \\[-1.8ex] & \multicolumn{1}{c}{(MCO)} & \multicolumn{1}{c}{(IV)} & \multicolumn{1}{c}{(IV)}\\ 
 \\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)}\\ 
 \hline \\[-1.8ex] 
- Aspersiones aéreas & -0,031 & 3,743^{**} & 3,728^{***} \\ 
-  & (0,088) & (1,760) & (1,277) \\ 
+ Aspersiones aéreas & -0,033 & 3,744^{**} & 4,291^{***} \\ 
+  & (0,087) & (1,761) & (1,441) \\ 
   & & & \\ 
 \hline \\[-1.8ex] 
 Efectos Fijos & Si & Si & Si \\ 
@@ -462,26 +457,26 @@ En este caso, la variable "aspersiones aéreas" representa el efecto de la categ
 \cline{2-4} 
 \\[-1.8ex] & \multicolumn{1}{c}{(t + 1)} & \multicolumn{1}{c}{(t + 2)} & \multicolumn{1}{c}{(t + 3)}\\ 
 \hline \\[-1.8ex] 
- Aspersiones aéreas & -9,140 & -4,263 & 11,854 \\ 
-  & (23,686) & (23,532) & (50,645) \\ 
+ Aspersiones aéreas & -5,329 & -0,450 & 8,448 \\ 
+& (18,510) & (16,081) & (37,651) \\ 
   & & & \\ 
- Cuartil2 & -0,776 & -1,029 & -0,324 \\ 
-  & (1,298) & (1,617) & (3,755) \\ 
+ cuartil2 & -0,894 & -1,079 & -0,257 \\ 
+  & (1,471) & (1,649) & (5,596) \\ 
   & & & \\ 
- Cuartil3 & -0,393 & -0,348 & -0,649 \\ 
-  & (1,122) & (1,306) & (2,667) \\ 
+ cuartil3 & -0,376 & -0,264 & -0,964 \\ 
+  & (1,576) & (1,606) & (6,414) \\ 
   & & & \\ 
- Cuartil4 & -0,257 & -0,321 & -0,164 \\ 
-  & (0,378) & (0,383) & (0,903) \\ 
+ cuartil4 & -0,209 & -0,275 & -0,139 \\ 
+  & (0,346) & (0,326) & (1,266) \\ 
   & & & \\ 
- Aspersiones aéreas*Cuartil2 & 40,491 & 47,923 & 4,584 \\ 
-  & (61,811) & (73,185) & (197,947) \\ 
+ spraying\_norm:cuartil2 & 44,731 & 49,312 & 4,597 \\ 
+  & (65,336) & (71,065) & (280,772) \\ 
   & & & \\ 
- Aspersiones aéreas*Cuartil3 & 17,284 & 11,917 & 4,066 \\ 
-  & (15,534) & (21,018) & (23,322) \\ 
+ spraying\_norm:cuartil3 & 13,900 & 7,043 & 13,655 \\ 
+  & (28,292) & (31,834) & (103,132) \\ 
   & & & \\ 
- Aspersiones aéreas*Cuartil4 & 11,312 & 7,128 & -9,274 \\ 
-  & (24,381) & (24,231) & (53,672) \\ 
+ spraying\_norm:cuartil4 & 7,464 & 3,212 & -6,052 \\ 
+  & (18,882) & (16,488) & (42,828) \\ 
   & & & \\ 
 \hline \\[-1.8ex] 
 Efectos Fijos & Si & Si & Si \\ 
@@ -526,23 +521,23 @@ Segundo, diferentes estudios han mostrado que choques a la oferta de cocaína ta
  Aspersiones aéreas & -0,137^{**} & -0,090 & -0,162^{***} \\ 
   & (0,069) & (0,063) & (0,046) \\ 
   & & & \\ 
- Cuartil2 & 0,035 & 0,041 & 0,041 \\ 
+ cuartil2 & 0,035 & 0,041 & 0,041 \\ 
   & (0,044) & (0,046) & (0,048) \\ 
   & & & \\ 
- Cuartil3 & 0,123^{**} & 0,122^{**} & 0,149^{***} \\ 
-  & (0,053) & (0,056) & (0,054) \\ 
+ cuartil3 & 0,123^{**} & 0,122^{**} & 0,148^{***} \\ 
+  & (0,053) & (0,055) & (0,054) \\ 
   & & & \\ 
- Cuartil4 & 0,216^{***} & 0,225^{***} & 0,259^{***} \\ 
+ cuartil4 & 0,216^{***} & 0,225^{***} & 0,258^{***} \\ 
   & (0,057) & (0,061) & (0,060) \\ 
   & & & \\ 
- Aspersiones aéreas*Cuartil2 & 0,523^{***} & 0,138 & 0,560^{**} \\ 
-  & (0,188) & (0,138) & (0,234) \\ 
+ spraying\_norm:cuartil2 & 0,523^{***} & 0,138 & 0,560^{**} \\ 
+  & (0,190) & (0,137) & (0,234) \\ 
   & & & \\ 
- Aspersiones aéreas*Cuartil3 & 0,385^{***} & 0,259^{***} & 0,326^{***} \\ 
+ spraying\_norm:cuartil3 & 0,385^{***} & 0,258^{***} & 0,326^{***} \\ 
   & (0,105) & (0,079) & (0,102) \\ 
   & & & \\ 
- Aspersiones aéreas*Cuartil4 & 0,131^{*} & 0,036 & 0,090 \\ 
-  & (0,073) & (0,081) & (0,066) \\ 
+ spraying\_norm:cuartil4 & 0,131^{*} & 0,036 & 0,090 \\ 
+  & (0,073) & (0,082) & (0,067) \\ 
   & & & \\ 
 \hline \\[-1.8ex] 
 Efectos Fijos & Si & Si & Si \\ 
@@ -578,7 +573,7 @@ La tabla 6 muestra el efecto de las aspersiones sobre el desplazamiento forzado,
 \cline{2-6} 
 \\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)} & \multicolumn{1}{c}{(5)}\\ 
 \hline \\[-1.8ex] 
- Aspersiones aéreas & 3,74^{**} & 4,02^{***} & 4,30^{***} & 3,74^{**} & 3,73^{***} \\ 
+ Aspersiones aéreas & 3,74^{**} & 4,02^{***} & 4,30^{***} & 3,74^{**} & 4,29^{***} \\ 
   & (1,760) & (1,206) & (1,460) & (1,759) & (1,277) \\ 
  \hline \\[-1.8ex] 
 Efectos Fijos & Si & Si & Si & Si & Si \\ 
@@ -596,7 +591,7 @@ R$^{2}$ & \multicolumn{1}{c}{0,00001} & \multicolumn{1}{c}{0,00001} & \multicolu
 \end{threeparttable}
 \end{table}
 ```
-Del mismo modo, las variables asociadas a la violencia son las que mayor nivel explicativo tienen en el modelo, reflejado en el R cuadrado de la columna 3. Esto es consistente ya que las otras violaciones a derechos humanos son las que impactan en mayor magnitud el desplazamiento. Además, la columna 2 muestra que las variables geográficas también generan un aumento en la estimación, pero no es mayor a 0,3 puntos porcentuales. La variable de luminosidad municipal que representa el control para desarrollo económico no produce cambios en el modelo, tal como se anota en la cuarta columna. En resumen, el efecto encontrado es consistentemente significativo en todos los modelos, los controles no estan causando perturbaciones al modelo principal (columna 5), en cambio sí están reduciendo la desviación estandar generando mayor precisión en la estimación.
+Del mismo modo, las variables asociadas a la violencia son las que mayor nivel explicativo tienen en el modelo, reflejado en el R cuadrado de la columna 3. Esto es consistente ya que las otras violaciones a derechos humanos son las que impactan en mayor magnitud el desplazamiento. Además, la columna 2 muestra que las variables geográficas también generan un aumento en la estimación, pero no es mayor a 0,01 puntos porcentuales. La variable de luminosidad municipal que representa el control para desarrollo económico no produce cambios en el modelo sin controles, por lo que no es una variable que aporte gran variación (columna 4). En resumen, el efecto encontrado es consistentemente significativo en todos los modelos, los controles no estan causando perturbaciones al modelo principal (columna 5), en cambio sí están reduciendo la desviación estandar generando mayor precisión en la estimación.
 
 Por su parte, la segunda prueba permite definir la consistencia del efecto. Para esto, se aplica como instrumento alterno los días en los que el viento promedio estuvo por encima del umbral permitido por el PMA, pues al igual que la velocidad promedio del viento, afecta la probabilidad de aspersión por las condiciones climáticas del municipio. [^18] Este instrumento cumple con la relevancia y la restricción de exclusión (anexo 8). La razón para no utlizarlo como el instrumento principal de esta investigación se relaciona con que al, imponer un umbral, los días que estuvieron cercanos a los máximos de la velocidad del viento, sí afectaban la decisión de asperjar quedaban por fuera, lo que puede generar algunos errores de medición que le restan eficiencia a la estimación. Sin embargo, la magnitud de los efectos es parecida, esto demuestra que, al aplicar un instrumento que en la teoría genera una variación similar, existe una congruencia con los resultados encontrados.
 
@@ -606,9 +601,9 @@ Por su parte, la segunda prueba permite definir la consistencia del efecto. Para
 knitr::include_graphics(c("../Visualizations/output/DinamicEffectsWindIV.png"))
 ```
 
-La figura 9 muestra la relación entre el desplazamiento forzado y las aspersiones en el tiempo con el nuevo modelo. Esta expone que la signficancia de los efectos se mantienen en el tiempo, con excepción del tercer mes después de la aspersión. Además, la relación sobre el desplazamiento el primer mes es de un aumento 1,7 puntos porcentuales en los desplazamientos ante un aumento en 1 punto porcentual en la intensidad de aspersión; de 1,1 puntos porcentuales en el segundo mes; y 0,57 en el tercer mes. Al compararlos con los resultados de este estudio se puede anotar que los cambios del nuevo modelo se encuentran dentro de los intervalos de confianza de las estimaciones principales. Esto implica que la diferencia entre ambas estimaciones no es suficientemente grande para conciderarse como efectos estadisticamente distintos.
+La figura 9 muestra la relación entre el desplazamiento forzado y las aspersiones en el tiempo con el nuevo modelo. Esta expone que la signficancia de los efectos se mantienen en el tiempo, con excepción del tercer mes después de la aspersión. Además, la relación sobre el desplazamiento el primer mes es de un aumento 1,65 puntos porcentuales en los desplazamientos ante un aumento en 1 punto porcentual en la intensidad de aspersión; de 1,06 puntos porcentuales en el segundo mes; y 0,521 en el tercer mes. Al compararlos con los resultados de este estudio se puede anotar que los cambios del nuevo modelo se encuentran dentro de los intervalos de confianza de las estimaciones principales. Esto implica que la diferencia entre ambas estimaciones no es suficientemente grande para conciderarse como efectos estadisticamente distintos.
 
-Paralelamente, al estimar el efecto agregado en el tiempo, las diferencias son similares. La tabla 7 muestra que el efecto sin controles es de 3,3 puntos porcentuales, en comparación con 3,74 mostrados en la sección de resultados. Además, al aplicar los controles, el efecto es de 3,73 puntos porcentuales; es decir, igual al del modelo principal. Esto significa que, al estimar el modelo cambiando la medida en la que el viento afecta la probabilidad de aspersión, la estimación principal de esta investigación no cambia. Por lo tanto, esto demuestra la consistencia de los efectos encontrados.
+Paralelamente, al estimar el efecto agregado en el tiempo, las diferencias son similares. La tabla 7 muestra que el efecto sin controles es de 3,3 puntos porcentuales, en comparación con 3,74 mostrados en la sección de resultados. Además, al aplicar los controles, el efecto es de 3,73 puntos porcentuales; es decir, 0.05 puntos porcentuales menor al modelo principal. Esto significa que, al estimar el modelo cambiando la medida en la que el viento afecta la probabilidad de aspersión, la estimación principal de esta investigación cambia poco y su nivel de signficancia se mantiene. Por lo tanto, esto demuestra la consistencia de los efectos encontrados.
 
 ```{=latex}
 \begin{table}[!htbp] \centering 
@@ -622,7 +617,7 @@ Paralelamente, al estimar el efecto agregado en el tiempo, las diferencias son s
 \cline{2-4} 
 \\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)}\\ 
 \hline \\[-1.8ex] 
- Aspersiones aéreas & -0,032 & 3,320^{***} & 3,737^{***} \\ 
+ Aspersiones aéreas & -0,032 & 3,321^{***} & 3,738^{***} \\ 
   & (0,088) & (1,180) & (1,396) \\ 
   & & & \\ 
 \hline \\[-1.8ex] 
@@ -669,7 +664,7 @@ Para corroborar lo anterior, la figura 11 muestra los efectos heterogéneos agre
 
 En este trabajo se estimó la relación entre el desplazamiento forzado y las aspersiones aéreas durante el Plan Colombia. Para esto se utilizó un modelo de variable instrumentales para corregir el sesgo de selección que presenta el programa, debido a que este se aplicaba principalmente en los municipios más afectados por el conflicto armado, el cual está directamente relacionado con la migración forzada. El instrumento utilizado fue la velocidad del viento, la cuál afectaba la probabilidad de asperjar en ciertos territorios, dado que si este se encontraba en un rango de 7,4 km/h a 10 km/h disminuían las hectáreas asperjadas en el municipio. Por lo tanto, el instrumento proporciona variación aleatoria en la intensidad de la aspersión más no en la asignación del PECIG. Por esta razón, los resultados de este trabajo toman como unidad análisis únicamente los municipios a los que se destinó el programa entre el 2004 y el 2012.
 
-Los principales resultados de esta investigación se pueden dividir en dos: el efecto de las aspersiones sobre el desplazamiento y los mecanismos que lo explican. En cuanto al efecto, se encontró que ante un aumento de un punto porcentual, en la intensidad de aspersión, el desplazamiento forzado aumentaba 3,73 puntos porcentuales en un periodo de tres meses. Además, las estimaciones muestran que en el primer después de la aspersión el aumento era de 1,28 puntos porcentuales; 1,46 en el segundo mes y 1,3 en el tercero. Esto significa que la decisión de desplazarse no es inmediata pero si tiene un efecto de corto plazo.
+Los principales resultados de esta investigación se pueden dividir en dos: el efecto de las aspersiones sobre el desplazamiento y los mecanismos que lo explican. En cuanto al efecto, se encontró que ante un aumento de un punto porcentual, en la intensidad de aspersión, el desplazamiento forzado aumentaba 4,29 puntos porcentuales en un periodo de tres meses. Además, las estimaciones muestran que en el primer después de la aspersión el aumento era de 1,25 puntos porcentuales; 1,4 en el segundo mes y 1,15 en el tercero. Esto significa que la decisión de desplazarse no es inmediata pero si tiene un efecto de corto plazo.
 
 Respecto a los mecanismos, esta investigación encuentra que los cultivos de coca son un intensificador del conflicto en las regiones una vez se aplica el programa. Se identificó que los municipios con alto volumen de coca tienen un efecto estadísticamente mayor a los que tienen bajos niveles. Por otro lado, se encontró que existen efectos estadísticamente mayores entre los municipios a los que se les aplico de forma consistente el programa con respecto a los que lo recibieron de forma esporádica. Esto significa que cuando los municipios se vieron expuestos constantemente al PECIG también lo hacían a sus efectos adversos, de modo que la reiteración en las fumigaciones es un canal directo para la explicación de por qué se desplazaban las personas en sus territorios.
 
@@ -686,7 +681,7 @@ Por último, los resultados expuestos son una buena herramienta de política pú
 
 # Anexos
 
-## Anexo 1: Derecho de petición para establecer el número de desplazados registrados con fumigación aérea con glifosato como causa.
+## Anexo 1: Derecho de petición para establecer el número de desplazados registrados con fumigación aérea con glifosato como causa (RUV).
 
 ```{r apendice1, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 knitr::include_graphics("../Apendix/apendice1.png")
@@ -694,7 +689,16 @@ knitr::include_graphics("../Apendix/apendice1.png")
 
 \newpage
 
-## Anexo 2: Componentes del Plan Colombia.
+## Anexo 2: Derecho de petición para establecer el número de desplazados registrados con fumigación aérea con glifosato como causa (DIRAN).
+
+```{r apendice6, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
+
+knitr::include_graphics("../Apendix/apendice6.png")
+```
+
+\newpage
+
+## Anexo 3: Componentes del Plan Colombia.
 
 ```{r apendice2, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 
@@ -703,7 +707,7 @@ knitr::include_graphics("../Apendix/apendice2.png")
 
 \newpage
 
-## Anexo 3: Condiciones para aplicar el PECIG
+## Anexo 4: Condiciones para aplicar el PECIG
 
 ```{r apendice3, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 
@@ -712,7 +716,7 @@ knitr::include_graphics("../Apendix/apendice3.png")
 
 \newpage
 
-## Anexo 4: Núcleos de aplicación del PECIG
+## Anexo 5: Núcleos de aplicación del PECIG
 
 ```{r apendice4, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 
@@ -721,7 +725,7 @@ knitr::include_graphics("../Apendix/apendice4.png")
 
 \newpage
 
-## Anexo 5: Mapa de cultivos de cultivos de coca en relación al tamaño del municipio (2004 - 2012)
+## Anexo 6: Mapa de cultivos de cultivos de coca en relación al tamaño del municipio (2004 - 2012)
 
 ```{r apendice5, out.width = "75%", warning=F, fig.show=F, echo=F, fig.align='center'}
 
@@ -730,7 +734,7 @@ knitr::include_graphics("../Apendix/apendice5.png")
 
 \newpage
 
-## Anexo 6: Relevancia y restricción de exclusión instrumento alterno
+## Anexo 7: Relevancia y restricción de exclusión instrumento alterno
 
 ```{=tex}
 \begin{table}[!htbp] \centering 
@@ -778,7 +782,7 @@ R$^{2}$ & \multicolumn{1}{c}{0,016} \\
 \\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)}\\ 
 \\[-1.8ex] & \multicolumn{1}{c}{} & \multicolumn{1}{c}{}\\ 
 \hline \\[-1.8ex] 
- Velocidad del Viento & 0,003 & -0,013^{***} \\ 
+ Velocidad del Viento & 0,004 & -0,013^{***} \\ 
   & (0,003) & (0,005) \\ 
  \hline \\[-1.8ex] 
 Efectos Fijos & Sí &  \\ 
@@ -796,7 +800,7 @@ R$^{2}$ & \multicolumn{1}{c}{0,005} & \multicolumn{1}{c}{0,006} \\
 ```
 \newpage
 
-## Anexo 7: Efecto desplazamiento y aspersiones en el tiempo con el instrumento alterno
+## Anexo 8: Efecto desplazamiento y aspersiones en el tiempo con el instrumento alterno
 
 ```{=tex}
 \begin{table}[!htbp] \centering 
@@ -810,8 +814,8 @@ R$^{2}$ & \multicolumn{1}{c}{0,005} & \multicolumn{1}{c}{0,006} \\
 \cline{2-4} 
 \\[-1.8ex] & \multicolumn{1}{c}{(t + 1)} & \multicolumn{1}{c}{(t + 2)} & \multicolumn{1}{c}{(t + 3)}\\ 
 \hline \\[-1.8ex] 
- Aspersiones aéreas & 1,668^{**} & 1,088^{***} & 0,578 \\ 
-  & (0,682) & (0,379) & (0,584) \\ 
+ Aspersiones aéreas & 1,650^{**} & 1,067^{***} & 0,521 \\ 
+ & (0,796) & (0,339) & (0,470) \\ 
   & & & \\ 
 \hline \\[-1.8ex] 
 Efectos Fijos & Si & Si & Si \\ 
@@ -842,26 +846,26 @@ R$^{2}$ & \multicolumn{1}{c}{0,0005} & \multicolumn{1}{c}{0,0001} & \multicolumn
  & \multicolumn{1}{c}{Variable dependiente: Desplazamiento Forzado} \\ 
 \cline{2-2} 
 \hline \\[-1.8ex] 
- Aspersiones aéreas & 3,728^{***} \\ 
-  & (1,277) \\ 
+ Aspersiones aéreas & 4,291^{***} \\ 
+  & (1,441) \\ 
   & \\ 
  Tasa de combates & 15,825 \\ 
-  & (12,207) \\ 
+  & (12,255) \\ 
   & \\ 
- Tasa de despojo & 9,927^{***} \\ 
-  & (2,173) \\ 
+ Tasa de despojo & 9,931^{***} \\ 
+  & (2,185) \\ 
   & \\ 
- Tasa de minas & 10,492^{*} \\ 
-  & (6,047) \\ 
+ Tasa de minas & 10,513^{*} \\ 
+  & (6,099) \\ 
   & \\ 
- Tasa de reclutamiento & 11,657 \\ 
-  & (19,697) \\ 
+ Tasa de reclutamiento & 11,763 \\ 
+  & (19,698) \\ 
   & \\ 
- Tasa de homicidio & 10,940^{***} \\ 
-  & (2,422) \\ 
+ Tasa de homicidio & 10,779^{***} \\ 
+  & (2,500) \\ 
   & \\ 
- Tasa de desaparición forzada & 25,050^{***} \\ 
-  & (7,955) \\ 
+ Tasa de desaparición forzada & 24,687^{***} \\ 
+  & (8,325) \\ 
   & \\ 
 \hline \\[-1.8ex] 
 Efectos Fijos & Si \\ 
