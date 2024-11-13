@@ -4,7 +4,6 @@ title-meta: \vspace{-2em}
 author: "Angel Santiago Pardo González^[Universidad de los Andes, facultad de Economía. Correo: as.pardo10@uniandes.edu.co.]"
 author-meta: \vspace{-5em}
 thanks: "Agradezo a mi asesor Ignacio Sarmiento y a mi co-asesor Carlos Toruño por sus consejos, dispocisión y comentarios. A María Juliana Durán por su apoyo incondicional en este trabajo. A Andres David Lagos, Edicson Luna y Mariana Posada por su constante ayuda en diferentes etapas de la investigación. A Daniel Mejía, Stanislao Maldonado, Eduard Martínez y Manuel Fernández por sus aportes y buenas ideas para esta investigación. Al Registro Único de Víctimas (RUV) y la Dirección Nacional de Policia Antinarcoticos (DIRAN) por haber compartido sus datos. A los investigadores de la Comisión de la Verdad (CEV) por compartirme toda su guía, experiencia y conocimiento para desarrollar este estudio."
-
 bibliography: references.bib
 format: pdf
 pandoc_args: "--pdf-engine=xelatex"
